@@ -1,5 +1,5 @@
-let mongoose = require('mongoose');
 
+let mongoose = require('mongoose');
 let animalSchema = new mongoose.Schema({
 
     name: String,
