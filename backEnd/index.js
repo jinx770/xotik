@@ -75,7 +75,7 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
     // console.log(await FindAnimal( "Rhino" ));
     // RemoveAnimal( "Rhino" );
     // CreateAnimal( "Rhino", "http://google.com/images", 300, "5/5", "Lorem Ipsum", 3)
-    UpdateAnimal(FindAnimal("Rhino"), 'price', 100)
+    // UpdateAnimal(FindAnimal("Rhino"), 'price', 100)
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
