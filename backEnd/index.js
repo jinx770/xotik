@@ -15,6 +15,9 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
         let [ name, url, price, rating, description, quantity ] = args
         let newAnimal = new Animal({ name, url, price, rating, description, quantity });
 
+        // Check level access?
+        if (!allowed) => return;
+        
         newAnimal.save();
         console.log(newAnimal);
 
