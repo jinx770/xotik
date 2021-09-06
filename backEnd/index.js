@@ -1,9 +1,10 @@
+// Declarations
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');  // connecting and talking to mongodb
 const cors = require('cors'); // cross origin restriction policy -- cross origin resource sharing
 const bcrypt = require('bcryptjs'); // encryption and decryption of data
 
-// listening to viewport
+// Intitalizing
 ( async () => {
 
     let Animal = require("./models/animal.js")
@@ -11,8 +12,8 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
 
     let CreateAnimal = (...args) => {
 
-        let [name, url, price, rating, description] = args
-        let newAnimal = new Animal({ name, url, price, rating, description });
+        let [ name, url, price, rating, description, quantity ] = args
+        let newAnimal = new Animal({ name, url, price, rating, description, quantity });
 
         newAnimal.save();
         console.log(newAnimal);
