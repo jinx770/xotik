@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
 
 // -------------------------------------------------------------------------------------------------------------------------------
 
-    let Animal = require("./models/animal.js")
+    let Animal = require("./models/animal.js");
     mongoose.connect('mongodb+srv://alder:not123to1@xotik.s1wn9.mongodb.net/xotik?retryWrites=true&w=majority');
 
 // -------------------------------------------------------------------------------------------------------------------------------
@@ -49,6 +49,7 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
         updatedField = value
 
         // animalToUpdate.save()
+
         // Animal.update({ animal: "Rhino" }, { $set: { price: 10} });
 
     }
@@ -79,5 +80,43 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
+
+  let User = require('./models/user.js')
+
+  let CreateUser = ( ...args ) => {
+    let [ fullName, username, phoneNo, email, description, password ] = args
+    // existingUser = FindUser(username);
+    // console.log(username + ' - user input');
+    // console.log(existingUser + ' - existing user');
+
+    // trying to make is so that it checks for an existing username before creating another user
+    if (existingUser == username){
+      console.log(`${username} - Username already exists.`);
+    } else {
+      let newUser = new User({ fullName, username, phoneNo, email, description, password });
+      newUser.save();
+      console.log(`New user registered \n`, newUser.fullName);
+    }
+  }
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+  let FindUser = async (args, callback) => {
+    let foundUser = await User.find({ username: args });
+    return foundUser;
+  }
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+  let DeleteUser = async (arg) => {
+    User.deleteOne({username: arg}, function(err, success){
+      console.log(`Successfully deleted ${arg}`);
+    });
+  }
+
+  // Function Calls
+  // console.log(await FindUser("johndoe"));
+  // CreateUser("John Doe", "johndoe", "021324578", "johndoe@gmail.com", "Owner of really cool pythons", "myPassword" )
+  // DeleteUser("johndoe");
 
 })();
