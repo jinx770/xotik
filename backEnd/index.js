@@ -14,7 +14,7 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
 // -------------------------------------------------------------------------------------------------------------------------------
 
     // Create
-    let CreateAnimal = ( ...args ) => {
+    let CreateAnimal = ( ... args ) => {
 
         let [ name, url, price, rating, description, quantity ] = args
         let newAnimal = new Animal({ name, url, price, rating, description, quantity });
@@ -42,15 +42,32 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
 // -------------------------------------------------------------------------------------------------------------------------------
 
     // Update
-    let UpdateAnimal = async ( doc, field, value ) => {
+    let UpdateAnimal = async ( ... args ) => {
 
-        let animalToUpdate = await doc
-        let updatedField = await animalToUpdate[0][field]
-        updatedField = value
+        // Get all inputs from field when submit is pressed and update in table below
+        let [ name, url, price, rating, description, quantity ] = args
 
-        // animalToUpdate.save()
-        // Animal.update({ animal: "Rhino" }, { $set: { price: 10} });
-
+        Animal.findOneAndUpdate({
+            animal: "Rhino"
+         }, {
+             $set: {
+                 animal: name,
+                 url: url,
+                 price: price,
+                 rating: rating,
+                 description: description,
+                 quantity: quantity
+             }
+         }, {
+             new: true
+         },
+            (err, doc) => {
+                if (err) {
+                    console.log("Something wrong when updating data!");
+                }
+                console.log(doc);
+            }
+        );
     }
 
 // -------------------------------------------------------------------------------------------------------------------------------
@@ -74,8 +91,8 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
 
     // console.log(await FindAnimal( "Rhino" ));
     // RemoveAnimal( "Rhino" );
-    // CreateAnimal( "Rhino", "http://google.com/images", 300, "5/5", "Lorem Ipsum", 3)
-    // UpdateAnimal(FindAnimal("Rhino"), 'price', 100)
+    // CreateAnimal( "Rhino", "http://google.com/images", 300, "5/5", "Lorem Ipsum", 3 )
+    // UpdateAnimal( "Rhino", "http://google.com/images", 300, "2/5", "Lorem Ipsum", 3 )
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
