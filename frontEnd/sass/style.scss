@@ -1,6 +1,6 @@
 // colors
 $black: #272727;
-$offWhite: #F8F1DE;
+$offwhite: #F8F1DE;
 $green: #2A432F;
 
 Body {
@@ -185,13 +185,34 @@ p {
 }
 // forms end ::::::::::::::::::::::::::::::::::
 // cards begin ::::::::::::::::::::::::::::::::
+
+// favourite button
+.favourite a {
+  text-decoration: none;
+  color: $green;
+  background-color: $offwhite;
+  font-size: 20px;
+  padding: 2%;
+  border: 1px solid $green;
+  border-radius: 25px;
+  padding: 20%;
+  margin-top: 30%;
+}
+
+.favourite {
+background-color: Transparent;
+border: none;
+}
+
+
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 45%;
+  width: 21%;
   margin: auto;
   height: 300px;
+  padding-bottom: 4%;
 }
 
 .top-info {
@@ -300,6 +321,122 @@ i {
 // header ends ::::::::::::::::::::::::::::::::::::
 
 
+// home page begins ::::::::::::::::::::::::
+  // hero section ::::::::::::::::::::::::
+
+    // background image
+.background-image img{
+  width: 100%;
+  height: auto;
+}
+
+.background-image {
+  object-fit: contain;
+  position: relative;
+}
+// background image ends
+// xotik about
+.xotik {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 7%;
+  right: 0;
+  margin: auto;
+  z-index: 99;
+  font-family: "Source Sans Pro";
+  font-size: 1200%;
+  color: #f4edda;
+}
+
+.xotik-about {
+  position: absolute;
+  top: 40%;
+  bottom: 0;
+  left: 7%;
+  right: 0;
+  margin: auto;
+  z-index: 99;
+  font-family: "Comfortaa Regular";
+  font-size: 200%;
+  color: #f4edda;
+}
+
+.explore {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 7%;
+  right: 0;
+  margin: auto;
+  z-index: 99;
+}
+
+.explore-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'Comfortaa';
+  cursor: pointer;
+  background: #2A432F;
+  color: #F8F1DE;
+  border: 1px solid #2A432F;
+  width: 200px;
+  height: 60px;
+  border-radius: 50px;
+  transition: 0.4s;
+}
+
+.explore-btn:hover {
+  font-weight: 600;
+  border: 1px solid #F8F1DE;
+  background: none;
+}
+// xotik about section ends
+// all listings section
+
+.listings-head {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-family: "Comfortaa";
+  font-weight: 900;
+  text-align: center;
+}
+
+//Search selections
+.search {
+  display: flex;
+  justify-content: space-between;
+  width: 87%;
+  margin: auto;
+  padding-bottom: 4%;
+}
+
+.inputs {
+  display: flex;
+}
+
+
+.search input {
+  border-radius: 50px;
+  font-family: "Comfortaa";
+  font-size: 20px;
+  padding-left: 3%;
+  margin-right: 5%;
+  outline: none;
+  background-color: $black;
+  color: $offwhite;
+  border-color: $offwhite !important;
+}
+
+.all-listings {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+}
 
 // footer begins ::::::::::::::::::::::::::::::::::
 
@@ -362,3 +499,4 @@ i {
 }
 
 //  footer ends :::::::::::::::::::::::::::::::::::
+
