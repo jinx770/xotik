@@ -1,5 +1,7 @@
+const express = require('express');
+const app = express();
+require("./index.js")
 
-let express = require('express');
-let app = express();
 app.use(express.static("frontEnd"));
-app.listen(3000)
+const port = 3000;
+app.listen(port, () => console.log(`XOTIK on port : ${port}`));
