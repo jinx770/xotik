@@ -23,7 +23,10 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 
         newAnimal === name
             ? console.log("Animal already exists in the database!")
-            : ( new Animal({ name, tags, url, price, rating, description, quantity }).save() && console.log("Animal added to the database!"))
+            : (
+                new Animal({ name, tags, url, price, rating, description, quantity }).save()
+                && console.log("Animal added to the database!")
+            )
 
     }
 
@@ -31,12 +34,23 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 // -----------
 
 
-    let FindAnimal = async ( args, callback ) => {
+    let FindAnimal = async ( args ) => {
 
         let foundAnimal = await Animal.find({ name: args });
         let animalExists = foundAnimal.length === 0 ? 'User does not exist' : foundAnimal
 
         return animalExists
+
+    }
+
+
+// -----------
+
+
+    let FindEveryAnimal = async ( args ) => {
+
+        let foundAnimals = await Animal.find();
+        return foundAnimals
 
     }
 
@@ -83,7 +97,16 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
         let animalExists = checkAnimal[0] && checkAnimal[0].name || ""
 
         animalExists === arg
-            ? ( Animal.deleteOne({ name: arg }, function(err, success){console.log(`Successfully deleted: ${arg}`)}))
+            ? (
+                Animal.deleteOne(
+                    {
+                        name: arg
+                    },
+                        (err, success) => {
+                            console.log(`Successfully deleted: ${arg}`)
+                        }
+                    )
+                )
             : console.log("Animal does not exist")
 
     }
@@ -92,34 +115,16 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 // -------------------------------------------------------------------------------------------------------------------------------
 
 
+    let CreateUser = async ( ... args ) => {
 
+        let [ fullName, username, phoneNo, email, description, password ] = args
+        let checkUser = await FindUser(username);
+        let newUser = checkUser[0] && checkUser[0].username || ""
 
-    let CreateUser = async ( ...args ) => {
-    let [ fullName, username, phoneNo, email, description, password ] = args
-
-    // check if username exists
-    let existingUser = await FindUser(username);
-
-    if (existingUser[0].username == username){
-      console.log(`${username} - Username already exists.`);
-    } else {
-      let newUser = new User({ fullName, username, phoneNo, email, description, password });
-      newUser.save();
-      console.log(`New user registered \n ${newUser.fullName}`);
-      }
+        newUser === username
+            ? console.log("User already exists")
+            : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
     }
-
-// Shorthand Version (rane just wants to take a look at this)
-//     let CreateUser = async ( ... args ) => {
-
-//         let [ fullName, username, phoneNo, email, description, password ] = args
-//         let checkUser = await FindUser(username);
-//         let newUser = checkUser[0] && checkUser[0].username || ""
-
-//         newUser === username
-//             ? console.log("User already exists")
-//             : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
-//     }
 
 
 // -----------
@@ -128,9 +133,9 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
     let FindUser = async ( arg ) => {
 
         let foundUser = await User.find({ username: arg });
-//         let userExists = foundUser.length === 0 ? 'User does not exist' : foundUser
+        let userExists = foundUser.length === 0 ? 'User does not exist' : foundUser
 
-        return foundUser;
+        return userExists;
     }
 
 
@@ -148,6 +153,10 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
             : console.log("User does not exist")
 
     }
+
+    console.log("Running...")
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal }
+
 })();
 
 
@@ -198,7 +207,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       //         'animal',
       //         'elephant'
       //     ],
-      //     "../frontEnd/img/animalCards/whiteRhino.png",
+      //     "/img/animalCards/whiteRhino.png",
       //     12999,
       //     "5/5",
       //     "The white rhinoceros or square-lipped rhinoceros is the largest extant species of rhinoceros. It has a wide mouth used for grazing and is the most social of all rhino species.",
@@ -216,7 +225,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       //         'aggressive',
       //         'tiny'
       //     ],
-      //     "../frontEnd/img/animalCards/leopardGecko.png",
+      //     "/img/animalCards/leopardGecko.png",
       //     419,
       //     "4/5",
       //     "They are fairly small but sturdy lizards, and their common name, 'leopard gecko' refers to their spotted patterns, predominantly shades of yellow and brown. ",
@@ -235,7 +244,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       //         'tiny',
       //         'friendly'
       //     ],
-      //     "../frontEnd/img/animalCards/whiteTegus.png",
+      //     "/img/animalCards/whiteTegus.png",
       //     1300,
       //     "5/5",
       //     "The Argentine black and white tegu, also called the Australian giant tegu, the black and white tegu, the huge tegu.",
@@ -252,7 +261,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       //         'outback',
       //         'fighting'
       //     ],
-      //     "../frontEnd/img/animalCards/kangaroo.png",
+      //     "/img/animalCards/kangaroo.png",
       //     1300,
       //     "4/5",
       //     "The Argentine black and white tegu, also called the Australian giant tegu, the black and white tegu, the huge tegu.",
@@ -271,7 +280,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       //         'tasmanian',
       //         'devil'
       //     ],
-      //     "../frontEnd/img/animalCards/tasmanianDevil.png",
+      //     "/img/animalCards/tasmanianDevil.png",
       //     700,
       //     "3/5",
       //     "These famously feisty mammals have a coat of coarse brown or black fur and a stocky profile that gives them the appearance of a baby bear. Most have a white stripe or patch on their chest and light spots on their sides or rear end. ",
@@ -290,7 +299,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       //         'koala',
       //         'australia'
       //     ],
-      //     "../frontEnd/img/animalCards/koala.png",
+      //     "/img/animalCards/koala.png",
       //     3699,
       //     "5/5",
       //     "Koalas are well-known for their large round head, big furry ears and big black nose. Their fur is usually grey-brown in colour with white fur on the chest, inner arms, ears and bottom. ",
@@ -309,7 +318,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       //         'koala',
       //         'weasel'
       //     ],
-      //     "../frontEnd/img/animalCards/meerkats.png",
+      //     "/img/animalCards/meerkats.png",
       //     190,
       //     "3/5",
       //     "Meerkats live in the deserts and grasslands of the southern tip of Africa. They are extremely cute, with bushy, brown-striped fur, a small, pointed face, and large eyes surrounded by dark patches. ",

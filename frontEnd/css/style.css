@@ -202,6 +202,7 @@ input:-webkit-autofill:active {
 .favourite {
   background-color: Transparent;
   border: none;
+  position: absolute;
 }
 
 .card {
@@ -225,6 +226,11 @@ input:-webkit-autofill:active {
   width: 100%;
   border: 1px solid #F8F1DE;
   background: #666666;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
 }
 
 .bottom-info {
@@ -529,6 +535,14 @@ input:-webkit-autofill:active {
   border-radius: 15px;
   border: 1px solid #F8F1DE;
   object-fit: cover;
+}
+
+.ignore-me {
+    display: block;
+    visibility: hidden;
+    width: 160px;
+    position:absolute;
+    height: 160px;
 }
 
 .add-img-btn {
