@@ -93,7 +93,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 
 
 
-    
+
     let CreateUser = async ( ...args ) => {
     let [ fullName, username, phoneNo, email, description, password ] = args
 
@@ -108,7 +108,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       console.log(`New user registered \n ${newUser.fullName}`);
       }
     }
-    
+
 // Shorthand Version (rane just wants to take a look at this)
 //     let CreateUser = async ( ... args ) => {
 
