@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <title></title>
 </head>
 
@@ -40,12 +40,37 @@
 
       <div class="header-icons">
         <i class="fa fa-phone" aria-hidden="true"></i>
-        <i class="fa fa-user" aria-hidden="true"></i>
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <i class="fa fa-user" aria-hidden="true" id="user"></i>
+        <i class="fa fa-shopping-cart" aria-hidden="true" id="cart"></i>
       </div>
     </div>
   </div>
+
+  <!-- header popover begins -->
+
+  <div class="header-popover" id="headerPopover">
+    <!-- <div class="header-arrow" id="#headerArrow"></div> -->
+    <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+      <div class="login-popover-content" id="loginContent">
+        <h4>Log In</h4>
+        <input class="input" placeholder="Username" type="text">
+        <input class="input" placeholder="Password" type="password">
+        <button class="button-secondary">Log In</button>
+        <h6 class="create-account">Create Account</h6>
+      </div>
+
+      <div class="cart-popover-content" id="cartContent">
+          <h4>Cart</h4>
+          <h6>Cart is empty</h6>
+      </div>
+
+  </div>
+
+  <!-- header popover end -->
+
   <!-- header ENDS -->
+
 
   <div class="hero">
     <h2 class="xotik">XOTIK</h2>
@@ -65,9 +90,11 @@
 
   <div class="search">
     <div class="inputs">
-      <input class="animal" type="text" name="" value="Animal">
-      <input class="filter" type="text" name="" value="Filter">
-      <input class="search-input" type="text" name="" value="Search">
+      <input class="animal" type="text" name="" value="Animal" value="">
+      <input class="filter" type="text" name="" value="Filter"
+      value="">
+      <input class="search-input" type="text" name="" value="Search"
+     value="">
     </div>
 
     <div class="search-button">
@@ -298,7 +325,7 @@
         </div>
         <div class="newsletter-form">
           <div class="newsletter-form-input">
-            <input class="input" placeholder="Email" type="text">
+            <input class="input" placeholder="Email" type="text" value="">
           </div>
           <button class="button-newsletter">Sign Up</button>
         </div>
@@ -309,6 +336,9 @@
   </div>
   <!-- footer ends -->
 
+  <script src="../frontEnd/node_modules/jquery/dist/jquery.min.js">
+  </script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
