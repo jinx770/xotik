@@ -93,33 +93,33 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 
 
 
-    
-    let CreateUser = async ( ...args ) => {
-    let [ fullName, username, phoneNo, email, description, password ] = args
+// Standard Long version
+    // let CreateUser = async ( ...args ) => {
+    // let [ fullName, username, phoneNo, email, description, password ] = args
+    //
+    // // check if username exists
+    // let existingUser = await FindUser(username);
+    //
+    // if (existingUser[0].username == username){
+    //   console.log(`${username} - Username already exists.`);
+    // } else {
+    //   let newUser = new User({ fullName, username, phoneNo, email, description, password });
+    //   newUser.save();
+    //   console.log(`New user registered \n ${newUser.fullName}`);
+    //   }
+    // }
 
-    // check if username exists
-    let existingUser = await FindUser(username);
+    let CreateUser = async ( ... args ) => {
 
-    if (existingUser[0].username == username){
-      console.log(`${username} - Username already exists.`);
-    } else {
-      let newUser = new User({ fullName, username, phoneNo, email, description, password });
-      newUser.save();
-      console.log(`New user registered \n ${newUser.fullName}`);
-      }
+        let [ fullName, username, phoneNo, email, description, password ] = args
+        let checkUser = await FindUser(username);
+        // ternary operator
+        let newUser = checkUser[0] && checkUser[0].username || "";
+
+        newUser === username
+            ? console.log("User already exists")
+            : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
     }
-    
-// Shorthand Version (rane just wants to take a look at this)
-//     let CreateUser = async ( ... args ) => {
-
-//         let [ fullName, username, phoneNo, email, description, password ] = args
-//         let checkUser = await FindUser(username);
-//         let newUser = checkUser[0] && checkUser[0].username || ""
-
-//         newUser === username
-//             ? console.log("User already exists")
-//             : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
-//     }
 
 
 // -----------
@@ -128,9 +128,9 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
     let FindUser = async ( arg ) => {
 
         let foundUser = await User.find({ username: arg });
-//         let userExists = foundUser.length === 0 ? 'User does not exist' : foundUser
+        let userExists = foundUser.length === 0 ? 'User does not exist' : foundUser
 
-        return foundUser;
+        return userExists;
     }
 
 
@@ -146,10 +146,11 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
         userExists === arg
             ? ( User.deleteOne({username: arg}, function(err, success){console.log(`Successfully deleted ${arg}`)}) )
             : console.log("User does not exist")
-
     }
-})();
 
+    console.log(await FindUser("johndoe"));
+
+})();
 
 
 
