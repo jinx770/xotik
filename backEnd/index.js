@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');  // connecting and talking to mongodb
 const cors = require('cors'); // cross origin restriction policy -- cross origin resource sharing
 const bcrypt = require('bcryptjs'); // encryption and decryption of data
-
+const config = require('./config.json');
 ( async () => {
 
 // -------------------------------------------------------------------------------------------------------------------------------
 
     let Animal = require("./models/animal.js");
-    mongoose.connect('mongodb+srv://alder:not123to1@xotik.s1wn9.mongodb.net/xotik?retryWrites=true&w=majority');
+    mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xotik.s1wn9.mongodb.net/xotik?retryWrites=true&w=majority`);
 
 // -------------------------------------------------------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
         let [ name, url, price, rating, description, quantity ] = args
 
         Animal.findOneAndUpdate({
-            animal: "Rhino"
+            animal: name
          }, {
              $set: {
                  animal: name,
@@ -99,19 +99,18 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
 
   let User = require('./models/user.js')
 
-  let CreateUser = ( ...args ) => {
+  let CreateUser = async ( ...args ) => {
     let [ fullName, username, phoneNo, email, description, password ] = args
-    // existingUser = FindUser(username);
-    // console.log(username + ' - user input');
-    // console.log(existingUser + ' - existing user');
 
-    // trying to make is so that it checks for an existing username before creating another user
-    if (existingUser == username){
+    // check if username exists
+    let existingUser = await FindUser(username);
+
+    if (existingUser[0].username == username){
       console.log(`${username} - Username already exists.`);
     } else {
       let newUser = new User({ fullName, username, phoneNo, email, description, password });
       newUser.save();
-      console.log(`New user registered \n`, newUser.fullName);
+      console.log(`New user registered \n ${newUser.fullName}`);
     }
   }
 
@@ -131,7 +130,7 @@ const bcrypt = require('bcryptjs'); // encryption and decryption of data
   }
 
   // Function Calls
-  // console.log(await FindUser("johndoe"));
+  console.log(await FindUser("johndoe") + ' - found user');
   // CreateUser("John Doe", "johndoe", "021324578", "johndoe@gmail.com", "Owner of really cool pythons", "myPassword" )
   // DeleteUser("johndoe");
 
