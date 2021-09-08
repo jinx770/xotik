@@ -63,7 +63,7 @@ p {
 
 .content {
   width: 90%;
-  padding-top: 130px;
+  padding-top: 110px;
   margin: 0 5%;
   display: flex;
   justify-content: space-between;
@@ -115,7 +115,7 @@ p {
   transition: 0.4s;
 }
 .button-secondary:hover {
-  background: #302f2f;
+  backdrop-filter: blur(10px);
 }
 
 .button-newsletter {
@@ -155,6 +155,19 @@ p {
   padding: 5px 30px;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: none !important;
+}
+
 .textarea {
   width: 90%;
   border: 1px solid #F8F1DE;
@@ -168,7 +181,8 @@ p {
 }
 
 ::placeholder {
-  color: #666666;
+  color: #F8F1DE;
+  opacity: 0.3;
   font-size: 16px;
   font-family: 'Comfortaa', cursive;
 }
@@ -247,6 +261,10 @@ p {
   justify-content: flex-start;
 }
 
+.header-logo {
+  cursor: pointer;
+}
+
 .nav-item {
   position: relative;
   display: flex;
@@ -288,14 +306,98 @@ p {
   font-size: 20px;
   color: #F4EDDA;
 }
-
-i {
+.header-icons i {
   margin-left: 30px;
   cursor: pointer;
   transition: 0.2s ease;
 }
-i:hover {
+.header-icons i:hover {
   font-size: 24px;
+}
+
+.header-popover {
+  padding-top: 50px;
+  position: fixed;
+  right: 2%;
+  top: 100px;
+  display: none;
+  height: 50vh;
+  width: 300px;
+  border: 1px solid #F8F1DE;
+  background: none;
+  z-index: 9999999999;
+  border-radius: 15px 0 15px 15px;
+  backdrop-filter: blur(10px);
+}
+
+.header-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid #F8F1DE;
+  border-right: px solid #F8F1DE;
+  border-bottom: 0 solid #F8F1DE;
+  border-left: 1px solid #F8F1DE;
+  background: #F8F1DE;
+  top: 0;
+  right: 0;
+  content: '';
+  transform: rotate(45deg);
+  margin-top: -6px;
+}
+
+.popover-exit-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #F8F1DE;
+}
+
+.login-popover-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+  height: 90%;
+}
+.login-popover-content .create-account {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 0;
+  transition: 0.4s ease;
+}
+.login-popover-content .create-account:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #F8F1DE;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.login-popover-content .create-account:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.cart-popover-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+  height: 90%;
 }
 
 .background-image img {
@@ -404,6 +506,74 @@ i:hover {
   flex-wrap: wrap;
   width: 90%;
   margin: auto;
+}
+
+.listing-images-section {
+  margin-top: 50px;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 30px;
+  width: 100%;
+}
+.images button,
+.images img {
+  margin: 5px;
+}
+.images img {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  border: 1px solid #F8F1DE;
+  object-fit: cover;
+}
+
+.add-img-btn {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  border: 1px solid #F8F1DE;
+  background: none;
+  color: #F8F1DE;
+  font-size: 30px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.add-img-btn:hover i {
+  opacity: 1;
+}
+.add-img-btn i {
+  color: #F8F1DE;
+  font-size: 30px;
+  opacity: 0.4;
+  transition: 0.5s ease;
+}
+
+.new-listing-form {
+  display: flex;
+  flex-direction: column;
+}
+.new-listing-form h1 {
+  font-size: 40px;
+}
+
+.input-sml {
+  width: 30%;
+}
+
+.input-sml::-webkit-inner-spin-button,
+.input-sml::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.listing-btn {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .footer {

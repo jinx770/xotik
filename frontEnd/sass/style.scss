@@ -9,8 +9,8 @@ Body {
   margin: auto;
   background: #272727;
 }
-
 // header set ::::::::::::::::::::::::::::::::::::::
+
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 70px;
@@ -68,9 +68,10 @@ p {
 }
 // header set ends :::::::::::::::::::::::::::::::
 // two column layout :::::::::::::::::::::::::::::
+
 .content {
   width: 90%;
-  padding-top: 130px;
+  padding-top: 110px;
   margin: 0 5%;
   display: flex;
   justify-content: space-between;
@@ -84,6 +85,7 @@ p {
 }
 // two column layout ends :::::::::::::::::::::::
 // buttons begin :::::::::::::::::::::::::::::::::
+
 .button-primary {
   display: flex;
   justify-content: center;
@@ -124,7 +126,7 @@ p {
   transition: 0.4s;
 
   &:hover {
-    background: #302f2f;
+    backdrop-filter: blur(10px);
   }
 }
 
@@ -144,9 +146,9 @@ p {
   border-radius: 50px;
   transition: 0.4s;
 }
-
 // buttons ends :::::::::::::::::::::::::::
 // Forms begin :::::::::::::::::::::::::::
+
 .forms {
   width: 100%;
   display: flex;
@@ -167,6 +169,20 @@ p {
   padding: 5px 30px;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: none !important;
+}
+
 .textarea {
   width: 90%;
   border: 1px solid #F8F1DE;
@@ -180,14 +196,15 @@ p {
 }
 
 ::placeholder {
-  color: #666666;
+  color: $offwhite;
+  opacity: 0.3;
   font-size: 16px;
   font-family: 'Comfortaa', cursive;
 }
 // forms end ::::::::::::::::::::::::::::::::::
 // cards begin ::::::::::::::::::::::::::::::::
-
 // favourite button
+
 .favourite a {
   text-decoration: none;
   color: $green;
@@ -201,10 +218,9 @@ p {
 }
 
 .favourite {
-background-color: Transparent;
-border: none;
+  background-color: Transparent;
+  border: none;
 }
-
 
 .card {
   display: flex;
@@ -238,9 +254,8 @@ border: none;
   margin-bottom: 10px;
 }
 // cards end ::::::::::::::::::::::::
-
-
 // header :::::::::::::::::::::::::::::::
+
 .header {
   position: fixed;
   width: 100%;
@@ -264,6 +279,10 @@ border: none;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.header-logo {
+  cursor: pointer;
 }
 
 .nav-item {
@@ -295,7 +314,6 @@ border: none;
   }
 }
 
-
 .header-logo {
   height: 45%;
   margin-right: 90px;
@@ -309,25 +327,113 @@ border: none;
   justify-content: flex-end;
   font-size: 20px;
   color: #F4EDDA;
-}
 
-i {
-  margin-left: 30px;
-  cursor: pointer;
-  transition: 0.2s ease;
+  i {
+    margin-left: 30px;
+    cursor: pointer;
+    transition: 0.2s ease;
 
-  &:hover {
-    font-size: 24px;
+    &:hover {
+      font-size: 24px;
+    }
   }
 }
 // header ends ::::::::::::::::::::::::::::::::::::
+// login popover begins ::::::::::::::::::::::::::
 
+.header-popover {
+  padding-top: 50px;
+  position: fixed;
+  right: 2%;
+  top: 100px;
+  display: none;
+  height: 50vh;
+  width: 300px;
+  border: 1px solid $offwhite;
+  background: none;
+  z-index: 9999999999;
+  border-radius: 15px 0 15px 15px;
+  backdrop-filter: blur(10px);
+}
 
+.header-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid $offwhite;
+  border-right: px solid $offwhite;
+  border-bottom: 0 solid $offwhite;
+  border-left: 1px solid $offwhite;
+  background: $offwhite;
+  top: 0;
+  right: 0;
+  content: '';
+  transform: rotate(45deg);
+  margin-top: -6px;
+}
+
+.popover-exit-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: $offwhite;
+}
+
+.login-popover-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+  height: 90%;
+
+  .create-account {
+    position: relative;
+    cursor: pointer;
+    padding: 5px 0;
+    transition: 0.4s ease;
+
+    &:after {
+      background: none repeat scroll 0 0 transparent;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 1px;
+      left: 50%;
+      position: absolute;
+      background: $offwhite;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+    }
+
+    &:hover:after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+.cart-popover-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+  height: 90%;
+}
+// login popover ends :::::::::::::::::::::
 // home page begins ::::::::::::::::::::::::
-  // hero section ::::::::::::::::::::::::
+// hero section ::::::::::::::::::::::::
+// background image
 
-    // background image
-.background-image img{
+.background-image img {
   width: 100%;
   height: auto;
 }
@@ -339,6 +445,7 @@ i {
 }
 // background image ends
 // xotik about
+
 .xotik {
   position: absolute;
   top: 20%;
@@ -406,8 +513,8 @@ i {
   font-weight: 900;
   text-align: center;
 }
-
 //Search selections
+
 .search {
   display: flex;
   justify-content: space-between;
@@ -419,7 +526,6 @@ i {
 .inputs {
   display: flex;
 }
-
 
 .search input {
   border-radius: 50px;
@@ -439,11 +545,86 @@ i {
   width: 90%;
   margin: auto;
 }
+// CREATE LISTING PAGE :::::::::::::::::::::::::::
 
+.listing-images-section {
+  margin-top: 50px;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 30px;
+  width: 100%;
+
+  button,
+  img {
+    margin: 5px;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    border: 1px solid $offwhite;
+    object-fit: cover;
+  }
+}
+
+.add-img-btn {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  border: 1px solid $offwhite;
+  background: none;
+  color: $offwhite;
+  font-size: 30px;
+  cursor: pointer;
+  transition: 0.5s ease;
+
+  &:hover {
+    i {
+      opacity: 1;
+    }
+  }
+
+  i {
+    color: $offwhite;
+    font-size: 30px;
+    opacity: 0.4;
+    transition: 0.5s ease;
+  }
+}
+
+.new-listing-form {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 40px;
+  }
+}
+
+.input-sml {
+  width: 30%;
+}
+
+.input-sml::-webkit-inner-spin-button,
+.input-sml::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.listing-btn {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+// CREATE LISTING PAGE ENDS::::::::::::::::::::::
 // footer begins ::::::::::::::::::::::::::::::::::
 
 .footer {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -483,7 +664,6 @@ i {
   width: 50%;
 }
 
-
 .newsletter-form {
   width: 100%;
   display: flex;
@@ -499,5 +679,4 @@ i {
     }
   }
 }
-
 //  footer ends :::::::::::::::::::::::::::::::::::
