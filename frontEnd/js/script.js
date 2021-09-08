@@ -6,17 +6,19 @@
       window.location.href='index.html';
     });
 
-    // $('#animalsBtn').click(function(){
-    //
-    // })
-    //
-    // $('#whoBtn').click(function(){
-    //
-    // })
-    //
-    // $('#trustBtn').click(function(){
-    //
-    // })
+
+$('#animalsBtn').click(function(){
+  window.location.href='animal.html';
+})
+//
+// $('#whoBtn').click(function(){
+//
+// })
+//
+// $('#trustBtn').click(function(){
+//
+// })
+
 
     $('#listingBtn').click(function(){
       window.location.href='listing.html';

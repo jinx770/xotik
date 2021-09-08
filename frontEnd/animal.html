@@ -73,58 +73,54 @@
   <div class="content">
 
     <div class="left-col">
-
-      <div class="listing-images-section">
-        <h5>Add images to your listing.</h5>
-        <div class="images">
-          <input class="ignore-me" type="file"></input>
-          <button class="add-img-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+      <div class="animal-images">
+        <div class="main-image">
           <img src="img/heo-alt.jpg" alt="">
-
         </div>
-      </div>
-    </div>
-    <!-- left col ends -->
+        <div class="alt-images">
+          <div class="alt-img">
 
-    <div class="right-col">
-      <div class="new-listing-form">
-        <h1>Create Listing</h1>
-        <br><br>
-        <div class="new-listing-form-row">
-          <input class="input input-sml" placeholder="Listing Title" type="text" value="">
-          <select class="select" value="">
-            <option value="" class="disabled-option" disabled selected hidden>Pet Type</option>
-            <option value="volvo">Aquatic</option>
-            <option value="mercedes">Cat</option>
-            <option value="audi">Reptile</option>
-          </select>
-        </div>
-        <input class="input" placeholder="Your Location" type="text" value="">
-        <div class="new-listing-form-row">
-          <input class="input input-sml" placeholder="Price" type="number" min="1" value="">
-        </div><br>
-        <textarea class="textarea" name="name" rows="8" cols="80" placeholder="Description" value=""></textarea>
-        <br>
+          </div>
+          <div class="alt-img">
 
-      </div>
-    </div>
-    <!-- left col ends -->
-
-    <div class="right-col">
-      <div class="listing-images-section">
-        <div class="add-images-section">
-          <h5>Add images to your listing.</h5>
-          <div class="images">
-            <button class="add-img-btn"><i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
-            <img src="img/heo-alt.jpg" alt="">
-
+          </div>
+          <div class="alt-img">
 
           </div>
         </div>
+      </div>
+    </div>
+    <!-- left col ends -->
 
-        <div class="listing-btn">
-          <button class="button-secondary">Done</button>
+    <div class="right-col">
+      <div class="listing-details">
+        <div class="listing-top-section">
+          <h6 class="username">Username</h6>
+          <h1 class="animal-name" value="">Slinky Lizard</h1>
+          <div class="listing-row">
+            <h5 class="sellers-location">Sellers location</h5>
+            <div class="delivery-liscence">
+              <div class="delivery">
+                <i class="fa fa-check check" aria-hidden="true"></i>
+                <h6>Delivery</h6>
+              </div>
+              <div class="liscence">
+                <i class="fa fa-times times" aria-hidden="true"></i>
+                <h6>Liscence</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="listing-bottom-section">
+          <div class="listing-desription">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ad ea nam magnam fugiat illo nulla minima numquam molestiae assumenda doloribus repellat, soluta perspiciatis illum doloremque harum, sit, ut quibusdam.
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ad ea nam magnam fugiat illo nulla minima numquam molestiae assumenda doloribus repellat, soluta perspiciatis illum doloremque harum, sit, ut quibusdam.</p>
+          </div>
+        </div>
+        <div class="listing-price">
+          <h2 class="price">$499</h2>
+          <button class="button-secondary">Add to cart</button>
         </div>
       </div>
 
@@ -182,13 +178,9 @@
   </div>
   <!-- footer ends -->
 
-  <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous">
+  <script src="../frontEnd/node_modules/jquery/dist/jquery.min.js">
   </script>
   <script src="js/script.js"></script>
-  <script src="js/listingHandler.js"></script>
 </body>
 
 </html>
