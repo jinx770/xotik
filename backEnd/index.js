@@ -102,8 +102,7 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
         newUser === username
             ? console.log("User already exists")
             : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
-
-    }
+        }
 
 
 // -----------
