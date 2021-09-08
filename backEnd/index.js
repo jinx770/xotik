@@ -114,26 +114,6 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 
 // -------------------------------------------------------------------------------------------------------------------------------
 
-
-    let CreateUser = async ( ... args ) => {
-
-<<<<<<< HEAD
-// Standard Long version
-    // let CreateUser = async ( ...args ) => {
-    // let [ fullName, username, phoneNo, email, description, password ] = args
-    //
-    // // check if username exists
-    // let existingUser = await FindUser(username);
-    //
-    // if (existingUser[0].username == username){
-    //   console.log(`${username} - Username already exists.`);
-    // } else {
-    //   let newUser = new User({ fullName, username, phoneNo, email, description, password });
-    //   newUser.save();
-    //   console.log(`New user registered \n ${newUser.fullName}`);
-    //   }
-    // }
-
 // CRUD METHOD - Create
     let CreateUser = async ( ... args ) => {
 
@@ -141,11 +121,6 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
         let checkUser = await FindUser(username);
         // ternary operator
         let newUser = checkUser[0] && checkUser[0].username || "";
-=======
-        let [ fullName, username, phoneNo, email, description, password ] = args
-        let checkUser = await FindUser(username);
-        let newUser = checkUser[0] && checkUser[0].username || ""
->>>>>>> 6dd56c6739548bce11413b5806851334137b19de
 
         newUser === username
             ? console.log("User already exists")
@@ -178,16 +153,9 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
             ? ( User.deleteOne({username: arg}, function(err, success){console.log(`Successfully deleted ${arg}`)}) )
             : console.log("User does not exist")
     }
-<<<<<<< HEAD
-=======
 
     console.log("Running...")
     module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal }
-
-})();
->>>>>>> 6dd56c6739548bce11413b5806851334137b19de
-
-    console.log(await FindUser("johndoe"));
 
 })();
 
