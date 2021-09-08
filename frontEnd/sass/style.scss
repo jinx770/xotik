@@ -176,12 +176,25 @@ textarea:focus {
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active
-{
- -webkit-box-shadow: none !important;
+input:-webkit-autofill:hover {
+  -webkit-box-shadow: none !important;
 }
+
+.select {
+  width: 250px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #F8F1DE;
+  font-size: 16px;
+  color: #F8F1DE;
+  font-family: 'Comfortaa', cursive;
+  margin-bottom: 30px;
+  padding: 5px 30px;
+}
+
 
 .textarea {
   width: 90%;
@@ -548,7 +561,12 @@ input:-webkit-autofill:active
 // CREATE LISTING PAGE :::::::::::::::::::::::::::
 
 .listing-images-section {
-  margin-top: 50px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .images {
@@ -598,6 +616,7 @@ input:-webkit-autofill:active
 }
 
 .new-listing-form {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
 
@@ -606,8 +625,15 @@ input:-webkit-autofill:active
   }
 }
 
+.new-listing-form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
 .input-sml {
-  width: 30%;
+  width: 35%;
 }
 
 .input-sml::-webkit-inner-spin-button,
@@ -622,8 +648,138 @@ input:-webkit-autofill:active
   justify-content: flex-end;
 }
 // CREATE LISTING PAGE ENDS::::::::::::::::::::::
-// footer begins ::::::::::::::::::::::::::::::::::
+// ANIMAL PAGE BEGINS ::::::::::::::::::::::::::
+.animal-images {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
+  .main-image {
+    width: 100%;
+    height: 55vh;
+    margin-bottom: 10px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border: 1px solid $offwhite;
+      object-fit: cover;
+    }
+  }
+
+  .alt-images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+
+    .alt-img {
+      width: 32%;
+      height: 20vh;
+      margin-bottom: 10px;
+      border: 1px solid $offwhite;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border: 1px solid $offwhite;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.listing-details {
+  width: 100%;
+  margin-top: 30px;
+
+}
+
+.listing-top-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid $offwhite;
+  margin-bottom: 30px;
+}
+
+.username {
+  margin-bottom: 10px;
+}
+.animal-name {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.listing-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sellers-location {
+  margin-bottom: 10px;
+}
+
+.delivery-liscence {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.delivery,
+.liscence {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 10px;
+  width: 90px;
+  height: auto;
+  border: 1px solid $offwhite;
+  border-radius: 60px;
+  margin-bottom: 15px;
+}
+
+.delivery {
+  margin-right: 10px;
+}
+
+.check {
+  color: #52AF19;
+}
+
+.times {
+  color: #FF4242;
+}
+
+.listing-bottom-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 45vh;
+}
+
+.listing-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.price {
+  margin-bottom: 10px;
+}
+
+
+// footer begins ::::::::::::::::::::::::::::::::::
 .footer {
   display: flex;
   justify-content: center;

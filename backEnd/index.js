@@ -47,7 +47,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 // -----------
 
 
-    let FindEveryAnimal = async ( args ) => {
+    let FindEveryAnimal = async () => {
 
         let foundAnimals = await Animal.find();
         return foundAnimals
@@ -142,7 +142,6 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 
 // -----------
 
-// CRUD METHOD - Delete
     let RemoveUser = async ( arg ) => {
 
         let foundUser = await User.find({ username: arg })
@@ -155,7 +154,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
     }
 
     console.log("Running...")
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal }
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser }
 
 })();
 
@@ -193,6 +192,24 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
       //     "johndoe@gmail.com",
       //     "Owner of really cool pythons",
       //     "myPassword"
+      // )
+      //
+      //
+      // CreateAnimal(
+      //     "Leatherback Turtle",
+      //     [
+      //         'turtle',
+      //         'white',
+      //         'large',
+      //         'black',
+      //         'leatherback',
+      //         'australia'
+      //     ],
+      //     "/img/animalCards/leatherTurtle.png",
+      //     8999,
+      //     "4/5",
+      //     "The leatherback sea turtle, sometimes called the lute turtle or leathery turtle or simply the luth, is the largest of all living turtles and the heaviest non-crocodilian reptile.",
+      //     3
       // )
       //
       // CreateAnimal(
