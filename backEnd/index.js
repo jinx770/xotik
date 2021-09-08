@@ -1,3 +1,4 @@
+( async () => {
 // Declarations
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');  // connecting and talking to mongodb
@@ -8,9 +9,7 @@ let config = require('./config.json')
 let User = require('./models/user.js')
 let Animal = require("./models/animal.js");
 
-mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn9.mongodb.net/xotik?retryWrites=true&w=majority`);
-
-( async () => {
+mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xotik.s1wn9.mongodb.net/xotik?retryWrites=true&w=majority`);
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
@@ -50,7 +49,7 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
         let [ name, tags, url, price, rating, description, quantity ] = args
 
         Animal.findOneAndUpdate({
-            animal: "Rhino"
+            animal: name
          }, {
              $set: {
                  animal: name,
@@ -93,16 +92,34 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
 // -------------------------------------------------------------------------------------------------------------------------------
 
 
-    let CreateUser = async ( ... args ) => {
 
-        let [ fullName, username, phoneNo, email, description, password ] = args
-        let checkUser = await FindUser(username);
-        let newUser = checkUser[0] && checkUser[0].username || ""
+    
+    let CreateUser = async ( ...args ) => {
+    let [ fullName, username, phoneNo, email, description, password ] = args
 
-        newUser === username
-            ? console.log("User already exists")
-            : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
+    // check if username exists
+    let existingUser = await FindUser(username);
+
+    if (existingUser[0].username == username){
+      console.log(`${username} - Username already exists.`);
+    } else {
+      let newUser = new User({ fullName, username, phoneNo, email, description, password });
+      newUser.save();
+      console.log(`New user registered \n ${newUser.fullName}`);
+      }
     }
+    
+// Shorthand Version (rane just wants to take a look at this)
+//     let CreateUser = async ( ... args ) => {
+
+//         let [ fullName, username, phoneNo, email, description, password ] = args
+//         let checkUser = await FindUser(username);
+//         let newUser = checkUser[0] && checkUser[0].username || ""
+
+//         newUser === username
+//             ? console.log("User already exists")
+//             : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
+//     }
 
 
 // -----------
@@ -111,10 +128,9 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
     let FindUser = async ( arg ) => {
 
         let foundUser = await User.find({ username: arg });
-        let userExists = foundUser.length === 0 ? 'User does not exist' : foundUser
+//         let userExists = foundUser.length === 0 ? 'User does not exist' : foundUser
 
-        return userExists;
-
+        return foundUser;
     }
 
 
@@ -132,35 +148,6 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
             : console.log("User does not exist")
 
     }
-
-
-// -------------------------------------------------------------------------------------------------------------------------------
-
-
-  // Function Calls
-  let Tasks = async () => {
-
-      // console.log(await FindUser( "johndoe123" ));
-      // console.log(await FindAnimal( "Rhino" ));
-
-      CreateUser(
-          "root",
-          "root",
-          "null",
-          "null",
-          "testing account",
-          "password"
-      )
-
-      // RemoveUser("johndoe");
-      // RemoveAnimal( "White Rhino" );
-
-      // UpdateAnimal( "Rhino", ['',''], "http://google.com/images", 300, "2/5", "Lorem Ipsum", 3 )
-
-  }
-
-  Tasks()
-
 })();
 
 
@@ -190,9 +177,7 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
 
 
 
-
-
-
+// Dummy Data
       // CreateUser(
       //     "John Doe",
       //     "johndoe123",
