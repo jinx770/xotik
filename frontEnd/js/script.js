@@ -6,9 +6,9 @@ $('#logoBtn').click(function(){
   window.location.href='index.html';
 });
 
-// $('#animalsBtn').click(function(){
-//
-// })
+$('#animalsBtn').click(function(){
+  window.location.href='animal.html';
+})
 //
 // $('#whoBtn').click(function(){
 //
