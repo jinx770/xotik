@@ -12,10 +12,10 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
 
 ( async () => {
 
+
 // -------------------------------------------------------------------------------------------------------------------------------
 
 
-    // Create
     let CreateAnimal = async ( ... args ) => {
 
         let [ name, tags, url, price, rating, description, quantity ] = args
@@ -29,7 +29,9 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
     }
 
 
-    // Read / View
+// -----------
+
+
     let FindAnimal = async ( args, callback ) => {
 
         let foundAnimal = await Animal.find({ name: args });
@@ -40,7 +42,9 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
     }
 
 
-    // Update
+// -----------
+
+
     let UpdateAnimal = async ( ... args ) => {
 
         let [ name, tags, url, price, rating, description, quantity ] = args
@@ -70,7 +74,9 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
     }
 
 
-    // Remove / Delete
+// -----------
+
+
     let RemoveAnimal = async ( arg ) => {
 
         let foundAnimal = await Animal.find({ name: arg });
@@ -97,8 +103,10 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
             ? console.log("User already exists")
             : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
 
-
     }
+
+
+// -----------
 
 
     let FindUser = async ( arg ) => {
@@ -109,6 +117,9 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
         return userExists;
 
     }
+
+
+// -----------
 
 
     let RemoveUser = async ( arg ) => {
@@ -124,7 +135,7 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
     }
 
 
-    // -------------------------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------
 
 
   // Function Calls
@@ -140,15 +151,6 @@ mongoose.connect(`mongodb+srv://${config.username}:${config.password}@xotik.s1wn
           "null",
           "testing account",
           "password"
-      )
-
-      CreateUser(
-          "John Lennon",
-          "johnlennon",
-          "0213 2224 584",
-          "johnlennon123@gmail.com",
-          "Lead singer in the beatles!",
-          "johnlennon123"
       )
 
       // RemoveUser("johndoe");
