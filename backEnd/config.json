@@ -1,4 +1,9 @@
 {
+<<<<<<< HEAD
   "MONGO_USER" : "rraneighh",
   "MONGO_PASSWORD" : "myPassword"
+=======
+  "MONGO_USER" : "alder",
+  "MONGO_PASSWORD" : "not123to1"
+>>>>>>> 6dd56c6739548bce11413b5806851334137b19de
 }
