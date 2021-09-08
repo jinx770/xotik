@@ -157,19 +157,22 @@ $('#popoverExit').click(function(){
                 </div>
             `
         }
-        
-    }
 
+    }
     handleHomeAnimals();
 
 
-    input = "root"
-    let result = await fetch(`/findUser?q=${input}`)
-    let rawData = await result.json()
-
-    console.log(rawData)
 
 
+    let testUser = async () => {
+        input = "johnlennon"
+        let result = await fetch(`/findUser?q=${input}`);
+        let rawData = await result.json();
+
+        console.log(rawData);
+    }
+
+    testUser();
 
 
 
@@ -179,4 +182,3 @@ $('#popoverExit').click(function(){
 
 
 })();
-
