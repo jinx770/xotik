@@ -109,6 +109,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
     //   }
     // }
 
+// CRUD METHOD - Create
     let CreateUser = async ( ... args ) => {
 
         let [ fullName, username, phoneNo, email, description, password ] = args
@@ -124,7 +125,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 
 // -----------
 
-
+// CRUD METHOD - Read
     let FindUser = async ( arg ) => {
 
         let foundUser = await User.find({ username: arg });
@@ -136,7 +137,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 
 // -----------
 
-
+// CRUD METHOD - Delete
     let RemoveUser = async ( arg ) => {
 
         let foundUser = await User.find({ username: arg })
