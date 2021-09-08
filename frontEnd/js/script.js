@@ -46,7 +46,7 @@
 
 
 
-    // --------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -56,37 +56,32 @@
     let cardParent = document.querySelector(".all-listings");
     let cards = document.querySelectorAll(".card");
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-
     cardParent.innerHTML = ""
     for (card of data) {
         cardParent.innerHTML += `
-        <div class="card">
-          <div class="top-info">
-            <div class="username">
-              <h5>John Doe</h5>
+            <div class="card">
+              <div class="top-info">
+                <div class="username">
+                  <h5>John Doe</h5>
+                </div>
+                <div class="rating">
+                  <h5>4.5#</h5>
+                </div>
+              </div>
+              <div class="card-img">
+                <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
+                <img src="${card.url}" alt="">
+              </div>
+              <div class="bottom-info">
+                <div class="title">
+                  <h4>${card.name}</h4>
+                </div>
+                <div class="price">
+                  <h5>$${card.price.toLocaleString()}</h5>
+                </div>
+              </div>
             </div>
-            <div class="rating">
-              <h5>4.5#</h5>
-            </div>
-          </div>
-          <div class="card-img">
-            <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-            <img src="${card.url}" alt="">
-          </div>
-          <div class="bottom-info">
-            <div class="title">
-              <h4>${card.name}</h4>
-            </div>
-            <div class="price">
-              <h5>$${card.price.toLocaleString()}</h5>
-            </div>
-          </div>
-        </div>
-    `
+        `
     }
 
 
