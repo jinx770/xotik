@@ -702,6 +702,7 @@ input:-webkit-autofill:hover {
 .new-listing-form-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -713,6 +714,29 @@ input:-webkit-autofill:hover {
 .input-sml::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+}
+
+.listing-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #F8F1DE;
+  margin-bottom: 20px;
+  width: 52%;
+}
+
+.checkbox-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: none;
+  width: 48%;
 }
 
 .listing-btn {
