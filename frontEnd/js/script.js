@@ -175,7 +175,7 @@
         createAccountButton.style.display = "block"
         loginPopOver.style.height = "50vh"
         loginPopOver.style.paddingBottom = "0"
-        
+
     }
 
 
@@ -325,7 +325,9 @@
     }
 
 
+
 // ------------------------------------------------------------------------------------------------------------------------------------
+
 
 
     // Function for running every event listener on the page
