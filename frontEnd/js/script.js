@@ -107,6 +107,15 @@
 
     // Logic check for the current session, gotta define it initially
     window.loggedIn = false
+    window.currentSession = "";
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    // Refresh all html vars
     let refreshElements = () => {
 
         // Declare all values and buttons here, any sort of variable
@@ -136,14 +145,9 @@
     // Basic style function for changing styles with js
     let logInStyle = () => {
 
-        // Changing the current session to the username of whoever logged in
-        currentSession = attemptedLogin;
-
-        // Closing the login field
-        closeLoginButton.click();
-
+        // Styling
         loginButton.textContent = "Log Out";
-        sessionHeader.textContent=`User: ${currentSession}`
+        sessionHeader.textContent=`User: ${localStorage.getItem("currentSession")}`
         usernameInput.style.display = "none"
         passwordInput.style.display = "none"
         createAccountButton.style.display = "none"
@@ -164,8 +168,8 @@
         // Clears the current session username when they sign out
         currentSession = null;
 
-        // Closes the login field
-        closeLoginButton.click();
+        // State check
+        loggedIn = true
 
         // Styling
         loginButton.textContent = "Log In";
@@ -289,18 +293,28 @@
                 // Change the style of the login bar and the text
                 logInStyle();
 
+                // Changing the current session to the username of whoever logged in
+                currentSession = attemptedLogin;
+
+                // Closing the login field
+                closeLoginButton.click();
+
                 // Something to say you've logged in for debugging purposes
                 console.log("Signing in")
 
                 // Changing value to true, for next time you login
                 loggedIn = true
 
+                // Saving to localstorage so we can use it in other pages
+                localStorage.setItem("currentSession", currentSession)
+                localStorage.setItem("loggedIn", loggedIn)
+
                 // Ending the thread so it doesnt alert
                 return
 
             }
 
-            // Alerts incorrect if the user doesn't login properly.
+            // Alerts incorrect if the user doesn't login properly
             alert("Incorrect login!")
 
         }
@@ -311,11 +325,18 @@
             // Change the log out back to its original layout
             logOutStyle()
 
+            // Closes the login field
+            closeLoginButton.click();
+
             // Debugging purposes
             console.log("Signing out")
 
             // Changing logged in to false so it can validate once
             loggedIn = false
+
+            // Saving to localstorage so we can use it in other pages
+            localStorage.setItem("currentSession", currentSession)
+            localStorage.setItem("loggedIn", loggedIn)
 
             // Best practice return
             return
@@ -323,6 +344,23 @@
         }
 
     }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    // Loops every .1 second running the following
+    setInterval(function () {
+
+        // Loop checks to see if its logged in for when we switch links
+        localStorage.getItem("loggedIn") === "true" ? logInStyle() : null
+        localStorage.getItem("loggedIn") === "true" ? loggedIn=true : null
+
+
+    }, 100);
+
 
 
 
