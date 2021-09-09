@@ -112,29 +112,34 @@
     for (card of data) {
       cardParent.innerHTML += `
                 <div class="card">
-                <div class="top-info">
-                <div class="username">
-                <h5>John Doe</h5>
-                </div>
-                <div class="rating">
-                <h5>${card.rating}</h5>
-                </div>
-                </div>
-                <div class="card-img">
-                <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-                <img src="${card.url}" alt="">
-                </div>
-                <div class="bottom-info">
-                <div class="title">
-                <h4>${card.name}</h4>
-                </div>
-                <div class="price">
-                <h5>$${card.price.toLocaleString()}</h5>
-                </div>
-                </div>
+                    <div class="top-info">
+                        <div class="username">
+                            <h5>John Doe</h5>
+                        </div>
+                        <div class="rating">
+                            <h5>${card.rating}</h5>
+                        </div>
+                    </div>
+                    <div class="card-img">
+                        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
+                        <img src="${card.url}" alt="">
+                    </div>
+                    <div class="bottom-info">
+                        <div class="title">
+                            <h4>${card.name}</h4>
+                        </div>
+                        <div class="price">
+                            <h5>$${card.price.toLocaleString()}</h5>
+                            </div>
+                        </div>
                 </div>
             `
+
+        }
     }
+
+    handleHomeAnimals();
+
 
   }
   handleHomeAnimals();
