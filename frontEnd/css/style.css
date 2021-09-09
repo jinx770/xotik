@@ -21,7 +21,6 @@ h2 {
   margin: 0;
 }
 
-
 h3 {
   font-family: 'Comfortaa', cursive;
   font-size: 30px;
@@ -197,7 +196,6 @@ input:-webkit-autofill:hover {
 ::placeholder {
   color: #F8F1DE;
   opacity: 0.3;
-
   font-size: 16px;
   font-family: 'Comfortaa', cursive;
 }
@@ -213,21 +211,8 @@ input:-webkit-autofill:hover {
   margin-top: 30%;
 }
 
-.card-img img {
-    width: 100%;
-    overflow: hidden;
-}
-
-.ignore-me {
-    visibility: hidden;
-    position: absolute;
-    width: 160px;
-    height: 160px;
-}
-
 .favourite {
   background-color: Transparent;
-  position: absolute;
   border: none;
 }
 
@@ -250,7 +235,6 @@ input:-webkit-autofill:hover {
 .card-img {
   height: 200px;
   width: 100%;
-  overflow: hidden;
   border: 1px solid #F8F1DE;
   background: #666666;
   margin-bottom: 10px;

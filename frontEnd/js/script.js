@@ -1,31 +1,31 @@
 (function() {
 
 
-// nav clicks
-$('#logoBtn').click(function(){
-  window.location.href='index.html';
-});
+  // nav clicks
+  $('#logoBtn').click(function() {
+    window.location.href = 'index.html';
+  });
 
-$('#animalsBtn').click(function(){
-  window.location.href='animal.html';
-});
-//
-// $('#whoBtn').click(function(){
-//
-// })
-//
-// $('#trustBtn').click(function(){
-//
-// })
+  $('#animalsBtn').click(function() {
+    window.location.href = 'animal.html';
+  });
+  //
+  // $('#whoBtn').click(function(){
+  //
+  // })
+  //
+  // $('#trustBtn').click(function(){
+  //
+  // })
 
-$('#listingBtn').click(function(){
-  window.location.href='listing.html';
-});
-// header popover begins
+  $('#listingBtn').click(function() {
+    window.location.href = 'listing.html';
+  });
+  // header popover begins
 
-// click on user icon
-$('#user').click(function(){
-  //fade in popover
+  // click on user icon
+  $('#user').click(function() {
+    //fade in popover
     $("#headerPopover").fadeIn("slow");
     // fade in login content
     $("#loginContent").css("display", "flex");
@@ -34,32 +34,33 @@ $('#user').click(function(){
     // remove other content
     $("#emptyCartContent").css("display", "none");
     $("#fullCartContent").css("display", "none");
-});
+  });
 
-// show create account content on click
-$('#createAccountBtn').click(function(){
-  // fade in create account content
-  $("#createAccountContent").css("display", "flex");
-  $("#createAccountContent").hide();
-  $("#createAccountContent").fadeIn("slow");
-  // remove other content
-  $("#loginContent").css("display", "none");
-});
+  // show create account content on click
+  $('#createAccountBtn').click(function() {
+    // fade in create account content
+    $("#createAccountContent").css("display", "flex");
+    $("#createAccountContent").hide();
+    $("#createAccountContent").fadeIn("slow");
+    // remove other content
+    $("#loginContent").css("display", "none");
+  });
 
-// clicked sign up
-$('#signUpBtn').click(function(){
-  // fade in login content
-  // will need check to see if sign up is checked out
-  $("#loginContent").css("display", "flex");
-  $("#loginContent").hide();
-  $("#loginContent").fadeIn("slow");
-  // remove other content
-  $("#createAccountContent").css("display", "none");
-});
+  // clicked sign up
+  $('#signUpBtn').click(function() {
+    // fade in login content
+    // will need check to see if sign up is checked out
+    $("#loginContent").css("display", "flex");
+    $("#loginContent").hide();
+    $("#loginContent").fadeIn("slow");
+    // remove other content
+    $("#createAccountContent").css("display", "none");
+  });
+  
 
-// click on cart icon
-$('#cart').click(function(){
-  // fade in popover
+  // click on cart icon
+  $('#cart').click(function() {
+    // fade in popover
     $("#headerPopover").fadeIn("slow");
     // fade in cart content
     // will need if statement to check if items in cart or not
@@ -76,45 +77,40 @@ $('#cart').click(function(){
     // remove other content
     $("#loginContent").css("display", "none");
     $("#createAccountContent").css("display", "none");
-});
+  });
 
 
-
-$('#popoverExit').click(function(){
+  $('#popoverExit').click(function() {
     $("#headerPopover").fadeOut("slow");
     $("#loginContent").fadeOut("slow");
     $("#emptyCartContent").fadeOut("slow");
     $("#fullCartContent").css("display", "none");
     $("#createAccountContent").fadeOut("slow");
-});
+  });
+
+
+  $('#popoverExit').click(function() {
+    $("#headerPopover").fadeOut("slow");
+    $("#loginContent").css("display", "none");
+    $("#cartContent").css("display", "none");
+  });
 
 
 
+  // ----------------------------------------------------------------------------------------------------------------------------------
 
 
+  let handleHomeAnimals = async () => {
 
-    $('#popoverExit').click(function(){
-        $("#headerPopover").fadeOut("slow");
-        $("#loginContent").css("display", "none");
-        $("#cartContent").css("display", "none");
-    });
+    let response = await fetch('/findAnimal')
+    let data = await response.json()
 
+    let cardParent = document.querySelector(".all-listings");
+    let cards = document.querySelectorAll(".card");
 
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-
-    let handleHomeAnimals = async () => {
-
-        let response = await fetch('/findAnimal')
-        let data = await response.json()
-
-        let cardParent = document.querySelector(".all-listings");
-        let cards = document.querySelectorAll(".card");
-
-        cardParent.innerHTML = ""
-        for (card of data) {
-            cardParent.innerHTML += `
+    cardParent.innerHTML = ""
+    for (card of data) {
+      cardParent.innerHTML += `
                 <div class="card">
                 <div class="top-info">
                 <div class="username">
@@ -138,23 +134,23 @@ $('#popoverExit').click(function(){
                 </div>
                 </div>
             `
-        }
-
-    }
-    handleHomeAnimals();
-
-
-
-
-    let testUser = async () => {
-        input = "johnlennon"
-        let result = await fetch(`/findUser?q=${input}`);
-        let rawData = await result.json();
-
-        console.log(rawData);
     }
 
-    testUser();
+  }
+  handleHomeAnimals();
+
+
+
+
+  let testUser = async () => {
+    input = "johnlennon"
+    let result = await fetch(`/findUser?q=${input}`);
+    let rawData = await result.json();
+
+    console.log(rawData);
+  }
+
+  testUser();
 
 
 
