@@ -105,6 +105,8 @@
 
 
 
+    // Logic check for the current session, gotta define it initially
+    window.loggedIn = false
     let refreshElements = () => {
 
         // Declare all values and buttons here, any sort of variable
@@ -125,8 +127,6 @@
 
     }
 
-    window.loggedIn = false
-
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
@@ -141,7 +141,7 @@
 
         // Closing the login field
         closeLoginButton.click();
-        
+
         loginButton.textContent = "Log Out";
         sessionHeader.textContent=`User: ${currentSession}`
         usernameInput.style.display = "none"
@@ -149,6 +149,7 @@
         createAccountButton.style.display = "none"
         loginPopOver.style.height = "14%"
         loginPopOver.style.paddingBottom = "30px"
+
     }
 
 
@@ -174,6 +175,7 @@
         createAccountButton.style.display = "block"
         loginPopOver.style.height = "50vh"
         loginPopOver.style.paddingBottom = "0"
+        
     }
 
 
@@ -304,7 +306,7 @@
         }
 
         // If logged in, and pressing the button
-        if (loggedIn) {
+        if ( loggedIn ) {
 
             // Change the log out back to its original layout
             logOutStyle()
@@ -349,6 +351,11 @@
             }
 
         });
+
+        // Next event listener would go here
+
+
+
 
     }
 
