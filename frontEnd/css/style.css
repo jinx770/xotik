@@ -211,15 +211,28 @@ input:-webkit-autofill:hover {
   margin-top: 30%;
 }
 
+.card-img img {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ignore-me {
+  visibility: hidden;
+  position: absolute;
+  width: 160px;
+  height: 160px;
+}
+
 .favourite {
   background-color: Transparent;
   border: none;
+  position: absolute;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-ar;
   width: 21%;
   margin: auto;
   height: 300px;
@@ -230,14 +243,6 @@ input:-webkit-autofill:hover {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-}
-
-.card-img {
-  height: 200px;
-  width: 100%;
-  border: 1px solid #F8F1DE;
-  background: #666666;
-  margin-bottom: 10px;
 }
 
 .bottom-info {
@@ -325,7 +330,7 @@ input:-webkit-autofill:hover {
   transition: 0.2s ease;
 }
 .header-icons i:hover {
-  font-size: 24px;
+  opacity: 0.5;
 }
 
 .header-popover {
@@ -605,33 +610,29 @@ input:-webkit-autofill:hover {
 .listings-head {
   padding-top: 5%;
   padding-bottom: 5%;
-  font-family: "Comfortaa";
-  font-weight: 900;
   text-align: center;
+  font-size: 40px;
 }
 
 .search {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   width: 87%;
   margin: auto;
-  padding-bottom: 4%;
+  margin-bottom: 60px;
 }
 
 .inputs {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
 }
-
-.search input {
-  border-radius: 50px;
-  font-family: "Comfortaa";
-  font-size: 20px;
-  padding-left: 3%;
-  margin-right: 5%;
-  outline: none;
-  background-color: #272727;
-  color: #F8F1DE;
-  border-color: #F8F1DE !important;
+.inputs .input,
+.inputs .select {
+  width: 28%;
 }
 
 .all-listings {
