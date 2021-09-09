@@ -37,7 +37,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
     let FindAnimal = async ( args ) => {
 
         let foundAnimal = await Animal.find({ name: args });
-        let animalExists = foundAnimal.length === 0 ? 'User does not exist' : foundAnimal
+        let animalExists = foundAnimal.length === 0 ? false : foundAnimal
 
         return animalExists
 
@@ -133,7 +133,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
     let FindUser = async ( arg ) => {
 
         let foundUser = await User.find({ username: arg });
-        let userExists = foundUser.length === 0 ? 'User does not exist' : foundUser
+        let userExists = foundUser.length === 0 ? false : foundUser
 
         return userExists;
     }
@@ -163,7 +163,7 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
 
     }
 
-    console.log("Running")
+    console.log("Running...")
     module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser }
 
 })();
