@@ -139,7 +139,7 @@ $('#popoverExit').click(function(){
                 <h5>John Doe</h5>
                 </div>
                 <div class="rating">
-                <h5>4.5#</h5>
+                <h5>${card.rating}</h5>
                 </div>
                 </div>
                 <div class="card-img">

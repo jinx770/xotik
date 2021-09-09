@@ -21,6 +21,7 @@ h2 {
   margin: 0;
 }
 
+
 h3 {
   font-family: 'Comfortaa', cursive;
   font-size: 30px;
@@ -213,8 +214,15 @@ input:-webkit-autofill:hover {
 }
 
 .card-img img {
-    height:100%;
+    width: 100%;
     overflow: hidden;
+}
+
+.ignore-me {
+    visibility: hidden;
+    position: absolute;
+    width: 160px;
+    height: 160px;
 }
 
 .favourite {
