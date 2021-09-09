@@ -224,7 +224,6 @@ input:-webkit-autofill:hover {
   background-color: $offwhite;
   font-size: 20px;
   padding: 2%;
-  border: 1px solid $green;
   border-radius: 25px;
   padding: 20%;
   margin-top: 30%;
@@ -248,7 +247,7 @@ input:-webkit-autofill:hover {
 .top-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
 
 .card-img {
@@ -256,6 +255,7 @@ input:-webkit-autofill:hover {
   width: 100%;
   border: 1px solid #F8F1DE;
   background: #666666;
+  margin-bottom: 10px;
 }
 
 .bottom-info {
@@ -403,7 +403,7 @@ input:-webkit-autofill:hover {
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  width: 70%;
+  width: 60%;
   height: 90%;
 
   .create-account {
@@ -432,6 +432,16 @@ input:-webkit-autofill:hover {
   }
 }
 
+.create-account-popover-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+  height: 90%;
+}
+
 .cart-popover-content {
   display: none;
   flex-direction: column;
@@ -440,6 +450,121 @@ input:-webkit-autofill:hover {
   margin: auto;
   width: 70%;
   height: 90%;
+}
+
+.empty-cart-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 100%;
+  height: 90%;
+}
+
+.full-cart-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 80%;
+  height: 90%;
+}
+
+.cart-item-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 240px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $offwhite;
+}
+
+.cart-item-img {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  border: 1px solid $offwhite;
+}
+
+.cart-item-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.cart-item-text-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+
+  .cart-remove-btn {
+    opacity: 0.4;
+    position: relative;
+    cursor: pointer;
+    padding: 5px 0;
+    transition: 0.4s ease;
+
+    &:after {
+      background: none repeat scroll 0 0 transparent;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 1px;
+      left: 50%;
+      position: absolute;
+      background: $offwhite;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+    }
+
+    &:hover:after {
+      width: 100%;
+      opacity: 1;
+      left: 0;
+    }
+  }
+}
+
+.check-out-btn {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 0;
+  transition: 0.4s ease;
+
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    position: absolute;
+    background: $offwhite;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+
+  &:hover:after {
+    width: 100%;
+    opacity: 1;
+    left: 0;
+  }
 }
 // login popover ends :::::::::::::::::::::
 // home page begins ::::::::::::::::::::::::
@@ -628,6 +753,7 @@ input:-webkit-autofill:hover {
 .new-listing-form-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
 
 }
@@ -640,6 +766,29 @@ input:-webkit-autofill:hover {
 .input-sml::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+}
+
+.listing-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: $offwhite;
+  margin-bottom: 20px;
+  width: 52%;
+}
+
+.checkbox-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: none;
+  width: 48%;
 }
 
 .listing-btn {

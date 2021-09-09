@@ -21,6 +21,7 @@ h2 {
   margin: 0;
 }
 
+
 h3 {
   font-family: 'Comfortaa', cursive;
   font-size: 30px;
@@ -196,6 +197,7 @@ input:-webkit-autofill:hover {
 ::placeholder {
   color: #F8F1DE;
   opacity: 0.3;
+
   font-size: 16px;
   font-family: 'Comfortaa', cursive;
 }
@@ -206,16 +208,27 @@ input:-webkit-autofill:hover {
   background-color: #F8F1DE;
   font-size: 20px;
   padding: 2%;
-  border: 1px solid #2A432F;
   border-radius: 25px;
   padding: 20%;
   margin-top: 30%;
 }
 
+.card-img img {
+    width: 100%;
+    overflow: hidden;
+}
+
+.ignore-me {
+    visibility: hidden;
+    position: absolute;
+    width: 160px;
+    height: 160px;
+}
+
 .favourite {
   background-color: Transparent;
-  border: none;
   position: absolute;
+  border: none;
 }
 
 .card {
@@ -231,19 +244,16 @@ input:-webkit-autofill:hover {
 .top-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
 
 .card-img {
   height: 200px;
   width: 100%;
+  overflow: hidden;
   border: 1px solid #F8F1DE;
   background: #666666;
-  overflow: hidden;
-}
-
-.card-img img {
-  width: 100%;
+  margin-bottom: 10px;
 }
 
 .bottom-info {
@@ -383,7 +393,7 @@ input:-webkit-autofill:hover {
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  width: 70%;
+  width: 60%;
   height: 90%;
 }
 .login-popover-content .create-account {
@@ -409,6 +419,16 @@ input:-webkit-autofill:hover {
   left: 0;
 }
 
+.create-account-popover-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+  height: 90%;
+}
+
 .cart-popover-content {
   display: none;
   flex-direction: column;
@@ -417,6 +437,116 @@ input:-webkit-autofill:hover {
   margin: auto;
   width: 70%;
   height: 90%;
+}
+
+.empty-cart-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 100%;
+  height: 90%;
+}
+
+.full-cart-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  width: 80%;
+  height: 90%;
+}
+
+.cart-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 240px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #F8F1DE;
+}
+
+.cart-item-img {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  border: 1px solid #F8F1DE;
+}
+
+.cart-item-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.cart-item-text-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+}
+.cart-item-text-row .cart-remove-btn {
+  opacity: 0.4;
+  position: relative;
+  cursor: pointer;
+  padding: 5px 0;
+  transition: 0.4s ease;
+}
+.cart-item-text-row .cart-remove-btn:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #F8F1DE;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.cart-item-text-row .cart-remove-btn:hover:after {
+  width: 100%;
+  opacity: 1;
+  left: 0;
+}
+
+.check-out-btn {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 0;
+  transition: 0.4s ease;
+}
+.check-out-btn:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #F8F1DE;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.check-out-btn:hover:after {
+  width: 100%;
+  opacity: 1;
+  left: 0;
 }
 
 .background-image img {
@@ -555,14 +685,6 @@ input:-webkit-autofill:hover {
   object-fit: cover;
 }
 
-.ignore-me {
-    display: block;
-    visibility: hidden;
-    width: 160px;
-    position:absolute;
-    height: 160px;
-}
-
 .add-img-btn {
   width: 150px;
   height: 150px;
@@ -596,6 +718,7 @@ input:-webkit-autofill:hover {
 .new-listing-form-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -607,6 +730,29 @@ input:-webkit-autofill:hover {
 .input-sml::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+}
+
+.listing-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #F8F1DE;
+  margin-bottom: 20px;
+  width: 52%;
+}
+
+.checkbox-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: none;
+  width: 48%;
 }
 
 .listing-btn {
