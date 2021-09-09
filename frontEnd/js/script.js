@@ -30,6 +30,7 @@ $('#animalsBtn').click(function(){
         $("#headerPopover").fadeIn("slow");
         $("#loginContent").css("display", "flex");
         $("#cartContent").css("display", "none");
+        console.log('clicked');
     });
 
     $('#cart').click(function(){
@@ -53,7 +54,7 @@ $('#animalsBtn').click(function(){
 
     let handleHomeAnimals = async () => {
 
-        let response = await fetch('/findAnimal')
+        let response = await fetch('http://localhost:3000/findAnimal')
         let data = await response.json()
 
         let cardParent = document.querySelector(".all-listings");
@@ -86,24 +87,40 @@ $('#animalsBtn').click(function(){
                 </div>
             `
         }
-        
+
     }
 
     handleHomeAnimals();
 
 
     input = "root"
-    let result = await fetch(`/findUser?q=${input}`)
+    let result = await fetch(`http://localhost:3000/findUser?q=${input}`)
     let rawData = await result.json()
 
     console.log(rawData)
 
 
 
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
+    // $('#username').click(function(){
+    //   console.log('username clicked');
+    //   console.log(windows.sessionStorage);
+    // });
+    // $.ajax({
+    //   url: `https://localhost:8081`,
+    //   type: POST,
+    //   data {
+    //     username: username,
+    //     password: password
+    //   },
+    //   success: function(){
+    //
+    //   }
+    // })
+    // sessionStorage.setItem('username', 'rane');
+    // console.log(sessionStorage);
 
 
 

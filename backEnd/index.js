@@ -139,7 +139,12 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xo
         return userExists;
     }
 
+    let FindEveryUser = async () => {
 
+        let foundUser = await User.find();
+        return foundUser;
+    }
+    
 // -----------
 
     let RemoveUser = async ( arg ) => {
