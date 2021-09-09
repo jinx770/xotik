@@ -121,18 +121,20 @@
         // Declare all values and buttons here, any sort of variable
         window.currentSession;
 
-        window.sessionHeader = document.querySelector("#sessionHeader");
-        window.loginPopOver = document.querySelector(".header-popover");
+        window.sessionHeader = document.querySelector("#sessionHeader") || "";
+        window.loginPopOver = document.querySelector(".header-popover") || "";
+        window.fileInput = document.querySelector(".ignore-me") || "";
 
-        window.usernameInput = document.querySelector("#username");
-        window.passwordInput = document.querySelector("#password");
+        window.usernameInput = document.querySelector("#username") || "";
+        window.passwordInput = document.querySelector("#password") || "";
 
-        window.loginButton = document.querySelector("#submitLogin");
-        window.createAccountButton = document.querySelector("#createAccountBtn");
-        window.closeLoginButton = document.querySelector(".popover-exit-btn");
+        window.loginButton = document.querySelector("#submitLogin") || "";
+        window.createAccountButton = document.querySelector("#createAccountBtn") || "";
+        window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
+        window.listingButton = document.querySelector(".listing-btn") || "";
 
-        window.cardParent = document.querySelector(".all-listings");
-        window.cards = document.querySelectorAll(".card");
+        window.cardParent = document.querySelector(".all-listings") || "";
+        window.cards = document.querySelectorAll(".card") || "";
 
     }
 
@@ -394,7 +396,9 @@
 
         // Next event listener would go here
 
-
+        listingButton.addEventListener('click', () => {
+            console.log(fileInput.value)
+        })
 
 
     }
