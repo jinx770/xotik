@@ -250,10 +250,10 @@ input:-webkit-autofill:hover {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-ar;
+  justify-content: space-between;
   width: 21%;
   margin: auto;
-  height: 300px;
+  max-height: 300px;
   padding-bottom: 4%;
 }
 
@@ -261,6 +261,7 @@ input:-webkit-autofill:hover {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  margin-bottom: 10px;
 }
 //
 // .card-img {
@@ -274,6 +275,7 @@ input:-webkit-autofill:hover {
 .bottom-info {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 .title {
