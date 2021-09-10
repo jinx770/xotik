@@ -4,4 +4,4 @@ require("./index.js")
 
 app.use(express.static("frontEnd"));
 const port = 3000;
-app.listen(port, () => console.log(`XOTIK on port : ${port}`));
+app.listen(port);
