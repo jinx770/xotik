@@ -1,5 +1,4 @@
 
-(async () => {
 
 
     window.cache = [""]
@@ -19,15 +18,27 @@
     let handleFileSelect = (e) => {
 
         setInterval(() => {
-
              if (cache.includes(fileInput.value)) {
                  return
              }
 
              if (!cache[4]) {
+
+                let file = $("input[type=file]").get(0).files[0];
                 cache.push(fileInput.value)
-                console.log(fileInput.value)
-                imageHolder.innerHTML += `<img src="img/heo-alt.jpg" alt="">`
+
+                if (file) {
+
+                  let reader = new FileReader();
+                  reader.onload = function(){
+                      imageHolder.innerHTML += `<img onclick="remove(this)" id=${fileInput.value} src="${reader.result}" alt="">`
+                  }
+
+                  reader.readAsDataURL(file);
+
+                  console.log(cache)
+                }
+
             }
 
         }, 500)
@@ -45,12 +56,41 @@
 
 
 
+    function removeA(arr) {
+        var what, a = arguments, L = a.length, ax;
+        while (L > 1 && arr.length) {
+            what = a[--L];
+            while ((ax= arr.indexOf(what)) !== -1) {
+                arr.splice(ax, 1);
+            }
+        }
+        return arr;
+    }
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    let remove = (el) => {
+
+        let element = el;
+        console.log(cache)
+
+        cache.includes(element.id) ? removeA(cache, element.id) : "asd"
+
+        element.remove();
+
+    }
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
     addImageListingButton.addEventListener('click', () => {
         fileInput.click()
         handleFileSelect()
     })
-
-
-
-
-})();

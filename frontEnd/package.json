@@ -10,12 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "filereader": "^0.10.3",
     "grunt-contrib-sass": "^2.0.0",
     "grunt-sass": "^3.1.0",
     "jquery": "^3.6.0",
     "node-sass": "^6.0.1",
-    "ruby": "^0.6.1",
-    "dotenv": "^10.0.0"
+    "ruby": "^0.6.1"
   },
   "devDependencies": {
     "grunt": "^1.4.1",
