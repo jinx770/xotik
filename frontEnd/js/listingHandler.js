@@ -2,14 +2,17 @@
 
 
     window.cache = [""]
-
-    window.addImageListingButton = document.querySelector(".add-img-btn") || "";
-    window.listingButton = document.querySelector(".listing-btn") || "";
-
-    window.fileInput = document.querySelector(".ignore-me") || "";
-    window.imageHolder = document.querySelector(".test-div-images") || "";
-
     imageHolder.innerHTML = "";
+
+    let refreshElements = () => {
+
+        window.addImageListingButton = document.querySelector(".add-img-btn") || "";
+        window.listingButton = document.querySelector(".listing-btn") || "";
+
+        window.fileInput = document.querySelector(".ignore-me") || "";
+        window.imageHolder = document.querySelector(".test-div-images") || "";
+
+    }
 
 
 // ----------------------------------------------------------------------------------------------------------------------------------
@@ -56,6 +59,10 @@
                         imageHolder.innerHTML += `<div class="new-image" onclick="remove(this)" id=${fileInput.value}>
                               <div class="trash"><i class="fa fa-trash" aria-hidden="true"></i></div>
                               <img src="${reader.result}" alt=""></div>`
+
+                        // Clearing the input so it doesn't loop add the current value to the array - thanks toby for letting me know
+                        fileInput.value = ""
+
                     }
 
                     // Calling our file reader function with the file we saved early as an argument
@@ -108,6 +115,8 @@
         // Checking to see if the image we're removing, is cached
         // Which it will always be so we remove it using our remove array function with the ID we set in the image handler function
         cache.includes(element.id) ? removeA(cache, element.id) : null
+
+        console.log(cache)
 
         // Removes the element
         element.remove();
