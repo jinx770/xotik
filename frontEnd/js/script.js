@@ -14,7 +14,7 @@
 
 
   $('#whoBtn').click(function() {
-  
+
   })
   //
   // $('#trustBtn').click(function(){
@@ -125,9 +125,6 @@
   $('#questionExitBtn').click(function(){
     $("#askQuestionForm").hide("slow");
   })
-
-
-
 
 
 
