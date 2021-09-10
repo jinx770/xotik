@@ -485,48 +485,6 @@ input:-webkit-autofill:active
   text-align: center;
 }
 
-// filtering
-
-.search {
-  display: flex;
-  justify-content: space-between;
-  width: 86%;
-  margin: auto;
-  padding-bottom: 5%;
-}
-
-.inputs {
-  display: flex;
-  justify-content: space-between;
-}
-.inputs select {
-  margin-right: 10%;
-  background: none;
-  border: 1px solid $offwhite;
-  outline: none;
-  color: $offwhite;
-  border-radius: 50px;
-  font-family: "Comfortaa";
-  font-size: 120%;
-  padding-left: 4%;
-  padding-right: 4%;
-}
-
-option {
-color: $black;
-}
-
-.search-input {
-  background: none;
-  border: 1px solid $offwhite;
-  outline: none;
-  color: $offwhite;
-  border-radius: 50px;
-  font-family: "Comfortaa";
-  padding-left: 4%;
-}
-
-
 
 .all-listings {
   display: flex;
