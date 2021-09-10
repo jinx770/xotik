@@ -397,13 +397,6 @@
 
           });
 
-          // Next event listener would go here
-
-          listingButton.addEventListener('click', () => {
-              console.log(fileInput.value)
-          })
-
-
       }
 
 
