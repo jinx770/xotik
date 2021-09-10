@@ -2,6 +2,10 @@
 $black: #272727;
 $offwhite: #F8F1DE;
 $green: #2A432F;
+$red: #FF4242;
+$lightgreen: #52AF19;
+
+
 
 Body {
   width: 100%;
@@ -284,11 +288,31 @@ input:-webkit-autofill:hover {
 // cards end ::::::::::::::::::::::::
 // header :::::::::::::::::::::::::::::::
 
+.header-background {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  z-index: 9999;
+  background-image: linear-gradient(to top, rgba(#ffffff, 0), $black);
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+    from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
+.header-background-blur {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+
+}
+
+
+
 .header {
   position: fixed;
   width: 100%;
   height: 100px;
-  backdrop-filter: blur(10px);
   z-index: 999999;
 }
 
@@ -453,8 +477,12 @@ input:-webkit-autofill:hover {
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  width: 70%;
+  width: 80%;
   height: 90%;
+
+  input{
+    width: 70%;
+  }
 }
 
 .cart-popover-content {
@@ -929,11 +957,11 @@ padding-top: 130px;
 }
 
 .check {
-  color: #52AF19;
+  color: $lightgreen;
 }
 
 .times {
-  color: #FF4242;
+  color: $red;
 }
 
 .listing-bottom-section {
@@ -953,6 +981,96 @@ padding-top: 130px;
 .price {
   margin-bottom: 10px;
 }
+
+.question-block {
+  border: 1px solid $offwhite;
+  width: 100%;
+  min-height: 100px;
+  border-radius: 60px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.question {
+  width: 85%;
+  border-bottom: 1px solid $offwhite;
+  margin: 20px 50px 10px 50px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+}
+
+.answer {
+  width: 85%;
+  margin: 0 50px 20px 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.q {
+  margin-right: 10px;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.question-text,
+.answer-text {
+  font-weight: 100;
+}
+
+.ask-question {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.question-input {
+  width: 70%;
+  margin: none;
+}
+
+
+.send-btn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 10%;
+  cursor: pointer;
+  transition: 0.4s ease;
+  margin-bottom: 10px;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.question-exit {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 5%;
+  margin: none;
+  cursor: pointer;
+  color: $red;
+  opacity: 1;
+  transition: 0.4s ease;
+  margin-bottom: 12px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+
+
 
 
 // footer begins ::::::::::::::::::::::::::::::::::
