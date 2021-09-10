@@ -4,12 +4,10 @@
 
     window.cache = []
 
-    window.addImageListingInput = document.querySelector(".ignore-me") || "";
     window.addImageListingButton = document.querySelector(".add-img-btn") || "";
     window.listingButton = document.querySelector(".listing-btn") || "";
 
     window.fileInput = document.querySelector(".ignore-me") || "";
-    window.uploadField = document.querySelector(".add-img-btn") || "";
     window.imageHolder = document.querySelector(".images") || "";
 
 
@@ -40,7 +38,7 @@
 
 
     addImageListingButton.addEventListener('click', () => {
-        addImageListingInput.click()
+        fileInput.click()
         handleFileSelect()
     })
 
