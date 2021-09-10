@@ -11,11 +11,11 @@
       scrollTop: $("#listingSection").offset().top
     }, 1500);
   });
+
+
+  $('#whoBtn').click(function() {
   
-  //
-  // $('#whoBtn').click(function(){
-  //
-  // })
+  })
   //
   // $('#trustBtn').click(function(){
   //
@@ -101,6 +101,34 @@
     $("#loginContent").css("display", "none");
     $("#cartContent").css("display", "none");
   });
+
+
+
+
+  //  -----------------------------------------------------------------------
+
+  // asking questions
+
+  $('#askQuestionBtn').click(function(){
+    $("#askQuestionForm").css("display", "flex");
+    $("#askQuestionForm").hide();
+    $("#askQuestionForm").show("slow");
+  })
+
+
+  $('#sendBtn').click(function(){
+    let questionInput = document.querySelector('#questionInput').value
+    console.log(questionInput);
+    $("#askQuestionForm").hide("slow");
+  })
+
+  $('#questionExitBtn').click(function(){
+    $("#askQuestionForm").hide("slow");
+  })
+
+
+
+
 
 
 
