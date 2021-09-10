@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/style.css">
   <title></title>
 </head>
@@ -53,7 +54,7 @@
     <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
     </div>
     <div class="login-popover-content" id="loginContent">
-      <h4 id="sessionHeader" >Log In</h4>
+      <h4 id="sessionHeader">Log In</h4>
       <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
       <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
       <button id="submitLogin" class="button-secondary">Log In</button>
@@ -121,12 +122,16 @@
 
           <div class="listing-checkbox">
             <div class="checkbox-row">
-            <input class="checkbox" type="checkbox" id="licenseCheck" name="license">
-            <label for="scales"><h6>License Required</h6></label>
+              <input class="checkbox" type="checkbox" id="licenseCheck" name="license">
+              <label for="scales">
+                <h6>License Required</h6>
+              </label>
             </div>
             <div class="checkbox-row">
-            <input class="checkbox" type="checkbox" id="deliveryCheck" name="delivery">
-            <label for="delivery"><h6>Delivery Avaliable</h6></label>
+              <input class="checkbox" type="checkbox" id="deliveryCheck" name="delivery">
+              <label for="delivery">
+                <h6>Delivery Avaliable</h6>
+              </label>
             </div>
           </div>
 
@@ -144,10 +149,11 @@
           <h5>Add images to your listing.</h5>
           <div class="images">
             <input type="file" class="ignore-me" accept="image/x-png,image/gif,image/jpeg">
-            <button class="add-img-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
             <div class="test-div-images">
-                <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
             </div>
+            <button class="add-img-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
 
           </div>
         </div>

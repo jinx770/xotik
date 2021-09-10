@@ -31,7 +31,9 @@
 
                   let reader = new FileReader();
                   reader.onload = function(){
-                      imageHolder.innerHTML += `<img onclick="remove(this)" id=${fileInput.value} src="${reader.result}" alt="">`
+                      imageHolder.innerHTML += `<div class="new-image" onclick="remove(this)" id=${fileInput.value}>
+                      <div class="trash"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                      <img src="${reader.result}" alt=""></div>`
                   }
 
                   reader.readAsDataURL(file);

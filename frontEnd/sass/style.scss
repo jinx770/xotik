@@ -5,8 +5,6 @@ $green: #2A432F;
 $red: #FF4242;
 $lightgreen: #52AF19;
 
-
-
 Body {
   width: 100%;
   height: 100%;
@@ -199,7 +197,6 @@ input:-webkit-autofill:hover {
   padding: 5px 30px;
 }
 
-
 .textarea {
   width: 90%;
   border: 1px solid #F8F1DE;
@@ -294,8 +291,7 @@ input:-webkit-autofill:hover {
   height: 100px;
   z-index: 9999;
   background-image: linear-gradient(to top, rgba(#ffffff, 0), $black);
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
-    from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
 .header-background-blur {
@@ -304,10 +300,7 @@ input:-webkit-autofill:hover {
   height: 100px;
   z-index: 999;
   backdrop-filter: blur(10px);
-
 }
-
-
 
 .header {
   position: fixed;
@@ -480,7 +473,7 @@ input:-webkit-autofill:hover {
   width: 80%;
   height: 90%;
 
-  input{
+  input {
     width: 70%;
   }
 }
@@ -515,7 +508,7 @@ input:-webkit-autofill:hover {
   height: 90%;
 }
 
-.cart-item-content{
+.cart-item-content {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -688,7 +681,7 @@ input:-webkit-autofill:hover {
 // all listings section
 
 .listings-head {
-padding-top: 130px;
+  padding-top: 130px;
   margin-bottom: 60px;
   text-align: center;
   font-size: 40px;
@@ -703,8 +696,7 @@ padding-top: 130px;
   justify-content: space-between;
   align-items: baseline;
   width: 87%;
-  margin: auto;
-  margin-bottom: 60px;
+  margin: auto auto 60px;
 }
 
 .inputs {
@@ -719,7 +711,6 @@ padding-top: 130px;
     width: 28%;
   }
 }
-
 // .search input {
 //   border-radius: 50px;
 //   font-family: "Comfortaa";
@@ -756,19 +747,68 @@ padding-top: 130px;
   margin-top: 30px;
   width: 100%;
 
-  button,
-  img {
+  button {
     margin: 5px;
   }
+}
+
+.test-div-images {
+  display: flex;
+  height: auto;
+  flex-wrap: wrap;
 
   img {
+    margin: 5px;
     width: 150px;
     height: 150px;
     border-radius: 15px;
-    border: 1px solid $offwhite;
     object-fit: cover;
+    transition: 0.4s;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
 }
+
+.trash {
+  display: none;
+  transition:0.4s ease;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  background: rgba(#282828, 0.25);
+  margin: 5px 0 0 5px;
+  cursor: pointer;
+  font-size: 30px;
+  z-index: 999;
+  transition:0.4s ease;
+  color: $red;
+
+  &:hover {
+    .new-image {
+      opacity: 0.5;
+    }
+  }
+}
+
+.new-image {
+  position: relative;
+  transition: 0.4s ease;
+
+  &:hover {
+    .trash {
+        transition: 0.4s ease;
+      display: flex;
+    }
+  }
+}
+
 
 .add-img-btn {
   width: 150px;
@@ -810,7 +850,6 @@ padding-top: 130px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-
 }
 
 .input-sml {
@@ -853,6 +892,7 @@ padding-top: 130px;
 }
 // CREATE LISTING PAGE ENDS::::::::::::::::::::::
 // ANIMAL PAGE BEGINS ::::::::::::::::::::::::::
+
 .animal-images {
   margin-top: 30px;
   width: 100%;
@@ -879,7 +919,6 @@ padding-top: 130px;
     align-items: center;
     justify-content: space-between;
 
-
     .alt-img {
       width: 32%;
       height: 20vh;
@@ -899,7 +938,6 @@ padding-top: 130px;
 .listing-details {
   width: 100%;
   margin-top: 30px;
-
 }
 
 .listing-top-section {
@@ -914,9 +952,10 @@ padding-top: 130px;
 .username {
   margin-bottom: 10px;
 }
+
 .animal-name {
-    font-size: 40px;
-    margin-bottom: 10px;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
 .listing-row {
@@ -978,6 +1017,7 @@ padding-top: 130px;
   justify-content: space-between;
   align-items: center;
 }
+
 .price {
   margin-bottom: 10px;
 }
@@ -997,17 +1037,16 @@ padding-top: 130px;
 .question {
   width: 85%;
   border-bottom: 1px solid $offwhite;
-  margin: 20px 50px 10px 50px;
+  margin: 20px 50px 10px;
   padding-bottom: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-
 }
 
 .answer {
   width: 85%;
-  margin: 0 50px 20px 50px;
+  margin: 0 50px 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -1019,8 +1058,8 @@ padding-top: 130px;
   opacity: 0.5;
 }
 
-.question-text,
-.answer-text {
+.answer-text,
+.question-text {
   font-weight: 100;
 }
 
@@ -1031,11 +1070,11 @@ padding-top: 130px;
   align-items: center;
   width: 100%;
 }
+
 .question-input {
   width: 70%;
   margin: none;
 }
-
 
 .send-btn {
   display: flex;
@@ -1068,12 +1107,8 @@ padding-top: 130px;
     opacity: 0.5;
   }
 }
-
-
-
-
-
 // footer begins ::::::::::::::::::::::::::::::::::
+
 .footer {
   display: flex;
   justify-content: center;
