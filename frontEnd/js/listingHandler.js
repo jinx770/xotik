@@ -129,5 +129,5 @@
 
         // Function for handling our images
         handleFileSelect()
-        
+
     })
