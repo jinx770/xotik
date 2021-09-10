@@ -447,46 +447,6 @@ input:-webkit-autofill:active {
   text-align: center;
 }
 
-.search {
-  display: flex;
-  justify-content: space-between;
-  width: 86%;
-  margin: auto;
-  padding-bottom: 5%;
-}
-
-.inputs {
-  display: flex;
-  justify-content: space-between;
-}
-
-.inputs select {
-  margin-right: 10%;
-  background: none;
-  border: 1px solid #F8F1DE;
-  outline: none;
-  color: #F8F1DE;
-  border-radius: 50px;
-  font-family: "Comfortaa";
-  font-size: 120%;
-  padding-left: 4%;
-  padding-right: 4%;
-}
-
-option {
-  color: #272727;
-}
-
-.search-input {
-  background: none;
-  border: 1px solid #F8F1DE;
-  outline: none;
-  color: #F8F1DE;
-  border-radius: 50px;
-  font-family: "Comfortaa";
-  padding-left: 4%;
-}
-
 .all-listings {
   display: flex;
   flex-wrap: wrap;
