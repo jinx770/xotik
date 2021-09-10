@@ -2,18 +2,18 @@
 (async () => {
 
 
-    window.cache = []
+    window.cache = [""]
 
     window.addImageListingButton = document.querySelector(".add-img-btn") || "";
     window.listingButton = document.querySelector(".listing-btn") || "";
 
     window.fileInput = document.querySelector(".ignore-me") || "";
-    window.imageHolder = document.querySelector(".images") || "";
+    window.imageHolder = document.querySelector(".test-div-images") || "";
 
+    imageHolder.innerHTML = "";
 
 
 // ----------------------------------------------------------------------------------------------------------------------------------
-
 
 
     let handleFileSelect = (e) => {
@@ -24,10 +24,18 @@
                  return
              }
 
-            cache.push(fileInput.value)
-            console.log(fileInput.value)
+             if (!cache[4]) {
+                cache.push(fileInput.value)
+                console.log(fileInput.value)
+                imageHolder.innerHTML += `<img src="img/heo-alt.jpg" alt="">`
+            }
 
         }, 500)
+
+        if (cache[4]) {
+            console.log("Max uploads reached!")
+            return
+        }
 
     }
 
