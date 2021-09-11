@@ -1,8 +1,6 @@
 
 
 
-    window.cache = [""]
-    imageHolder.innerHTML = "";
 
     let refreshElements = () => {
 
@@ -14,8 +12,22 @@
 
     }
 
+    refreshElements();
+
+
 
 // ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    window.cache = [""]
+    imageHolder.innerHTML = "";
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
 
     // Function that gets called when you click on the + icon
     let handleFileSelect = (e) => {
