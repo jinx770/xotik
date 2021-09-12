@@ -238,7 +238,7 @@
                   <div class="card">
                       <div class="top-info">
                           <div class="username">
-                              <h5>John Doe</h5>
+                              <h5>${card.owner}</h5>
                           </div>
                           <div class="rating">
                               <h5>${card.rating}</h5>
@@ -246,7 +246,7 @@
                       </div>
                       <div class="card-img">
                           <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-                          <img src="${card.url}" alt="">
+                          <img src="${card.url[0]}" alt="">
                       </div>
                       <div class="bottom-info">
                           <div class="title">

@@ -30,6 +30,7 @@
 
 
     window.cache = [""]
+    window.imageUrls = []
     window.currentSession = localStorage.getItem("currentSession")
     imageHolder.innerHTML = "";
 
@@ -81,6 +82,9 @@
                         imageHolder.innerHTML += `<div class="new-image" onclick="remove(this)" id=${fileInput.value}>
                               <div class="trash"><i class="fa fa-trash" aria-hidden="true"></i></div>
                               <img src="${reader.result}" alt=""></div>`
+
+                        imageUrls.push(reader.result)
+
 
                         // Clearing the input so it doesn't loop add the current value to the array - thanks toby for letting me know
                         fileInput.value = ""
@@ -179,7 +183,7 @@
 
             name: nameInput,
             type: typeInput,
-            url: cache,
+            url: imageUrls,
             price: parseInt(priceInput),
             rating: `${Math.floor(Math.random() * 11)}/10`,
             description: descriptionInput,
@@ -190,10 +194,17 @@
 
         }
 
+        // console.log("Disabled the database while I fix something")
+
         let response = await fetch('/createAnimal', {
             method: "post",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(object)
+        }, (data, status) => {
+            console.log(status)
+            // location.reload();
         });
+
+
 
     });
