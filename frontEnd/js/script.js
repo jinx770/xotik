@@ -22,7 +22,7 @@
   // })
 
   $('#listingBtn').click(function() {
-    window.location.href = 'cart.html';
+    window.location.href = 'listing.html';
   });
   // header popover begins
 
