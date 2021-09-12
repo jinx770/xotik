@@ -2,7 +2,7 @@
 
 
 
-    let refreshElements = () => {
+    let getElements = () => {
 
         window.addImageListingButton = document.querySelector(".add-img-btn") || "";
         window.listingButton = document.querySelector(".listing-btn") || "";
@@ -10,9 +10,18 @@
         window.fileInput = document.querySelector(".ignore-me") || "";
         window.imageHolder = document.querySelector(".test-div-images") || "";
 
+        window.nameInput = document.querySelector("#name").value
+        window.typeInput = document.querySelector("#type").value
+        window.locationInput = document.querySelector("#location").value
+        window.priceInput = document.querySelector("#price").value
+        window.licenseInput = document.querySelector("#license").checked
+        window.deliveryInput = document.querySelector("#delivery").checked
+        window.descriptionInput = document.querySelector("#description").value
+
+
     }
 
-    refreshElements();
+    getElements();
 
 
 
@@ -21,6 +30,7 @@
 
 
     window.cache = [""]
+    window.currentSession = localStorage.getItem("currentSession")
     imageHolder.innerHTML = "";
 
 
@@ -153,3 +163,37 @@
         handleFileSelect()
 
     })
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+    listingButton.addEventListener('click', async () => {
+
+        getElements();
+
+        let object = {
+
+            name: nameInput,
+            type: typeInput,
+            url: cache,
+            price: parseInt(priceInput),
+            rating: `${Math.floor(Math.random() * 11)}/10`,
+            description: descriptionInput,
+            quantity: 10,
+            owner: currentSession,
+            license: licenseInput,
+            delivery: deliveryInput,
+
+        }
+
+        let response = await fetch('/createAnimal', {
+            method: "post",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(object)
+        });
+
+    });

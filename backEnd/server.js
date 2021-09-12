@@ -1,8 +1,10 @@
 let express = require('express');
-let functions = require("./index.js")
+let bodyParser = require('body-parser');
+let functions = require("./index.js");
 
-let app = express();
 let port = 3000;
+let app = express();
+app.use(express.json())
 
 
 
@@ -16,10 +18,10 @@ let port = 3000;
 app.post('/createAnimal', async ( req, res ) => {
 
     // Shorthand variable creation explained in our backEnd/index.js
-    let { name, tags, url, price, rating, description, quantity } = req.body
+    let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
 
-    // Dunno if this will 100% work until we test it on the 10th, should create an animal in the database
-    return res.send(await functions.CreateAnimal( name, tags, url, price, rating, description, quantity ))
+    // Dunno if this will 100% work until we test it on the 13th, should create an animal in the database
+    return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
 
 })
 
@@ -55,10 +57,10 @@ app.get('/findAnimal', async ( req, res ) => {
 app.post('/updateAnimal', async ( req, res ) => {
 
     // Shorthand variable creation
-    let { name, tags, url, price, rating, description, quantity } = req.body
+    let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
 
     // Calling function in backEnd/index.js with relevant arguments being passed
-    return res.send(await functions.UpdateAnimal( name, tags, url, price, rating, description, quantity ))
+    return res.send(await functions.UpdateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
 
 })
 

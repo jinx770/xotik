@@ -24,7 +24,7 @@
 
         // Creating variables for every argument passed in the function
         // This purely avoids having to do spam variables and we can do it all at once!
-        let [ name, tags, url, price, rating, description, quantity ] = args
+        let [ name, type, url, price, rating, description, quantity, owner, license, delivery ] = args
 
         // Checks to see if the animal being created already exists
         // Returning the animal if true and returning false if it cant be found
@@ -40,7 +40,7 @@
         newAnimal === name
             ? console.log("Animal already exists in the database!")
             : (
-                new Animal({ name, tags, url, price, rating, description, quantity }).save()
+                new Animal({ name, type, url, price, rating, description, quantity, owner, license, delivery }).save()
                 && console.log("Animal added to the database!")
             )
 
@@ -245,7 +245,7 @@
         userExists === arg
             ? ( User.deleteOne({username: arg}, () => {console.log(`Successfully deleted ${arg}`)}) )
             : console.log("User does not exist")
-            
+
     }
 
 

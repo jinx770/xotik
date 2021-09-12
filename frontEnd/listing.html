@@ -108,27 +108,27 @@
         <h1>Create Listing</h1>
         <br><br>
         <div class="new-listing-form-row">
-          <input class="input input-sml" placeholder="Listing Title" type="text" value="">
-          <select class="select" value="">
+          <input id="name" class="input input-sml" placeholder="Listing Title" type="text" value="">
+          <select id="type" class="select" value="">
             <option value="" class="disabled-option" disabled selected hidden>Pet Type</option>
-            <option value="volvo">Aquatic</option>
-            <option value="mercedes">Cat</option>
-            <option value="audi">Reptile</option>
+            <option value="aquatic">Aquatic</option>
+            <option value="cat">Cat</option>
+            <option value="reptile">Reptile</option>
           </select>
         </div>
-        <input class="input" placeholder="Your Location" type="text" value="">
+        <input id="location" class="input" placeholder="Your Location" type="text" value="">
         <div class="new-listing-form-row">
-          <input class="input input-sml" placeholder="Price" type="number" min="1" value="">
+          <input id="price" class="input input-sml" placeholder="Price" type="number" min="1" value="">
 
           <div class="listing-checkbox">
             <div class="checkbox-row">
-              <input class="checkbox" type="checkbox" id="licenseCheck" name="license">
+              <input id="license" class="checkbox" type="checkbox" id="licenseCheck" name="license">
               <label for="scales">
                 <h6>License Required</h6>
               </label>
             </div>
             <div class="checkbox-row">
-              <input class="checkbox" type="checkbox" id="deliveryCheck" name="delivery">
+              <input id="delivery" class="checkbox" type="checkbox" id="deliveryCheck" name="delivery">
               <label for="delivery">
                 <h6>Delivery Avaliable</h6>
               </label>
@@ -136,7 +136,7 @@
           </div>
 
         </div><br>
-        <textarea class="textarea" name="name" rows="8" cols="80" placeholder="Description" value=""></textarea>
+        <textarea id="description" class="textarea" name="name" rows="8" cols="80" placeholder="Description" value=""></textarea>
         <br>
 
       </div>
