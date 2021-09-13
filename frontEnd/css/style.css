@@ -53,14 +53,6 @@ h6 {
   margin: 0;
 }
 
-.results {
-    text-align:center;
-    width:100%;
-    padding-top:100px;
-    padding-bottom:200px;
-
-}
-
 p {
   font-family: 'Comfortaa', cursive;
   font-size: 16px;
@@ -219,9 +211,14 @@ input:-webkit-autofill:hover {
   margin-top: 30%;
 }
 
-.card-img img {
+.card-img {
   width: 100%;
-  overflow: hidden;
+  height: 60%;
+}
+.card-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .ignore-me {
@@ -243,7 +240,7 @@ input:-webkit-autofill:hover {
   justify-content: space-between;
   width: 21%;
   margin: auto;
-  max-height: 300px;
+  height: 300px;
   padding-bottom: 4%;
 }
 
@@ -682,7 +679,6 @@ input:-webkit-autofill:hover {
 
 .images {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   margin-top: 30px;
   width: 100%;
@@ -693,8 +689,10 @@ input:-webkit-autofill:hover {
 
 .test-div-images {
   display: flex;
+  flex-direction: row;
   height: auto;
   flex-wrap: wrap;
+  width: 60%;
 }
 .test-div-images img {
   margin: 5px;
@@ -708,14 +706,35 @@ input:-webkit-autofill:hover {
   opacity: 0.5;
 }
 
+.add-img-btn {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  border: 1px solid #F8F1DE;
+  background: none;
+  color: #F8F1DE;
+  font-size: 30px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.add-img-btn:hover i {
+  opacity: 1;
+}
+.add-img-btn i {
+  color: #F8F1DE;
+  font-size: 30px;
+  opacity: 0.4;
+  transition: 0.5s ease;
+}
+
 .trash {
   display: none;
   transition: 0.4s ease;
   position: absolute;
   justify-content: center;
   align-items: center;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 150px;
   height: 150px;
   border-radius: 15px;
@@ -738,27 +757,6 @@ input:-webkit-autofill:hover {
 .new-image:hover .trash {
   transition: 0.4s ease;
   display: flex;
-}
-
-.add-img-btn {
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
-  border: 1px solid #F8F1DE;
-  background: none;
-  color: #F8F1DE;
-  font-size: 30px;
-  cursor: pointer;
-  transition: 0.5s ease;
-}
-.add-img-btn:hover i {
-  opacity: 1;
-}
-.add-img-btn i {
-  color: #F8F1DE;
-  font-size: 30px;
-  opacity: 0.4;
-  transition: 0.5s ease;
 }
 
 .new-listing-form {
