@@ -172,7 +172,7 @@
         let [ fullName, username, phoneNo, email, description, password ] = args
 
         // Requesting info from the database, using the username as a query
-        let checkUser = await FindUser({username});
+        let checkUser = await FindUser(username);
 
         // Checking to see if the returned data is a document, if its not then switch it to ""
         let newUser = checkUser[0] && checkUser[0].username || ""

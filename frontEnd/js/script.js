@@ -155,11 +155,15 @@
 
           window.usernameInput = document.querySelector("#username") || "";
           window.passwordInput = document.querySelector("#password") || "";
+          window.usernameCreate = document.querySelector("#usernameCreate") || "";
+          window.passwordCreate = document.querySelector("#passwordCreate") || "";
+
 
           window.loginButton = document.querySelector("#submitLogin") || "";
           window.createAccountButton = document.querySelector("#createAccountBtn") || "";
           window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
           window.listingButton = document.querySelector(".listing-btn") || "";
+          window.signUpButton = document.querySelector("#signUpBtn") || "";
 
           window.cardParent = document.querySelector(".all-listings") || "";
           window.cards = document.querySelectorAll(".card") || "";
@@ -409,6 +413,37 @@
 
   // ------------------------------------------------------------------------------------------------------------------------------------
 
+      let createAccHandler = async () => {
+        if (!loggedIn) {
+
+          console.log(usernameCreate.value);
+          console.log(passwordCreate.value);
+          let username = usernameCreate.value;
+          let password = passwordCreate.value;
+
+
+          let response = await fetch('/createUser', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+
+              fullName: '.',
+              username: username,
+              phoneNo: '.',
+              email: '.',
+              description: '.',
+              password: password
+
+            })
+          })
+          .catch(err => {
+            console.log('Error : ' + err);
+          });
+
+        }
+      };
+
+  // ------------------------------------------------------------------------------------------------------------------------------------
 
 
       // Function for running every event listener on the page
@@ -433,6 +468,11 @@
 
               }
 
+          });
+
+          // Runs create account handler when you click sign up
+          signUpButton.addEventListener('click', async () => {
+            createAccHandler();
           });
 
       }

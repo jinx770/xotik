@@ -9,6 +9,7 @@
 
         window.fileInput = document.querySelector(".ignore-me") || "";
         window.imageHolder = document.querySelector(".test-div-images") || "";
+        window.loginIcon = document.querySelector(".fa-user")
 
         window.nameInput = document.querySelector("#name").value
         window.typeInput = document.querySelector("#type").value
@@ -17,7 +18,7 @@
         window.licenseInput = document.querySelector("#license").checked
         window.deliveryInput = document.querySelector("#delivery").checked
         window.descriptionInput = document.querySelector("#description").value
-
+        window.listingInputs = document.querySelectorAll(".listing-input") || "";
 
     }
 
@@ -173,38 +174,110 @@
 // ----------------------------------------------------------------------------------------------------------------------------------
 
 
+    // Function for returning true/false if user is currently logged in when they press the button
+    let verifyLogin = () => {
+
+        // Checking to see if theyre signed in by looking for string we store in localstorage if theyre signed out
+        if (currentSession == "null") {
+
+            // If theyre signed out then alert them to login in
+            alert("Please login first!")
+
+            // Open the login UI
+            loginIcon.click()
+
+            // Return false to prevent the user from making a request when they click the button
+            return false
+
+        } else {
+
+            // Return true as they're currently logged in
+            return true
+
+        }
+
+    }
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+    // Function to make sure our inputs are validated
+    let validateInputs = () => {
+
+        // Creating an empty array of trues and falses for each input
+        let results = []
+
+        // Function for checking whitespace so no empty inputs with just a space exist
+        let isEmpty = str => !str.trim().length;
+
+        // Function for checking every item in an array is equal to true
+        let checker = arr => arr.every(v => v === true);
+
+        // Looping over all elements with "listing-input" as a class
+        for (let i = 0; i < listingInputs.length; i++) {
+
+            // Getting the values
+            let input = listingInputs[i].value
+
+            // Creating a variable that calls our check if empty function as true or false
+            let result = isEmpty(input) ? false : true
+
+            // Pushing all the results of our true/false input checker to an empty array
+            results.push(result)
+
+        }
+
+        // Calling our function for checking if every item in an array matches
+        // Returning nothing if it does to allow for it to continue
+        // If they don't all match to true, then it'll alert you to correct your inputs
+        checker(results) ? "" : alert("Please make sure all inputs are filled in!")
+
+        // Returning true/false
+        return checker(results)
+
+    }
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
 
 
     listingButton.addEventListener('click', async () => {
 
-        getElements();
+        if (verifyLogin() && validateInputs()) {
 
-        let object = {
+            getElements();
 
-            name: nameInput,
-            type: typeInput,
-            url: imageUrls,
-            price: parseInt(priceInput),
-            rating: `${Math.floor(Math.random() * 11)}/10`,
-            description: descriptionInput,
-            quantity: 10,
-            owner: currentSession,
-            license: licenseInput,
-            delivery: deliveryInput,
+            // let response = await fetch('/createAnimal', {
+            //     method: "post",
+            //     headers: {'Content-Type': 'application/json'},
+            //     body: JSON.stringify({
+            //
+            //         name: nameInput,
+            //         type: typeInput,
+            //         url: imageUrls,
+            //         price: parseInt(priceInput),
+            //         rating: `${Math.floor(Math.random() * 11)}/10`,
+            //         description: descriptionInput,
+            //         quantity: 10,
+            //         owner: currentSession,
+            //         license: licenseInput,
+            //         delivery: deliveryInput
+            //
+            //     })
+            //
+            // });
+            //
+            // setTimeout(() => {
+            //     location.reload()
+            // },1000)
+
+            console.log(imageUrls)
+
 
         }
-
-        // console.log("Disabled the database while I fix something")
-
-        let response = await fetch('/createAnimal', {
-            method: "post",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(object)
-        }, (data, status) => {
-            console.log(status)
-            // location.reload();
-        });
-
-
 
     });

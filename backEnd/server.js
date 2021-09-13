@@ -91,8 +91,10 @@ app.delete('/removeAnimal', async ( req, res ) => {
 // For creating a user via our sign up system, will probably remove some of the fields later on :)
 app.post('/createUser', async ( req, res ) => {
 
+    console.log('server.js - creating user...');
+
     // Shorthand variable creation
-    let [ fullName, username, phoneNo, email, description, password ] = req.body
+    let { fullName, username, phoneNo, email, description, password } = req.body
 
     // Calling the create user function with relevant fields
     return res.send(await functions.CreateUser( fullName, username, phoneNo, email, description, password ))

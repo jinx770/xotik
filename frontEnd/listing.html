@@ -31,7 +31,7 @@
           <h5>Animals</h5>
         </div>
         <div class="nav-item" id="whoBtn">
-          <h5>Who We Are</h5>
+            <a href="about.html"><h5>Who We Are</h5></a>
         </div>
         <div class="nav-item" id="trustBtn">
           <h5>Trust & Safety</h5>
@@ -108,27 +108,27 @@
         <h1>Create Listing</h1>
         <br><br>
         <div class="new-listing-form-row">
-          <input id="name" class="input input-sml" placeholder="Listing Title" type="text" value="">
-          <select id="type" class="select" value="">
+          <input id="name" class="listing-input input input-sml" placeholder="Listing Title" type="text" value="" required>
+          <select id="type" class="select" value="" required>
             <option value="" class="disabled-option" disabled selected hidden>Pet Type</option>
             <option value="aquatic">Aquatic</option>
             <option value="cat">Cat</option>
             <option value="reptile">Reptile</option>
           </select>
         </div>
-        <input id="location" class="input" placeholder="Your Location" type="text" value="">
+        <input id="location" class="listing-input input" placeholder="Your Location" type="text" value="" required>
         <div class="new-listing-form-row">
-          <input id="price" class="input input-sml" placeholder="Price" type="number" min="1" value="">
+          <input id="price" class="listing-input input input-sml" placeholder="Price" type="number" min="1" value="" required>
 
           <div class="listing-checkbox">
             <div class="checkbox-row">
-              <input id="license" class="checkbox" type="checkbox" id="licenseCheck" name="license">
+              <input id="license" class="checkbox" type="checkbox" id="licenseCheck" name="license" required>
               <label for="scales">
                 <h6>License Required</h6>
               </label>
             </div>
             <div class="checkbox-row">
-              <input id="delivery" class="checkbox" type="checkbox" id="deliveryCheck" name="delivery">
+              <input id="delivery" class="checkbox" type="checkbox" id="deliveryCheck" name="delivery" required>
               <label for="delivery">
                 <h6>Delivery Avaliable</h6>
               </label>
@@ -136,7 +136,7 @@
           </div>
 
         </div><br>
-        <textarea id="description" class="textarea" name="name" rows="8" cols="80" placeholder="Description" value=""></textarea>
+        <textarea id="description" class="textarea" name="name" rows="8" cols="80" placeholder="Description" value="" required></textarea>
         <br>
 
       </div>
@@ -148,13 +148,11 @@
         <div class="add-images-section">
           <h5>Add images to your listing.</h5>
           <div class="images">
-            <input type="file" class="ignore-me" accept="image/x-png,image/gif,image/jpeg">
-            <div class="test-div-images">
-              <img src="img/heo-alt.jpg" alt="">
-            </div>
-            <button class="add-img-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
-
-
+              <button class="add-img-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+              <input type="file" class="ignore-me" accept="image/x-png,image/gif,image/jpeg">
+              <div class="test-div-images">
+                <img src="img/heo-alt.jpg" alt="">
+              </div>
           </div>
         </div>
 
@@ -217,8 +215,7 @@
   </div>
   <!-- footer ends -->
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
   <script src="js/listingHandler.js"></script>
 </body>

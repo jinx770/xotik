@@ -230,9 +230,15 @@ input:-webkit-autofill:hover {
   margin-top: 30%;
 }
 
-.card-img img {
+.card-img {
   width: 100%;
-  overflow: hidden;
+  height: 60%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 .ignore-me {
@@ -252,10 +258,11 @@ input:-webkit-autofill:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 21%;
+  width: 250px;
   margin: auto;
-  max-height: 300px;
-  padding-bottom: 4%;
+  height: 300px;
+  margin: 0 15px 60px 15px;
+
 }
 
 .top-info {
@@ -328,6 +335,10 @@ input:-webkit-autofill:hover {
 
 .header-logo {
   cursor: pointer;
+}
+
+.nav-item a {
+  text-decoration: none;
 }
 
 .nav-item {
@@ -615,9 +626,15 @@ input:-webkit-autofill:hover {
 
 .background-image {
   background-image: url("../img/gecko.jpg");
+<<<<<<< HEAD
   height:100vh;
   width: 100vw;
   background-position:center;
+=======
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+>>>>>>> dev
   background-repeat: no-repeat;
   background-size: 100%;
   position: relative;
@@ -628,7 +645,11 @@ input:-webkit-autofill:hover {
 
 .hero {
   margin: auto;
+<<<<<<< HEAD
   padding-top: 15%;
+=======
+  padding-top: 10%;
+>>>>>>> dev
   padding-left: 8%;
 }
 
@@ -647,7 +668,10 @@ input:-webkit-autofill:hover {
 .explore {
   padding-top: 5%;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 // xotik about section ends
 // all listings section
 
@@ -841,17 +865,194 @@ hr {
   }
 >>>>>>> 6eff1e9facd94543b0988c2d4f1e074d09267a94
 }
-// .search input {
-//   border-radius: 50px;
-//   font-family: "Comfortaa";
-//   font-size: 20px;
-//   padding-left: 3%;
-//   margin-right: 5%;
-//   outline: none;
-//   background-color: $black;
-//   color: $offwhite;
-//   border-color: $offwhite !important;
-// }
+
+<<<<<<< HEAD
+.send-btn {
+=======
+.all-listings {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 90%;
+>>>>>>> dev
+  margin: auto;
+  margin-bottom: 60px;
+}
+// WHO WE ARE PAGE :::::::::::::::::::::::::::
+// Who Section >> Who We Are page
+.who {
+  padding-top: 200px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid $offwhite;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+
+.who-img-container {
+  width: 47%;
+}
+
+.who-img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.who-text {
+  width: 47%;
+}
+
+.who-head {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+// FAQ Section >> Who We Are page
+.faq {
+  padding-bottom: 60px;
+  padding-top: 60px;
+  width: 90%;
+  margin: auto;
+  border-bottom: 1px solid $offwhite;
+}
+
+.faq-head {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.faq-content {
+  width: 50%;
+  margin: auto;
+}
+<<<<<<< HEAD
+
+.send-btn-container {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+
+// CREATE LISTING PAGE :::::::::::::::::::::::::::
+=======
+>>>>>>> dev
+
+.collapsible {
+  background-color: $offwhite;
+  color: $black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  font-family: "Comfortaa";
+  font-weight: 700;
+  border-radius: 35px;
+}
+
+.active,
+.collapsible:hover {
+  // background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: $black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.contents {
+  padding: 2% 18px 0;
+  margin-bottom: 2%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+// Safety Section >> Who We Are page
+
+.safety {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  padding-bottom: 60px;
+  padding-top: 60px;
+  border-bottom: 1px solid $offwhite;
+}
+
+.safety-head {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+
+.safety-img-container {
+  width: 47%;
+}
+
+.safety-img {
+  width: 100%;
+  height: auto;
+}
+
+.safety-text {
+  width: 47%;
+}
+// Contact Section >> Who We Are page
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 60px auto;
+}
+
+.contact-head {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.contact-email,
+.contact-name {
+  background: none;
+  margin-bottom: 8%;
+  padding-bottom: 2%;
+  border: none;
+  border-bottom: 1px solid $offwhite;
+  padding-left: 4%;
+  color: $offwhite;
+  font-size: 20px;
+}
+
+.contact-msg {
+  background: none;
+  border: 1px solid $offwhite;
+  border-radius: 20px;
+  padding-top: 3%;
+  padding-left: 4%;
+  padding-bottom: 200px;
+  color: $offwhite;
+  font-size: 20px;
+}
 
 .send-btn {
   margin: auto;
@@ -861,10 +1062,7 @@ hr {
   padding-top: 3%;
   padding-bottom: 3%;
 }
-
-
 // CREATE LISTING PAGE :::::::::::::::::::::::::::
-
 .listing-images-section {
   margin-top: 60px;
   margin-bottom: 100px;
@@ -876,7 +1074,6 @@ hr {
 
 .images {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   margin-top: 30px;
   width: 100%;
@@ -888,8 +1085,10 @@ hr {
 
 .test-div-images {
   display: flex;
+  flex-direction: row;
   height: auto;
   flex-wrap: wrap;
+  width: 60%;
 
   img {
     margin: 5px;
@@ -904,45 +1103,6 @@ hr {
     }
   }
 }
-
-.trash {
-  display: none;
-  transition:0.4s ease;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  top: 0px;
-  left: 0px;
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
-  background: rgba(#282828, 0.25);
-  margin: 5px 0 0 5px;
-  cursor: pointer;
-  font-size: 30px;
-  z-index: 999;
-  transition:0.4s ease;
-  color: $red;
-
-  &:hover {
-    .new-image {
-      opacity: 0.5;
-    }
-  }
-}
-
-.new-image {
-  position: relative;
-  transition: 0.4s ease;
-
-  &:hover {
-    .trash {
-        transition: 0.4s ease;
-      display: flex;
-    }
-  }
-}
-
 
 .add-img-btn {
   width: 150px;
@@ -966,6 +1126,44 @@ hr {
     font-size: 30px;
     opacity: 0.4;
     transition: 0.5s ease;
+  }
+}
+
+.trash {
+  display: none;
+  transition: 0.4s ease;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  background: rgba(#282828, 0.25);
+  margin: 5px 0 0 5px;
+  cursor: pointer;
+  font-size: 30px;
+  z-index: 999;
+  transition: 0.4s ease;
+  color: $red;
+
+  &:hover {
+    .new-image {
+      opacity: 0.5;
+    }
+  }
+}
+
+.new-image {
+  position: relative;
+  transition: 0.4s ease;
+
+  &:hover {
+    .trash {
+      transition: 0.4s ease;
+      display: flex;
+    }
   }
 }
 
@@ -1241,7 +1439,6 @@ hr {
     opacity: 0.5;
   }
 }
-
 // cart page :::::::::::::::::::::::::::
 
 .cart-page-content {
@@ -1249,7 +1446,6 @@ hr {
   flex-direction: column;
   justify-content: flex-start;
   min-height: 600px;
-
 }
 
 .cart-page-header {
@@ -1275,7 +1471,6 @@ hr {
   width: 97%;
   height: 80%;
   margin: auto;
-
 }
 
 .cart-page-img {
@@ -1325,13 +1520,11 @@ hr {
   align-items: center;
 }
 
-.checkout-btn  {
+.checkout-btn {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
-
-
 // footer begins ::::::::::::::::::::::::::::::::::
 
 .footer {
