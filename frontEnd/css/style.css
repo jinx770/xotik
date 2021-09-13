@@ -53,6 +53,16 @@ h6 {
   margin: 0;
 }
 
+
+.results {
+    text-align:center;
+    width:100%;
+    padding-top:100px;
+    padding-bottom:200px;
+
+}
+
+
 p {
   font-family: 'Comfortaa', cursive;
   font-size: 16px;
