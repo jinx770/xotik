@@ -245,17 +245,12 @@
 
 
 
-    // Event for the done button on the page
     listingButton.addEventListener('click', async () => {
 
-        // Calling our verify and validate inputs function
-        // Should both return true if everythings correctly inputted and the user is logged in
         if (verifyLogin() && validateInputs()) {
 
-            // Refreshing our inputs
             getElements();
 
-            // Post request to add to the database with all relevant fields
             let response = await fetch('/createAnimal', {
                 method: "post",
                 headers: {'Content-Type': 'application/json'},
@@ -276,10 +271,14 @@
 
             });
 
-            // Refreshing the page after the user has clicked the button and the request has gone through
+            alert("Success!")
+            
             setTimeout(() => {
                 location.reload()
-            },1000)
+            },2000)
+
+            console.log(imageUrls[0].length)
+
 
         }
 
