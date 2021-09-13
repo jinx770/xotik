@@ -174,22 +174,70 @@
 // ----------------------------------------------------------------------------------------------------------------------------------
 
 
+    // Function for returning true/false if user is currently logged in when they press the button
+    let verifyLogin = () => {
 
-        let verifyLogin = () => {
+        // Checking to see if theyre signed in by looking for string we store in localstorage if theyre signed out
+        if (currentSession == "null") {
 
-            if (currentSession == "null") {
+            // If theyre signed out then alert them to login in
+            alert("Please login first!")
 
-                alert("Please login first!")
-                loginIcon.click()
-                return false
+            // Open the login UI
+            loginIcon.click()
 
-            } else {
+            // Return false to prevent the user from making a request when they click the button
+            return false
 
-                return true
+        } else {
 
-            }
+            // Return true as they're currently logged in
+            return true
 
         }
+
+    }
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+    // Function to make sure our inputs are validated
+    let validateInputs = () => {
+
+        // Creating an empty array of trues and falses for each input
+        let results = []
+
+        // Function for checking whitespace so no empty inputs with just a space exist
+        let isEmpty = str => !str.trim().length;
+
+        // Function for checking every item in an array is equal to true
+        let checker = arr => arr.every(v => v === true);
+
+        // Looping over all elements with "listing-input" as a class
+        for (let i = 0; i < listingInputs.length; i++) {
+
+            // Getting the values
+            let input = listingInputs[i].value
+
+            // Creating a variable that calls our check if empty function as true or false
+            let result = isEmpty(input) ? false : true
+
+            // Pushing all the results of our true/false input checker to an empty array
+            results.push(result)
+
+        }
+
+        // Calling our function for checking if every item in an array matches
+        // Returning nothing if it does to allow for it to continue
+        // If they don't all match to true, then it'll alert you to correct your inputs
+        checker(results) ? "" : alert("Please make sure all inputs are filled in!")
+
+        // Returning true/false
+        return checker(results)
+
+    }
 
 
 
@@ -197,40 +245,17 @@
 
 
 
-        let validateInputs = () => {
-
-            let results = []
-            let isEmpty = str => !str.trim().length;
-            let checker = arr => arr.every(v => v === true);
-
-            for (let i = 0; i < listingInputs.length; i++) {
-
-                let input = listingInputs[i].value
-                let result = isEmpty(input) ? false : true
-
-                results.push(result)
-
-            }
-
-            checker(results) ? "" : alert("Please make sure all inputs are filled in!")
-
-            return checker (results)
-
-        }
-
-
-
-    // ----------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
+    // Event for the done button on the page
     listingButton.addEventListener('click', async () => {
 
+        // Calling our verify and validate inputs function
+        // Should both return true if everythings correctly inputted and the user is logged in
         if (verifyLogin() && validateInputs()) {
 
+            // Refreshing our inputs
             getElements();
 
+            // Post request to add to the database with all relevant fields
             let response = await fetch('/createAnimal', {
                 method: "post",
                 headers: {'Content-Type': 'application/json'},
@@ -251,13 +276,11 @@
 
             });
 
+            // Refreshing the page after the user has clicked the button and the request has gone through
             setTimeout(() => {
                 location.reload()
             },1000)
 
         }
-
-
-
 
     });
