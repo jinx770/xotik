@@ -105,7 +105,6 @@ p {
   transition: 0.4s;
 
   &:hover {
-    font-weight: 600;
     border: 1px solid #F8F1DE;
     background: none;
   }
@@ -637,14 +636,18 @@ input:-webkit-autofill:hover {
 // xotik about
 
 .hero {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
   margin: auto;
-  padding-top: 10%;
-  padding-left: 8%;
+  top: 25%;
+  left: 8%;
 }
 
 .xotik {
-  font-family: "Source Sans Pro";
+  font-family: 'Montserrat', sans-serif;
   font-size: 10vw;
+  font-weight: 700;
   color: #f4edda;
   padding-bottom: 2%;
 }
@@ -708,6 +711,7 @@ input:-webkit-autofill:hover {
   border-bottom: 1px solid $offwhite;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
   margin: auto;
 }
@@ -723,13 +727,28 @@ input:-webkit-autofill:hover {
 }
 
 .who-text {
-  width: 47%;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.who-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+}
+
+
 
 .who-head {
   margin-bottom: 30px;
   font-size: 40px;
 }
+
 // FAQ Section >> Who We Are page
 .faq {
   padding-bottom: 60px;
@@ -746,7 +765,7 @@ input:-webkit-autofill:hover {
 }
 
 .faq-content {
-  width: 50%;
+  width: 60%;
   margin: auto;
 }
 
@@ -794,6 +813,7 @@ input:-webkit-autofill:hover {
 .safety {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
   margin: auto;
   padding-bottom: 60px;
@@ -816,7 +836,21 @@ input:-webkit-autofill:hover {
 }
 
 .safety-text {
-  width: 47%;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.safety-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  height: 80%;
+  margin: auto;
 }
 // Contact Section >> Who We Are page
 .contact {
