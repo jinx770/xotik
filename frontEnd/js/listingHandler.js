@@ -245,41 +245,38 @@
 
 
 
-    // Event for the done button on the page
     listingButton.addEventListener('click', async () => {
 
-        // Calling our verify and validate inputs function
-        // Should both return true if everythings correctly inputted and the user is logged in
         if (verifyLogin() && validateInputs()) {
 
-            // Refreshing our inputs
             getElements();
 
-            // Post request to add to the database with all relevant fields
-            let response = await fetch('/createAnimal', {
-                method: "post",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
+            // let response = await fetch('/createAnimal', {
+            //     method: "post",
+            //     headers: {'Content-Type': 'application/json'},
+            //     body: JSON.stringify({
+            //
+            //         name: nameInput,
+            //         type: typeInput,
+            //         url: imageUrls,
+            //         price: parseInt(priceInput),
+            //         rating: `${Math.floor(Math.random() * 11)}/10`,
+            //         description: descriptionInput,
+            //         quantity: 10,
+            //         owner: currentSession,
+            //         license: licenseInput,
+            //         delivery: deliveryInput
+            //
+            //     })
+            //
+            // });
+            //
+            // setTimeout(() => {
+            //     location.reload()
+            // },1000)
 
-                    name: nameInput,
-                    type: typeInput,
-                    url: imageUrls,
-                    price: parseInt(priceInput),
-                    rating: `${Math.floor(Math.random() * 11)}/10`,
-                    description: descriptionInput,
-                    quantity: 10,
-                    owner: currentSession,
-                    license: licenseInput,
-                    delivery: deliveryInput
+            console.log(imageUrls)
 
-                })
-
-            });
-
-            // Refreshing the page after the user has clicked the button and the request has gone through
-            setTimeout(() => {
-                location.reload()
-            },1000)
 
         }
 
