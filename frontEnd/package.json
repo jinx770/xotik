@@ -12,6 +12,7 @@
     "bootstrap": "^5.1.0",
     "dotenv": "^10.0.0",
     "filereader": "^0.10.3",
+    "grunt-cli": "^1.4.3",
     "grunt-contrib-sass": "^2.0.0",
     "grunt-sass": "^3.1.0",
     "jquery": "^3.6.0",
