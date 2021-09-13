@@ -212,6 +212,8 @@
 
             }
 
+            checker(results) ? "" : alert("Please make sure all inputs are filled in!")
+
             return checker (results)
 
         }
@@ -254,6 +256,7 @@
             },1000)
 
         }
+
 
 
 
