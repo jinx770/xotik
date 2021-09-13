@@ -77,6 +77,13 @@ p {
   margin: none;
 }
 
+.results {
+    text-align: center;
+    width:100%;
+    padding-bottom:250px;
+    padding-top:150px;
+}
+
 .button-primary {
   display: flex;
   justify-content: center;
@@ -93,6 +100,7 @@ p {
   border-radius: 50px;
   transition: 0.4s;
 }
+
 .button-primary:hover {
   font-weight: 600;
   border: 1px solid #F8F1DE;

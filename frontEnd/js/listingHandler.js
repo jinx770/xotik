@@ -9,6 +9,7 @@
 
         window.fileInput = document.querySelector(".ignore-me") || "";
         window.imageHolder = document.querySelector(".test-div-images") || "";
+        window.loginIcon = document.querySelector(".fa-user")
 
         window.nameInput = document.querySelector("#name").value
         window.typeInput = document.querySelector("#type").value
@@ -17,7 +18,7 @@
         window.licenseInput = document.querySelector("#license").checked
         window.deliveryInput = document.querySelector("#delivery").checked
         window.descriptionInput = document.querySelector("#description").value
-
+        window.listingInputs = document.querySelectorAll(".listing-input") || "";
 
     }
 
@@ -174,36 +175,85 @@
 
 
 
+        let verifyLogin = () => {
 
-    listingButton.addEventListener('click', async () => {
+            if (currentSession == "null") {
 
-        getElements();
+                alert("Please login first!")
+                loginIcon.click()
+                return false
 
-        let object = {
+            } else {
 
-            name: nameInput,
-            type: typeInput,
-            url: imageUrls,
-            price: parseInt(priceInput),
-            rating: `${Math.floor(Math.random() * 11)}/10`,
-            description: descriptionInput,
-            quantity: 10,
-            owner: currentSession,
-            license: licenseInput,
-            delivery: deliveryInput,
+                return true
+
+            }
 
         }
 
-        // console.log("Disabled the database while I fix something")
 
-        let response = await fetch('/createAnimal', {
-            method: "post",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(object)
-        }, (data, status) => {
-            console.log(status)
-            // location.reload();
-        });
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+        let validateInputs = () => {
+
+            let results = []
+            let isEmpty = str => !str.trim().length;
+            let checker = arr => arr.every(v => v === true);
+
+            for (let i = 0; i < listingInputs.length; i++) {
+
+                let input = listingInputs[i].value
+                let result = isEmpty(input) ? false : true
+
+                results.push(result)
+
+            }
+
+            return checker (results)
+
+        }
+
+
+
+    // ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+    listingButton.addEventListener('click', async () => {
+
+        if (verifyLogin() && validateInputs()) {
+
+            getElements();
+
+            let response = await fetch('/createAnimal', {
+                method: "post",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+
+                    name: nameInput,
+                    type: typeInput,
+                    url: imageUrls,
+                    price: parseInt(priceInput),
+                    rating: `${Math.floor(Math.random() * 11)}/10`,
+                    description: descriptionInput,
+                    quantity: 10,
+                    owner: currentSession,
+                    license: licenseInput,
+                    delivery: deliveryInput
+
+                })
+
+            });
+
+            setTimeout(() => {
+                location.reload()
+            },1000)
+
+        }
 
 
 
