@@ -230,9 +230,15 @@ input:-webkit-autofill:hover {
   margin-top: 30%;
 }
 
-.card-img img {
+.card-img {
   width: 100%;
-  overflow: hidden;
+  height: 60%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 .ignore-me {
@@ -252,10 +258,11 @@ input:-webkit-autofill:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 21%;
+  width: 250px;
   margin: auto;
-  max-height: 300px;
-  padding-bottom: 4%;
+  height: 300px;
+  margin: 0 15px 60px 15px;
+
 }
 
 .top-info {
@@ -616,12 +623,11 @@ input:-webkit-autofill:hover {
   height: auto;
 }
 
-
 .background-image {
   background-image: url("../img/gecko.jpg");
-  height:100vh;
+  height: 100vh;
   width: 100vw;
-  background-position:center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
   position: relative;
@@ -632,7 +638,7 @@ input:-webkit-autofill:hover {
 
 .hero {
   margin: auto;
-  padding-top: 15%;
+  padding-top: 10%;
   padding-left: 8%;
 }
 
@@ -679,27 +685,30 @@ input:-webkit-autofill:hover {
   justify-content: space-between;
   align-items: center;
   width: 70%;
-}
+
   .input,
   .select {
     width: 28%;
   }
+}
 
 .all-listings {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 90%;
   margin: auto;
+  margin-bottom: 60px;
 }
-
 // WHO WE ARE PAGE :::::::::::::::::::::::::::
-
 // Who Section >> Who We Are page
 .who {
-  padding-top: 8%;
+  padding-top: 200px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid $offwhite;
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 
@@ -709,7 +718,7 @@ input:-webkit-autofill:hover {
 
 .who-img {
   width: 100%;
-  height:100%;
+  height: 100%;
   margin: auto;
 }
 
@@ -718,26 +727,28 @@ input:-webkit-autofill:hover {
 }
 
 .who-head {
-  padding-bottom: 1.5%;
-}
-
-
-hr {
-  margin-top: 2%;
-  width: 80%;
+  margin-bottom: 30px;
+  font-size: 40px;
 }
 // FAQ Section >> Who We Are page
+.faq {
+  padding-bottom: 60px;
+  padding-top: 60px;
+  width: 90%;
+  margin: auto;
+  border-bottom: 1px solid $offwhite;
+}
+
 .faq-head {
   text-align: center;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  font-size: 40px;
+  margin-bottom: 30px;
 }
 
-.faq {
+.faq-content {
+  width: 50%;
   margin: auto;
-  width: 40%;
 }
-
 
 .collapsible {
   background-color: $offwhite;
@@ -754,7 +765,8 @@ hr {
   border-radius: 35px;
 }
 
-.active, .collapsible:hover {
+.active,
+.collapsible:hover {
   // background-color: #555;
 }
 
@@ -771,24 +783,27 @@ hr {
 }
 
 .contents {
-  padding: 0px 18px;
-  padding-top: 2%;
+  padding: 2% 18px 0;
   margin-bottom: 2%;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
 // Safety Section >> Who We Are page
+
 .safety {
-  padding-top: 3%;
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
   margin: auto;
+  padding-bottom: 60px;
+  padding-top: 60px;
+  border-bottom: 1px solid $offwhite;
 }
 
 .safety-head {
-  padding-bottom: 1.5%;
+  margin-bottom: 30px;
+  font-size: 40px;
 }
 
 .safety-img-container {
@@ -803,26 +818,32 @@ hr {
 .safety-text {
   width: 47%;
 }
-
 // Contact Section >> Who We Are page
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 60px auto;
+}
 
 .contact-head {
   text-align: center;
-  padding-top: 1%;
-  padding-bottom: 2%;
+  margin-bottom: 30px;
+  font-size: 40px;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: 100%;
   left: 0;
   right: 0;
   margin: auto;
 }
 
-.contact-name,
-.contact-email {
+.contact-email,
+.contact-name {
   background: none;
   margin-bottom: 8%;
   padding-bottom: 2%;
@@ -852,10 +873,7 @@ hr {
   padding-top: 3%;
   padding-bottom: 3%;
 }
-
-
 // CREATE LISTING PAGE :::::::::::::::::::::::::::
-
 .listing-images-section {
   margin-top: 60px;
   margin-bottom: 100px;
@@ -867,7 +885,6 @@ hr {
 
 .images {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   margin-top: 30px;
   width: 100%;
@@ -879,8 +896,10 @@ hr {
 
 .test-div-images {
   display: flex;
+  flex-direction: row;
   height: auto;
   flex-wrap: wrap;
+  width: 60%;
 
   img {
     margin: 5px;
@@ -895,45 +914,6 @@ hr {
     }
   }
 }
-
-.trash {
-  display: none;
-  transition:0.4s ease;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  top: 0px;
-  left: 0px;
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
-  background: rgba(#282828, 0.25);
-  margin: 5px 0 0 5px;
-  cursor: pointer;
-  font-size: 30px;
-  z-index: 999;
-  transition:0.4s ease;
-  color: $red;
-
-  &:hover {
-    .new-image {
-      opacity: 0.5;
-    }
-  }
-}
-
-.new-image {
-  position: relative;
-  transition: 0.4s ease;
-
-  &:hover {
-    .trash {
-        transition: 0.4s ease;
-      display: flex;
-    }
-  }
-}
-
 
 .add-img-btn {
   width: 150px;
@@ -957,6 +937,44 @@ hr {
     font-size: 30px;
     opacity: 0.4;
     transition: 0.5s ease;
+  }
+}
+
+.trash {
+  display: none;
+  transition: 0.4s ease;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  background: rgba(#282828, 0.25);
+  margin: 5px 0 0 5px;
+  cursor: pointer;
+  font-size: 30px;
+  z-index: 999;
+  transition: 0.4s ease;
+  color: $red;
+
+  &:hover {
+    .new-image {
+      opacity: 0.5;
+    }
+  }
+}
+
+.new-image {
+  position: relative;
+  transition: 0.4s ease;
+
+  &:hover {
+    .trash {
+      transition: 0.4s ease;
+      display: flex;
+    }
   }
 }
 
@@ -1232,7 +1250,6 @@ hr {
     opacity: 0.5;
   }
 }
-
 // cart page :::::::::::::::::::::::::::
 
 .cart-page-content {
@@ -1240,7 +1257,6 @@ hr {
   flex-direction: column;
   justify-content: flex-start;
   min-height: 600px;
-
 }
 
 .cart-page-header {
@@ -1266,7 +1282,6 @@ hr {
   width: 97%;
   height: 80%;
   margin: auto;
-
 }
 
 .cart-page-img {
@@ -1316,13 +1331,11 @@ hr {
   align-items: center;
 }
 
-.checkout-btn  {
+.checkout-btn {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
-
-
 // footer begins ::::::::::::::::::::::::::::::::::
 
 .footer {
