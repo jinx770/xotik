@@ -20,10 +20,13 @@
 
   <!-- header begins -->
 
+<div class="header-background"></div>
+<div class="header-background-blur"></div>
+
   <div class="header">
     <div class="header-content">
       <div class="header-nav">
-        <img class="header-logo" src="img/logo.svg" alt="">
+        <img class="header-logo" id="logoBtn" src="img/logo.svg" alt="">
         <div class="nav-item" id="animalsBtn">
           <h5>Animals</h5>
         </div>
@@ -52,26 +55,63 @@
     <!-- <div class="header-arrow" id="#headerArrow"></div> -->
     <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
     </div>
-      <div class="login-popover-content" id="loginContent">
-        <h4>Log In</h4>
-        <input class="input" placeholder="Username" type="text">
-        <input class="input" placeholder="Password" type="password">
-        <button class="button-secondary">Log In</button>
-        <h6 class="create-account">Create Account</h6>
-      </div>
+    <div class="login-popover-content" id="loginContent">
+      <h4 id="sessionHeader" >Log In</h4>
+      <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
+      <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
+      <button id="submitLogin" class="button-secondary">Log In</button>
+      <h6 class="create-account" id="createAccountBtn">Create Account</h6>
+    </div>
 
-      <div class="cart-popover-content" id="cartContent">
-          <h4>Cart</h4>
-          <h6>Cart is empty</h6>
+    <div class="create-account-popover-content" id="createAccountContent">
+      <h4>Create Account</h4>
+      <input class="input" placeholder="Username" type="text">
+      <input class="input" placeholder="Password" type="password">
+      <button class="button-secondary" id="signUpBtn">Sign Up</button>
+    </div>
+
+
+    <!-- if cart is empty -->
+    <div class="empty-cart-content" id="emptyCartContent">
+      <h4>Cart</h4>
+      <h6>Cart is empty</h6>
+    </div>
+
+    <!-- if cart has items -->
+    <div class="full-cart-content" id="fullCartContent">
+      <h4 class="cart-header">Cart</h4>
+      <div class="cart-item-content">
+        <div class="cart-item">
+          <div class="cart-item-img">
+            <img src="" alt="">
+          </div>
+          <div class="cart-item-text">
+            <h5 class="cart-item-title">Slinky Lizard</h5>
+            <div class="cart-item-text-row">
+              <h6 class="cart-item-price">$499</h6>
+              <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
+            </div>
+          </div>
+        </div>
+
       </div>
+      <h6 class="check-out-btn" id="checkOutBtn">Check Out</h6>
+    </div>
 
   </div>
-
   <!-- header popover end -->
 
   <!-- header ENDS -->
 
 
+  <div class="hero" id="heroSection">
+    <h2 class="xotik">XOTIK</h2>
+    <p class="xotik-about">NZ and AU’s finest, legal, <br>
+      exotic pets. </p>
+  </div>
+  <div class="explore">
+    <button class="explore-btn" type="button" name="button">Explore</button>
+  </div>
 
   <div class="background-image">
     <div class="hero">
@@ -85,195 +125,35 @@
   </div>
 
   <!-- All Listings -->
-  <h1 class="listings-head">All Listings</h1>
+  <h1 class="listings-head"  id="listingSection">All Listings</h1>
+
+  <div class="search">
+    <div class="inputs">
+      <select class="select" value="">
+        <option value="" class="disabled-option" disabled selected hidden>Pet Type</option>
+        <option value="">Aquatic</option>
+        <option value="">Cat</option>
+        <option value="">Reptile</option>
+      </select>
+      <select class="select" value="">
+        <option value="" class="disabled-option" disabled selected hidden>Filter</option>
+        <option value="">Lowest to highest</option>
+        <option value="">Highst to lowest</option>
+      </select>
+      <input class="input" type="text" name="" placeholder="Search" value="">
+    </div>
+
+    <div class="search-button">
+      <button class="button-primary" type="button" name="button">Search</button>
+    </div>
 
     <!-- Search Container Ends -->
 
   <div class="all-listings">
-    <div class="card col">
-      <div class="top-info">
-        <div class="username">
-          <h5>username</h5>
-        </div>
-        <div class="rating">
-          <h5>4.5#</h5>
-        </div>
-      </div>
-      <div class="card-img">
-        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-        <img src="" alt="">
-      </div>
-      <div class="bottom-info">
-        <div class="title">
-          <h4>Listing Tilte</h4>
-        </div>
-        <div class="price">
-          <h5>$499</h5>
-        </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="top-info">
-        <div class="username">
-          <h5>username</h5>
-        </div>
-        <div class="rating">
-          <h5>4.5#</h5>
-        </div>
+      <div class="results">
+          <h5> Loading results... </h5>
       </div>
-      <div class="card-img">
-        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-        <img src="" alt="">
-      </div>
-      <div class="bottom-info">
-        <div class="title">
-          <h4>Listing Tilte</h4>
-        </div>
-        <div class="price">
-          <h5>$499</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="top-info">
-        <div class="username">
-          <h5>username</h5>
-        </div>
-        <div class="rating">
-          <h5>4.5#</h5>
-        </div>
-      </div>
-      <div class="card-img">
-        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-        <img src="" alt="">
-      </div>
-      <div class="bottom-info">
-        <div class="title">
-          <h4>Listing Tilte</h4>
-        </div>
-        <div class="price">
-          <h5>$499</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="top-info">
-        <div class="username">
-          <h5>username</h5>
-        </div>
-        <div class="rating">
-          <h5>4.5#</h5>
-        </div>
-      </div>
-      <div class="card-img">
-        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-        <img src="" alt="">
-      </div>
-      <div class="bottom-info">
-        <div class="title">
-          <h4>Listing Tilte</h4>
-        </div>
-        <div class="price">
-          <h5>$499</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="top-info">
-        <div class="username">
-          <h5>username</h5>
-        </div>
-        <div class="rating">
-          <h5>4.5#</h5>
-        </div>
-      </div>
-      <div class="card-img">
-        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-        <img src="" alt="">
-      </div>
-      <div class="bottom-info">
-        <div class="title">
-          <h4>Listing Tilte</h4>
-        </div>
-        <div class="price">
-          <h5>$499</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="top-info">
-        <div class="username">
-          <h5>username</h5>
-        </div>
-        <div class="rating">
-          <h5>4.5#</h5>
-        </div>
-      </div>
-      <div class="card-img">
-        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-        <img src="" alt="">
-      </div>
-      <div class="bottom-info">
-        <div class="title">
-          <h4>Listing Tilte</h4>
-        </div>
-        <div class="price">
-          <h5>$499</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="top-info">
-        <div class="username">
-          <h5>username</h5>
-        </div>
-        <div class="rating">
-          <h5>4.5#</h5>
-        </div>
-      </div>
-      <div class="card-img">
-        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-        <img src="" alt="">
-      </div>
-      <div class="bottom-info">
-        <div class="title">
-          <h4>Listing Tilte</h4>
-        </div>
-        <div class="price">
-          <h5>$499</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="top-info">
-        <div class="username">
-          <h5>username</h5>
-        </div>
-        <div class="rating">
-          <h5>4.5#</h5>
-        </div>
-      </div>
-      <div class="card-img">
-        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-        <img src="" alt="">
-      </div>
-      <div class="bottom-info">
-        <div class="title">
-          <h4>Listing Tilte</h4>
-        </div>
-        <div class="price">
-          <h5>$499</h5>
-        </div>
-      </div>
-    </div>
-
     <!-- Card Div Ends -->
   </div>
 
@@ -321,7 +201,7 @@
   </div>
   <!-- footer ends -->
 
-  <script src="../frontEnd/node_modules/jquery/dist/jquery.min.js">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
   </script>
   <script src="js/script.js"></script>
 </body>
