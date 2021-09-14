@@ -151,13 +151,18 @@
 
           window.sessionHeader = document.querySelector("#sessionHeader") || "";
           window.loginPopOver = document.querySelector(".header-popover") || "";
-          window.fileInput = document.querySelector(".ignore-me") || "";
 
+          window.fileInput = document.querySelector(".ignore-me") || "";
           window.usernameInput = document.querySelector("#username") || "";
           window.passwordInput = document.querySelector("#password") || "";
+          window.searchInput = document.querySelector("#searchInput") || "";
+          window.filterInput = document.querySelector("#filterInput") || "";
+          window.allFilterInputs = document.querySelectorAll(".select") || "";
+          window.typeInput = document.querySelector("#typeInput") || "";
 
           window.loginButton = document.querySelector("#submitLogin") || "";
           window.createAccountButton = document.querySelector("#createAccountBtn") || "";
+          window.searchButton = document.querySelector("#searchButton") || "";
           window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
           window.listingButton = document.querySelector(".listing-btn") || "";
 
@@ -431,17 +436,40 @@
 
 
 
+    refreshElements()
 
-    let searchQuery = ( ... args ) => {
 
-        console.log('a')
+    let filterCards = ( ... args ) => {
+        console.log(args)
+        refreshElements();
+
+        for (card of cards) {
+            console.log(card)
+        }
+
 
 
 
     }
 
+    for (input of allFilterInputs) {
+
+        refreshElements();
+
+        input.addEventListener('change', () => {
+
+            let typeEmpty = typeInput.value !== "" ? false : true;
+            let filterEmpty = filterInput.value !== "" ? false : true;
+            let searchEmpty = searchInput.value !== "" ? false : true;
+
+            !typeEmpty ? filterCards(typeInput.value) : ""
+            !filterEmpty ? filterCards(filterInput.value) : ""
+            !searchEmpty ? searchQuery(searchInput.value) : ""
 
 
+        })
+
+    }
 
 
 

@@ -15,7 +15,7 @@
         window.typeInput = document.querySelector("#type").value
         window.locationInput = document.querySelector("#location").value
         window.priceInput = document.querySelector("#price").value
-        window.licenseInput = document.querySelector("#license").checked
+        window.licenseInput = document.querySelector("#licence").checked
         window.deliveryInput = document.querySelector("#delivery").checked
         window.descriptionInput = document.querySelector("#description").value
         window.listingInputs = document.querySelectorAll(".listing-input") || "";
@@ -272,7 +272,7 @@
             });
 
             alert("Success!")
-            
+
             setTimeout(() => {
                 location.reload()
             },2000)
