@@ -1,0 +1,29 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "filereader": "^0.10.3",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-sass": "^2.0.0",
+    "grunt-sass": "^3.1.0",
+    "jquery": "^3.6.0",
+    "node-sass": "^6.0.1",
+    "ruby": "^0.6.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.4.1",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-contrib-uglify": "^5.0.1",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}

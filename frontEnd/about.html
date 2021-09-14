@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title></title>
+</head>
+
+<body>
+
+  <!-- header begins -->
+
+  <div class="header-background"></div>
+  <div class="header-background-blur"></div>
+  <div class="header">
+    <div class="header-content">
+      <div class="header-nav">
+        <img class="header-logo" id="logoBtn" src="img/logo.svg" alt="">
+        <div class="nav-item" id="animalsBtn">
+          <h5>Animals</h5>
+        </div>
+        <div class="nav-item" id="whoBtn">
+            <h5>Who We Are</h5>
+        </div>
+        <div class="nav-item" id="listingBtn">
+            <h5>Create Listing</h5>
+        </div>
+      </div>
+
+      <div class="header-icons">
+        <i class="fa fa-user" aria-hidden="true" id="user"></i>
+        <i class="fa fa-shopping-cart" aria-hidden="true" id="cart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- header popover begins -->
+
+  <div class="header-popover" id="headerPopover">
+    <!-- <div class="header-arrow" id="#headerArrow"></div> -->
+    <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+    <div class="login-popover-content" id="loginContent">
+      <h4 id="sessionHeader">Log In</h4>
+      <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
+      <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
+      <button id="submitLogin" class="button-secondary">Log In</button>
+      <h6 class="create-account" id="createAccountBtn">Create Account</h6>
+    </div>
+
+    <div class="cart-popover-content" id="cartContent">
+      <h4>Cart</h4>
+      <h6>Cart is empty</h6>
+    </div>
+
+  </div>
+
+  <!-- header popover end -->
+
+  <!-- header ENDS -->
+
+  <div class="who">
+    <div class="about-content">
+      <div class="who-text">
+        <div class="who-text-content">
+          <h1 class="who-head">Who We Are</h1>
+          <p class="who-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+      <div class="who-img-container">
+        <img class="who-img" src="img/who.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- Safty Section -->
+  <div class="safety">
+    <div class="about-content">
+      <div class="safety-img-container">
+        <img class="safety-img" src="img/bengal.jpg" alt="">
+      </div>
+      <div class="safety-text">
+        <div class="safety-text-content">
+          <h1 class="safety-head">Animal Safety</h1>
+          <p class="safety-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="faq">
+    <div class="faq-content">
+      <h1 class="faq-head">FAQ's</h1>
+      <button class="collapsible">Do I need a lisence?</button>
+      <div class="contents">
+        <p>Each listing will show if a lisence is required or not depending on the animal.<br>If a lisence if required, you will need to submit proof before purchase.</p>
+      </div>
+
+      <button class="collapsible">What animals can I own?</button>
+      <div class="contents">
+        <p>Across Australia and New Zealand, there are a number of exotic pets legally able to be owned. Some of these are: Axolots, Chelonians, Turtles, Tortoises, Dragons, Leopard Gecko, Newts, Skinks, Grey African Parrots & more. <br>All animals
+          listed on our site are legal to own within Australia and NZ.</p>
+      </div>
+
+      <button class="collapsible">How will I know what to feed my new pet?</button>
+      <div class="contents">
+        <p>Upon the completion of a sale, the seller will provide you with in depth information to equip you to care for your new friend.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Contact Section -->
+  <div class="contact">
+    <h1 class="contact-head">Enquire Online</h1>
+
+    <input class="input" type="text" name="" value="" placeholder="Full Name">
+    <input class="input" type="email" name="" value="" placeholder="Email">
+
+    <textarea id="description" class="textarea" name="name" rows="8" cols="80" placeholder="Description" value="" required></textarea>
+    <br><br>
+    <button class="button-secondary" type="button" name="button">Send</button>
+  </div>
+  <!-- footer begins -->
+
+  <div class="footer">
+
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>XOTIK</h3>
+        <h6>Copyright © 2021, XOTIK</h6>
+      </div>
+      <div class="footer-nav">
+        <div class="nav-item" id="animalsBtn">
+          <h6>Animals</h6>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h6>Who We Are</h6>
+        </div>
+        <div class="nav-item" id="trustBtn">
+          <h6>Trust & Safety</h6>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h6>Create Listing</h6>
+        </div>
+        <div class="nav-item" id="contactBtn">
+          <h6>Contact</h6>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <div class="newsletter-header">
+          <h5>Sign up to our newsletter.</h5>
+        </div>
+        <div class="newsletter-form">
+          <div class="newsletter-form-input">
+            <input class="input" placeholder="Email" type="text" value="">
+          </div>
+          <button class="button-newsletter">Sign Up</button>
+        </div>
+      </div>
+    </div>
+    <!-- footer-content ends -->
+
+  </div>
+  <!-- footer ends -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
