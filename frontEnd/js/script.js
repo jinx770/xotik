@@ -416,18 +416,16 @@
       let createAccHandler = async () => {
         if (!loggedIn) {
 
-          console.log(usernameCreate.value);
-          console.log(passwordCreate.value);
+          let [fullName, phoneNo, email, description] = '';
           let username = usernameCreate.value;
           let password = passwordCreate.value;
-
 
           let response = await fetch('/createUser', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
 
-              fullName: '.',
+              fullName: fullName,
               username: username,
               phoneNo: '.',
               email: '.',
