@@ -92,10 +92,13 @@ app.delete('/removeAnimal', async ( req, res ) => {
 app.post('/createUser', async ( req, res ) => {
 
     // Shorthand variable creation
-    let [ fullName, username, phoneNo, email, description, password ] = req.body
+    let { fullName, username, phoneNo, email, description, password } = req.body;
+
+    // Hashes the password through function
+    let hashedPassword = await functions.HashPassword(password)
 
     // Calling the create user function with relevant fields
-    return res.send(await functions.CreateUser( fullName, username, phoneNo, email, description, password ))
+    return res.send(await functions.CreateUser( fullName, username, phoneNo, email, description, hashedPassword ))
 
 })
 
@@ -118,6 +121,10 @@ app.get('/findUser', async ( req, res ) => {
 
     // Attempts to find a user with the query, returning either true or false
     return res.send(await functions.FindUser(query))
+
+
+    // res.send(await functions.CheckPassword( hashedPassword, inputPassword ))
+
 
 })
 

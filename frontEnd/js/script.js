@@ -178,7 +178,10 @@
           window.filterInput = document.querySelector("#filterInput") || "";
           window.allFilterInputs = document.querySelectorAll(".select") || "";
           window.typeInput = document.querySelector("#typeInput") || "";
+          window.usernameCreate = document.querySelector("#usernameCreate") || "";
+          window.passwordCreate = document.querySelector("#passwordCreate") || "";
 
+          window.signUpButton = document.querySelector("#signUpBtn") || "";
           window.loginButton = document.querySelector("#submitLogin") || "";
           window.createAccountButton = document.querySelector("#createAccountBtn") || "";
           window.searchButton = document.querySelector("#searchButton") || "";
@@ -300,6 +303,8 @@
           // Sending a request to the api we made in the backend
           // Checks to see if the inputted value, u exists, if it does then return true else, false
           let result = await fetch(`/findUser?q=${u}`);
+          let resultP = await fetch(`/checkPassword?q=${p}`);
+
 
           // Saves the results as rawData
           let rawData = await result.json();
@@ -403,6 +408,39 @@
 
   // ------------------------------------------------------------------------------------------------------------------------------------
 
+      let createAccHandler = async () => {
+
+        //  all accounts made as of now on will have a hashed password
+        
+        // If not logged in continue
+        if (!loggedIn) {
+          let username = usernameCreate.value;
+          let password = passwordCreate.value;
+
+          // Posts/sends data to the route found in server
+          let response = await fetch('/createUser', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+
+              // leave '.' in so that it creates a property (no need to create the property just edit in the future)
+              fullName: '.',
+              username: username,
+              phoneNo: '.',
+              email: '.',
+              description: '.',
+              password: password
+
+            })
+          })
+          .catch(err => {
+            console.log('Error : ' + err);
+          })
+        }
+      }
+
+  // ------------------------------------------------------------------------------------------------------------------------------------
+
 
 
       // Loops every .1 second running the following
@@ -445,6 +483,11 @@
               }
 
           });
+
+          // Runs createAccHandler when you click sign up btn
+          signUpButton.addEventListener('click', async () => {
+            createAccHandler();
+          })
 
       }
 

@@ -172,7 +172,7 @@
         let [ fullName, username, phoneNo, email, description, password ] = args
 
         // Requesting info from the database, using the username as a query
-        let checkUser = await FindUser({username});
+        let checkUser = await FindUser(username);
 
         // Checking to see if the returned data is a document, if its not then switch it to ""
         let newUser = checkUser[0] && checkUser[0].username || ""
@@ -181,6 +181,24 @@
         newUser === username
             ? console.log("User already exists")
             : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
+    }
+
+
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    let HashPassword = async ( password ) => {
+
+      // Bcrypt - how many hashing rounds are done, more rounds = more encrypted
+      const saltRounds = 2;
+
+      // Hashing/Encrypting password
+      const hashedPassword = bcrypt.hashSync(password, saltRounds);
+
+      return hashedPassword;
+
     }
 
 
@@ -258,8 +276,8 @@
     console.log("Running...")
 
     // Export our functions to the server.js so they still get ran after we require them
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser }
-
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword}
+    //rane added password
 
 
 })();
