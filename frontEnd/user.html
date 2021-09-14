@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/style.css">
   <title></title>
 </head>
@@ -22,7 +23,6 @@
 
   <div class="header-background"></div>
   <div class="header-background-blur"></div>
-
   <div class="header">
     <div class="header-content">
       <div class="header-nav">
@@ -31,10 +31,10 @@
           <h5>Animals</h5>
         </div>
         <div class="nav-item" id="whoBtn">
-            <h5>Who We Are</h5>
+          <h5>Who We Are</h5>
         </div>
         <div class="nav-item" id="listingBtn">
-            <h5>Create Listing</h5>
+          <h5>Create Listing</h5>
         </div>
       </div>
 
@@ -44,8 +44,6 @@
       </div>
     </div>
   </div>
-
-  <!-- header popover begins -->
 
   <div class="header-popover" id="headerPopover">
     <!-- <div class="header-arrow" id="#headerArrow"></div> -->
@@ -98,64 +96,70 @@
   <!-- header popover end -->
 
   <!-- header ENDS -->
+  <div class="content user-content">
 
+    <div class="user-details">
+      <div class="user-details-header">
+        <h3>username</h3>
+        <h3>8/10</h3>
+      </div>
 
-  <div class="background-image">
-  </div>
+      <div class="user-detals-content">
+        <div class="user-details-left-col">
+          <h5>Full Name</h5>
+          <h5>email@email.com</h5>
+          <h5>021CONTACT</h5>
+        </div>
 
-  <div class="hero">
-    <h2 class="xotik">XOTIK</h2>
-    <p class="xotik-about">NZ and AU’s finest, legal, <br>
-      exotic pets. </p>
-    <div class="explore">
-      <button class="button-primary" type="button" name="button">EXPLORE</button>
-    </div>
-  </div>
-
-  <!-- All Listings -->
-  <h1 class="listings-head" id="listingSection">All Listings</h1>
-
-  <div class="filter-section">
-
-    <div class="search">
-      <input class="input" type="text" name="" placeholder="Search" value="">
+        <div class="user-details-right-col">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum placeat molestiae corrupti natus sapiente ducimus! Non vel eveniet at laudantium aperiam odit, tempora officiis illo quaerat consectetur enim facilis ducimus?</p>
+        </div>
+      </div>
     </div>
 
-    <div class="inputs">
-      <select id="typeInput" class="select" value="">
-        <option value="" class="disabled-option" disabled selected hidden>Pet Type</option>
-        <option value="all">All Listings</option>
-        <option value="aquatic">Aquatic</option>
-        <option value="feline">Feline</option>
-        <option value="feathered">Feathered</option>
-        <option value="reptile">Reptile</option>
-      </select>
-      <select id="filterInput" class="select" value="">
-        <option value="" class="disabled-option" disabled selected hidden>Filter</option>
-        <option value="">None</option>
-        <option value="viewed">Most Viewed</option>
-        <option value="lowest">Lowest to Highest</option>
-        <option value="highest">Highest to Lowest</option>
-      </select>
+    <div class="user-listing-section">
+      <div class="user-listing-header">
+        <h5>Your Listings</h5>
+        <h6>Click to edit</h6>
+      </div>
+
+      <div class="user-listing">
+        <div class="user-listing-left">
+          <div class="user-listing-images">
+            <img src="img/heo-alt.jpg" alt="">
+            <img src="img/heo-alt.jpg" alt="">
+            <img src="img/heo-alt.jpg" alt="">
+            <img src="img/heo-alt.jpg" alt="">
+          </div>
+          <div class="user-listing-details">
+            <h4 contenteditable="true">Title</h4><br>
+            <h5>Location</h5><br>
+            <h5>Checkboxes</h5><br>
+            <h5>Price</h5><br>
+            <h6>Delete Listing</h6>
+          </div>
+        </div>
+
+        <div class="user-listing-description">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
     </div>
 
 
+
+
+
+
+
+
+
   </div>
+  <!-- // content ends -->
 
 
-
-  <!-- Search Container Ends -->
-
-  <div class="all-listings">
-
-    <div class="results">
-      <h5> Loading results... </h5>
-    </div>
-    <!-- Card Div Ends -->
-  </div>
-
-
-  <!-- footer begins -->
+  <!-- footer -->
 
   <div class="footer">
 
@@ -200,6 +204,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
+  <script src="js/listingHandler.js"></script>
 </body>
 
 </html>

@@ -12,14 +12,14 @@
 
     if (window.location.href = 'index.html') {
 
-      // $([document.documentElement, document.body]).animate({
-      //   scrollTop: $("#listingSection").offset().top
-      // }, 1500);
-      console.log('On inddex.html');
+      $([document.documentElement, document.body]).animate({
+        scrollTop: $("#listingSection").offset().top
+      }, 1500);
+      
 
     } else {
-        // window.location.href = 'index.html';
-        console.log('NOT on inddex.html');
+        window.location.href = 'index.html';
+
     }
 
   });
