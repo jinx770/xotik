@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title></title>
+</head>
+
+<body>
+
+  <!-- header begins -->
+
+  <div class="header-background"></div>
+  <div class="header-background-blur"></div>
+  <div class="header">
+    <div class="header-content">
+      <div class="header-nav">
+        <img class="header-logo" id="logoBtn" src="img/logo.svg" alt="">
+        <div class="nav-item" id="animalsBtn">
+          <h5>Animals</h5>
+        </div>
+        <div class="nav-item" id="whoBtn">
+            <h5>Who We Are</h5>
+        </div>
+        <div class="nav-item" id="listingBtn">
+            <h5>Create Listing</h5>
+        </div>
+      </div>
+
+      <div class="header-icons">
+        <i class="fa fa-user" aria-hidden="true" id="user"></i>
+        <i class="fa fa-shopping-cart" aria-hidden="true" id="cart"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-popover" id="headerPopover">
+    <!-- <div class="header-arrow" id="#headerArrow"></div> -->
+    <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+    <div class="login-popover-content" id="loginContent">
+      <h4 id="sessionHeader" >Log In</h4>
+      <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
+      <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
+      <button id="submitLogin" class="button-secondary">Log In</button>
+      <h6 class="create-account" id="createAccountBtn">Create Account</h6>
+    </div>
+
+    <div class="create-account-popover-content" id="createAccountContent">
+      <h4>Create Account</h4>
+      <input class="input" placeholder="Username" type="text">
+      <input class="input" placeholder="Password" type="password">
+      <button class="button-secondary" id="signUpBtn">Sign Up</button>
+    </div>
+
+
+    <!-- if cart is empty -->
+    <div class="empty-cart-content" id="emptyCartContent">
+      <h4>Cart</h4>
+      <h6>Cart is empty</h6>
+    </div>
+
+    <!-- if cart has items -->
+    <div class="full-cart-content" id="fullCartContent">
+      <h4 class="cart-header">Cart</h4>
+      <div class="cart-item-content">
+        <div class="cart-item">
+          <div class="cart-item-img">
+            <img src="" alt="">
+          </div>
+          <div class="cart-item-text">
+            <h5 class="cart-item-title">Slinky Lizard</h5>
+            <div class="cart-item-text-row">
+              <h6 class="cart-item-price">$499</h6>
+              <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <h6 class="check-out-btn" id="checkOutBtn">Check Out</h6>
+    </div>
+
+  </div>
+  <!-- header popover end -->
+
+  <!-- header ENDS -->
+
+  <div class="content">
+
+    <div class="left-col">
+      <div class="animal-images">
+        <div class="main-image">
+          <img src="img/heo-alt.jpg" alt="">
+        </div>
+        <div class="alt-images">
+          <div class="alt-img">
+
+          </div>
+          <div class="alt-img">
+
+          </div>
+          <div class="alt-img">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- left col ends -->
+
+    <div class="right-col">
+      <div class="listing-details">
+        <div class="listing-top-section">
+          <h6 class="username">Username</h6>
+          <h1 class="animal-name" value="">Slinky Lizard</h1>
+          <div class="listing-row">
+            <h5 class="sellers-location">Sellers location</h5>
+            <div class="delivery-licence">
+              <div class="delivery">
+                <i class="fa fa-check check" aria-hidden="true"></i>
+                <h6>Delivery</h6>
+              </div>
+              <div class="licence">
+                <i class="fa fa-times times" aria-hidden="true"></i>
+                <h6>Licence</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="listing-bottom-section">
+          <div class="listing-desription">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ad ea nam magnam fugiat illo nulla minima numquam molestiae assumenda doloribus repellat, soluta perspiciatis illum doloremque harum, sit, ut quibusdam.
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ad ea nam magnam fugiat illo nulla minima numquam molestiae assumenda doloribus repellat, soluta perspiciatis illum doloremque harum, sit, ut quibusdam.</p>
+          </div>
+        </div>
+        <div class="listing-price">
+          <h2 class="price">$499</h2>
+          <button class="button-secondary">Add to cart</button>
+        </div>
+      </div>
+
+    </div>
+    <!-- right col ends -->
+
+  </div>
+  <!-- page content ends -->
+
+
+  <div class="content">
+
+    <div class="left-col">
+
+    </div>
+    <!-- left col ends -->
+
+    <div class="right-col">
+
+      <!-- <div class="question-block">
+        <div class="question">
+          <h5 class="q">Q:</h5>
+          <h5 class="question-text"></h5>
+        </div>
+        <div class="answer">
+          <h5 class="q">A:</h5>
+            <h5 class="answer-text"></h5>
+        </div>
+      </div> -->
+
+      <div class="ask-question" id="askQuestionForm">
+        <input type="text" class="input question-input" id="questionInput" placeholder="Whats on your mind?" value="">
+        <h6 class="send-btn" id="sendBtn"</id>Send</h6>
+        <i class="fa fa-times question-exit" id="questionExitBtn" aria-hidden="true"></i>
+      </div>
+
+
+    <button class="button-secondary" id="askQuestionBtn" type="button" name="button">Ask Question</button>
+
+    </div>
+    <!-- right col ends -->
+
+  </div>
+
+
+<br><br><br>
+
+
+  <!-- footer begins -->
+
+  <div class="footer">
+
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>XOTIK</h3>
+        <h6>Copyright © 2021, XOTIK</h6>
+      </div>
+      <div class="footer-nav">
+        <div class="nav-item" id="animalsBtn">
+          <h6>Animals</h6>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h6>Who We Are</h6>
+        </div>
+        <div class="nav-item" id="trustBtn">
+          <h6>Trust & Safety</h6>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h6>Create Listing</h6>
+        </div>
+        <div class="nav-item" id="contactBtn">
+          <h6>Contact</h6>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <div class="newsletter-header">
+          <h5>Sign up to our newsletter.</h5>
+        </div>
+        <div class="newsletter-form">
+          <div class="newsletter-form-input">
+            <input class="input" placeholder="Email" type="text" value="">
+          </div>
+          <button class="button-newsletter">Sign Up</button>
+        </div>
+      </div>
+    </div>
+    <!-- footer-content ends -->
+
+  </div>
+  <!-- footer ends -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+  </script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
