@@ -162,7 +162,6 @@
         window.loginPopOver = document.querySelector(".header-popover") || "";
         window.allPrices = document.querySelectorAll(".price") || "";
 
-<<<<<<< HEAD
           window.fileInput = document.querySelector(".ignore-me") || "";
           window.usernameInput = document.querySelector("#username") || "";
           window.passwordInput = document.querySelector("#password") || "";
@@ -179,21 +178,6 @@
           window.searchButton = document.querySelector("#searchButton") || "";
           window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
           window.listingButton = document.querySelector(".listing-btn") || "";
-=======
-        window.fileInput = document.querySelector(".ignore-me") || "";
-        window.usernameInput = document.querySelector("#username") || "";
-        window.passwordInput = document.querySelector("#password") || "";
-        window.searchInput = document.querySelector("#searchInput") || "";
-        window.filterInput = document.querySelector("#filterInput") || "";
-        window.allFilterInputs = document.querySelectorAll(".select") || "";
-        window.typeInput = document.querySelector("#typeInput") || "";
-
-        window.loginButton = document.querySelector("#submitLogin") || "";
-        window.createAccountButton = document.querySelector("#createAccountBtn") || "";
-        window.searchButton = document.querySelector("#searchButton") || "";
-        window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
-        window.listingButton = document.querySelector(".listing-btn") || "";
->>>>>>> b49f944064f79a2e7e83d481f6f80f6f7c6743d1
 
         window.cardParent = document.querySelector(".all-listings") || "";
         window.cards = document.querySelectorAll(".card") || "";
@@ -307,17 +291,9 @@
         // Splitting arguments into variables called u and p for username, password
         let [u, p] = query
 
-<<<<<<< HEAD
-          // Sending a request to the api we made in the backend
-          // Checks to see if the inputted value, u exists, if it does then return true else, false
-          let result = await fetch(`/findUser?q=${u}`);
-          let resultP = await fetch(`/checkPassword?q=${p}`);
-
-=======
         // Sending a request to the api we made in the backend
         // Checks to see if the inputted value, u exists, if it does then return true else, false
         let result = await fetch(`/findUser?q=${u}`);
->>>>>>> b49f944064f79a2e7e83d481f6f80f6f7c6743d1
 
         // Saves the results as rawData
         let rawData = await result.json();
@@ -424,7 +400,7 @@
       let createAccHandler = async () => {
 
         //  all accounts made as of now on will have a hashed password
-        
+
         // If not logged in continue
         if (!loggedIn) {
           let username = usernameCreate.value;
@@ -497,16 +473,13 @@
 
         });
 
-<<<<<<< HEAD
-          // Runs createAccHandler when you click sign up btn
-          signUpButton.addEventListener('click', async () => {
-            createAccHandler();
-          })
+        // Runs createAccHandler when you click sign up btn
+        signUpButton.addEventListener('click', async () => {
+          createAccHandler();
+        })
 
       }
-=======
     }
->>>>>>> b49f944064f79a2e7e83d481f6f80f6f7c6743d1
 
 
 
