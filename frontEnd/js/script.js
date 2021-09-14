@@ -169,6 +169,7 @@
 
           window.sessionHeader = document.querySelector("#sessionHeader") || "";
           window.loginPopOver = document.querySelector(".header-popover") || "";
+          window.allPrices = document.querySelectorAll(".price") || "";
 
           window.fileInput = document.querySelector(".ignore-me") || "";
           window.usernameInput = document.querySelector("#username") || "";
@@ -453,17 +454,31 @@
 
 
 
-    refreshElements()
+    let searchQuery = ( arg ) => {
+        console.log(arg)
+    }
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
 
 
     let filterCards = ( ... args ) => {
-        console.log(args)
-        refreshElements();
 
-        for (card of cards) {
-            console.log(card)
+        refreshElements();
+        let prices = [];
+        let i = -1;
+
+        for (price of allPrices) {
+            i++
+            prices.push([cards[i], price.textContent.replace(/[^0-9]/g,'')])
         }
 
+        prices.sort(function(a, b) {
+            return a - b;
+        });
+
+        console.log(prices)
     }
 
 
@@ -472,23 +487,26 @@
 
 
 
+    let setupFilters = () => {
 
-    for (input of allFilterInputs) {
+        for (input of allFilterInputs) {
 
-        refreshElements();
+            refreshElements();
 
-        input.addEventListener('change', () => {
+            input.addEventListener('change', () => {
 
-            let typeEmpty = typeInput.value !== "" ? false : true;
-            let filterEmpty = filterInput.value !== "" ? false : true;
-            let searchEmpty = searchInput.value !== "" ? false : true;
+                let typeEmpty = typeInput.value !== "" ? false : true;
+                let filterEmpty = filterInput.value !== "" ? false : true;
+                let searchEmpty = searchInput.value !== "" ? false : true;
 
-            !typeEmpty ? filterCards(typeInput.value) : ""
-            !filterEmpty ? filterCards(filterInput.value) : ""
-            !searchEmpty ? searchQuery(searchInput.value) : ""
+                !typeEmpty ? filterCards(typeInput.value) : ""
+                !filterEmpty ? filterCards(filterInput.value) : ""
+                !searchEmpty ? searchQuery(searchInput.value) : ""
 
 
-        })
+            })
+
+        }
 
     }
 
@@ -507,6 +525,7 @@
       handleHomeAnimals();
       refreshElements();
       setupEventListeners();
+      setupFilters();
 
 
 
