@@ -20,8 +20,8 @@
 
   <!-- header begins -->
 
-<div class="header-background"></div>
-<div class="header-background-blur"></div>
+  <div class="header-background"></div>
+  <div class="header-background-blur"></div>
 
   <div class="header">
     <div class="header-content">
@@ -31,13 +31,10 @@
           <h5>Animals</h5>
         </div>
         <div class="nav-item" id="whoBtn">
-          <a href="about.html"><h5>Who We Are</h5></a>
-        </div>
-        <div class="nav-item" id="trustBtn">
-          <h5>Trust & Safety</h5>
+            <h5>Who We Are</h5>
         </div>
         <div class="nav-item" id="listingBtn">
-          <h5>Create Listing</h5>
+            <h5>Create Listing</h5>
         </div>
       </div>
 
@@ -55,7 +52,7 @@
     <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
     </div>
     <div class="login-popover-content" id="loginContent">
-      <h4 id="sessionHeader" >Log In</h4>
+      <h4 id="sessionHeader">Log In</h4>
       <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
       <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
       <button id="submitLogin" class="button-secondary">Log In</button>
@@ -116,9 +113,14 @@
   </div>
 
   <!-- All Listings -->
-  <h1 class="listings-head"  id="listingSection">All Listings</h1>
+  <h1 class="listings-head" id="listingSection">All Listings</h1>
 
-  <div class="search">
+  <div class="filter-section">
+
+    <div class="search">
+      <input class="input" type="text" name="" placeholder="Search" value="">
+    </div>
+
     <div class="inputs">
       <select id="typeInput" class="select" value="">
         <option value="" class="disabled-option" disabled selected hidden>Pet Type</option>
@@ -132,24 +134,23 @@
         <option value="" class="disabled-option" disabled selected hidden>Filter</option>
         <option value="">None</option>
         <option value="viewed">Most Viewed</option>
-        <option value="lowest">Lowest To Highest</option>
-        <option value="highest">Highest To Lowest</option>
+        <option value="lowest">Lowest to Highest</option>
+        <option value="highest">Highest to Lowest</option>
       </select>
-      <input id="searchInput" class="input" type="text" name="" placeholder="Search" value="">
     </div>
 
-    <div class="search-button">
-      <button id="searchButton" class="button-primary" type="button" name="button">Search</button>
-    </div>
 
-    <!-- Search Container Ends -->
   </div>
+
+
+
+  <!-- Search Container Ends -->
 
   <div class="all-listings">
 
-      <div class="results">
-          <h5> Loading results... </h5>
-      </div>
+    <div class="results">
+      <h5> Loading results... </h5>
+    </div>
     <!-- Card Div Ends -->
   </div>
 

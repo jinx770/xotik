@@ -26,18 +26,15 @@
   <div class="header">
     <div class="header-content">
       <div class="header-nav">
-        <img class="header-logo" src="img/logo.svg" id="logoBtn" alt="">
+        <img class="header-logo" id="logoBtn" src="img/logo.svg" alt="">
         <div class="nav-item" id="animalsBtn">
           <h5>Animals</h5>
         </div>
         <div class="nav-item" id="whoBtn">
-            <a href="about.html"><h5>Who We Are</h5></a>
-        </div>
-        <div class="nav-item" id="trustBtn">
-          <h5>Trust & Safety</h5>
+            <h5>Who We Are</h5>
         </div>
         <div class="nav-item" id="listingBtn">
-          <h5>Create Listing</h5>
+            <h5>Create Listing</h5>
         </div>
       </div>
 
@@ -62,8 +59,8 @@
 
     <div class="create-account-popover-content" id="createAccountContent">
       <h4>Create Account</h4>
-      <input class="input" placeholder="Username" type="text">
-      <input class="input" placeholder="Password" type="password">
+      <input autocomplete="off" class="input" placeholder="Username" type="text">
+      <input autocomplete="off" class="input" placeholder="Password" type="password">
       <button class="button-secondary" id="signUpBtn">Sign Up</button>
     </div>
 
@@ -107,22 +104,23 @@
         <h1>Create Listing</h1>
         <br><br>
         <div class="new-listing-form-row">
-          <input id="name" class="listing-input input input-sml" placeholder="Listing Title" type="text" value="" required>
+          <input autocomplete="off" id="name" class="listing-input input input-sml" placeholder="Listing Title" type="text" value="" required>
           <select id="type" class="select" value="" required>
             <option value="" class="disabled-option" disabled selected hidden>Pet Type</option>
             <option value="aquatic">Aquatic</option>
-            <option value="cat">Cat</option>
+            <option value="feline">Feline</option>
+            <option value="feathered">Feathered</option>
             <option value="reptile">Reptile</option>
           </select>
         </div>
         <input id="location" class="listing-input input" placeholder="Your Location" type="text" value="" required>
         <div class="new-listing-form-row">
-          <input id="price" class="listing-input input input-sml" placeholder="Price" type="number" min="1" value="" required>
+          <input autocomplete="off" id="price" class="listing-input input input-sml" placeholder="Price" type="number" min="1" value="" required>
 
           <div class="listing-checkbox">
             <div class="checkbox-row">
-              <input id="licence" class="checkbox" type="checkbox" id="licenseCheck" name="license" required>
-              <label for="scales">
+              <input autocomplete="off" id="licence" class="checkbox" type="checkbox" id="licenceCheck" name="licence" required>
+              <label for="licence">
                 <h6>Licence Required</h6>
               </label>
             </div>
