@@ -250,7 +250,7 @@
 
             // Setting each card up with relevant fields filled out using backticks
             cardParent.innerHTML += `
-                  <div class="card" data="${card.type}">
+                <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-animalType="${card.type}">
                       <div class="top-info">
                           <div class="username">
                               <h5>${card.owner}</h5>
@@ -399,13 +399,20 @@
     // Loops every .1 second running the following
     setInterval(function() {
 
+        refreshElements()
+
         // Loop checks to see if its logged in for when we switch links
         localStorage.getItem("loggedIn") === "true" ? logInStyle() : null
         localStorage.getItem("loggedIn") === "true" ? loggedIn = true : null
 
+        for (card of cards) {
+            card.addEventListener('click', () => {
+                console.log('m')
+                window.location.href="/animalTemplate.html"
+            })
+        }
 
-    }, 100);
-
+    }, 500);
 
 
 
@@ -437,6 +444,7 @@
 
         });
 
+
     }
 
 
@@ -444,62 +452,112 @@
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-    let searchQuery = (arg) => {
+    // Haven't started yet lol
+    let searchQuery = ( arg ) => {
         console.log(arg)
     }
 
 
+
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
+    let sortBy = ( arg ) => {
 
-    let filterCards = (... args) => {
+        let pricesSorted = [];
+        let pricesCard = [];
+        let newArray = [];
 
-        refreshElements();
+        switch (arg) {
+            case 'lowest':
+                for (card of cards) {
+                    pricesSorted.push(card.getAttribute("data-price"));
+                    pricesSorted.sort((a, b) => (a - b));
+                }
+            break;
 
-        let [queryType, parameter] = args
+            case 'highest':
+                for (card of cards) {
+                    pricesSorted.push(card.getAttribute("data-price"));
+                    pricesSorted.sort((a, b) => (a - b));
+                    pricesSorted.reverse()
+                }
+            break;
 
-        if (queryType == "byType") {
+            case 'viewed':
+                console.log("not done yet")
+            break;
 
-            switch (parameter) {
+            default:
+                console.log('not done yet');
+            return;
 
-                case 'aquatic':
-                    console.log("Hide all except aquatic")
-                    break;
+        }
 
-                case 'feline':
-                    console.log("Hide all except feline")
-                    break;
+        for (let i = 0; i < pricesSorted.length; i++) {
+            pricesCard.push(cards[i].getAttribute("data-price"))
+        }
 
-                case 'feathered':
-                    console.log("Hide all except feathered")
-                    break;
+        pricesCard.sort(function(a, b){
+            return pricesSorted.indexOf(a) - pricesSorted.indexOf(b);
+        });
 
-                case 'reptile':
-                    console.log("Hide all except reptile")
-                    break;
 
+        console.log("Sorted prices seperated from card:", pricesSorted);
+        console.log("\nPrices from actual card:", pricesCard)
+
+    }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+    // Function for filtering
+    let hideCardsThatArent = ( arg ) => {
+
+        // Loop getting every element called cards
+        for (card of cards) {
+
+            // Ternary for checking the cards data against the argument passed
+            let relevantCard = arg === card.getAttribute("data-animalType") ? true : false
+
+            // If not relevant then hide it
+            if (!relevantCard) {
+                card.style.display = "none"
+            }
+
+            // If relevant show
+            if (relevantCard) {
+                card.style.display = "block"
+            }
+
+            // If filter reset show all
+            if ( arg === "all") {
+                card.style.display = "block"
             }
 
         }
 
+    }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    let filterCards = ( ... args ) => {
+
+        let [queryType, parameter] = args
+        refreshElements();
+
+        if (queryType == "byType") {
+            hideCardsThatArent(parameter)
+        }
+
         if (queryType == "byFilter") {
-
-            let prices = [];
-            let i = -1;
-
-            for (price of allPrices) {
-                i++;
-                prices.push([price.textContent.replace(/[^0-9]/g, ''), cards[i]])
-            }
-
-            // prices.sort(function(a, b) {
-            //     return a - b;
-            // });
-
-            console.log(prices)
-
+            sortBy(parameter)
         }
 
     }
@@ -514,9 +572,9 @@
 
         for (input of allFilterInputs) {
 
-            refreshElements();
-
             input.addEventListener('change', () => {
+
+                refreshElements();
 
                 let typeEmpty = typeInput.value !== "" ? false : true;
                 let filterEmpty = filterInput.value !== "" ? false : true;
@@ -530,6 +588,10 @@
             })
 
         }
+
+        searchInput.addEventListener('keyup', () => {
+            searchQuery(searchInput.value)
+        })
 
     }
 
