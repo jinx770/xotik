@@ -1,30 +1,47 @@
 (async () => {
 
 
+
+
   // nav clicks
   $('#logoBtn').click(function() {
     window.location.href = 'index.html';
   });
 
   $('#animalsBtn').click(function() {
-    $([document.documentElement, document.body]).animate({
-      scrollTop: $("#listingSection").offset().top
-    }, 1500);
+
+    if (window.location.href = 'index.html') {
+
+      // $([document.documentElement, document.body]).animate({
+      //   scrollTop: $("#listingSection").offset().top
+      // }, 1500);
+      console.log('On inddex.html');
+
+    } else {
+        // window.location.href = 'index.html';
+        console.log('NOT on inddex.html');
+    }
+
   });
 
   //
-  // $('#whoBtn').click(function(){
-  //
-  // })
-  //
-  // $('#trustBtn').click(function(){
-  //
-  // })
+  $('#whoBtn').click(function(){
+  window.location.href = 'about.html';
+  })
 
   $('#listingBtn').click(function() {
     window.location.href = 'listing.html';
   });
   // header popover begins
+
+
+
+
+
+
+
+
+
 
   // click on user icon
   $('#user').click(function() {
@@ -37,6 +54,7 @@
     // remove other content
     $("#emptyCartContent").css("display", "none");
     $("#fullCartContent").css("display", "none");
+    $("#createAccountContent").css("display", "none");
   });
 
   // show create account content on click

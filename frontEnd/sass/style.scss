@@ -114,15 +114,15 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   font-family: 'Comfortaa', cursive;
   cursor: pointer;
   background: none;
   color: #F8F1DE;
   border: 1px solid #F8F1DE;
-  width: 200px;
-  height: 60px;
+  width: 150px;
+  height: 40px;
   border-radius: 50px;
   transition: 0.4s;
 
@@ -219,6 +219,7 @@ input:-webkit-autofill:hover {
 // favourite button
 
 .favourite a {
+  display: none;
   text-decoration: none;
   color: $green;
   background-color: $offwhite;
@@ -625,7 +626,7 @@ input:-webkit-autofill:hover {
 .background-image {
   background-image: url("../img/gecko.jpg");
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -671,15 +672,21 @@ input:-webkit-autofill:hover {
 }
 //Search selections
 
+.filter-section {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 60px;
+
+}
+
 .search {
-  // position: sticky;
-  // top: 100px;
-  // backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  width: 87%;
-  margin: auto auto 60px;
+  width: 300px;
 }
 
 .inputs {
@@ -687,12 +694,15 @@ input:-webkit-autofill:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
+  width: 500px;
 
-  .input,
   .select {
-    width: 28%;
+    width: 45%;
   }
+}
+
+.select {
+  cursor: pointer;
 }
 
 .all-listings {
@@ -705,9 +715,19 @@ input:-webkit-autofill:hover {
 }
 // WHO WE ARE PAGE :::::::::::::::::::::::::::
 // Who Section >> Who We Are page
+
+.about-content {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
 .who {
-  padding-top: 200px;
-  padding-bottom: 60px;
+  padding-top: 180px;
+  padding-bottom: 80px;
   border-bottom: 1px solid $offwhite;
   display: flex;
   justify-content: space-between;
@@ -727,7 +747,7 @@ input:-webkit-autofill:hover {
 }
 
 .who-text {
-  width: 50%;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -738,7 +758,7 @@ input:-webkit-autofill:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
@@ -751,8 +771,8 @@ input:-webkit-autofill:hover {
 
 // FAQ Section >> Who We Are page
 .faq {
-  padding-bottom: 60px;
-  padding-top: 60px;
+  padding-bottom: 80px;
+  padding-top: 80px;
   width: 90%;
   margin: auto;
   border-bottom: 1px solid $offwhite;
@@ -816,8 +836,8 @@ input:-webkit-autofill:hover {
   align-items: center;
   width: 90%;
   margin: auto;
-  padding-bottom: 60px;
-  padding-top: 60px;
+  padding-bottom: 80px;
+  padding-top: 80px;
   border-bottom: 1px solid $offwhite;
 }
 
@@ -858,7 +878,7 @@ input:-webkit-autofill:hover {
   flex-direction: column;
   align-items: center;
   width: 50%;
-  margin: 60px auto;
+  margin: 80px auto;
 }
 
 .contact-head {
@@ -1039,10 +1059,10 @@ input:-webkit-autofill:hover {
   margin: 0;
 }
 
-.checkbox {
-  width: 15px;
-  height: 15px;
-}
+// .checkbox {
+//   width: 15px;
+//   height: 15px;
+// }
 
 .listing-checkbox {
   display: flex;
@@ -1148,14 +1168,14 @@ input:-webkit-autofill:hover {
   margin-bottom: 10px;
 }
 
-.delivery-liscence {
+.delivery-licence {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
 
 .delivery,
-.liscence {
+.licence {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -1394,6 +1414,11 @@ input:-webkit-autofill:hover {
   flex-direction: column;
   justify-content: space-between;
   width: 30%;
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
 }
 
 .footer-nav {
