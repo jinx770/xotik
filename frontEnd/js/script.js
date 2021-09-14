@@ -454,22 +454,54 @@
 
 
 
-    let filterCards = (...args) => {
+    let filterCards = (... args) => {
 
-       refreshElements();
-        let prices = [];
-        let i = -1;
+        refreshElements();
 
-        for (price of allPrices) {
-            i++
-            prices.push([cards[i], price.textContent.replace(/[^0-9]/g, '')])
+        let [queryType, parameter] = args
+
+        if (queryType == "byType") {
+
+            switch (parameter) {
+
+                case 'aquatic':
+                    console.log("search the field type by aquatic")
+                    break;
+
+                case 'feline':
+                    console.log("search the field type by feline")
+                    break;
+
+                case 'feathered':
+                    console.log("search the field type by feathered")
+                    break;
+
+                case 'reptile':
+                    console.log("search the field type by reptile")
+                    break;
+
+            }
+
         }
 
-        prices.sort(function(a, b) {
-            return a - b;
-        });
+        if (queryType == "byFilter") {
 
-        console.log(prices)
+            let prices = [];
+            let i = -1;
+
+            for (price of allPrices) {
+                i++;
+                prices.push([price.textContent.replace(/[^0-9]/g, ''), cards[i]])
+            }
+
+            // prices.sort(function(a, b) {
+            //     return a - b;
+            // });
+
+            console.log(prices)
+
+        }
+
     }
 
 
@@ -490,7 +522,9 @@
                 let filterEmpty = filterInput.value !== "" ? false : true;
                 let searchEmpty = searchInput.value !== "" ? false : true;
 
-                !typeEmpty ? filterCards(typeInput.value) : ""!filterEmpty ? filterCards(filterInput.value) : ""!searchEmpty ? searchQuery(searchInput.value) : ""
+                !typeEmpty ? filterCards("byType", typeInput.value) : "";
+                !filterEmpty ? filterCards("byFilter", filterInput.value) : "";
+                !searchEmpty ? searchQuery(searchInput.value) : "";
 
 
             })
