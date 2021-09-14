@@ -250,7 +250,7 @@
 
             // Setting each card up with relevant fields filled out using backticks
             cardParent.innerHTML += `
-                  <div class="card">
+                  <div class="card" data="${card.type}">
                       <div class="top-info">
                           <div class="username">
                               <h5>${card.owner}</h5>
@@ -465,19 +465,19 @@
             switch (parameter) {
 
                 case 'aquatic':
-                    console.log("search the field type by aquatic")
+                    console.log("Hide all except aquatic")
                     break;
 
                 case 'feline':
-                    console.log("search the field type by feline")
+                    console.log("Hide all except feline")
                     break;
 
                 case 'feathered':
-                    console.log("search the field type by feathered")
+                    console.log("Hide all except feathered")
                     break;
 
                 case 'reptile':
-                    console.log("search the field type by reptile")
+                    console.log("Hide all except reptile")
                     break;
 
             }
