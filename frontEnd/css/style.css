@@ -91,6 +91,7 @@ p {
   height: 60px;
   border-radius: 50px;
   transition: 0.4s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
 }
 .button-primary:hover {
   border: 1px solid #F8F1DE;
@@ -114,7 +115,7 @@ p {
   transition: 0.4s;
 }
 .button-secondary:hover {
-  backdrop-filter: blur(10px);
+  background: rgba(249, 242, 223, 0.3);
 }
 
 .button-newsletter {
@@ -241,7 +242,7 @@ input:-webkit-autofill:hover {
   width: 250px;
   margin: auto;
   height: 300px;
-  margin: 0 15px 60px 15px;
+  margin: 0 15px 60px;
 }
 
 .top-info {
@@ -654,8 +655,7 @@ input:-webkit-autofill:hover {
   justify-content: space-around;
   flex-wrap: wrap;
   width: 90%;
-  margin: auto;
-  margin-bottom: 60px;
+  margin: auto auto 60px;
 }
 
 .about-content {
@@ -1290,6 +1290,101 @@ input:-webkit-autofill:hover {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.user-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-details,
+.user-listing-section {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.user-details-header,
+.user-listing-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 2px solid #F8F1DE;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+.user-details-header h6,
+.user-listing-header h6 {
+  opacity: 0.5;
+}
+
+.user-detals-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.user-details-left-col {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 70px;
+  width: 30%;
+}
+
+.user-details-right-col {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 60%;
+}
+
+.user-listing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  border-bottom: 1px solid #F8F1DE;
+  height: auto;
+}
+
+.user-listing-left {
+  display: flex;
+  width: 530px;
+  height: auto;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+.user-listing-images {
+  width: 200px;
+  height: 180px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.user-listing-images img {
+  max-height: 90px;
+  max-width: 90px;
+  object-fit: cover;
+  margin: 0 10px 10px 0;
+}
+
+.user-listing-details {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.user-listing-description {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  padding-bottom: 30px;
 }
 
 .footer {
