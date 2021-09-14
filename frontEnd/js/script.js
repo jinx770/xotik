@@ -472,6 +472,7 @@
 
 
 
+
     for (input of allFilterInputs) {
 
         refreshElements();
