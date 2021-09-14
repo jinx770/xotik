@@ -105,7 +105,6 @@ p {
   transition: 0.4s;
 
   &:hover {
-    font-weight: 600;
     border: 1px solid #F8F1DE;
     background: none;
   }
@@ -115,15 +114,15 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   font-family: 'Comfortaa', cursive;
   cursor: pointer;
   background: none;
   color: #F8F1DE;
   border: 1px solid #F8F1DE;
-  width: 200px;
-  height: 60px;
+  width: 150px;
+  height: 40px;
   border-radius: 50px;
   transition: 0.4s;
 
@@ -220,6 +219,7 @@ input:-webkit-autofill:hover {
 // favourite button
 
 .favourite a {
+  display: none;
   text-decoration: none;
   color: $green;
   background-color: $offwhite;
@@ -626,15 +626,9 @@ input:-webkit-autofill:hover {
 
 .background-image {
   background-image: url("../img/gecko.jpg");
-<<<<<<< HEAD
-  height:100vh;
-  width: 100vw;
-  background-position:center;
-=======
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-position: center;
->>>>>>> dev
   background-repeat: no-repeat;
   background-size: 100%;
   position: relative;
@@ -644,18 +638,20 @@ input:-webkit-autofill:hover {
 // xotik about
 
 .hero {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
   margin: auto;
-<<<<<<< HEAD
-  padding-top: 15%;
-=======
   padding-top: 10%;
->>>>>>> dev
   padding-left: 8%;
+  top: 25%;
+  left: 8%;
 }
 
 .xotik {
-  font-family: "Source Sans Pro";
+  font-family: 'Montserrat', sans-serif;
   font-size: 10vw;
+  font-weight: 700;
   color: #f4edda;
   padding-bottom: 2%;
 }
@@ -668,10 +664,6 @@ input:-webkit-autofill:hover {
 .explore {
   padding-top: 5%;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 // xotik about section ends
 // all listings section
 
@@ -682,24 +674,22 @@ input:-webkit-autofill:hover {
   font-size: 40px;
 }
 
-<<<<<<< HEAD
 
-.all-listings {
-  display: flex;
-  flex-wrap: wrap;
+.filter-section {
   width: 90%;
   margin: auto;
-=======
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 60px;
+
+}
+
 .search {
-  // position: sticky;
-  // top: 100px;
-  // backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  width: 87%;
-  margin: auto auto 60px;
->>>>>>> 6eff1e9facd94543b0988c2d4f1e074d09267a94
+  width: 300px;
 }
 
 // WHO WE ARE PAGE :::::::::::::::::::::::::::
@@ -708,167 +698,21 @@ input:-webkit-autofill:hover {
 .who {
   padding-top: 8%;
   display: flex;
-<<<<<<< HEAD
-  justify-content: space-between;
-  width: 80%;
-  margin: auto;
-}
-
-.who-img-container {
-  width: 47%;
-}
-
-.who-img {
-  width: 100%;
-  height:100%;
-  margin: auto;
-}
-
-.who-text {
-  width: 47%;
-}
-
-.who-head {
-  padding-bottom: 1.5%;
-}
-
-
-hr {
-  margin-top: 2%;
-  width: 80%;
-}
-// FAQ Section >> Who We Are page
-.faq-head {
-  text-align: center;
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
-
-.faq {
-  margin: auto;
-  width: 40%;
-}
-
-
-.collapsible {
-  background-color: $offwhite;
-  color: $black;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 20px;
-  font-family: "Comfortaa";
-  font-weight: 700;
-  border-radius: 35px;
-}
-
-.active, .collapsible:hover {
-  // background-color: #555;
-}
-
-.collapsible:after {
-  content: '\002B';
-  color: $black;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2212";
-}
-
-.content {
-  padding: 0px 18px;
-  padding-top: 2%;
-  margin-bottom: 2%;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-// Safety Section >> Who We Are page
-.safety {
-  padding-top: 3%;
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: auto;
-}
-
-.safety-head {
-  padding-bottom: 1.5%;
-}
-
-.safety-img-container {
-  width: 47%;
-}
-
-.safety-img {
-  width: 100%;
-  height: auto;
-}
-
-.safety-text {
-  width: 47%;
-}
-
-// Contact Section >> Who We Are page
-
-.contact-head {
-  text-align: center;
-  padding-top: 1%;
-  padding-bottom: 2%;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  width: 35%;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.contact-name,
-.contact-email {
-  background: none;
-  margin-bottom: 8%;
-  padding-bottom: 2%;
-  border: none;
-  border-bottom: 1px solid $offwhite;
-  padding-left: 4%;
-  color: $offwhite;
-  font-size: 20px;
-}
-
-.contact-msg {
-  background: none;
-  border: 1px solid $offwhite;
-  border-radius: 20px;
-  padding-top: 3%;
-  padding-left: 4%;
-  padding-bottom: 200px;
-  color: $offwhite;
-  font-size: 20px;
-=======
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
+  width: 500px;
 
-  .input,
   .select {
-    width: 28%;
+    width: 45%;
   }
->>>>>>> 6eff1e9facd94543b0988c2d4f1e074d09267a94
 }
 
-<<<<<<< HEAD
-.send-btn {
-=======
+
+.select {
+  cursor: pointer;
+}
+
 .all-listings {
   display: flex;
   justify-content: space-around;
@@ -880,12 +724,23 @@ hr {
 }
 // WHO WE ARE PAGE :::::::::::::::::::::::::::
 // Who Section >> Who We Are page
+
+.about-content {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
 .who {
-  padding-top: 200px;
-  padding-bottom: 60px;
+  padding-top: 180px;
+  padding-bottom: 80px;
   border-bottom: 1px solid $offwhite;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
   margin: auto;
 }
@@ -901,17 +756,32 @@ hr {
 }
 
 .who-text {
-  width: 47%;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.who-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  margin: auto;
+}
+
+
 
 .who-head {
   margin-bottom: 30px;
   font-size: 40px;
 }
+
 // FAQ Section >> Who We Are page
 .faq {
-  padding-bottom: 60px;
-  padding-top: 60px;
+  padding-bottom: 80px;
+  padding-top: 80px;
   width: 90%;
   margin: auto;
   border-bottom: 1px solid $offwhite;
@@ -924,20 +794,9 @@ hr {
 }
 
 .faq-content {
-  width: 50%;
+  width: 60%;
   margin: auto;
 }
-<<<<<<< HEAD
-
-.send-btn-container {
-  padding-top: 3%;
-  padding-bottom: 3%;
-}
-
-
-// CREATE LISTING PAGE :::::::::::::::::::::::::::
-=======
->>>>>>> dev
 
 .collapsible {
   background-color: $offwhite;
@@ -983,10 +842,11 @@ hr {
 .safety {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
   margin: auto;
-  padding-bottom: 60px;
-  padding-top: 60px;
+  padding-bottom: 80px;
+  padding-top: 80px;
   border-bottom: 1px solid $offwhite;
 }
 
@@ -1005,7 +865,21 @@ hr {
 }
 
 .safety-text {
-  width: 47%;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.safety-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  height: 80%;
+  margin: auto;
 }
 // Contact Section >> Who We Are page
 .contact {
@@ -1013,7 +887,7 @@ hr {
   flex-direction: column;
   align-items: center;
   width: 50%;
-  margin: 60px auto;
+  margin: 80px auto;
 }
 
 .contact-head {
@@ -1194,10 +1068,10 @@ hr {
   margin: 0;
 }
 
-.checkbox {
-  width: 15px;
-  height: 15px;
-}
+// .checkbox {
+//   width: 15px;
+//   height: 15px;
+// }
 
 .listing-checkbox {
   display: flex;
@@ -1303,14 +1177,14 @@ hr {
   margin-bottom: 10px;
 }
 
-.delivery-liscence {
+.delivery-licence {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
 
 .delivery,
-.liscence {
+.licence {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -1549,6 +1423,11 @@ hr {
   flex-direction: column;
   justify-content: space-between;
   width: 30%;
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
 }
 
 .footer-logo h3 {

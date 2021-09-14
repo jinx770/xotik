@@ -15,7 +15,7 @@
         window.typeInput = document.querySelector("#type").value
         window.locationInput = document.querySelector("#location").value
         window.priceInput = document.querySelector("#price").value
-        window.licenseInput = document.querySelector("#license").checked
+        window.licenseInput = document.querySelector("#licence").checked
         window.deliveryInput = document.querySelector("#delivery").checked
         window.descriptionInput = document.querySelector("#description").value
         window.listingInputs = document.querySelectorAll(".listing-input") || "";
@@ -251,31 +251,33 @@
 
             getElements();
 
-            // let response = await fetch('/createAnimal', {
-            //     method: "post",
-            //     headers: {'Content-Type': 'application/json'},
-            //     body: JSON.stringify({
-            //
-            //         name: nameInput,
-            //         type: typeInput,
-            //         url: imageUrls,
-            //         price: parseInt(priceInput),
-            //         rating: `${Math.floor(Math.random() * 11)}/10`,
-            //         description: descriptionInput,
-            //         quantity: 10,
-            //         owner: currentSession,
-            //         license: licenseInput,
-            //         delivery: deliveryInput
-            //
-            //     })
-            //
-            // });
-            //
-            // setTimeout(() => {
-            //     location.reload()
-            // },1000)
+            let response = await fetch('/createAnimal', {
+                method: "post",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
 
-            console.log(imageUrls)
+                    name: nameInput,
+                    type: typeInput,
+                    url: imageUrls,
+                    price: parseInt(priceInput),
+                    rating: `${Math.floor(Math.random() * 11)}/10`,
+                    description: descriptionInput,
+                    quantity: 10,
+                    owner: currentSession,
+                    license: licenseInput,
+                    delivery: deliveryInput
+
+                })
+
+            });
+
+            alert("Success!")
+
+            setTimeout(() => {
+                location.reload()
+            },2000)
+
+            console.log(imageUrls[0].length)
 
 
         }

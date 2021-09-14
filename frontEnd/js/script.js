@@ -1,30 +1,47 @@
 (async () => {
 
 
+
+
   // nav clicks
   $('#logoBtn').click(function() {
     window.location.href = 'index.html';
   });
 
   $('#animalsBtn').click(function() {
-    $([document.documentElement, document.body]).animate({
-      scrollTop: $("#listingSection").offset().top
-    }, 1500);
+
+    if (window.location.href = 'index.html') {
+
+      // $([document.documentElement, document.body]).animate({
+      //   scrollTop: $("#listingSection").offset().top
+      // }, 1500);
+      console.log('On inddex.html');
+
+    } else {
+        // window.location.href = 'index.html';
+        console.log('NOT on inddex.html');
+    }
+
   });
 
   //
-  // $('#whoBtn').click(function(){
-  //
-  // })
-  //
-  // $('#trustBtn').click(function(){
-  //
-  // })
+  $('#whoBtn').click(function(){
+  window.location.href = 'about.html';
+  })
 
   $('#listingBtn').click(function() {
     window.location.href = 'listing.html';
   });
   // header popover begins
+
+
+
+
+
+
+
+
+
 
   // click on user icon
   $('#user').click(function() {
@@ -37,6 +54,7 @@
     // remove other content
     $("#emptyCartContent").css("display", "none");
     $("#fullCartContent").css("display", "none");
+    $("#createAccountContent").css("display", "none");
   });
 
   // show create account content on click
@@ -151,16 +169,19 @@
 
           window.sessionHeader = document.querySelector("#sessionHeader") || "";
           window.loginPopOver = document.querySelector(".header-popover") || "";
-          window.fileInput = document.querySelector(".ignore-me") || "";
+          window.allPrices = document.querySelectorAll(".price") || "";
 
+          window.fileInput = document.querySelector(".ignore-me") || "";
           window.usernameInput = document.querySelector("#username") || "";
           window.passwordInput = document.querySelector("#password") || "";
-          window.usernameCreate = document.querySelector("#usernameCreate") || "";
-          window.passwordCreate = document.querySelector("#passwordCreate") || "";
-
+          window.searchInput = document.querySelector("#searchInput") || "";
+          window.filterInput = document.querySelector("#filterInput") || "";
+          window.allFilterInputs = document.querySelectorAll(".select") || "";
+          window.typeInput = document.querySelector("#typeInput") || "";
 
           window.loginButton = document.querySelector("#submitLogin") || "";
           window.createAccountButton = document.querySelector("#createAccountBtn") || "";
+          window.searchButton = document.querySelector("#searchButton") || "";
           window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
           window.listingButton = document.querySelector(".listing-btn") || "";
           window.signUpButton = document.querySelector("#signUpBtn") || "";
@@ -477,7 +498,74 @@
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    let searchQuery = ( arg ) => {
+        console.log(arg)
+    }
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    let filterCards = ( ... args ) => {
+
+        refreshElements();
+        let prices = [];
+        let i = -1;
+
+        for (price of allPrices) {
+            i++
+            prices.push([cards[i], price.textContent.replace(/[^0-9]/g,'')])
+        }
+
+        prices.sort(function(a, b) {
+            return a - b;
+        });
+
+        console.log(prices)
+    }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    let setupFilters = () => {
+
+        for (input of allFilterInputs) {
+
+            refreshElements();
+
+            input.addEventListener('change', () => {
+
+                let typeEmpty = typeInput.value !== "" ? false : true;
+                let filterEmpty = filterInput.value !== "" ? false : true;
+                let searchEmpty = searchInput.value !== "" ? false : true;
+
+                !typeEmpty ? filterCards(typeInput.value) : ""
+                !filterEmpty ? filterCards(filterInput.value) : ""
+                !searchEmpty ? searchQuery(searchInput.value) : ""
+
+
+            })
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -485,6 +573,7 @@
       handleHomeAnimals();
       refreshElements();
       setupEventListeners();
+      setupFilters();
 
 
 
