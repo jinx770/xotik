@@ -172,7 +172,7 @@
         let [ fullName, username, phoneNo, email, description, password ] = args
 
         // Requesting info from the database, using the username as a query
-        let checkUser = await FindUser({username});
+        let checkUser = await FindUser(username);
 
         // Checking to see if the returned data is a document, if its not then switch it to ""
         let newUser = checkUser[0] && checkUser[0].username || ""
@@ -189,12 +189,43 @@
 
 
 
+    let HashPassword = async ( password ) => {
+
+      // Bcrypt - how many hashing rounds are done, more rounds = more encrypted
+      const saltRounds = 5;
+
+      // Hashing/Encrypting password
+      const hashedPassword = bcrypt.hashSync(password, saltRounds);
+
+      return hashedPassword;
+
+    }
+
+
+
+// -------------------------------------------------------------------------------------------------------------------------------
+
+
+
     // Basic find user function
-    let FindUser = async ( arg ) => {
+    let FindUser = async ( username, password ) => {
 
         // Makes a request from the database
         // Looking for anything with its username field set to whatever argument gets passed
-        let foundUser = await User.find({ username: arg });
+        let foundUser = await User.find({ username: username });
+
+        // If user does not exist return false
+        if (typeof foundUser[0] === "undefined"){
+          return false;
+        }
+
+        if (username && password){
+          let passwordDB = foundUser[0].password
+          //bcrypt function that compares input password to the hashed password
+          const match = await bcrypt.compare(password, passwordDB);
+          let result = match ? true : false
+          return result
+        }
 
         // Makes sure it exists, and isn't just an empty array, if it is then return false
         // If its not an empty array then return the actual user
@@ -258,8 +289,8 @@
     console.log("Running...")
 
     // Export our functions to the server.js so they still get ran after we require them
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser }
-
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword}
+    //rane added password
 
 
 })();

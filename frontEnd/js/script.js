@@ -162,19 +162,22 @@
         window.loginPopOver = document.querySelector(".header-popover") || "";
         window.allPrices = document.querySelectorAll(".price") || "";
 
-        window.fileInput = document.querySelector(".ignore-me") || "";
-        window.usernameInput = document.querySelector("#username") || "";
-        window.passwordInput = document.querySelector("#password") || "";
-        window.searchInput = document.querySelector("#searchInput") || "";
-        window.filterInput = document.querySelector("#filterInput") || "";
-        window.allFilterInputs = document.querySelectorAll(".select") || "";
-        window.typeInput = document.querySelector("#typeInput") || "";
+          window.fileInput = document.querySelector(".ignore-me") || "";
+          window.usernameInput = document.querySelector("#username") || "";
+          window.passwordInput = document.querySelector("#password") || "";
+          window.searchInput = document.querySelector("#searchInput") || "";
+          window.filterInput = document.querySelector("#filterInput") || "";
+          window.allFilterInputs = document.querySelectorAll(".select") || "";
+          window.typeInput = document.querySelector("#typeInput") || "";
+          window.usernameCreate = document.querySelector("#usernameCreate") || "";
+          window.passwordCreate = document.querySelector("#passwordCreate") || "";
 
-        window.loginButton = document.querySelector("#submitLogin") || "";
-        window.createAccountButton = document.querySelector("#createAccountBtn") || "";
-        window.searchButton = document.querySelector("#searchButton") || "";
-        window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
-        window.listingButton = document.querySelector(".listing-btn") || "";
+          window.signUpButton = document.querySelector("#signUpBtn") || "";
+          window.loginButton = document.querySelector("#submitLogin") || "";
+          window.createAccountButton = document.querySelector("#createAccountBtn") || "";
+          window.searchButton = document.querySelector("#searchButton") || "";
+          window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
+          window.listingButton = document.querySelector(".listing-btn") || "";
 
         window.cardParent = document.querySelector(".all-listings") || "";
         window.cards = document.querySelectorAll(".card") || "";
@@ -288,19 +291,12 @@
         // Splitting arguments into variables called u and p for username, password
         let [u, p] = query
 
-        // Sending a request to the api we made in the backend
-        // Checks to see if the inputted value, u exists, if it does then return true else, false
-        let result = await fetch(`/findUser?q=${u}`);
+        // Sending through query variables to validate, returns true or false if login details are valid
+        let data = await fetch(`/findUser?u=${u}&p=${p}`)
+        let result = await data.json()
 
-        // Saves the results as rawData
-        let rawData = await result.json();
-
-        // Ternary operator for checking to see if the result is indeed a valid username
-        let foundResult = typeof rawData[0] !== "undefined" ? true : false
-
-        // If it is valid then it will check to see if the password is also valid, returning true or false
-        let isValid = (foundResult && rawData[0].username === u && rawData[0].password === p) ? true : false
-
+        // Check to see if inputs are empty
+        u == '' || p == '' ? data = false : data = true
 
         // If logged in already, calls the function for signing out before it returns the result
         // If not, then ignore and continue
@@ -310,7 +306,7 @@
         window.attemptedLogin = u;
 
         // Returns the true/false if they've entered the right username and password
-        return isValid
+        return result
 
     }
 
@@ -394,6 +390,39 @@
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+      let createAccHandler = async () => {
+
+        //  all accounts made as of now on will have a hashed password
+
+        // If not logged in continue
+        if (!loggedIn) {
+          let username = usernameCreate.value;
+          let password = passwordCreate.value;
+
+          // Posts/sends data to the route found in server
+          let response = await fetch('/createUser', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+
+              // leave '.' in so that it creates a property (no need to create the property just edit in the future)
+              fullName: '.',
+              username: username,
+              phoneNo: '.',
+              email: '.',
+              description: '.',
+              password: password
+
+            })
+          })
+          .catch(err => {
+            console.log('Error : ' + err);
+          })
+        }
+      }
+
+  // ------------------------------------------------------------------------------------------------------------------------------------
+
 
 
     // Loops every .1 second running the following
@@ -444,9 +473,12 @@
 
         });
 
+        // Runs createAccHandler when you click sign up btn
+        signUpButton.addEventListener('click', async () => {
+          createAccHandler();
+        })
 
-    }
-
+      }
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
