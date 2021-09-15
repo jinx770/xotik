@@ -1294,51 +1294,97 @@ input:-webkit-autofill:hover {
 
 .user-content {
   display: flex;
-  flex-direction: column;
+  padding-top: 150px;
+  flex-direction: row;
 }
 
-.user-details,
+.user-details {
+  width: 25%;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  padding: 40px;
+  border-radius: 60px;
+  min-height: 400px;
+  background: rgba(249, 242, 223, 0.03);
+  box-shadow: rgba(249, 242, 223, 0.4) 0px 2px 4px 0px inset;
+}
+
 .user-listing-section {
-  width: 100%;
+  width: 60%;
   margin-bottom: 100px;
 }
 
-.user-details-header,
+.user-all-listings {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+.user-details-header {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 1px solid #F8F1DE;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
 .user-listing-header {
   width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   flex-direction: row;
   border-bottom: 2px solid #F8F1DE;
   padding-bottom: 10px;
-  margin-bottom: 30px;
 }
-.user-details-header h6,
+.user-listing-header h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
 .user-listing-header h6 {
   opacity: 0.5;
 }
 
+.user-listing-header {
+  margin-top: 15px;
+}
+
 .user-detals-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   margin-bottom: 60px;
 }
 
-.user-details-left-col {
+.user-details-top {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   height: 70px;
-  width: 30%;
+  width: 100%;
+  margin-bottom: 60px;
 }
 
-.user-details-right-col {
+.user-details-bottom {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
+  margin-bottom: 60px;
+}
+.user-details-bottom h6 {
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+.user-logout-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .user-listing {
@@ -1346,30 +1392,38 @@ input:-webkit-autofill:hover {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 100%;
+  width: 95%;
+  margin: auto;
   border-bottom: 1px solid #F8F1DE;
   height: auto;
+  padding-top: 30px;
+}
+.user-listing h6 {
+  margin-top: 30px;
+  opacity: 0.5;
 }
 
-.user-listing-left {
+.user-listing-top {
   display: flex;
-  width: 530px;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
   height: auto;
   justify-content: space-between;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
 }
 
 .user-listing-images {
-  width: 200px;
-  height: 180px;
+  width: 100%;
+  height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
 }
 .user-listing-images img {
-  max-height: 90px;
-  max-width: 90px;
+  height: 90px;
+  width: 90px;
   object-fit: cover;
   margin: 0 10px 10px 0;
 }
@@ -1377,14 +1431,57 @@ input:-webkit-autofill:hover {
 .user-listing-details {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+.user-listing-details .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.user-checkbox {
   width: 300px;
+  align-items: baseline;
+  margin: none;
+  flex-wrap: wrap;
+}
+.user-checkbox .checkbox-row {
+  align-items: baseline;
 }
 
 .user-listing-description {
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 100%;
   padding-bottom: 30px;
+}
+.user-listing-description h6 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;
+  cursor: pointer;
+  padding: 5px 0;
+  transition: 0.4s ease;
+  width: 88px;
+}
+.user-listing-description h6:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #F8F1DE;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.user-listing-description h6:hover:after {
+  width: 100%;
+  left: 0;
 }
 
 .footer {
