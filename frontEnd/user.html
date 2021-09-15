@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/style.css">
   <title></title>
 </head>
@@ -30,10 +31,10 @@
           <h5>Animals</h5>
         </div>
         <div class="nav-item" id="whoBtn">
-            <h5>Who We Are</h5>
+          <h5>Who We Are</h5>
         </div>
         <div class="nav-item" id="listingBtn">
-            <h5>Create Listing</h5>
+          <h5>Create Listing</h5>
         </div>
       </div>
 
@@ -49,7 +50,7 @@
     <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
     </div>
     <div class="login-popover-content" id="loginContent">
-      <h4 id="sessionHeader" >Log In</h4>
+      <h4 id="sessionHeader">Log In</h4>
       <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
       <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
       <button id="submitLogin" class="button-secondary">Log In</button>
@@ -95,107 +96,102 @@
   <!-- header popover end -->
 
   <!-- header ENDS -->
+  <div class="content user-content">
 
-  <div class="content">
+    <div class="user-details">
+      <div class="user-details-header">
+        <h5>username</h5>
+      </div>
 
-    <div class="left-col">
-      <div class="animal-images">
-        <div class="main-image">
-          <img src="img/heo-alt.jpg" alt="">
+      <div class="user-detals-content">
+        <div class="user-details-top">
+          <h5>Full Name</h5>
+          <h5>email@email.com</h5>
+          <h5>021CONTACT</h5>
         </div>
-        <div class="alt-images">
-          <div class="alt-img">
 
-          </div>
-          <div class="alt-img">
-
-          </div>
-          <div class="alt-img">
-
-          </div>
+        <div class="user-details-bottom">
+          <h6>About</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum placeat molestiae corrupti natus sapiente ducimus! Non vel eveniet at laudantium aperiam odit, tempora officiis illo quaerat consectetur enim facilis ducimus. <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum placeat molestiae corrupti natus sapiente ducimus! Non vel eveniet at laudantium aperia.
+          </p>
         </div>
       </div>
+      <div class="user-logout-btn">
+        <button class="button-secondary">Log Out</button>
+      </div>
     </div>
-    <!-- left col ends -->
 
-    <div class="right-col">
-      <div class="listing-details">
-        <div class="listing-top-section">
-          <h6 class="username">Username</h6>
-          <h1 class="animal-name" value="">Slinky Lizard</h1>
-          <div class="listing-row">
-            <h5 class="sellers-location">Sellers location</h5>
-            <div class="delivery-licence">
-              <div class="delivery">
-                <i class="fa fa-check check" aria-hidden="true"></i>
-                <h6>Delivery</h6>
+    <div class="user-listing-section">
+
+      <div class="user-listing-header">
+        <h5>Your Listings</h5>
+        <h6>Click on details to edit</h6>
+      </div>
+
+      <div class="user-all-listings">
+
+        <div class="user-listing">
+
+          <div class="user-listing-top">
+            <div class="user-listing-details">
+              <div class="row">
+                <h4 contenteditable="true">Title</h4>
+                <h4 contenteditable="true">Price</h4>
               </div>
-              <div class="licence">
-                <i class="fa fa-times times" aria-hidden="true"></i>
-                <h6>Licence</h6>
+              <h5 contenteditable="true">Location</h5>
+              <div class="listing-checkbox user-checkbox">
+                <div class="checkbox-row">
+                  <input autocomplete="off" id="licence" class="checkbox" type="checkbox" id="licenceCheck" name="licence" required>
+                  <label for="licence">
+                    <h6>Licence Required</h6>
+                  </label>
+                </div>
+                <div class="checkbox-row">
+                  <input id="delivery" class="checkbox" type="checkbox" id="deliveryCheck" name="delivery" required>
+                  <label for="delivery">
+                    <h6>Delivery Avaliable</h6>
+                  </label>
+                </div>
               </div>
             </div>
+
+            <div class="user-listing-images">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="user-listing-description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis
+              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h6>Delete Listing</h6>
           </div>
         </div>
-        <div class="listing-bottom-section">
-          <div class="listing-desription">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ad ea nam magnam fugiat illo nulla minima numquam molestiae assumenda doloribus repellat, soluta perspiciatis illum doloremque harum, sit, ut quibusdam.
-              <br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ad ea nam magnam fugiat illo nulla minima numquam molestiae assumenda doloribus repellat, soluta perspiciatis illum doloremque harum, sit, ut quibusdam.</p>
-          </div>
-        </div>
-        <div class="listing-price">
-          <h2 class="price">$499</h2>
-          <button class="button-secondary">Add to cart</button>
-        </div>
+
+
+
+
       </div>
+      <!-- user all listings ends -->
+
 
     </div>
-    <!-- right col ends -->
-
-  </div>
-  <!-- page content ends -->
-
-
-  <div class="content">
-
-    <div class="left-col">
-
-    </div>
-    <!-- left col ends -->
-
-    <div class="right-col">
-
-      <!-- <div class="question-block">
-        <div class="question">
-          <h5 class="q">Q:</h5>
-          <h5 class="question-text"></h5>
-        </div>
-        <div class="answer">
-          <h5 class="q">A:</h5>
-            <h5 class="answer-text"></h5>
-        </div>
-      </div> -->
-
-      <div class="ask-question" id="askQuestionForm">
-        <input type="text" class="input question-input" id="questionInput" placeholder="Whats on your mind?" value="">
-        <h6 class="send-btn" id="sendBtn"</id>Send</h6>
-        <i class="fa fa-times question-exit" id="questionExitBtn" aria-hidden="true"></i>
-      </div>
-
-
-    <button class="button-secondary" id="askQuestionBtn" type="button" name="button">Ask Question</button>
-
-    </div>
-    <!-- right col ends -->
 
   </div>
 
 
-<br><br><br>
 
 
-  <!-- footer begins -->
+
+  </div>
+  <!-- // content ends -->
+
+
+  <!-- footer -->
 
   <div class="footer">
 
@@ -238,9 +234,9 @@
   </div>
   <!-- footer ends -->
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
+  <script src="js/listingHandler.js"></script>
 </body>
 
 </html>
