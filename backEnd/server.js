@@ -1,12 +1,11 @@
 let express = require('express');
 let bodyParser = require('body-parser');
-let lz = require('lz-string')
-let functions = require('./index.js');
+let functions = require("./index.js");
 
 let port = 3000;
 let app = express();
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
+app.use(express.json({limit: '50mb', extended: true}));
+app.use(express.urlencoded({limit: '50mb', extended: true}));
 
 
 
@@ -22,15 +21,9 @@ app.post('/createAnimal', async ( req, res ) => {
     // Shorthand variable creation explained in our backEnd/index.js
     let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
 
-    for (let img of url) {
-        var string = img
-        var compressed = lz.compress(string)
-    }
-
-    console.log(compressed.length)
-
+    console.log(url[0].length)
     // Dunno if this will 100% work until we test it on the 13th, should create an animal in the database
-    // return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
+    return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
 
 })
 

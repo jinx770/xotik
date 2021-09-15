@@ -655,6 +655,7 @@ input:-webkit-autofill:hover {
   justify-content: space-around;
   flex-wrap: wrap;
   width: 90%;
+  transition: margin-bottom 1s ease-out;
   margin: auto;
   margin-bottom: 60px;
 }
