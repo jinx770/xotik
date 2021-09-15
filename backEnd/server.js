@@ -1,6 +1,7 @@
 let express = require('express');
 let bodyParser = require('body-parser');
-let functions = require("./index.js");
+let lz = require('lz-string')
+let functions = require('./index.js');
 
 let port = 3000;
 let app = express();
@@ -21,8 +22,15 @@ app.post('/createAnimal', async ( req, res ) => {
     // Shorthand variable creation explained in our backEnd/index.js
     let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
 
+    for (let img of url) {
+        var string = img
+        var compressed = lz.compress(string)
+    }
+
+    console.log(compressed.length)
+
     // Dunno if this will 100% work until we test it on the 13th, should create an animal in the database
-    return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
+    // return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
 
 })
 
@@ -119,7 +127,7 @@ app.get('/findUser', async ( req, res ) => {
       return res.send(await functions.FindEveryUser())
     }
 
-    // Find and check user and password details    
+    // Find and check user and password details
     return res.send(await functions.FindUser(username, password))
 })
 

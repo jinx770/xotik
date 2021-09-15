@@ -253,7 +253,7 @@
 
             // Setting each card up with relevant fields filled out using backticks
             cardParent.innerHTML += `
-                <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
+                <div class="card" data-objectId="${card}" data-price="${card.price}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
                       <div class="top-info">
                           <div class="username">
                               <h5>${card.owner}</h5>
