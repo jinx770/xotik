@@ -111,21 +111,16 @@ app.post('/createUser', async ( req, res ) => {
 // Searching for a user method
 app.get('/findUser', async ( req, res ) => {
 
-    // Query is the query we pass when we make a request
-    let query = req.query.q
+    let username = req.query.u;
+    let password = req.query.p;
 
-    // Same as returning all of the animals in the database, if no query is passed then gets every user
-    if ( !query ) {
-        return res.send(await functions.FindEveryUser())
+    // If empty inputs, find all users
+    if (!username && !password) {
+      return res.send(await functions.FindEveryUser())
     }
 
-    // Attempts to find a user with the query, returning either true or false
-    return res.send(await functions.FindUser(query))
-
-
-    // res.send(await functions.CheckPassword( hashedPassword, inputPassword ))
-
-
+    // Find and check user and password details    
+    return res.send(await functions.FindUser(username, password))
 })
 
 

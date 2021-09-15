@@ -192,7 +192,7 @@
     let HashPassword = async ( password ) => {
 
       // Bcrypt - how many hashing rounds are done, more rounds = more encrypted
-      const saltRounds = 2;
+      const saltRounds = 5;
 
       // Hashing/Encrypting password
       const hashedPassword = bcrypt.hashSync(password, saltRounds);
@@ -208,11 +208,24 @@
 
 
     // Basic find user function
-    let FindUser = async ( arg ) => {
+    let FindUser = async ( username, password ) => {
 
         // Makes a request from the database
         // Looking for anything with its username field set to whatever argument gets passed
-        let foundUser = await User.find({ username: arg });
+        let foundUser = await User.find({ username: username });
+
+        // If user does not exist return false
+        if (typeof foundUser[0] === "undefined"){
+          return false;
+        }
+
+        if (username && password){
+          let passwordDB = foundUser[0].password
+          //bcrypt function that compares input password to the hashed password
+          const match = await bcrypt.compare(password, passwordDB);
+          let result = match ? true : false
+          return result
+        }
 
         // Makes sure it exists, and isn't just an empty array, if it is then return false
         // If its not an empty array then return the actual user
