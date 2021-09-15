@@ -162,22 +162,22 @@
         window.loginPopOver = document.querySelector(".header-popover") || "";
         window.allPrices = document.querySelectorAll(".price") || "";
 
-          window.fileInput = document.querySelector(".ignore-me") || "";
-          window.usernameInput = document.querySelector("#username") || "";
-          window.passwordInput = document.querySelector("#password") || "";
-          window.searchInput = document.querySelector("#searchInput") || "";
-          window.filterInput = document.querySelector("#filterInput") || "";
-          window.allFilterInputs = document.querySelectorAll(".select") || "";
-          window.typeInput = document.querySelector("#typeInput") || "";
-          window.usernameCreate = document.querySelector("#usernameCreate") || "";
-          window.passwordCreate = document.querySelector("#passwordCreate") || "";
+        window.fileInput = document.querySelector(".ignore-me") || "";
+        window.usernameInput = document.querySelector("#username") || "";
+        window.passwordInput = document.querySelector("#password") || "";
+        window.searchInput = document.querySelector("#searchInput") || "";
+        window.filterInput = document.querySelector("#filterInput") || "";
+        window.allFilterInputs = document.querySelectorAll(".select") || "";
+        window.typeInput = document.querySelector("#typeInput") || "";
+        window.usernameCreate = document.querySelector("#usernameCreate") || "";
+        window.passwordCreate = document.querySelector("#passwordCreate") || "";
 
-          window.signUpButton = document.querySelector("#signUpBtn") || "";
-          window.loginButton = document.querySelector("#submitLogin") || "";
-          window.createAccountButton = document.querySelector("#createAccountBtn") || "";
-          window.searchButton = document.querySelector("#searchButton") || "";
-          window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
-          window.listingButton = document.querySelector(".listing-btn") || "";
+        window.signUpButton = document.querySelector("#signUpBtn") || "";
+        window.loginButton = document.querySelector("#submitLogin") || "";
+        window.createAccountButton = document.querySelector("#createAccountBtn") || "";
+        window.searchButton = document.querySelector("#searchButton") || "";
+        window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
+        window.listingButton = document.querySelector(".listing-btn") || "";
 
         window.cardParent = document.querySelector(".all-listings") || "";
         window.cards = document.querySelectorAll(".card") || "";
@@ -253,7 +253,7 @@
 
             // Setting each card up with relevant fields filled out using backticks
             cardParent.innerHTML += `
-                <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-animalType="${card.type}">
+                <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
                       <div class="top-info">
                           <div class="username">
                               <h5>${card.owner}</h5>
@@ -390,38 +390,40 @@
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-      let createAccHandler = async () => {
 
-        //  all accounts made as of now on will have a hashed password
+    // Function for creating an account :yay:
+    let createAccHandler = async () => {
 
-        // If not logged in continue
+    // If not logged in continue
         if (!loggedIn) {
-          let username = usernameCreate.value;
-          let password = passwordCreate.value;
 
-          // Posts/sends data to the route found in server
-          let response = await fetch('/createUser', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
+            let username = usernameCreate.value;
+            let password = passwordCreate.value;
 
-              // leave '.' in so that it creates a property (no need to create the property just edit in the future)
-              fullName: '.',
-              username: username,
-              phoneNo: '.',
-              email: '.',
-              description: '.',
-              password: password
+                // Posts/sends data to the route found in server
+            let response = await fetch('/createUser', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+
+                    fullName: '.',
+                    username: username,
+                    phoneNo: '.',
+                    email: '.',
+                    description: '.',
+                    password: password
+
+                })
 
             })
-          })
-          .catch(err => {
-            console.log('Error : ' + err);
-          })
-        }
-      }
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+        }
+
+    }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -474,11 +476,11 @@
         });
 
         // Runs createAccHandler when you click sign up btn
-        signUpButton.addEventListener('click', async () => {
-          createAccHandler();
-        })
+        signUpButton ? signUpButton.addEventListener('click', async () => {
+            createAccHandler();
+        }) : null;
 
-      }
+    }
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
@@ -497,8 +499,9 @@
     let sortBy = ( arg ) => {
 
         let pricesSorted = [];
-        let pricesCard = [];
-        let newArray = [];
+        let ratingsSorted = [];
+        let defaultSorted = [];
+
 
         switch (arg) {
             case 'lowest':
@@ -509,30 +512,53 @@
                     });
                     pricesSorted.sort((a, b) => (a.price - b.price));
                 }
+                for (let i = 0; i < pricesSorted.length; i++) {
+                    cardParent.appendChild(pricesSorted[i].element)
+                }
             break;
 
             case 'highest':
-            for (card of cards) {
-                pricesSorted.push({
-                    "price": card.getAttribute("data-price"),
-                    "element": card
-                });
-                pricesSorted.sort((a, b) => (b.price - a.price));
-            }
+                for (card of cards) {
+                    pricesSorted.push({
+                        "price": card.getAttribute("data-price"),
+                        "element": card
+                    });
+                    pricesSorted.sort((a, b) => (b.price - a.price));
+                }
+                for (let i = 0; i < pricesSorted.length; i++) {
+                    cardParent.appendChild(pricesSorted[i].element)
+                }
             break;
 
             case 'viewed':
-                console.log("not done yet")
-            return;
+                for (card of cards) {
+                    ratingsSorted.push({
+                        "rating": card.getAttribute("data-rating"),
+                        "element": card
+                    });
+                    ratingsSorted.sort((a, b) => (b.rating - a.rating));
+                }
 
-            default:
-                console.log('not done yet');
-            return;
+                for (let i = 0; i < ratingsSorted.length; i++) {
+                    cardParent.appendChild(ratingsSorted[i].element)
+                }
+            break;
 
-        }
+            case 'none':
+                // for (var i = 0; i < cards.length; i++) {
+                //     defaultSorted.push({
+                //         "element": cards[i]
+                //     })
+                // }
+                // console.log(defaultSorted)
+                //
+                // for (let i = 0; i < defaultSorted.length; i++) {
+                //     cardParent.appendChild(defaultSorted[i].element)
+                // }
 
-        for (let i = 0; i < pricesSorted.length; i++) {
-            cardParent.appendChild(pricesSorted[i].element)
+                console.log('not done xd')
+            break;
+
         }
 
     }
@@ -618,9 +644,9 @@
 
         }
 
-        searchInput.addEventListener('keyup', () => {
+        searchInput ? searchInput.addEventListener('keyup', () => {
             searchQuery(searchInput.value)
-        })
+        }) : "";
 
     }
 
