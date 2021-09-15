@@ -100,56 +100,88 @@
 
     <div class="user-details">
       <div class="user-details-header">
-        <h3>username</h3>
-        <h3>8/10</h3>
+        <h5>username</h5>
       </div>
 
       <div class="user-detals-content">
-        <div class="user-details-left-col">
+        <div class="user-details-top">
           <h5>Full Name</h5>
           <h5>email@email.com</h5>
           <h5>021CONTACT</h5>
         </div>
 
-        <div class="user-details-right-col">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum placeat molestiae corrupti natus sapiente ducimus! Non vel eveniet at laudantium aperiam odit, tempora officiis illo quaerat consectetur enim facilis ducimus?</p>
+        <div class="user-details-bottom">
+          <h6>About</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum placeat molestiae corrupti natus sapiente ducimus! Non vel eveniet at laudantium aperiam odit, tempora officiis illo quaerat consectetur enim facilis ducimus. <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum placeat molestiae corrupti natus sapiente ducimus! Non vel eveniet at laudantium aperia.
+          </p>
         </div>
+      </div>
+      <div class="user-logout-btn">
+        <button class="button-secondary">Log Out</button>
       </div>
     </div>
 
     <div class="user-listing-section">
+
       <div class="user-listing-header">
         <h5>Your Listings</h5>
-        <h6>Click to edit</h6>
+        <h6>Click on details to edit</h6>
       </div>
 
-      <div class="user-listing">
-        <div class="user-listing-left">
-          <div class="user-listing-images">
-            <img src="img/heo-alt.jpg" alt="">
-            <img src="img/heo-alt.jpg" alt="">
-            <img src="img/heo-alt.jpg" alt="">
-            <img src="img/heo-alt.jpg" alt="">
+      <div class="user-all-listings">
+
+        <div class="user-listing">
+
+          <div class="user-listing-top">
+            <div class="user-listing-details">
+              <div class="row">
+                <h4 contenteditable="true">Title</h4>
+                <h4 contenteditable="true">Price</h4>
+              </div>
+              <h5 contenteditable="true">Location</h5>
+              <div class="listing-checkbox user-checkbox">
+                <div class="checkbox-row">
+                  <input autocomplete="off" id="licence" class="checkbox" type="checkbox" id="licenceCheck" name="licence" required>
+                  <label for="licence">
+                    <h6>Licence Required</h6>
+                  </label>
+                </div>
+                <div class="checkbox-row">
+                  <input id="delivery" class="checkbox" type="checkbox" id="deliveryCheck" name="delivery" required>
+                  <label for="delivery">
+                    <h6>Delivery Avaliable</h6>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="user-listing-images">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+            </div>
           </div>
-          <div class="user-listing-details">
-            <h4 contenteditable="true">Title</h4><br>
-            <h5>Location</h5><br>
-            <h5>Checkboxes</h5><br>
-            <h5>Price</h5><br>
+
+          <div class="user-listing-description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis
+              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <h6>Delete Listing</h6>
           </div>
         </div>
 
-        <div class="user-listing-description">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+
+
+
       </div>
+      <!-- user all listings ends -->
+
+
     </div>
 
-
-
-
+  </div>
 
 
 
