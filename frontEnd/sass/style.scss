@@ -103,9 +103,9 @@ p {
   height: 60px;
   border-radius: 50px;
   transition: 0.4s;
+  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
 
   &:hover {
-    font-weight: 600;
     border: 1px solid #F8F1DE;
     background: none;
   }
@@ -115,20 +115,20 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   font-family: 'Comfortaa', cursive;
   cursor: pointer;
   background: none;
   color: #F8F1DE;
   border: 1px solid #F8F1DE;
-  width: 200px;
-  height: 60px;
+  width: 150px;
+  height: 40px;
   border-radius: 50px;
   transition: 0.4s;
 
   &:hover {
-    backdrop-filter: blur(10px);
+    background: rgba(#f9f2df, 0.3);
   }
 }
 
@@ -204,7 +204,7 @@ input:-webkit-autofill:hover {
   font-family: 'Comfortaa', cursive;
   font-size: 16px;
   border-radius: 15px;
-  padding: 20px 30px;
+  padding: 20px 20px;
   /* resize: none; */
   color: #F8F1DE;
 }
@@ -220,6 +220,7 @@ input:-webkit-autofill:hover {
 // favourite button
 
 .favourite a {
+  display: none;
   text-decoration: none;
   color: $green;
   background-color: $offwhite;
@@ -230,9 +231,15 @@ input:-webkit-autofill:hover {
   margin-top: 30%;
 }
 
-.card-img img {
+.card-img {
   width: 100%;
-  overflow: hidden;
+  height: 60%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 .ignore-me {
@@ -252,10 +259,48 @@ input:-webkit-autofill:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 21%;
+  width: 250px;
   margin: auto;
-  max-height: 300px;
-  padding-bottom: 4%;
+  height: 300px;
+  margin: 0 15px 60px;
+}
+
+// On Hover Card Effects
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.hvr-float {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-float:hover, .hvr-float:focus, .hvr-float:active {
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+  cursor: pointer;
 }
 
 .top-info {
@@ -616,12 +661,11 @@ input:-webkit-autofill:hover {
   height: auto;
 }
 
-
 .background-image {
   background-image: url("../img/gecko.jpg");
-  height:100vh;
-  width: 100vw;
-  background-position:center;
+  height: 100vh;
+  width: 100%;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
   position: relative;
@@ -631,14 +675,18 @@ input:-webkit-autofill:hover {
 // xotik about
 
 .hero {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
   margin: auto;
-  padding-top: 15%;
-  padding-left: 8%;
+  top: 25%;
+  left: 8%;
 }
 
 .xotik {
-  font-family: "Source Sans Pro";
+  font-family: 'Montserrat', sans-serif;
   font-size: 10vw;
+  font-weight: 700;
   color: #f4edda;
   padding-bottom: 2%;
 }
@@ -662,15 +710,20 @@ input:-webkit-autofill:hover {
 }
 //Search selections
 
+.filter-section {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 60px;
+}
+
 .search {
-  // position: sticky;
-  // top: 100px;
-  // backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  width: 87%;
-  margin: auto auto 60px;
+  width: 300px;
 }
 
 .inputs {
@@ -678,28 +731,44 @@ input:-webkit-autofill:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
-}
-  .input,
+  width: 500px;
+
   .select {
-    width: 28%;
+    width: 45%;
   }
+}
+
+.select {
+  cursor: pointer;
+}
 
 .all-listings {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 90%;
+  margin: auto auto 60px;
+}
+// WHO WE ARE PAGE :::::::::::::::::::::::::::
+// Who Section >> Who We Are page
+
+.about-content {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin: auto;
 }
 
-// WHO WE ARE PAGE :::::::::::::::::::::::::::
-
-// Who Section >> Who We Are page
 .who {
-  padding-top: 8%;
+  padding-top: 180px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid $offwhite;
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  align-items: center;
+  width: 90%;
   margin: auto;
 }
 
@@ -708,59 +777,158 @@ input:-webkit-autofill:hover {
 }
 
 .who-img {
-  width: 100%;
-  height:100%;
+  width: 80%;
+  height: 100%;
   margin: auto;
 }
 
 .who-text {
-  width: 47%;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.who-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  margin: auto;
 }
 
 .who-head {
-  padding-bottom: 1.5%;
+  margin-bottom: 30px;
+  font-size: 40px;
 }
 
-
-hr {
-  margin-top: 2%;
-  width: 80%;
+.partners {
+  display: flex;
+  justify-content:space-between;
 }
-// FAQ Section >> Who We Are page
-.faq-head {
+
+.partners-head {
   text-align: center;
-  padding-top: 2%;
+  padding-top: 6%;
   padding-bottom: 2%;
 }
 
-.faq {
-  margin: auto;
-  width: 40%;
+.partner1,
+.partner2 {
+  width: 12vw;
+  height: auto;
 }
 
+// Safety Section >> Who We Are page
+
+.safety {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  border-bottom: 1px solid $offwhite;
+}
+
+.safety-head {
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+
+.safety-img-container {
+  width: 47%;
+}
+
+.safety-img {
+  width: 80%;
+  height: auto;
+}
+
+.safety-text {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.safety-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+}
+
+// Protecting Our Animals Section
+.safety-icons {
+  padding-top: 8%;
+}
+
+.cert-cont {
+  padding-top: 4%;
+  padding-bottom: 4%;
+  display: flex;
+}
+
+.cert {
+  width: 10%;
+  padding-right: 3%;
+}
+
+.enclosure-cont {
+  display: flex;
+}
+
+.enclosure {
+  width: 10%;
+  padding-right: 3%;
+}
+
+// FAQ Section >> Who We Are page
+.contact-faq {
+  display: flex;
+}
+
+.faq {
+  padding-bottom: 60px;
+  width: 40%;
+  margin: auto;
+}
+
+.faq-head {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.faq-content,
+.contact-content {
+  width: 90%;
+  margin: auto;
+}
 
 .collapsible {
-  background-color: $offwhite;
-  color: $black;
   cursor: pointer;
-  padding: 18px;
   width: 100%;
-  border: none;
   text-align: left;
-  outline: none;
+  background: none;
+  padding-bottom: 1%;
+  border: none;
+  border-bottom: 1px solid #F8F1DE;
+  padding-left: 2%;
+  color: #F8F1DE;
   font-size: 20px;
-  font-family: "Comfortaa";
-  font-weight: 700;
-  border-radius: 35px;
-}
-
-.active, .collapsible:hover {
-  // background-color: #555;
 }
 
 .collapsible:after {
   content: '\002B';
-  color: $black;
+  color: $offwhite;
   font-weight: bold;
   float: right;
   margin-left: 5px;
@@ -771,86 +939,84 @@ hr {
 }
 
 .contents {
-  padding: 0px 18px;
-  padding-top: 2%;
+  padding: 2% 18px 0;
   margin-bottom: 2%;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
-// Safety Section >> Who We Are page
-.safety {
-  padding-top: 3%;
+
+
+
+// Contact Section >> Who We Are Page
+.contact {
   display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  margin: 60px auto;
 }
-
-.safety-head {
-  padding-bottom: 1.5%;
-}
-
-.safety-img-container {
-  width: 47%;
-}
-
-.safety-img {
-  width: 100%;
-  height: auto;
-}
-
-.safety-text {
-  width: 47%;
-}
-
-// Contact Section >> Who We Are page
 
 .contact-head {
   text-align: center;
-  padding-top: 1%;
-  padding-bottom: 2%;
+  margin-bottom: 30px;
+  font-size: 40px;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: 100%;
   left: 0;
   right: 0;
   margin: auto;
 }
 
-.contact-name,
-.contact-email {
+.name-email {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 90%;
+}
+
+.input-name,
+.input-email {
+  width: 30%;
+}
+
+.contact-email,
+.contact-name {
   background: none;
   margin-bottom: 8%;
   padding-bottom: 2%;
   border: none;
-  border-bottom: 1px solid $offwhite;
+  border-bottom: 1px solid #F8F1DE;
   padding-left: 4%;
-  color: $offwhite;
+  color: #F8F1DE;
   font-size: 20px;
 }
 
 .contact-msg {
   background: none;
-  border: 1px solid $offwhite;
+  border: 1px solid #F8F1DE;
   border-radius: 20px;
   padding-top: 3%;
   padding-left: 4%;
   padding-bottom: 200px;
-  color: $offwhite;
+  color: #F8F1DE;
   font-size: 20px;
 }
 
-.send-btn {
+.contact-message {
+  display: flex;
+  justify-content: center;
+  width: 90%;
   margin: auto;
 }
 
-.send-btn-container {
-  padding-top: 3%;
-  padding-bottom: 3%;
+.sendBtn {
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -867,7 +1033,6 @@ hr {
 
 .images {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   margin-top: 30px;
   width: 100%;
@@ -879,8 +1044,10 @@ hr {
 
 .test-div-images {
   display: flex;
+  flex-direction: row;
   height: auto;
   flex-wrap: wrap;
+  width: 60%;
 
   img {
     margin: 5px;
@@ -895,45 +1062,6 @@ hr {
     }
   }
 }
-
-.trash {
-  display: none;
-  transition:0.4s ease;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  top: 0px;
-  left: 0px;
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
-  background: rgba(#282828, 0.25);
-  margin: 5px 0 0 5px;
-  cursor: pointer;
-  font-size: 30px;
-  z-index: 999;
-  transition:0.4s ease;
-  color: $red;
-
-  &:hover {
-    .new-image {
-      opacity: 0.5;
-    }
-  }
-}
-
-.new-image {
-  position: relative;
-  transition: 0.4s ease;
-
-  &:hover {
-    .trash {
-        transition: 0.4s ease;
-      display: flex;
-    }
-  }
-}
-
 
 .add-img-btn {
   width: 150px;
@@ -957,6 +1085,44 @@ hr {
     font-size: 30px;
     opacity: 0.4;
     transition: 0.5s ease;
+  }
+}
+
+.trash {
+  display: none;
+  transition: 0.4s ease;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  background: rgba(#282828, 0.25);
+  margin: 5px 0 0 5px;
+  cursor: pointer;
+  font-size: 30px;
+  z-index: 999;
+  transition: 0.4s ease;
+  color: $red;
+
+  &:hover {
+    .new-image {
+      opacity: 0.5;
+    }
+  }
+}
+
+.new-image {
+  position: relative;
+  transition: 0.4s ease;
+
+  &:hover {
+    .trash {
+      transition: 0.4s ease;
+      display: flex;
+    }
   }
 }
 
@@ -986,11 +1152,10 @@ hr {
   -webkit-appearance: none;
   margin: 0;
 }
-
-.checkbox {
-  width: 15px;
-  height: 15px;
-}
+// .checkbox {
+//   width: 15px;
+//   height: 15px;
+// }
 
 .listing-checkbox {
   display: flex;
@@ -1096,14 +1261,14 @@ hr {
   margin-bottom: 10px;
 }
 
-.delivery-liscence {
+.delivery-licence {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
 
 .delivery,
-.liscence {
+.licence {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -1232,7 +1397,6 @@ hr {
     opacity: 0.5;
   }
 }
-
 // cart page :::::::::::::::::::::::::::
 
 .cart-page-content {
@@ -1240,7 +1404,6 @@ hr {
   flex-direction: column;
   justify-content: flex-start;
   min-height: 600px;
-
 }
 
 .cart-page-header {
@@ -1266,7 +1429,6 @@ hr {
   width: 97%;
   height: 80%;
   margin: auto;
-
 }
 
 .cart-page-img {
@@ -1316,15 +1478,110 @@ hr {
   align-items: center;
 }
 
-.checkout-btn  {
+.checkout-btn {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
+// user page begins ::::::::::::::::::::::::::::::
+.user-content {
+  display: flex;
+  flex-direction: column;
+}
 
+.user-details,
+.user-listing-section {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.user-details-header,
+.user-listing-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 2px solid $offwhite;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+
+  h6 {
+    opacity: 0.5;
+  }
+}
+
+.user-detals-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.user-details-left-col {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 70px;
+  width: 30%;
+}
+
+.user-details-right-col {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 60%;
+}
+
+.user-listing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  border-bottom: 1px solid $offwhite;
+  height: auto;
+}
+
+.user-listing-left {
+  display: flex;
+  width: 530px;
+  height: auto;
+  justify-content: space-between;
+  padding-bottom: 30px;
+
+}
+
+.user-listing-images {
+  width: 200px;
+  height: 180px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  img {
+    max-height: 90px;
+    max-width: 90px;
+    object-fit: cover;
+    margin: 0 10px 10px 0;
+  }
+}
+
+.user-listing-details {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.user-listing-description {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  padding-bottom: 30px;
+}
 
 // footer begins ::::::::::::::::::::::::::::::::::
-
 .footer {
   display: flex;
   justify-content: center;
@@ -1347,6 +1604,11 @@ hr {
   flex-direction: column;
   justify-content: space-between;
   width: 30%;
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
 }
 
 .footer-nav {
