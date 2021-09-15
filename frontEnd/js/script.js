@@ -471,22 +471,27 @@
         switch (arg) {
             case 'lowest':
                 for (card of cards) {
-                    pricesSorted.push(card.getAttribute("data-price"));
-                    pricesSorted.sort((a, b) => (a - b));
+                    pricesSorted.push({
+                        "price": card.getAttribute("data-price"),
+                        "element": card
+                    });
+                    pricesSorted.sort((a, b) => (a.price - b.price));
                 }
             break;
 
             case 'highest':
-                for (card of cards) {
-                    pricesSorted.push(card.getAttribute("data-price"));
-                    pricesSorted.sort((a, b) => (a - b));
-                    pricesSorted.reverse()
-                }
+            for (card of cards) {
+                pricesSorted.push({
+                    "price": card.getAttribute("data-price"),
+                    "element": card
+                });
+                pricesSorted.sort((a, b) => (b.price - a.price));
+            }
             break;
 
             case 'viewed':
                 console.log("not done yet")
-            break;
+            return;
 
             default:
                 console.log('not done yet');
@@ -495,16 +500,8 @@
         }
 
         for (let i = 0; i < pricesSorted.length; i++) {
-            pricesCard.push(cards[i].getAttribute("data-price"))
+            cardParent.appendChild(pricesSorted[i].element)
         }
-
-        pricesCard.sort(function(a, b){
-            return pricesSorted.indexOf(a) - pricesSorted.indexOf(b);
-        });
-
-
-        console.log("Sorted prices seperated from card:", pricesSorted);
-        console.log("\nPrices from actual card:", pricesCard)
 
     }
 
