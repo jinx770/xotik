@@ -321,6 +321,7 @@ input:-webkit-autofill:hover {
   width: 100%;
   height: 100px;
   z-index: 9999;
+  backdrop-filter: blur(10px);
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0), #272727);
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0)));
 }
@@ -714,7 +715,7 @@ input:-webkit-autofill:hover {
 }
 
 .who {
-  padding-top: 180px;
+  margin-top: 180px;
   padding-bottom: 80px;
   border-bottom: 1px solid #F8F1DE;
   display: flex;
@@ -755,58 +756,21 @@ input:-webkit-autofill:hover {
   font-size: 40px;
 }
 
-.faq {
-  padding-bottom: 80px;
-  padding-top: 80px;
-  width: 90%;
-  margin: auto;
-  border-bottom: 1px solid #F8F1DE;
+.partners {
+  display: flex;
+  justify-content: space-between;
 }
 
-.faq-head {
+.partners-head {
   text-align: center;
-  font-size: 40px;
-  margin-bottom: 30px;
+  padding-top: 6%;
+  padding-bottom: 2%;
 }
 
-.faq-content {
-  width: 60%;
-  margin: auto;
-}
-
-.collapsible {
-  background-color: #F8F1DE;
-  color: #272727;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 20px;
-  font-family: "Comfortaa";
-  font-weight: 700;
-  border-radius: 35px;
-}
-
-.collapsible:after {
-  content: '\002B';
-  color: #272727;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2212";
-}
-
-.contents {
-  padding: 2% 18px 0;
-  margin-bottom: 2%;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+.partner1,
+.partner2 {
+  width: 12vw;
+  height: auto;
 }
 
 .safety {
@@ -852,12 +816,91 @@ input:-webkit-autofill:hover {
   margin: auto;
 }
 
+.safety-icons {
+  padding-top: 8%;
+}
+
+.cert-cont {
+  padding-top: 4%;
+  padding-bottom: 4%;
+  display: flex;
+}
+
+.cert {
+  width: 10%;
+  padding-right: 3%;
+}
+
+.enclosure-cont {
+  display: flex;
+}
+
+.enclosure {
+  width: 10%;
+  padding-right: 3%;
+}
+
+.contact-faq {
+  display: flex;
+}
+
+.faq {
+  padding-bottom: 60px;
+  width: 40%;
+  margin: auto;
+}
+
+.faq-head {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.faq-content,
+.contact-content {
+  width: 90%;
+  margin: auto;
+}
+
+.collapsible {
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  background: none;
+  padding-bottom: 1%;
+  border: none;
+  border-bottom: 1px solid #F8F1DE;
+  padding-left: 2%;
+  color: #F8F1DE;
+  font-size: 20px;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: #F8F1DE;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.contents {
+  padding: 2% 18px 0;
+  margin-bottom: 2%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
 .contact {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  margin: 80px auto;
+  width: 40%;
+  margin: 60px auto;
 }
 
 .contact-head {
@@ -873,6 +916,18 @@ input:-webkit-autofill:hover {
   left: 0;
   right: 0;
   margin: auto;
+}
+
+.name-email {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 90%;
+}
+
+.input-name,
+.input-email {
+  width: 30%;
 }
 
 .contact-email,
@@ -898,13 +953,16 @@ input:-webkit-autofill:hover {
   font-size: 20px;
 }
 
-.send-btn {
+.contact-message {
+  display: flex;
+  justify-content: center;
+  width: 90%;
   margin: auto;
 }
 
-.send-btn-container {
-  padding-top: 3%;
-  padding-bottom: 3%;
+.sendBtn {
+  display: flex;
+  justify-content: center;
 }
 
 .listing-images-section {
