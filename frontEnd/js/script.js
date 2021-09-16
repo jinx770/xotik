@@ -442,7 +442,6 @@
 
         for (card of cards) {
             card.addEventListener('click', () => {
-                console.log('m')
                 window.location.href="/animalTemplate.html"
             })
         }
@@ -490,6 +489,72 @@
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
+    // Runs when page gets loaded
+    let setupFilters = () => {
+
+        // Gets every input
+        for (input of allFilterInputs) {
+
+            // Adds a changed event on each input, fires when something gets changed
+            input.addEventListener('change', () => {
+
+                refreshElements();
+
+                // Returning true or false if the value isn't empty for each input
+                let typeEmpty = typeInput.value !== "" ? false : true;
+                let filterEmpty = filterInput.value !== "" ? false : true;
+                let searchEmpty = searchInput.value !== "" ? false : true;
+
+                // Calls functions if its not empty with the input
+                !typeEmpty ? filterCards("byType", typeInput.value) : "";
+                !filterEmpty ? filterCards("byFilter", filterInput.value) : "";
+
+                // Calls search function when user is typing
+                !searchEmpty ? searchQuery(searchInput.value) : "";
+
+            })
+
+        }
+
+        // Firing the search query function when you lift a key up while typing
+        searchInput ? searchInput.addEventListener('keyup', () => {
+            searchQuery(searchInput.value)
+        }) : "";
+
+    }
+
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    // Fires when you click an input
+    let filterCards = ( ... args ) => {
+
+        // Seperates the type of filter the user has clicked and what they click on
+        let [queryType, parameter] = args
+
+        refreshElements();
+
+        // If the passed querytype call a function
+        if (queryType == "byType") {
+            hideCardsThatArent(parameter)
+        }
+
+        // Calls sort function if argument is byfilter
+        if (queryType == "byFilter") {
+            sortBy(parameter)
+        }
+
+    }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
     // Gets called every time you let go of a key when youre typing in an input
     let searchQuery = async ( arg ) => {
 
@@ -499,7 +564,7 @@
             // Converting the title into lowercase and checking to see if it has the argument in it
             if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
 
-                // Showing it
+                // Showing relevative cards
                 title.parentNode.parentNode.style.display = "block"
 
             } else {
@@ -519,7 +584,7 @@
 
 
 
-    //
+    // I seriously can't be bothered commenting for this 
     let sortBy = ( arg ) => {
 
         if (alreadyStored == false ) {
@@ -566,7 +631,6 @@
                     });
                     ratingsSorted.sort((a, b) => (b.rating - a.rating));
                 }
-
                 for (let i = 0; i < ratingsSorted.length; i++) {
                     cardParent.appendChild(ratingsSorted[i].element)
                 }
@@ -618,61 +682,6 @@
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-    let filterCards = ( ... args ) => {
-
-        let [queryType, parameter] = args
-        refreshElements();
-
-        if (queryType == "byType") {
-            hideCardsThatArent(parameter)
-        }
-
-        if (queryType == "byFilter") {
-            sortBy(parameter)
-        }
-
-    }
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-    let setupFilters = () => {
-
-        for (input of allFilterInputs) {
-
-            input.addEventListener('change', () => {
-
-                refreshElements();
-
-                let typeEmpty = typeInput.value !== "" ? false : true;
-                let filterEmpty = filterInput.value !== "" ? false : true;
-                let searchEmpty = searchInput.value !== "" ? false : true;
-
-                !typeEmpty ? filterCards("byType", typeInput.value) : "";
-                !filterEmpty ? filterCards("byFilter", filterInput.value) : "";
-                !searchEmpty ? searchQuery(searchInput.value) : "";
-
-
-            })
-
-        }
-
-        searchInput ? searchInput.addEventListener('keyup', () => {
-            searchQuery(searchInput.value)
-        }) : "";
-
-    }
-
-
-
-
-    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
