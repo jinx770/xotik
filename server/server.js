@@ -113,7 +113,7 @@ app.post('/createUser', async ( req, res ) => {
 
     // Shorthand variable creation
     let { fullName, username, phoneNo, email, description, password } = req.body;
-    console.log(password);
+    
     // Hashes the password through function
     let hashedPassword = await functions.HashPassword(password)
 
