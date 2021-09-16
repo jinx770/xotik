@@ -56,7 +56,7 @@
     let FindAnimal = async ( args ) => {
 
         // Uses the find method which returns all data with the relevant field, returns what it finds
-        let foundAnimal = await Animal.find({ _id: args });
+        let foundAnimal = await Animal.find({ name: args });
 
         // If the returned result character count is 0 then it returns false
         // -- The find method won't error or display undefined, just an empty array, which is why we check its length
@@ -287,6 +287,15 @@
 
     // Acknowledges that the code is running without any ghost errors
     console.log("Running...")
+    //
+    // RemoveAnimal("Otter")
+    // RemoveAnimal("Newt")
+    // RemoveAnimal("Ashera Cat")
+    // RemoveAnimal("Koala")
+    // RemoveAnimal("Meerkat")
+    // RemoveAnimal("White Seal")
+    // RemoveAnimal("White Tegus ")
+    // RemoveAnimal("Tasmanian Devil")
 
     // Export our functions to the server.js so they still get ran after we require them
     module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword}
@@ -294,186 +303,3 @@
 
 
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Dummy Data
-      // CreateUser(
-      //     "John Doe",
-      //     "johndoe123",
-      //     "021324578",
-      //     "johndoe@gmail.com",
-      //     "Owner of really cool pythons",
-      //     "myPassword"
-      // )
-      //
-      //
-      // CreateAnimal(
-      //     "Leatherback Turtle",
-      //     [
-      //         'turtle',
-      //         'white',
-      //         'large',
-      //         'black',
-      //         'leatherback',
-      //         'australia'
-      //     ],
-      //     "/img/animalCards/leatherTurtle.png",
-      //     8999,
-      //     "4/5",
-      //     "The leatherback sea turtle, sometimes called the lute turtle or leathery turtle or simply the luth, is the largest of all living turtles and the heaviest non-crocodilian reptile.",
-      //     3
-      // )
-      //
-      // CreateAnimal(
-      //     "White Rhino",
-      //     [
-      //         'rhino',
-      //         'white',
-      //         'large',
-      //         'big',
-      //         'horn',
-      //         'animal',
-      //         'elephant'
-      //     ],
-      //     "/img/animalCards/whiteRhino.png",
-      //     12999,
-      //     "5/5",
-      //     "The white rhinoceros or square-lipped rhinoceros is the largest extant species of rhinoceros. It has a wide mouth used for grazing and is the most social of all rhino species.",
-      //     1
-      // )
-      //
-      // CreateAnimal(
-      //     "Leopard Gecko",
-      //     [
-      //         'gecko',
-      //         'leopard',
-      //         'lizard',
-      //         'small',
-      //         'colour',
-      //         'aggressive',
-      //         'tiny'
-      //     ],
-      //     "/img/animalCards/leopardGecko.png",
-      //     419,
-      //     "4/5",
-      //     "They are fairly small but sturdy lizards, and their common name, 'leopard gecko' refers to their spotted patterns, predominantly shades of yellow and brown. ",
-      //     27
-      // )
-      //
-      // CreateAnimal(
-      //     "White Tegus",
-      //     [
-      //         'gecko',
-      //         'white',
-      //         'tegus',
-      //         'small',
-      //         'colour',
-      //         'lizard',
-      //         'tiny',
-      //         'friendly'
-      //     ],
-      //     "/img/animalCards/whiteTegus.png",
-      //     1300,
-      //     "5/5",
-      //     "The Argentine black and white tegu, also called the Australian giant tegu, the black and white tegu, the huge tegu.",
-      //     12
-      // )
-      //
-      // CreateAnimal(
-      //     "Kangaroo",
-      //     [
-      //         'kangaroo',
-      //         'australia',
-      //         'tail',
-      //         'australian',
-      //         'outback',
-      //         'fighting'
-      //     ],
-      //     "/img/animalCards/kangaroo.png",
-      //     1300,
-      //     "4/5",
-      //     "The Argentine black and white tegu, also called the Australian giant tegu, the black and white tegu, the huge tegu.",
-      //     6
-      // )
-      //
-      // CreateAnimal(
-      //     "Tasmanian Devil",
-      //     [
-      //         'aggressive',
-      //         'bites',
-      //         'teeth',
-      //         'australian',
-      //         'outback',
-      //         'tasmania',
-      //         'tasmanian',
-      //         'devil'
-      //     ],
-      //     "/img/animalCards/tasmanianDevil.png",
-      //     700,
-      //     "3/5",
-      //     "These famously feisty mammals have a coat of coarse brown or black fur and a stocky profile that gives them the appearance of a baby bear. Most have a white stripe or patch on their chest and light spots on their sides or rear end. ",
-      //     31
-      // )
-      //
-      // CreateAnimal(
-      //     "Koala",
-      //     [
-      //         'cute',
-      //         'adorable',
-      //         'cuddle',
-      //         'tiny',
-      //         'outback',
-      //         'soft',
-      //         'koala',
-      //         'australia'
-      //     ],
-      //     "/img/animalCards/koala.png",
-      //     3699,
-      //     "5/5",
-      //     "Koalas are well-known for their large round head, big furry ears and big black nose. Their fur is usually grey-brown in colour with white fur on the chest, inner arms, ears and bottom. ",
-      //     19
-      // )
-      //
-      // CreateAnimal(
-      //     "Meerkat",
-      //     [
-      //         'cute',
-      //         'outback',
-      //         'cats',
-      //         'cat',
-      //         'meercat',
-      //         'soft',
-      //         'koala',
-      //         'weasel'
-      //     ],
-      //     "/img/animalCards/meerkats.png",
-      //     190,
-      //     "3/5",
-      //     "Meerkats live in the deserts and grasslands of the southern tip of Africa. They are extremely cute, with bushy, brown-striped fur, a small, pointed face, and large eyes surrounded by dark patches. ",
-      //     58
-      // )
