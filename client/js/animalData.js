@@ -16,6 +16,7 @@
         animalDescription = document.querySelector('.animal-description');
         animalImg = document.querySelector('.animal-img');
         altImages = document.querySelectorAll('.alt-img');
+        console.log(animalData[0])
 
         // Changes being made to DOM
         owner.textContent = animalData[0].owner;
