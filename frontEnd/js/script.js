@@ -144,8 +144,11 @@
 
     // Logic check for the current session, gotta define it initially
     window.loggedIn = false
+    window.alreadyStored = false;
     window.currentSession = "";
-
+    window.pricesSorted = [];
+    window.ratingsSorted = [];
+    window.defaultSorted = [];
 
 
 // ----------------------------------------------------------------------------------------------------------------------------------
@@ -161,16 +164,17 @@
         window.sessionHeader = document.querySelector("#sessionHeader") || "";
         window.loginPopOver = document.querySelector(".header-popover") || "";
         window.allPrices = document.querySelectorAll(".price") || "";
+        window.titles = document.querySelectorAll(".title") || "";
 
         window.fileInput = document.querySelector(".ignore-me") || "";
         window.usernameInput = document.querySelector("#username") || "";
         window.passwordInput = document.querySelector("#password") || "";
         window.searchInput = document.querySelector("#searchInput") || "";
         window.filterInput = document.querySelector("#filterInput") || "";
-        window.allFilterInputs = document.querySelectorAll(".select") || "";
         window.typeInput = document.querySelector("#typeInput") || "";
         window.usernameCreate = document.querySelector("#usernameCreate") || "";
         window.passwordCreate = document.querySelector("#passwordCreate") || "";
+        window.allFilterInputs = document.querySelectorAll(".select") || "";
 
         window.signUpButton = document.querySelector("#signUpBtn") || "";
         window.loginButton = document.querySelector("#submitLogin") || "";
@@ -486,9 +490,27 @@
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
-    // Haven't started yet lol
-    let searchQuery = ( arg ) => {
-        console.log(arg)
+    // Gets called every time you let go of a key when youre typing in an input
+    let searchQuery = async ( arg ) => {
+
+        // Getting every title of each animal on the page
+        for (title of titles) {
+
+            // Converting the title into lowercase and checking to see if it has the argument in it
+            if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
+
+                // Showing it
+                title.parentNode.parentNode.style.display = "block"
+
+            } else {
+
+                // Hiding irrelevant results
+                title.parentNode.parentNode.style.display = "none"
+
+            }
+
+        }
+
     }
 
 
@@ -496,12 +518,18 @@
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
+
+    // 
     let sortBy = ( arg ) => {
 
-        let pricesSorted = [];
-        let ratingsSorted = [];
-        let defaultSorted = [];
-
+        if (alreadyStored == false ) {
+            for (var i = 0; i < cards.length; i++) {
+                defaultSorted.push({
+                    "element": cards[i]
+                })
+            }
+            alreadyStored = true
+        }
 
         switch (arg) {
             case 'lowest':
@@ -545,18 +573,9 @@
             break;
 
             case 'none':
-                // for (var i = 0; i < cards.length; i++) {
-                //     defaultSorted.push({
-                //         "element": cards[i]
-                //     })
-                // }
-                // console.log(defaultSorted)
-                //
-                // for (let i = 0; i < defaultSorted.length; i++) {
-                //     cardParent.appendChild(defaultSorted[i].element)
-                // }
-
-                console.log('not done xd')
+                for (let i = 0; i < defaultSorted.length; i++) {
+                    cardParent.appendChild(defaultSorted[i].element)
+                }
             break;
 
         }
