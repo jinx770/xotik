@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title></title>
+</head>
+
+<body>
+
+  <!-- header begins -->
+
+  <div class="header-background"></div>
+  <div class="header-background-blur"></div>
+
+  <div class="header">
+    <div class="header-content">
+      <div class="header-nav">
+        <img class="header-logo" id="logoBtn" src="img/logo.svg" alt="">
+        <div class="nav-item" id="animalsBtn">
+          <h5>Animals</h5>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h5>Who We Are</h5>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h5>Create Listing</h5>
+        </div>
+      </div>
+
+      <div class="header-icons">
+        <i class="fa fa-user" aria-hidden="true" id="user"></i>
+        <i class="fa fa-shopping-cart" aria-hidden="true" id="cart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- header popover begins -->
+
+  <div class="header-popover" id="headerPopover">
+    <!-- <div class="header-arrow" id="#headerArrow"></div> -->
+    <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+    <div class="login-popover-content" id="loginContent">
+      <h4 id="sessionHeader">Log In</h4>
+      <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
+      <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
+      <button id="submitLogin" class="button-secondary">Log In</button>
+      <h6 class="create-account" id="createAccountBtn">Create Account</h6>
+    </div>
+
+    <div class="create-account-popover-content" id="createAccountContent">
+      <h4>Create Account</h4>
+      <input class="input" placeholder="Username" type="text" id="usernameCreate">
+      <input class="input" placeholder="Password" type="password" id="passwordCreate">
+      <button class="button-secondary" id="signUpBtn">Sign Up</button>
+    </div>
+
+
+    <!-- if cart is empty -->
+    <div class="empty-cart-content" id="emptyCartContent">
+      <h4>Cart</h4>
+      <h6>Cart is empty</h6>
+    </div>
+
+    <!-- if cart has items -->
+    <div class="full-cart-content" id="fullCartContent">
+      <h4 class="cart-header">Cart</h4>
+      <div class="cart-item-content">
+        <div class="cart-item">
+          <div class="cart-item-img">
+            <img src="" alt="">
+          </div>
+          <div class="cart-item-text">
+            <h5 class="cart-item-title">Slinky Lizard</h5>
+            <div class="cart-item-text-row">
+              <h6 class="cart-item-price">$499</h6>
+              <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <h6 class="check-out-btn" id="checkOutBtn">Check Out</h6>
+    </div>
+
+  </div>
+  <!-- header popover end -->
+
+  <!-- header ENDS -->
+
+
+  <div class="background-image">
+  </div>
+
+  <div class="hero">
+    <h2 class="xotik">XOTIK</h2>
+    <p class="xotik-about">NZ and AU’s finest, legal, <br>
+      exotic pets. </p>
+    <div class="explore">
+      <button class="button-primary" type="button" id="exploreBtn" name="button">EXPLORE</button>
+    </div>
+  </div>
+
+  <!-- All Listings -->
+  <h1 class="listings-head" id="listingSection">All Listings</h1>
+
+  <div class="filter-section">
+
+    <div class="search">
+      <input id="searchInput" class="input" type="text" name="" value="" placeholder="Search" value="">
+    </div>
+
+    <div class="inputs">
+      <select id="typeInput" class="select" value="">
+        <option value="" class="disabled-option" disabled selected hidden>Pet Type</option>
+        <option value="all">All Listings</option>
+        <option value="aquatic">Aquatic</option>
+        <option value="feline">Feline</option>
+        <option value="feathered">Feathered</option>
+        <option value="reptile">Reptile</option>
+      </select>
+      <select id="filterInput" class="select" value="">
+        <option value="" class="disabled-option" disabled selected hidden>Filter</option>
+        <option value="none">None</option>
+        <option value="viewed">Most Viewed</option>
+        <option value="lowest">Lowest to Highest</option>
+        <option value="highest">Highest to Lowest</option>
+      </select>
+    </div>
+
+
+  </div>
+
+
+
+  <!-- Search Container Ends -->
+
+  <div class="all-listings">
+
+    <div class="results">
+      <div class="spinner-box">
+        <div class="pulse-container">
+          <div class="pulse-bubble pulse-bubble-1"></div>
+          <div class="pulse-bubble pulse-bubble-2"></div>
+          <div class="pulse-bubble pulse-bubble-3"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Card Div Ends -->
+  </div>
+
+
+  <!-- footer begins -->
+
+  <div class="footer">
+
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>XOTIK</h3>
+        <h6>Copyright © 2021, XOTIK</h6>
+      </div>
+      <div class="footer-nav">
+        <div class="nav-item" id="animalsBtn">
+          <h6>Animals</h6>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h6>Who We Are</h6>
+        </div>
+        <div class="nav-item" id="trustBtn">
+          <h6>Trust & Safety</h6>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h6>Create Listing</h6>
+        </div>
+        <div class="nav-item" id="contactBtn">
+          <h6>Enquire Online</h6>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <div class="newsletter-header">
+          <h5>Sign up to our newsletter.</h5>
+        </div>
+        <div class="newsletter-form">
+          <div class="newsletter-form-input">
+            <input class="input" placeholder="Email" type="text" value="">
+          </div>
+          <button class="button-newsletter">Sign Up</button>
+        </div>
+      </div>
+    </div>
+    <!-- footer-content ends -->
+
+  </div>
+  <!-- footer ends -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

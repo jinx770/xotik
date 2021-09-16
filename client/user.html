@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title></title>
+</head>
+
+<body>
+
+  <!-- header begins -->
+
+  <div class="header-background"></div>
+  <div class="header-background-blur"></div>
+  <div class="header">
+    <div class="header-content">
+      <div class="header-nav">
+        <img class="header-logo" id="logoBtn" src="img/logo.svg" alt="">
+        <div class="nav-item" id="animalsBtn">
+          <h5>Animals</h5>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h5>Who We Are</h5>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h5>Create Listing</h5>
+        </div>
+      </div>
+
+      <div class="header-icons">
+        <i class="fa fa-user" aria-hidden="true" id="user"></i>
+        <i class="fa fa-shopping-cart" aria-hidden="true" id="cart"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-popover" id="headerPopover">
+    <!-- <div class="header-arrow" id="#headerArrow"></div> -->
+    <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+    <div class="login-popover-content" id="loginContent">
+      <h4 id="sessionHeader">Log In</h4>
+      <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
+      <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
+      <button id="submitLogin" class="button-secondary">Log In</button>
+      <h6 class="create-account" id="createAccountBtn">Create Account</h6>
+    </div>
+
+    <div class="create-account-popover-content" id="createAccountContent">
+      <h4>Create Account</h4>
+      <input class="input" placeholder="Username" type="text">
+      <input class="input" placeholder="Password" type="password">
+      <button class="button-secondary" id="signUpBtn">Sign Up</button>
+    </div>
+
+
+    <!-- if cart is empty -->
+    <div class="empty-cart-content" id="emptyCartContent">
+      <h4>Cart</h4>
+      <h6>Cart is empty</h6>
+    </div>
+
+    <!-- if cart has items -->
+    <div class="full-cart-content" id="fullCartContent">
+      <h4 class="cart-header">Cart</h4>
+      <div class="cart-item-content">
+        <div class="cart-item">
+          <div class="cart-item-img">
+            <img src="" alt="">
+          </div>
+          <div class="cart-item-text">
+            <h5 class="cart-item-title">Slinky Lizard</h5>
+            <div class="cart-item-text-row">
+              <h6 class="cart-item-price">$499</h6>
+              <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <h6 class="check-out-btn" id="checkOutBtn">Check Out</h6>
+    </div>
+
+  </div>
+  <!-- header popover end -->
+
+  <!-- header ENDS -->
+  <div class="content user-content">
+
+    <div class="user-details">
+      <div class="user-details-header">
+        <h5>username</h5>
+      </div>
+
+      <div class="user-detals-content">
+        <div class="user-details-top">
+          <h5>Full Name</h5>
+          <h5>email@email.com</h5>
+          <h5>021CONTACT</h5>
+        </div>
+
+        <div class="user-details-bottom">
+          <h6>About</h6>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum placeat molestiae corrupti natus sapiente ducimus! Non vel eveniet at laudantium aperiam odit, tempora officiis illo quaerat consectetur enim facilis ducimus. <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum placeat molestiae corrupti natus sapiente ducimus! Non vel eveniet at laudantium aperia.
+          </p>
+        </div>
+      </div>
+      <div class="user-logout-btn">
+        <button class="button-secondary">Log Out</button>
+      </div>
+    </div>
+
+    <div class="user-listing-section">
+
+      <div class="user-listing-header">
+        <h5>Your Listings</h5>
+        <h6>Click on details to edit</h6>
+      </div>
+
+      <div class="user-all-listings">
+
+        <div class="user-listing">
+
+          <div class="user-listing-top">
+            <div class="user-listing-details">
+              <div class="row">
+                <h4 contenteditable="true">Title</h4>
+                <h4 contenteditable="true">Price</h4>
+              </div>
+              <h5 contenteditable="true">Location</h5>
+              <div class="listing-checkbox user-checkbox">
+                <div class="checkbox-row">
+                  <input autocomplete="off" id="licence" class="checkbox" type="checkbox" id="licenceCheck" name="licence" required>
+                  <label for="licence">
+                    <h6>Licence Required</h6>
+                  </label>
+                </div>
+                <div class="checkbox-row">
+                  <input id="delivery" class="checkbox" type="checkbox" id="deliveryCheck" name="delivery" required>
+                  <label for="delivery">
+                    <h6>Delivery Avaliable</h6>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="user-listing-images">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+              <img src="img/heo-alt.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="user-listing-description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis
+              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h6>Delete Listing</h6>
+          </div>
+        </div>
+
+
+
+
+      </div>
+      <!-- user all listings ends -->
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+  <!-- // content ends -->
+
+
+  <!-- footer -->
+
+  <div class="footer">
+
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>XOTIK</h3>
+        <h6>Copyright © 2021, XOTIK</h6>
+      </div>
+      <div class="footer-nav">
+        <div class="nav-item" id="animalsBtn">
+          <h6>Animals</h6>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h6>Who We Are</h6>
+        </div>
+        <div class="nav-item" id="trustBtn">
+          <h6>Trust & Safety</h6>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h6>Create Listing</h6>
+        </div>
+        <div class="nav-item" id="contactBtn">
+          <h6>Enquire Online</h6>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <div class="newsletter-header">
+          <h5>Sign up to our newsletter.</h5>
+        </div>
+        <div class="newsletter-form">
+          <div class="newsletter-form-input">
+            <input class="input" placeholder="Email" type="text" value="">
+          </div>
+          <button class="button-newsletter">Sign Up</button>
+        </div>
+      </div>
+    </div>
+    <!-- footer-content ends -->
+
+  </div>
+  <!-- footer ends -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+  <script src="js/listingHandler.js"></script>
+</body>
+
+</html>
