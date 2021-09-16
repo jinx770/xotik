@@ -46,7 +46,6 @@
         // Loop every .5 seconds
         setInterval(() => {
 
-
             // Gets the inputted file of our input
             let file = $("input[type=file]").get(0).files[0];
 
@@ -84,47 +83,6 @@
         // Running every .5 seconds
         }, 500)
 
-
-    }
-
-
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-
-    // Array remove function
-    // It's some online function I found, didn't make it
-    function removeA(arr) {
-        let what, a = arguments, L = a.length, ax;
-        while (L > 1 && arr.length) {
-            what = a[--L];
-            while ((ax= arr.indexOf(what)) !== -1) {
-                arr.splice(ax, 1);
-            }
-        }
-        return arr;
-    }
-
-
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-
-
-    // Remove function that gets called if you click on the image
-    let remove = (el) => {
-
-        // Irrelevant defining, didn't really needa do this but shrug
-        let element = el;
-
-        // Checking to see if the image we're removing, is cached
-        // Which it will always be so we remove it using our remove array function with the ID we set in the image handler function
-        cache.includes(element.id) ? removeA(cache, element.id) : null
-
-        console.log(cache)
-
-        // Removes the element
-        element.remove();
 
     }
 
