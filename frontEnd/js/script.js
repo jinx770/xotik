@@ -36,7 +36,7 @@
 
 
 
-
+    // ?ICONS :::::::::::::::::::::;
     // click on user icon
     $('#user').click(function() {
         //fade in popover
@@ -114,6 +114,15 @@
 
 
 
+    // eplore button
+
+    $('#exploreBtn').click(function() {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#listingSection").offset().top
+        }, 1500);
+    })
+
+
 
 
     // asking questions
@@ -136,9 +145,7 @@
     })
 
 
-
-
-// ----------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -151,7 +158,7 @@
     window.defaultSorted = [];
 
 
-// ----------------------------------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -190,7 +197,7 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -210,7 +217,7 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -236,7 +243,7 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -257,35 +264,35 @@
 
             // Setting each card up with relevant fields filled out using backticks
             cardParent.innerHTML += `
-                <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
-                      <div class="top-info">
-                          <div class="username">
-                              <h5>${card.owner}</h5>
-                          </div>
-                          <div class="rating">
-                              <h5>${card.rating}</h5>
-                          </div>
-                      </div>
-                      <div class="card-img">
-                          <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-                          <img src="${card.url[0]}" alt="">
-                      </div>
-                      <div class="bottom-info">
-                          <div class="title">
-                              <h4>${card.name}</h4>
-                          </div>
-                          <div class="price">
-                              <h5>$${card.price.toLocaleString()}</h5>
-                              </div>
-                          </div>
-                  </div>
-              `
+                  <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
+                        <div class="top-info">
+                            <div class="username">
+                                <h5>${card.owner}</h5>
+                            </div>
+                            <div class="rating">
+                                <h5>${card.rating}</h5>
+                            </div>
+                        </div>
+                        <div class="card-img">
+                            <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
+                            <img src="${card.url[0]}" alt="">
+                        </div>
+                        <div class="bottom-info">
+                            <div class="title">
+                                <h4>${card.name}</h4>
+                            </div>
+                            <div class="price">
+                                <h5>$${card.price.toLocaleString()}</h5>
+                                </div>
+                            </div>
+                    </div>
+                `
         }
     }
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -316,7 +323,7 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -392,22 +399,24 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
     // Function for creating an account :yay:
     let createAccHandler = async () => {
 
-    // If not logged in continue
+        // If not logged in continue
         if (!loggedIn) {
 
             let username = usernameCreate.value;
             let password = passwordCreate.value;
 
-                // Posts/sends data to the route found in server
+            // Posts/sends data to the route found in server
             let response = await fetch('/createUser', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
 
                     fullName: '.',
@@ -427,7 +436,7 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -442,7 +451,7 @@
 
         for (card of cards) {
             card.addEventListener('click', () => {
-                window.location.href="/animalTemplate.html"
+                window.location.href = "/animalTemplate.html"
             })
         }
 
@@ -450,7 +459,7 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -486,7 +495,7 @@
     }
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
     // Runs when page gets loaded
@@ -526,12 +535,12 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
     // Fires when you click an input
-    let filterCards = ( ... args ) => {
+    let filterCards = (...args) => {
 
         // Seperates the type of filter the user has clicked and what they click on
         let [queryType, parameter] = args
@@ -552,11 +561,11 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
     // Gets called every time you let go of a key when youre typing in an input
-    let searchQuery = async ( arg ) => {
+    let searchQuery = async (arg) => {
 
         // Getting every title of each animal on the page
         for (title of titles) {
@@ -580,14 +589,14 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
     // I seriously can't be bothered commenting for this
-    let sortBy = ( arg ) => {
+    let sortBy = (arg) => {
 
-        if (alreadyStored == false ) {
+        if (alreadyStored == false) {
             for (var i = 0; i < cards.length; i++) {
                 defaultSorted.push({
                     "element": cards[i]
@@ -608,7 +617,7 @@
                 for (let i = 0; i < pricesSorted.length; i++) {
                     cardParent.appendChild(pricesSorted[i].element)
                 }
-            break;
+                break;
 
             case 'highest':
                 for (card of cards) {
@@ -621,7 +630,7 @@
                 for (let i = 0; i < pricesSorted.length; i++) {
                     cardParent.appendChild(pricesSorted[i].element)
                 }
-            break;
+                break;
 
             case 'viewed':
                 for (card of cards) {
@@ -634,13 +643,13 @@
                 for (let i = 0; i < ratingsSorted.length; i++) {
                     cardParent.appendChild(ratingsSorted[i].element)
                 }
-            break;
+                break;
 
             case 'none':
                 for (let i = 0; i < defaultSorted.length; i++) {
                     cardParent.appendChild(defaultSorted[i].element)
                 }
-            break;
+                break;
 
         }
 
@@ -648,11 +657,11 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
     // Function for filtering
-    let hideCardsThatArent = ( arg ) => {
+    let hideCardsThatArent = (arg) => {
 
         // Loop getting every element called cards
         for (card of cards) {
@@ -671,7 +680,7 @@
             }
 
             // If filter reset show all
-            if ( arg === "all") {
+            if (arg === "all") {
                 card.style.display = "block"
             }
 
@@ -681,7 +690,7 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
