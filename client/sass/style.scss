@@ -354,6 +354,7 @@ input:-webkit-autofill:hover {
   width: 100%;
   height: 100px;
   z-index: 9999;
+    backdrop-filter: blur(10px);
   background-image: linear-gradient(to top, rgba(#ffffff, 0), $black);
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
@@ -760,6 +761,7 @@ input:-webkit-autofill:hover {
 .select {
   cursor: pointer;
 }
+
 // WHO WE ARE PAGE :::::::::::::::::::::::::::
 // Who Section >> Who We Are page
 
@@ -773,7 +775,7 @@ input:-webkit-autofill:hover {
 }
 
 .who {
-  padding-top: 180px;
+  margin-top: 180px;
   padding-bottom: 80px;
   border-bottom: 1px solid $offwhite;
   display: flex;
@@ -813,66 +815,24 @@ input:-webkit-autofill:hover {
   margin-bottom: 30px;
   font-size: 40px;
 }
-// FAQ Section >> Who We Are page
 
-.faq {
-  padding-bottom: 80px;
-  padding-top: 80px;
-  width: 90%;
-  margin: auto;
-  border-bottom: 1px solid $offwhite;
+.partners {
+  display: flex;
+  justify-content:space-between;
 }
 
-.faq-head {
+.partners-head {
   text-align: center;
-  font-size: 40px;
-  margin-bottom: 30px;
+  padding-top: 6%;
+  padding-bottom: 2%;
 }
 
-.faq-content {
-  width: 60%;
-  margin: auto;
+.partner1,
+.partner2 {
+  width: 12vw;
+  height: auto;
 }
 
-.collapsible {
-  background-color: $offwhite;
-  color: $black;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 20px;
-  font-family: "Comfortaa";
-  font-weight: 700;
-  border-radius: 35px;
-}
-
-.active,
-.collapsible:hover {
-  // background-color: #555;
-}
-
-.collapsible:after {
-  content: '\002B';
-  color: $black;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2212";
-}
-
-.contents {
-  padding: 2% 18px 0;
-  margin-bottom: 2%;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
 // Safety Section >> Who We Are page
 
 .safety {
@@ -917,14 +877,97 @@ input:-webkit-autofill:hover {
   height: 80%;
   margin: auto;
 }
-// Contact Section >> Who We Are page
 
+// Protecting Our Animals Section
+.safety-icons {
+  padding-top: 8%;
+}
+
+.cert-cont {
+  padding-top: 4%;
+  padding-bottom: 4%;
+  display: flex;
+}
+
+.cert {
+  width: 10%;
+  padding-right: 3%;
+}
+
+.enclosure-cont {
+  display: flex;
+}
+
+.enclosure {
+  width: 10%;
+  padding-right: 3%;
+}
+
+// FAQ Section >> Who We Are page
+.contact-faq {
+  display: flex;
+}
+
+.faq {
+  padding-bottom: 60px;
+  width: 40%;
+  margin: auto;
+}
+
+.faq-head {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.faq-content,
+.contact-content {
+  width: 90%;
+  margin: auto;
+}
+
+.collapsible {
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  background: none;
+  padding-bottom: 1%;
+  border: none;
+  border-bottom: 1px solid #F8F1DE;
+  padding-left: 2%;
+  color: #F8F1DE;
+  font-size: 20px;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: $offwhite;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.contents {
+  padding: 2% 18px 0;
+  margin-bottom: 2%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+
+
+// Contact Section >> Who We Are Page
 .contact {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  margin: 80px auto;
+  width: 40%;
+  margin: 60px auto;
 }
 
 .contact-head {
@@ -942,36 +985,51 @@ input:-webkit-autofill:hover {
   margin: auto;
 }
 
+.name-email {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 90%;
+}
+
+.input-name,
+.input-email {
+  width: 30%;
+}
+
 .contact-email,
 .contact-name {
   background: none;
   margin-bottom: 8%;
   padding-bottom: 2%;
   border: none;
-  border-bottom: 1px solid $offwhite;
+  border-bottom: 1px solid #F8F1DE;
   padding-left: 4%;
-  color: $offwhite;
+  color: #F8F1DE;
   font-size: 20px;
 }
 
 .contact-msg {
   background: none;
-  border: 1px solid $offwhite;
+  border: 1px solid #F8F1DE;
   border-radius: 20px;
   padding-top: 3%;
   padding-left: 4%;
   padding-bottom: 200px;
-  color: $offwhite;
+  color: #F8F1DE;
   font-size: 20px;
 }
 
-.send-btn {
+.contact-message {
+  display: flex;
+  justify-content: center;
+  width: 90%;
   margin: auto;
 }
 
-.send-btn-container {
-  padding-top: 3%;
-  padding-bottom: 3%;
+.sendBtn {
+  display: flex;
+  justify-content: center;
 }
 // CREATE LISTING PAGE :::::::::::::::::::::::::::
 
