@@ -33,7 +33,7 @@
     window.url;
     window.cache = [""]
     window.currentSession = localStorage.getItem("currentSession")
-    imageHolder.innerHTML = "";
+    uploadImage.style.visibility = "hidden"
 
 
 
@@ -61,9 +61,10 @@
                 // Event handler for when load is fired
                 reader.onload = function(){
 
+
                     // The source attribute gets changed to the result of our fileReaders request when we call it with readAsDataURL
                     uploadImage.src = reader.result
-
+                    uploadImage.style.visibility = "visible"
                     url = reader.result
 
 
