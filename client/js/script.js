@@ -263,39 +263,38 @@
 
 
 
-  // Function for handling the animal cards on the front page.
-  let handleHomeAnimals = async () => {
+    // Function for handling the animal cards on the front page.
+    let handleHomeAnimals = async () => {
 
     // Calls our api on the server without a query, if there is no query then return all animals
     let response = await fetch('/findAnimal')
 
-            // Setting each card up with relevant fields filled out using backticks
-            cardParent.innerHTML += `
-                  <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-animaName="${card.name}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
-                        <div class="top-info">
-                            <div class="username">
-                                <h5>${card.owner}</h5>
-                            </div>
-                            <div class="rating">
-                                <h5>${card.rating}</h5>
-                            </div>
-                        </div>
-                        <div class="card-img">
-                            <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-                            <img src="${card.url[0]}" alt="">
-                        </div>
-                        <div class="bottom-info">
-                            <div class="title">
-                                <h4>${card.name}</h4>
-                            </div>
-                            <div class="price">
-                                <h5>$${card.price.toLocaleString()}</h5>
-                                </div>
-                            </div>
+    // Setting each card up with relevant fields filled out using backticks
+    cardParent.innerHTML += `
+        <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-animaName="${card.name}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
+            <div class="top-info">
+                <div class="username">
+                    <h5>${card.owner}</h5>
+                </div>
+                <div class="rating">
+                    <h5>${card.rating}</h5>
+                </div>
+                </div>
+                <div class="card-img">
+                    <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
+                    <img src="${card.url[0]}" alt="">
+                </div>
+                <div class="bottom-info">
+                    <div class="title">
+                        <h4>${card.name}</h4>
                     </div>
-                `
+                    <div class="price">
+                        <h5>$${card.price.toLocaleString()}</h5>
+                        </div>
+                    </div>
+            </div>
+        `
     }
-  }
 
 
 
@@ -304,7 +303,7 @@
 
 
   // Function for checking to see if the inputted data is the same in the database
-  let checkLoginValidity = async (...query) => {
+  let checkLoginValidity = async ( ... query ) => {
 
     // Splitting arguments into variables called u and p for username, password
     let [u, p] = query
@@ -456,15 +455,13 @@
     localStorage.getItem("loggedIn") === "true" ? logInStyle() : null
     localStorage.getItem("loggedIn") === "true" ? loggedIn = true : null
 
-    cards.forEach(function(card) {
+    for (card of cards) {
 
         localStorage.setItem("cardName", card.getAttribute("data-animalName"))
         localStorage.setItem("Checking", "Checking")
         window.location.href = "/animalTemplate.html";
 
-      })
-
-    })
+    }
 
   }, 500);
 
