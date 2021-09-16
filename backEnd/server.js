@@ -38,7 +38,7 @@ app.get('/findAnimal', async ( req, res ) => {
     // Uses the query passed in the request as its search query
     let query = req.query.q
 
-    // If there is no query then calls the function for findind every animal in the database function
+    // If there is no query then calls the function for find every animal in the database function
     if ( !query ) {
         return res.send(await functions.FindEveryAnimal())
     }
@@ -119,7 +119,7 @@ app.get('/findUser', async ( req, res ) => {
       return res.send(await functions.FindEveryUser())
     }
 
-    // Find and check user and password details    
+    // Find and check user and password details
     return res.send(await functions.FindUser(username, password))
 })
 

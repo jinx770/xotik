@@ -56,7 +56,7 @@
     let FindAnimal = async ( args ) => {
 
         // Uses the find method which returns all data with the relevant field, returns what it finds
-        let foundAnimal = await Animal.find({ name: args });
+        let foundAnimal = await Animal.find({ _id: args });
 
         // If the returned result character count is 0 then it returns false
         // -- The find method won't error or display undefined, just an empty array, which is why we check its length

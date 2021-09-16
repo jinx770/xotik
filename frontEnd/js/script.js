@@ -436,12 +436,18 @@
         localStorage.getItem("loggedIn") === "true" ? logInStyle() : null
         localStorage.getItem("loggedIn") === "true" ? loggedIn = true : null
 
-        for (card of cards) {
+        cards.forEach(function(card) {
+
             card.addEventListener('click', () => {
-                console.log('m')
-                window.location.href="/animalTemplate.html"
+
+                cardId = card.getAttribute("data-objectid")
+                localStorage.setItem("cardId", cardId)
+                localStorage.setItem("Checking", "Checking")
+                window.location.href = "/animalTemplate.html";
+
             })
-        }
+
+        })
 
     }, 500);
 
