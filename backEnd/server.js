@@ -39,7 +39,7 @@ app.get('/findAnimal', async ( req, res ) => {
     // Uses the query passed in the request as its search query
     let query = req.query.q
 
-    // If there is no query then calls the function for findind every animal in the database function
+    // If there is no query then calls the function for finding every animal in the database function
     if ( !query ) {
         return res.send(await functions.FindEveryAnimal())
     }
