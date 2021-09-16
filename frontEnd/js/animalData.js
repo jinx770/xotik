@@ -8,15 +8,14 @@
         // Handling the promise
         let animalData = await response.json();
 
-        console.log(animalData[0]);
-
         // Selectors
-        owner = document.querySelector('.username')
-        animalName = document.querySelector('.animal-name')
-        price = document.querySelector('.price-value')
-        animalDescription = document.querySelector('.animal-description')
-        animalImg = document.querySelector('.animal-img')
-        altImages = document.querySelectorAll('.alt-img')
+        let i = 0;
+        owner = document.querySelector('.username');
+        animalName = document.querySelector('.animal-name');
+        price = document.querySelector('.price-value');
+        animalDescription = document.querySelector('.animal-description');
+        animalImg = document.querySelector('.animal-img');
+        altImages = document.querySelectorAll('.alt-img');
 
         // Changes being made to DOM
         owner.textContent = animalData[0].owner;
@@ -27,7 +26,8 @@
 
         // Looping through alt images
         for (altImage of altImages){
-          console.log(altImage);
+            altImage.innerHTML += `<img src="${animalData[0].url[i]}">`
+          i++;
         }
 
     }
