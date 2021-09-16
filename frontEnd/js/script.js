@@ -584,7 +584,7 @@
 
 
 
-    // I seriously can't be bothered commenting for this 
+    // I seriously can't be bothered commenting for this
     let sortBy = ( arg ) => {
 
         if (alreadyStored == false ) {
