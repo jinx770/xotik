@@ -8,6 +8,7 @@
         window.listingButton = document.querySelector(".listing-btn") || "";
 
         window.fileInput = document.querySelector(".ignore-me") || "";
+        window.uploadImage = document.querySelector(".uploaded-image") || "";
         window.imageHolder = document.querySelector(".test-div-images") || "";
         window.loginIcon = document.querySelector(".fa-user")
 
@@ -60,12 +61,8 @@
                 // Event handler for when load is fired
                 reader.onload = function(){
 
-                    // Creating a new image card with its own onclick function to remove itself if you click it
-                    // Makes the id of the card, the name of the image so we can remove it later on from the cache array
                     // The source attribute gets changed to the result of our fileReaders request when we call it with readAsDataURL
-                    imageHolder.innerHTML += `<div class="new-image" onclick="remove(this)" id=${fileInput.value}>
-                        <div class="trash"><i class="fa fa-trash" aria-hidden="true"></i></div>
-                        <img src="${reader.result}" alt=""></div>`
+                    uploadImage.src = reader.result
 
                     url = reader.result
 
