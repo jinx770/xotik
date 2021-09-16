@@ -68,11 +68,13 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .left-col,
 .right-col {
   width: 47.5%;
+  min-width: 400px;
   margin: none;
 }
 
@@ -284,13 +286,6 @@ input:-webkit-autofill:hover {
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-
-.ignore-me {
-  visibility: hidden;
-  position: absolute;
-  width: 160px;
-  height: 160px;
 }
 
 .favourite {
@@ -715,7 +710,7 @@ input:-webkit-autofill:hover {
 }
 
 .who {
-  padding-top: 150px;
+  padding-top: 100px;
   padding-bottom: 80px;
   border-bottom: 1px solid #F8F1DE;
   display: flex;
@@ -966,7 +961,7 @@ input:-webkit-autofill:hover {
 }
 
 .listing-images-section {
-  margin-top: 60px;
+  margin-top: 30px;
   margin-bottom: 100px;
   height: 500px;
   display: flex;
@@ -974,45 +969,28 @@ input:-webkit-autofill:hover {
   justify-content: space-between;
 }
 
-.images {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 30px;
-  width: 100%;
-}
-.images button {
-  margin: 5px;
+.add-img-btn,
+.ignore-me,
+.listing-image {
+  margin-top: 25px;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 15px;
+  background: none;
 }
 
-.test-div-images {
-  display: flex;
-  flex-direction: row;
-  height: auto;
-  flex-wrap: wrap;
-  width: 60%;
-}
-.test-div-images img {
-  margin: 5px;
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
-  object-fit: cover;
-  transition: 0.4s;
-}
-.test-div-images img:hover {
-  opacity: 0.5;
+.ignore-me {
+  visibility: hidden;
 }
 
 .add-img-btn {
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
   border: 1px solid #F8F1DE;
-  background: none;
   color: #F8F1DE;
   font-size: 30px;
   cursor: pointer;
   transition: 0.5s ease;
+  z-index: 999;
 }
 .add-img-btn:hover i {
   opacity: 1;
@@ -1024,36 +1002,15 @@ input:-webkit-autofill:hover {
   transition: 0.5s ease;
 }
 
-.trash {
-  display: none;
-  transition: 0.4s ease;
-  position: absolute;
+.listing-image {
+  display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  left: 0;
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
-  background: rgba(40, 40, 40, 0.25);
-  margin: 5px 0 0 5px;
-  cursor: pointer;
-  font-size: 30px;
-  z-index: 999;
-  transition: 0.4s ease;
-  color: #FF4242;
 }
-.trash:hover .new-image {
-  opacity: 0.5;
-}
-
-.new-image {
-  position: relative;
-  transition: 0.4s ease;
-}
-.new-image:hover .trash {
-  transition: 0.4s ease;
-  display: flex;
+.listing-image img {
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
 }
 
 .new-listing-form {
@@ -1103,7 +1060,7 @@ input:-webkit-autofill:hover {
 .listing-btn {
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .animal-images {
