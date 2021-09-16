@@ -233,9 +233,11 @@ input:-webkit-autofill:hover {
 
 .results {
   width: 100%;
-  padding-bottom: 200px;
+  height: 300px;
+  padding-bottom: 100px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .pulse-container {
@@ -295,17 +297,6 @@ input:-webkit-autofill:hover {
   background-color: Transparent;
   border: none;
   position: absolute;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  justify-content: space-between;
-  width: 250px;
-  margin: auto;
-  height: 300px;
-  margin: 0 15px 60px;
 }
 
 .top-info {
@@ -711,16 +702,6 @@ input:-webkit-autofill:hover {
 
 .select {
   cursor: pointer;
-}
-
-.all-listings {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 90%;
-  transition: margin-bottom 1s ease-out;
-  margin: auto;
-  margin-bottom: 60px;
 }
 
 .about-content {
