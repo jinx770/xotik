@@ -29,9 +29,8 @@
 // ----------------------------------------------------------------------------------------------------------------------------------
 
 
-
+    window.url;
     window.cache = [""]
-    window.imageUrls = []
     window.currentSession = localStorage.getItem("currentSession")
     imageHolder.innerHTML = "";
 
@@ -47,65 +46,44 @@
         // Loop every .5 seconds
         setInterval(() => {
 
-            // Checks the entered input of the file popup with items in the cached array
-            // Purely to avoid spam pushes to the array
-            if (cache.includes(fileInput.value)) {
 
-                // Return stops the current thread from continuing
-                return
+            // Gets the inputted file of our input
+            let file = $("input[type=file]").get(0).files[0];
 
-            }
+            // Making sure file has been successfully defined
+            if (file) {
 
-            // Quick check to make sure the count of the cached array isn't over 5
-            if (!cache[4]) {
+                // Dependancy for rendering a file using a base64 converter.
+                // With this we can create images straight from our files!
+                // Which normally wouldn't be allowed by googles security zz
+                let reader = new FileReader();
 
-                // Gets the inputted file of our input
-                let file = $("input[type=file]").get(0).files[0];
+                // Event handler for when load is fired
+                reader.onload = function(){
 
-                // Adds the name of the value to our cache array
-                // Making sure we aren't uploading the same image
-                cache.push(fileInput.value)
+                    // Creating a new image card with its own onclick function to remove itself if you click it
+                    // Makes the id of the card, the name of the image so we can remove it later on from the cache array
+                    // The source attribute gets changed to the result of our fileReaders request when we call it with readAsDataURL
+                    imageHolder.innerHTML += `<div class="new-image" onclick="remove(this)" id=${fileInput.value}>
+                        <div class="trash"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                        <img src="${reader.result}" alt=""></div>`
 
-                // Making sure file has been successfully defined
-                if (file) {
-
-                    // Dependancy for rendering a file using a base64 converter.
-                    // With this we can create images straight from our files!
-                    // Which normally wouldn't be allowed by googles security zz
-                    let reader = new FileReader();
-
-                    // Event handler for when load is fired
-                    reader.onload = function(){
-
-                        // Creating a new image card with its own onclick function to remove itself if you click it
-                        // Makes the id of the card, the name of the image so we can remove it later on from the cache array
-                        // The source attribute gets changed to the result of our fileReaders request when we call it with readAsDataURL
-                        imageHolder.innerHTML += `<div class="new-image" onclick="remove(this)" id=${fileInput.value}>
-                              <div class="trash"><i class="fa fa-trash" aria-hidden="true"></i></div>
-                              <img src="${reader.result}" alt=""></div>`
-
-                        imageUrls.push(reader.result)
+                    url = reader.result
 
 
-                        // Clearing the input so it doesn't loop add the current value to the array - thanks toby for letting me know
-                        fileInput.value = ""
-
-                    }
-
-                    // Calling our file reader function with the file we saved early as an argument
-                    reader.readAsDataURL(file);
+                    // Clearing the input so it doesn't loop add the current value to the array - thanks toby for letting me know
+                    fileInput.value = ""
 
                 }
+
+                // Calling our file reader function with the file we saved early as an argument
+                reader.readAsDataURL(file);
 
             }
 
         // Running every .5 seconds
         }, 500)
 
-        if (cache[4]) {
-            console.log("Max uploads reached!")
-            return
-        }
 
     }
 
@@ -258,7 +236,7 @@
 
                     name: nameInput,
                     type: typeInput,
-                    url: imageUrls,
+                    url: url,
                     price: parseInt(priceInput),
                     rating: `${Math.floor(Math.random() * 11)}/10`,
                     description: descriptionInput,
@@ -277,7 +255,7 @@
                 location.reload()
             },2000)
 
-            console.log(imageUrls[0].length)
+            console.log(url.length)
 
 
         }
