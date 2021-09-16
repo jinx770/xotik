@@ -56,7 +56,7 @@
     let FindAnimal = async ( args ) => {
 
         // Uses the find method which returns all data with the relevant field, returns what it finds
-        let foundAnimal = await Animal.find({ _id: args });
+        let foundAnimal = await Animal.find({ name: args });
 
         // If the returned result character count is 0 then it returns false
         // -- The find method won't error or display undefined, just an empty array, which is why we check its length
@@ -67,7 +67,13 @@
 
     }
 
+    // The same as above but passing through an id
+    let FindAnimalById = async ( args ) => {
 
+        let foundAnimal = await Animal.find({ _id: args })
+        let animalExists = foundAnimal.length === 0 ? false : foundAnimal
+        return animalExists
+    }
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -289,7 +295,7 @@
     console.log("Running...")
 
     // Export our functions to the server.js so they still get ran after we require them
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword}
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById}
     //rane added password
 
 
