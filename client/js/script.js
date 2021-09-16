@@ -278,32 +278,31 @@
         // Creating our own cards for the number of data arrays returned
         for (card of data) {
 
-        // Setting each card up with relevant fields filled out using backticks
-        cardParent.innerHTML += `
-            <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-animaName="${card.name}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
-                <div class="top-info">
-                    <div class="username">
-                        <h5>${card.owner}</h5>
-                    </div>
-                    <div class="rating">
-                        <h5>${card.rating}</h5>
-                    </div>
-                    </div>
-                    <div class="card-img">
-                        <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-                        <img src="${card.url[0]}" alt="">
-                    </div>
-                    <div class="bottom-info">
-                        <div class="title">
-                            <h4>${card.name}</h4>
+            // Setting each card up with relevant fields filled out using backticks
+            cardParent.innerHTML += `
+                <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-animalName="${card.name}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
+                    <div class="top-info">
+                        <div class="username">
+                            <h5>${card.owner}</h5>
                         </div>
+                        <div class="rating">
+                            <h5>${card.rating}</h5>
+                        </div>
+                        </div>
+                        <div class="card-img">
+                            <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
+                            <img src="${card.url}" alt="">
+                        </div>
+                        <div class="bottom-info">
+                            <div class="title">
+                                <h4>${card.name}</h4>
+                            </div>
                         <div class="price">
                             <h5>$${card.price.toLocaleString()}</h5>
                             </div>
                         </div>
                 </div>
             `
-
         }
 
     }
@@ -469,14 +468,14 @@
 
     for (card of cards) {
 
-      card.addEventListener('click', () => {
+        card.addEventListener('click', () => {
 
-          cardId = card.getAttribute("data-objectid")
-          localStorage.setItem("cardId", cardId)
-          localStorage.setItem("Checking", "Checking")
-          window.location.href = "/animalTemplate.html";
+            cardId = card.getAttribute("data-objectid")
+            localStorage.setItem("cardId", cardId)
+            localStorage.setItem("Checking", "Checking")
+            window.location.href = "/animalTemplate.html";
 
-      })
+        })
 
     }
 

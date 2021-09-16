@@ -23,7 +23,7 @@
         price.textContent = animalData[0].price;
         animalDescription.textContent = animalData[0].description;
         animalName.textContent = animalData[0].name;
-        animalImg.src = animalData[0].url[0]
+        animalImg.src = animalData[0].url
 
     }
 

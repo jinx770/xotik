@@ -21,7 +21,7 @@ app.post('/createAnimal', async ( req, res ) => {
     // Shorthand variable creation explained in our backEnd/index.js
     let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
 
-    console.log(url[0].length)
+    console.log(url.length)
     // Dunno if this will 100% work until we test it on the 13th, should create an animal in the database
     return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
 
