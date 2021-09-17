@@ -2,14 +2,14 @@
 
 
 
-    window.displayOwner = document.querySelector('.username');
-    window.displayName = document.querySelector('.animal-name');
-    window.displayPrice = document.querySelector('.price-value');
-    window.displayLocation = document.querySelector(".sellers-location");
-    window.displayDescription = document.querySelector('.animal-description');
-    window.displayImage = document.querySelector('.animal-img');
     window.animalData = ""
-    window.div = document.createElement("div");
+    window.div = document.createElement("div") || "";
+    window.displayOwner = document.querySelector('.username') || "";
+    window.displayImage = document.querySelector('.animal-img') || "";
+    window.displayName = document.querySelector('.animal-name') || "";
+    window.displayPrice = document.querySelector('.price-value') || "";
+    window.displayLocation = document.querySelector(".sellers-location") || "";
+    window.displayDescription = document.querySelector('.animal-description') || "";
 
 
 

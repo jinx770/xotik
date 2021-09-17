@@ -38,10 +38,12 @@
         // Can't comment on each line here since it's technically one line, i.e (condition) ? success : fail, I've just seperated it so its easier to read,
         // If the name already exists it'll return a statement saying it exists, if it doesnt then it creates a new animal using our schema in backEnd/models/animal.js
         newAnimal === name
-            ? console.log("Animal already exists in the database!")
+            ? console.log(` RESULT //
+            cannot find animal \n`)
             : (
                 new Animal({ name, type, url, price, rating, description, quantity, owner, license, delivery }).save()
-                && console.log("Animal added to the database!")
+                && console.log(` RESULT //
+            animal successfully added \n`)
             )
 
     }
@@ -123,7 +125,8 @@
 
                 // If something happens such as mongodb is down, it wont error but it'll console log something went wrong
                 if (err) {
-                    console.log("Something wrong when updating data!");
+                    console.log(` RESULT //
+            unable to connect to mongodb \n`)
                 }
                 console.log(doc);
             }
@@ -157,11 +160,13 @@
                         name: arg
                     },
                         (err, success) => {
-                            console.log(`Successfully deleted: ${arg}`)
+                            console.log(` RESULT //
+            successfully deleted animal \n`)
                         }
                     )
                 )
-            : console.log("Animal does not exist")
+            : console.log(` RESULT //
+            unable to find animal to delete \n`)
 
     }
 
@@ -185,8 +190,10 @@
 
         // If user exists then return user already exists, if it doesn't then creating and save the new user
         newUser === username
-            ? console.log("User already exists")
-            : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log("User created"))
+            ? console.log(` RESULT //
+            user already exists \n`)
+            : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log(` RESULT //
+            created user \n`))
     }
 
 
@@ -226,10 +233,14 @@
         }
 
         if (username && password){
+
           let passwordDB = foundUser[0].password
+
           //bcrypt function that compares input password to the hashed password
-          const match = await bcrypt.compare(password, passwordDB);
+          let match = await bcrypt.compare(password, passwordDB);
+
           let result = match ? true : false
+
           return result
         }
 
@@ -280,8 +291,10 @@
         // Deletes the entire document if the username matches
         // Logs results with a right arrow function
         userExists === arg
-            ? ( User.deleteOne({username: arg}, () => {console.log(`Successfully deleted ${arg}`)}) )
-            : console.log("User does not exist")
+            ? ( User.deleteOne({username: arg}, () => {console.log(` RESULT //
+            successfully deleted user \n`)}) )
+            :         console.log(` RESULT //
+            unable to find user \n`)
 
     }
 
@@ -292,7 +305,7 @@
 
 
     // Acknowledges that the code is running without any ghost errors
-    console.log("Running...")
+    console.log("Running...\n")
 
     // RemoveAnimal("1")
     // RemoveAnimal("otta")
