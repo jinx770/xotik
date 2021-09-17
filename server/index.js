@@ -292,9 +292,9 @@
 
 
     // Acknowledges that the code is running without any ghost errors
-    console.log("Running...")
+    console.log("Running...\n")
 
-
+    // RemoveAnimal("1")
     // RemoveAnimal("otta")
     // RemoveAnimal("Newt")
     // RemoveAnimal("Ashera Cat")

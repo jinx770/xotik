@@ -1098,7 +1098,7 @@ input:-webkit-autofill:hover {
 .animal-images .main-image img {
   width: 100%;
   height: 100%;
-  border: 1px solid #F8F1DE;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   object-fit: cover;
 }
 .animal-images .alt-images {
@@ -1622,6 +1622,25 @@ input:-webkit-autofill:hover {
 }
 .newsletter-form .newsletter-form-input input {
   margin-right: 30.5px;
+}
+
+.testrun {
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+
+.data-page {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.usernameHover {
+    cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
