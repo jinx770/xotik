@@ -65,8 +65,8 @@
 
     <div class="create-account-popover-content" id="createAccountContent">
       <h4>Create Account</h4>
-      <input autocomplete="off" class="input" placeholder="Username" type="text">
-      <input autocomplete="off" class="input" placeholder="Password" type="password">
+      <input autocomplete="off" class="input" placeholder="Username" type="text" id="usernameCreate">
+      <input autocomplete="off" class="input" placeholder="Password" type="password" id="passwordCreate">
       <button class="button-secondary" id="signUpBtn">Sign Up</button>
     </div>
 
@@ -103,9 +103,9 @@
 
   <!-- header ENDS -->
 
-  <div class="content">
+  <div class="content listing-content">
 
-    <div class="left-col">
+    <div class="left-col listing-left">
       <div class="new-listing-form">
         <h1>Create Listing</h1>
         <br><br>
@@ -146,21 +146,19 @@
     </div>
     <!-- left col ends -->
 
-    <div class="right-col">
+    <div class="right-col listing-right">
       <div class="listing-images-section">
         <div class="add-images-section">
           <h5>Add images to your listing.</h5>
-          <div class="images">
               <button class="add-img-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
               <input type="file" class="ignore-me" accept="image/x-png,image/gif,image/jpeg">
-              <div class="test-div-images">
-                <img src="img/heo-alt.jpg" alt="">
+              <div class="listing-image">
+                <img class="uploaded-image" src="img/dragon.jpg" alt="">
               </div>
-          </div>
         </div>
 
         <div class="listing-btn">
-          <button class="button-secondary">Done</button>
+          <button class="button-secondary">Upload</button>
         </div>
       </div>
 
@@ -170,8 +168,6 @@
   </div>
   <!-- page content ends -->
   <br><br><br>
-
-
 
 
 

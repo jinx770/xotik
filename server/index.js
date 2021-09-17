@@ -67,7 +67,13 @@
 
     }
 
+    // The same as above but passing through an id
+    let FindAnimalById = async ( args ) => {
 
+        let foundAnimal = await Animal.find({ _id: args })
+        let animalExists = foundAnimal.length === 0 ? false : foundAnimal
+        return animalExists
+    }
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -287,8 +293,9 @@
 
     // Acknowledges that the code is running without any ghost errors
     console.log("Running...")
-    //
-    // RemoveAnimal("Otter")
+
+
+    // RemoveAnimal("otta")
     // RemoveAnimal("Newt")
     // RemoveAnimal("Ashera Cat")
     // RemoveAnimal("Koala")
@@ -298,7 +305,7 @@
     // RemoveAnimal("Tasmanian Devil")
 
     // Export our functions to the server.js so they still get ran after we require them
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword}
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById}
     //rane added password
 
 

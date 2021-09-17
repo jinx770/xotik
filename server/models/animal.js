@@ -4,7 +4,7 @@ let animalSchema = new mongoose.Schema({
 
     name: String,
     type: String,
-    url: Array,
+    url: String,
     price: Number,
     rating: String,
     description: String,
