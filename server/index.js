@@ -287,8 +287,9 @@
 
     // Acknowledges that the code is running without any ghost errors
     console.log("Running...")
-    //
-    RemoveAnimal("otta")
+
+
+    // RemoveAnimal("otta")
     // RemoveAnimal("Newt")
     // RemoveAnimal("Ashera Cat")
     // RemoveAnimal("Koala")
@@ -299,7 +300,6 @@
 
     // Export our functions to the server.js so they still get ran after we require them
     module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword}
-    //rane added password
 
 
 })();
