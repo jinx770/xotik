@@ -1,17 +1,17 @@
 // collapsible for FAQ page
-var coll = document.getElementsByClassName("collapsible");
+var coll = document.getElementsByClassName('collapsible');
 var i;
 
 
 
 for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
+    coll[i].addEventListener('click', function() {
+        this.classList.toggle('active');
         var content = this.nextElementSibling;
         if (content.style.maxHeight) {
             content.style.maxHeight = null;
         } else {
-            content.style.maxHeight = content.scrollHeight + "px";
+            content.style.maxHeight = content.scrollHeight + 'px';
         }
     });
 }
@@ -27,7 +27,7 @@ $('#animalsBtn').click(function() {
     if (window.location.href = 'index.html') {
 
         // $([document.documentElement, document.body]).animate({
-        //   scrollTop: $("#listingSection").offset().top
+        //   scrollTop: $('#listingSection').offset().top
         // }, 1500);
         console.log('On inddex.html');
 
@@ -54,76 +54,76 @@ $('#listingBtn').click(function() {
 // click on user icon
 $('#user').click(function() {
     //fade in popover
-    $("#headerPopover").fadeIn("slow");
+    $('#headerPopover').fadeIn('slow');
     // fade in login content
-    $("#loginContent").css("display", "flex");
-    $("#loginContent").hide();
-    $("#loginContent").fadeIn("slow");
+    $('#loginContent').css('display', 'flex');
+    $('#loginContent').hide();
+    $('#loginContent').fadeIn('slow');
     // remove other content
-    $("#emptyCartContent").css("display", "none");
-    $("#fullCartContent").css("display", "none");
-    $("#createAccountContent").css("display", "none");
+    $('#emptyCartContent').css('display', 'none');
+    $('#fullCartContent').css('display', 'none');
+    $('#createAccountContent').css('display', 'none');
 });
 
 // show create account content on click
 $('#createAccountBtn').click(function() {
     // fade in create account content
-    $("#createAccountContent").css("display", "flex");
-    $("#createAccountContent").hide();
-    $("#createAccountContent").fadeIn("slow");
+    $('#createAccountContent').css('display', 'flex');
+    $('#createAccountContent').hide();
+    $('#createAccountContent').fadeIn('slow');
     // remove other content
-    $("#loginContent").css("display", "none");
+    $('#loginContent').css('display', 'none');
 });
 
 // clicked sign up
 $('#signUpBtn').click(function() {
     // fade in login content
     // will need check to see if sign up is checked out
-    $("#loginContent").css("display", "flex");
-    $("#loginContent").hide();
-    $("#loginContent").fadeIn("slow");
+    $('#loginContent').css('display', 'flex');
+    $('#loginContent').hide();
+    $('#loginContent').fadeIn('slow');
     // remove other content
-    $("#createAccountContent").css("display", "none");
+    $('#createAccountContent').css('display', 'none');
 });
 
 // click on cart icon
 $('#cart').click(function() {
     // fade in popover
-    $("#headerPopover").fadeIn("slow");
+    $('#headerPopover').fadeIn('slow');
     // fade in cart content
     // will need if statement to check if items in cart or not
     // fade in for empty cart
-    $("#emptyCartContent").css("display", "flex");
-    $("#emptyCartContent").hide();
-    $("#emptyCartContent").fadeIn("slow");
+    $('#emptyCartContent').css('display', 'flex');
+    $('#emptyCartContent').hide();
+    $('#emptyCartContent').fadeIn('slow');
 
     // fade in if items in cart
-    // $("#fullCartContent").css("display", "flex");
-    // $("#fullCartContent").hide();
-    // $("#fullCartContent").fadeIn("slow");
+    // $('#fullCartContent').css('display', 'flex');
+    // $('#fullCartContent').hide();
+    // $('#fullCartContent').fadeIn('slow');
 
     // remove other content
-    $("#loginContent").css("display", "none");
-    $("#createAccountContent").css("display", "none");
+    $('#loginContent').css('display', 'none');
+    $('#createAccountContent').css('display', 'none');
 });
 
 
 
 $('#popoverExit').click(function() {
-    $("#headerPopover").fadeOut("slow");
-    $("#loginContent").fadeOut("slow");
-    $("#emptyCartContent").fadeOut("slow");
-    $("#fullCartContent").css("display", "none");
-    $("#createAccountContent").fadeOut("slow");
+    $('#headerPopover').fadeOut('slow');
+    $('#loginContent').fadeOut('slow');
+    $('#emptyCartContent').fadeOut('slow');
+    $('#fullCartContent').css('display', 'none');
+    $('#createAccountContent').fadeOut('slow');
 });
 
 
 
 
 $('#popoverExit').click(function() {
-    $("#headerPopover").fadeOut("slow");
-    $("#loginContent").css("display", "none");
-    $("#cartContent").css("display", "none");
+    $('#headerPopover').fadeOut('slow');
+    $('#loginContent').css('display', 'none');
+    $('#cartContent').css('display', 'none');
 });
 
 
@@ -132,7 +132,7 @@ $('#popoverExit').click(function() {
 
 $('#exploreBtn').click(function() {
     $([document.documentElement, document.body]).animate({
-        scrollTop: $("#listingSection").offset().top
+        scrollTop: $('#listingSection').offset().top
     }, 1500);
 })
 
@@ -142,20 +142,20 @@ $('#exploreBtn').click(function() {
 // asking questions
 
 $('#askQuestionBtn').click(function() {
-    $("#askQuestionForm").css("display", "flex");
-    $("#askQuestionForm").hide();
-    $("#askQuestionForm").show("slow");
+    $('#askQuestionForm').css('display', 'flex');
+    $('#askQuestionForm').hide();
+    $('#askQuestionForm').show('slow');
 })
 
 
 $('#sendBtn').click(function() {
     let questionInput = document.querySelector('#questionInput').value
     console.log(questionInput);
-    $("#askQuestionForm").hide("slow");
+    $('#askQuestionForm').hide('slow');
 })
 
 $('#questionExitBtn').click(function() {
-    $("#askQuestionForm").hide("slow");
+    $('#askQuestionForm').hide('slow');
 })
 
 
@@ -166,7 +166,7 @@ $('#questionExitBtn').click(function() {
 // Logic check for the current session, gotta define it initially
 window.loggedIn = false
 window.alreadyStored = false;
-window.currentSession = "";
+window.currentSession = '';
 window.pricesSorted = [];
 window.ratingsSorted = [];
 window.defaultSorted = [];
@@ -182,30 +182,32 @@ let refreshElements = () => {
     // Declare all values and buttons here, any sort of variable
     window.currentSession;
 
-    window.sessionHeader = document.querySelector("#sessionHeader") || "";
-    window.loginPopOver = document.querySelector(".header-popover") || "";
-    window.allPrices = document.querySelectorAll(".price") || "";
-    window.titles = document.querySelectorAll(".title") || "";
+    window.titles = document.querySelectorAll('.title') || '';
+    window.modalParent = document.querySelector('.modal') || '';
+    window.allPrices = document.querySelectorAll('.price') || '';
+    window.doneButton = document.querySelector('.modalDone') || '';
+    window.sessionHeader = document.querySelector('#sessionHeader') || '';
+    window.loginPopOver = document.querySelector('.header-popover') || '';
 
-    window.fileInput = document.querySelector(".ignore-me") || "";
-    window.usernameInput = document.querySelector("#username") || "";
-    window.passwordInput = document.querySelector("#password") || "";
-    window.searchInput = document.querySelector("#searchInput") || "";
-    window.filterInput = document.querySelector("#filterInput") || "";
-    window.typeInput = document.querySelector("#typeInput") || "";
-    window.usernameCreate = document.querySelector("#usernameCreate") || "";
-    window.passwordCreate = document.querySelector("#passwordCreate") || "";
-    window.allFilterInputs = document.querySelectorAll(".select") || "";
+    window.typeInput = document.querySelector('#typeInput') || '';
+    window.fileInput = document.querySelector('.ignore-me') || '';
+    window.usernameInput = document.querySelector('#username') || '';
+    window.passwordInput = document.querySelector('#password') || '';
+    window.searchInput = document.querySelector('#searchInput') || '';
+    window.filterInput = document.querySelector('#filterInput') || '';
+    window.allFilterInputs = document.querySelectorAll('.select') || '';
+    window.usernameCreate = document.querySelector('#usernameCreate') || '';
+    window.passwordCreate = document.querySelector('#passwordCreate') || '';
 
-    window.signUpButton = document.querySelector("#signUpBtn") || "";
-    window.loginButton = document.querySelector("#submitLogin") || "";
-    window.createAccountButton = document.querySelector("#createAccountBtn") || "";
-    window.searchButton = document.querySelector("#searchButton") || "";
-    window.closeLoginButton = document.querySelector(".popover-exit-btn") || "";
-    window.listingButton = document.querySelector(".listing-btn") || "";
+    window.signUpButton = document.querySelector('#signUpBtn') || '';
+    window.loginButton = document.querySelector('#submitLogin') || '';
+    window.searchButton = document.querySelector('#searchButton') || '';
+    window.listingButton = document.querySelector('.listing-btn') || '';
+    window.closeLoginButton = document.querySelector('.popover-exit-btn') || '';
+    window.createAccountButton = document.querySelector('#createAccountBtn') || '';
 
-    window.cardParent = document.querySelector(".all-listings") || "";
-    window.cards = document.querySelectorAll(".card") || "";
+    window.cards = document.querySelectorAll('.card') || '';
+    window.cardParent = document.querySelector('.all-listings') || '';
 
 }
 
@@ -219,13 +221,13 @@ let refreshElements = () => {
 let logInStyle = () => {
 
     // Styling
-    loginButton.textContent = "Log Out";
-    sessionHeader.textContent = `User: ${localStorage.getItem("currentSession")}`
-    usernameInput.style.display = "none"
-    passwordInput.style.display = "none"
-    createAccountButton.style.display = "none"
-    loginPopOver.style.height = "14%"
-    loginPopOver.style.paddingBottom = "30px"
+    loginButton.textContent = 'Log Out';
+    sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
+    usernameInput.style.display = 'none'
+    passwordInput.style.display = 'none'
+    createAccountButton.style.display = 'none'
+    loginPopOver.style.height = '14%'
+    loginPopOver.style.paddingBottom = '30px'
 
 }
 
@@ -245,13 +247,13 @@ let logOutStyle = () => {
     loggedIn = true
 
     // Styling
-    loginButton.textContent = "Log In";
+    loginButton.textContent = 'Log In';
     sessionHeader.textContent = `Log In`
-    usernameInput.style.display = "block"
-    passwordInput.style.display = "block"
-    createAccountButton.style.display = "block"
-    loginPopOver.style.height = "50vh"
-    loginPopOver.style.paddingBottom = "0"
+    usernameInput.style.display = 'block'
+    passwordInput.style.display = 'block'
+    createAccountButton.style.display = 'block'
+    loginPopOver.style.height = '50vh'
+    loginPopOver.style.paddingBottom = '0'
 
 }
 
@@ -271,31 +273,31 @@ let handleHomeAnimals = async () => {
     let data = await response.json()
 
     // Removing all cards from the page
-    cardParent.innerHTML = ""
+    cardParent.innerHTML = ''
 
     // Creating our own cards for the number of data arrays returned
     for (card of data) {
 
         // Setting each card up with relevant fields filled out using backticks
         cardParent.innerHTML += `
-                <div class="card" onclick="getId(this)" data-objectId="${card._id}" data-price="${card.price}" data-animalName="${card.name}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
-                    <div class="top-info">
-                        <div class="username">
+                <div class='card' onclick='getId(this)' data-objectId='${card._id}' data-price='${card.price}' data-animalName='${card.name}' data-rating='${card.rating.charAt(0)}' data-animalType='${card.type}'>
+                    <div class='top-info'>
+                        <div class='username'>
                             <h5>${card.owner}</h5>
                         </div>
-                        <div class="rating">
+                        <div class='rating'>
                             <h5>${card.rating}</h5>
                         </div>
                         </div>
-                        <div class="card-img">
-                            <button class="favourite" type="button" name="button"> <a class="fa fa-heart" href="#"></a> </button>
-                            <img src="${card.url}" alt="">
+                        <div class='card-img'>
+                            <button class='favourite' type='button' name='button'> <a class='fa fa-heart' href='#'></a> </button>
+                            <img src='${card.url}' alt=''>
                         </div>
-                        <div class="bottom-info">
-                            <div class="title">
+                        <div class='bottom-info'>
+                            <div class='title'>
                                 <h4>${card.name}</h4>
                             </div>
-                        <div class="price">
+                        <div class='price'>
                             <h5>$${card.price.toLocaleString()}</h5>
                             </div>
                         </div>
@@ -311,8 +313,8 @@ let handleHomeAnimals = async () => {
 
 
 let getId = (e) => {
-    localStorage.setItem("cardId", e.getAttribute("data-objectid"))
-    window.location.href = "/animalTemplate.html";
+    localStorage.setItem('cardId', e.getAttribute('data-objectid'))
+    window.location.href = '/animalTemplate.html';
 }
 
 
@@ -377,14 +379,14 @@ let loginHandler = async () => {
             closeLoginButton.click();
 
             // Something to say you've logged in for debugging purposes
-            console.log("Signing in")
+            console.log('Signing in')
 
             // Changing value to true, for next time you login
             loggedIn = true
 
             // Saving to localstorage so we can use it in other pages
-            localStorage.setItem("currentSession", currentSession)
-            localStorage.setItem("loggedIn", loggedIn)
+            localStorage.setItem('currentSession', currentSession)
+            localStorage.setItem('loggedIn', loggedIn)
 
             // Ending the thread so it doesnt alert
             return
@@ -392,7 +394,8 @@ let loginHandler = async () => {
         }
 
         // Alerts incorrect if the user doesn't login properly
-        alert("Incorrect login!")
+        createAlert('Incorrect login!')
+        closeLoginButton.click();
 
     }
 
@@ -406,14 +409,14 @@ let loginHandler = async () => {
         closeLoginButton.click();
 
         // Debugging purposes
-        console.log("Signing out")
+        console.log('Signing out')
 
         // Changing logged in to false so it can validate once
         loggedIn = false
 
         // Saving to localstorage so we can use it in other pages
-        localStorage.setItem("currentSession", currentSession)
-        localStorage.setItem("loggedIn", loggedIn)
+        localStorage.setItem('currentSession', currentSession)
+        localStorage.setItem('loggedIn', loggedIn)
 
         // Best practice return
         return
@@ -471,8 +474,14 @@ setInterval(function() {
     refreshElements()
 
     // Loop checks to see if its logged in for when we switch links
-    localStorage.getItem("loggedIn") === "true" ? logInStyle() : null
-    localStorage.getItem("loggedIn") === "true" ? loggedIn = true : null
+    localStorage.getItem('loggedIn') === 'true' ? logInStyle() : null
+    localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
+
+    // Modal listener
+    doneButton ? doneButton.addEventListener('click', async () => {
+        modalParent.remove();
+        enableScroll();
+    }) : null;
 
 }, 500);
 
@@ -531,6 +540,7 @@ let setupEventListeners = () => {
 }
 
 
+
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -546,16 +556,16 @@ let setupFilters = () => {
             refreshElements();
 
             // Returning true or false if the value isn't empty for each input
-            let typeEmpty = typeInput.value !== "" ? false : true;
-            let filterEmpty = filterInput.value !== "" ? false : true;
-            let searchEmpty = searchInput.value !== "" ? false : true;
+            let typeEmpty = typeInput.value !== '' ? false : true;
+            let filterEmpty = filterInput.value !== '' ? false : true;
+            let searchEmpty = searchInput.value !== '' ? false : true;
 
             // Calls functions if its not empty with the input
-            !typeEmpty ? filterCards("byType", typeInput.value) : "";
-            !filterEmpty ? filterCards("byFilter", filterInput.value) : "";
+            !typeEmpty ? filterCards('byType', typeInput.value) : '';
+            !filterEmpty ? filterCards('byFilter', filterInput.value) : '';
 
             // Calls search function when user is typing
-            !searchEmpty ? searchQuery(searchInput.value) : "";
+            !searchEmpty ? searchQuery(searchInput.value) : '';
 
         })
 
@@ -564,7 +574,7 @@ let setupFilters = () => {
     // Firing the search query function when you lift a key up while typing
     searchInput ? searchInput.addEventListener('keyup', () => {
         searchQuery(searchInput.value)
-    }) : "";
+    }) : '';
 
 }
 
@@ -584,12 +594,12 @@ let filterCards = (...args) => {
     refreshElements();
 
     // If the passed querytype call a function
-    if (queryType == "byType") {
+    if (queryType == 'byType') {
         hideCardsThatArent(parameter)
     }
 
     // Calls sort function if argument is byfilter
-    if (queryType == "byFilter") {
+    if (queryType == 'byFilter') {
         sortBy(parameter)
     }
 
@@ -610,12 +620,12 @@ let searchQuery = async (arg) => {
         if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
 
             // Showing relevative cards
-            title.parentNode.parentNode.style.display = "block"
+            title.parentNode.parentNode.style.display = 'block'
 
         } else {
 
             // Hiding irrelevant results
-            title.parentNode.parentNode.style.display = "none"
+            title.parentNode.parentNode.style.display = 'none'
 
         }
 
@@ -635,7 +645,7 @@ let sortBy = (arg) => {
     if (alreadyStored == false) {
         for (var i = 0; i < cards.length; i++) {
             defaultSorted.push({
-                "element": cards[i]
+                'element': cards[i]
             })
         }
         alreadyStored = true
@@ -645,8 +655,8 @@ let sortBy = (arg) => {
         case 'lowest':
             for (card of cards) {
                 pricesSorted.push({
-                    "price": card.getAttribute("data-price"),
-                    "element": card
+                    'price': card.getAttribute('data-price'),
+                    'element': card
                 });
                 pricesSorted.sort((a, b) => (a.price - b.price));
             }
@@ -658,8 +668,8 @@ let sortBy = (arg) => {
         case 'highest':
             for (card of cards) {
                 pricesSorted.push({
-                    "price": card.getAttribute("data-price"),
-                    "element": card
+                    'price': card.getAttribute('data-price'),
+                    'element': card
                 });
                 pricesSorted.sort((a, b) => (b.price - a.price));
             }
@@ -671,8 +681,8 @@ let sortBy = (arg) => {
         case 'viewed':
             for (card of cards) {
                 ratingsSorted.push({
-                    "rating": card.getAttribute("data-rating"),
-                    "element": card
+                    'rating': card.getAttribute('data-rating'),
+                    'element': card
                 });
                 ratingsSorted.sort((a, b) => (b.rating - a.rating));
             }
@@ -703,21 +713,21 @@ let hideCardsThatArent = (arg) => {
     for (card of cards) {
 
         // Ternary for checking the cards data against the argument passed
-        let relevantCard = arg === card.getAttribute("data-animalType") ? true : false
+        let relevantCard = arg === card.getAttribute('data-animalType') ? true : false
 
         // If not relevant then hide it
         if (!relevantCard) {
-            card.style.display = "none"
+            card.style.display = 'none'
         }
 
         // If relevant show
         if (relevantCard) {
-            card.style.display = "block"
+            card.style.display = 'block'
         }
 
         // If filter reset show all
-        if (arg === "all") {
-            card.style.display = "block"
+        if (arg === 'all') {
+            card.style.display = 'block'
         }
 
     }
@@ -730,8 +740,52 @@ let hideCardsThatArent = (arg) => {
 
 
 
+    let disableScroll = () => {
+        // Get the current page scroll position
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+
+            // if any scroll is attempted, set this to the previous value
+            window.onscroll = function() {
+                window.scrollTo(scrollLeft, scrollTop);
+            };
+    }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    let enableScroll = () => {
+        window.onscroll = function() {};
+    }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+let createAlert = (msg) => {
+
+    document.querySelector('.modal-here').innerHTML += `
+        <div class='modal'>
+          <h3>${msg}</h3>
+          <button type='button' class='button-secondary modalDone' name='button'>Done</button>
+        </div>`
+        headerPopover.style.dispaly == "block" ? loginButton.click() : null
+        disableScroll();
+
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 // STARTUP TASKS
-window.location.href == "http://localhost:3000/index.html" ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 refreshElements();
 setupEventListeners();
 setupFilters();

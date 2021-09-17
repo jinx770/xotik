@@ -140,20 +140,34 @@ p {
 
 .modal {
   border: 1px solid #F8F1DE;
-  width: 30%;
-  margin: auto;
+  width: 100%;
+  z-index:100000;
+  height:100%;
+  position:fixed;
+  padding:50px;
   border-radius: 15px;
-  padding: 20px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   backdrop-filter: blur(10px);
 }
 
-.modal h5 {
-  padding-top: 10px;
-  padding-bottom: 20px;
+.modal h3 {
+  position: fixed;
+  top:50%;
+  left:50%;
+  align-content: center;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  padding-bottom: 40px;
 }
 
 .modalDone {
-  margin: auto;
+  position: fixed;
+  top:55%;
+  left:50%;
+  transform:translate(-50%,-50%);
+
 }
 
 .forms {
