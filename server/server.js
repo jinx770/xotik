@@ -46,12 +46,16 @@ app.get('/findAnimal', async ( req, res ) => {
         console.log('query');
         return res.send(await functions.FindAnimal( query ))
 
-    } else if (id) {
+    }
+
+    if (id) {
 
         console.log('id');
         return res.send(await functions.FindAnimalById( id ))
 
-    } else {
+    }
+
+    if ( !query ){
 
         console.log('find all animals');
         return res.send(await functions.FindEveryAnimal())
@@ -113,7 +117,7 @@ app.post('/createUser', async ( req, res ) => {
 
     // Shorthand variable creation
     let { fullName, username, phoneNo, email, description, password } = req.body;
-    
+
     // Hashes the password through function
     let hashedPassword = await functions.HashPassword(password)
 

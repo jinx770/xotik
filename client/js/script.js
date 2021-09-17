@@ -1,60 +1,58 @@
-(async () => {
-
-  // collapsible for FAQ page
-  var coll = document.getElementsByClassName("collapsible");
-  var i;
+// collapsible for FAQ page
+var coll = document.getElementsByClassName("collapsible");
+var i;
 
 
 
-  for (i = 0; i < coll.length; i++) {
+for (i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
     });
-  }
+}
 
 
-  // nav clicks
-  $('#logoBtn').click(function() {
+// nav clicks
+$('#logoBtn').click(function() {
     window.location.href = 'index.html';
-  });
+});
 
-  $('#animalsBtn').click(function() {
+$('#animalsBtn').click(function() {
 
     if (window.location.href = 'index.html') {
 
-      // $([document.documentElement, document.body]).animate({
-      //   scrollTop: $("#listingSection").offset().top
-      // }, 1500);
-      console.log('On inddex.html');
+        // $([document.documentElement, document.body]).animate({
+        //   scrollTop: $("#listingSection").offset().top
+        // }, 1500);
+        console.log('On inddex.html');
 
     } else {
-      // window.location.href = 'index.html';
-      console.log('NOT on inddex.html');
+        // window.location.href = 'index.html';
+        console.log('NOT on inddex.html');
     }
 
-  });
+});
 
-  //
-  $('#whoBtn').click(function() {
+//
+$('#whoBtn').click(function() {
     window.location.href = 'about.html';
-  })
+})
 
-  $('#listingBtn').click(function() {
+$('#listingBtn').click(function() {
     window.location.href = 'listing.html';
-  });
-  // header popover begins
+});
+// header popover begins
 
 
 
-  // ?ICONS :::::::::::::::::::::;
-  // click on user icon
-  $('#user').click(function() {
+// ?ICONS :::::::::::::::::::::;
+// click on user icon
+$('#user').click(function() {
     //fade in popover
     $("#headerPopover").fadeIn("slow");
     // fade in login content
@@ -65,20 +63,20 @@
     $("#emptyCartContent").css("display", "none");
     $("#fullCartContent").css("display", "none");
     $("#createAccountContent").css("display", "none");
-  });
+});
 
-  // show create account content on click
-  $('#createAccountBtn').click(function() {
+// show create account content on click
+$('#createAccountBtn').click(function() {
     // fade in create account content
     $("#createAccountContent").css("display", "flex");
     $("#createAccountContent").hide();
     $("#createAccountContent").fadeIn("slow");
     // remove other content
     $("#loginContent").css("display", "none");
-  });
+});
 
-  // clicked sign up
-  $('#signUpBtn').click(function() {
+// clicked sign up
+$('#signUpBtn').click(function() {
     // fade in login content
     // will need check to see if sign up is checked out
     $("#loginContent").css("display", "flex");
@@ -86,10 +84,10 @@
     $("#loginContent").fadeIn("slow");
     // remove other content
     $("#createAccountContent").css("display", "none");
-  });
+});
 
-  // click on cart icon
-  $('#cart').click(function() {
+// click on cart icon
+$('#cart').click(function() {
     // fade in popover
     $("#headerPopover").fadeIn("slow");
     // fade in cart content
@@ -107,79 +105,79 @@
     // remove other content
     $("#loginContent").css("display", "none");
     $("#createAccountContent").css("display", "none");
-  });
+});
 
 
 
-  $('#popoverExit').click(function() {
+$('#popoverExit').click(function() {
     $("#headerPopover").fadeOut("slow");
     $("#loginContent").fadeOut("slow");
     $("#emptyCartContent").fadeOut("slow");
     $("#fullCartContent").css("display", "none");
     $("#createAccountContent").fadeOut("slow");
-  });
+});
 
 
 
 
-  $('#popoverExit').click(function() {
+$('#popoverExit').click(function() {
     $("#headerPopover").fadeOut("slow");
     $("#loginContent").css("display", "none");
     $("#cartContent").css("display", "none");
-  });
+});
 
 
 
-  // eplore button
+// eplore button
 
-  $('#exploreBtn').click(function() {
+$('#exploreBtn').click(function() {
     $([document.documentElement, document.body]).animate({
-      scrollTop: $("#listingSection").offset().top
+        scrollTop: $("#listingSection").offset().top
     }, 1500);
-  })
+})
 
 
 
 
-  // asking questions
+// asking questions
 
-  $('#askQuestionBtn').click(function() {
+$('#askQuestionBtn').click(function() {
     $("#askQuestionForm").css("display", "flex");
     $("#askQuestionForm").hide();
     $("#askQuestionForm").show("slow");
-  })
+})
 
 
-  $('#sendBtn').click(function() {
+$('#sendBtn').click(function() {
     let questionInput = document.querySelector('#questionInput').value
     console.log(questionInput);
     $("#askQuestionForm").hide("slow");
-  })
+})
 
-  $('#questionExitBtn').click(function() {
+$('#questionExitBtn').click(function() {
     $("#askQuestionForm").hide("slow");
-  })
+})
 
 
-  // ----------------------------------------------------------------------------------------------------------------------------------
-
-
-
-  // Logic check for the current session, gotta define it initially
-  window.loggedIn = false
-  window.alreadyStored = false;
-  window.currentSession = "";
-  window.pricesSorted = [];
-  window.ratingsSorted = [];
-  window.defaultSorted = [];
-
-
-  // ----------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // Refresh all html vars
-  let refreshElements = () => {
+// Logic check for the current session, gotta define it initially
+window.loggedIn = false
+window.alreadyStored = false;
+window.currentSession = "";
+window.pricesSorted = [];
+window.ratingsSorted = [];
+window.defaultSorted = [];
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// Refresh all html vars
+let refreshElements = () => {
 
     // Declare all values and buttons here, any sort of variable
     window.currentSession;
@@ -209,16 +207,16 @@
     window.cardParent = document.querySelector(".all-listings") || "";
     window.cards = document.querySelectorAll(".card") || "";
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // Basic style function for changing styles with js
-  let logInStyle = () => {
+// Basic style function for changing styles with js
+let logInStyle = () => {
 
     // Styling
     loginButton.textContent = "Log Out";
@@ -229,16 +227,16 @@
     loginPopOver.style.height = "14%"
     loginPopOver.style.paddingBottom = "30px"
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // Basic style function for undoing previously done styling via js
-  let logOutStyle = () => {
+// Basic style function for undoing previously done styling via js
+let logOutStyle = () => {
 
     // Clears the current session username when they sign out
     currentSession = null;
@@ -255,32 +253,32 @@
     loginPopOver.style.height = "50vh"
     loginPopOver.style.paddingBottom = "0"
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-    // Function for handling the animal cards on the front page.
-    let handleHomeAnimals = async () => {
+// Function for handling the animal cards on the front page.
+let handleHomeAnimals = async () => {
 
-        // Calls our api on the server without a query, if there is no query then return all animals
-        let response = await fetch('/findAnimal')
+    // Calls our api on the server without a query, if there is no query then return all animals
+    let response = await fetch('/findAnimal')
 
-        // Saving data of the response (every animal in database shouldve been returned)
-        let data = await response.json()
+    // Saving data of the response (every animal in database shouldve been returned)
+    let data = await response.json()
 
-        // Removing all cards from the page
-        cardParent.innerHTML = ""
+    // Removing all cards from the page
+    cardParent.innerHTML = ""
 
-        // Creating our own cards for the number of data arrays returned
-        for (card of data) {
+    // Creating our own cards for the number of data arrays returned
+    for (card of data) {
 
-            // Setting each card up with relevant fields filled out using backticks
-            cardParent.innerHTML += `
-                <div class="card" data-objectId="${card._id}" data-price="${card.price}" data-animalName="${card.name}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
+        // Setting each card up with relevant fields filled out using backticks
+        cardParent.innerHTML += `
+                <div class="card" onclick="getId(this)" data-objectId="${card._id}" data-price="${card.price}" data-animalName="${card.name}" data-rating="${card.rating.charAt(0)}" data-animalType="${card.type}">
                     <div class="top-info">
                         <div class="username">
                             <h5>${card.owner}</h5>
@@ -303,18 +301,28 @@
                         </div>
                 </div>
             `
-        }
-
     }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // Function for checking to see if the inputted data is the same in the database
-  let checkLoginValidity = async ( ... query ) => {
+let getId = (e) => {
+    localStorage.setItem("cardId", e.getAttribute("data-objectid"))
+    window.location.href = "/animalTemplate.html";
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// Function for checking to see if the inputted data is the same in the database
+let checkLoginValidity = async (...query) => {
 
     // Splitting arguments into variables called u and p for username, password
     let [u, p] = query
@@ -336,16 +344,16 @@
     // Returns the true/false if they've entered the right username and password
     return result
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // Login handler function, basically for checking to see if the user is logging in or signing out!
-  let loginHandler = async () => {
+// Login handler function, basically for checking to see if the user is logging in or signing out!
+let loginHandler = async () => {
 
     // Refresh all dom elements to get new values in-case they change
     refreshElements();
@@ -353,112 +361,112 @@
     // If not logged then continue
     if (!loggedIn) {
 
-      // Function call for validation of users inputs, returns true or false
-      let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
+        // Function call for validation of users inputs, returns true or false
+        let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
 
-      // If true
-      if (loginCheck) {
+        // If true
+        if (loginCheck) {
 
-        // Change the style of the login bar and the text
-        logInStyle();
+            // Change the style of the login bar and the text
+            logInStyle();
 
-        // Changing the current session to the username of whoever logged in
-        currentSession = attemptedLogin;
+            // Changing the current session to the username of whoever logged in
+            currentSession = attemptedLogin;
 
-        // Closing the login field
-        closeLoginButton.click();
+            // Closing the login field
+            closeLoginButton.click();
 
-        // Something to say you've logged in for debugging purposes
-        console.log("Signing in")
+            // Something to say you've logged in for debugging purposes
+            console.log("Signing in")
 
-        // Changing value to true, for next time you login
-        loggedIn = true
+            // Changing value to true, for next time you login
+            loggedIn = true
 
-        // Saving to localstorage so we can use it in other pages
-        localStorage.setItem("currentSession", currentSession)
-        localStorage.setItem("loggedIn", loggedIn)
+            // Saving to localstorage so we can use it in other pages
+            localStorage.setItem("currentSession", currentSession)
+            localStorage.setItem("loggedIn", loggedIn)
 
-        // Ending the thread so it doesnt alert
-        return
+            // Ending the thread so it doesnt alert
+            return
 
-      }
+        }
 
-      // Alerts incorrect if the user doesn't login properly
-      alert("Incorrect login!")
+        // Alerts incorrect if the user doesn't login properly
+        alert("Incorrect login!")
 
     }
 
     // If logged in, and pressing the button
     if (loggedIn) {
 
-      // Change the log out back to its original layout
-      logOutStyle()
+        // Change the log out back to its original layout
+        logOutStyle()
 
-      // Closes the login field
-      closeLoginButton.click();
+        // Closes the login field
+        closeLoginButton.click();
 
-      // Debugging purposes
-      console.log("Signing out")
+        // Debugging purposes
+        console.log("Signing out")
 
-      // Changing logged in to false so it can validate once
-      loggedIn = false
+        // Changing logged in to false so it can validate once
+        loggedIn = false
 
-      // Saving to localstorage so we can use it in other pages
-      localStorage.setItem("currentSession", currentSession)
-      localStorage.setItem("loggedIn", loggedIn)
+        // Saving to localstorage so we can use it in other pages
+        localStorage.setItem("currentSession", currentSession)
+        localStorage.setItem("loggedIn", loggedIn)
 
-      // Best practice return
-      return
+        // Best practice return
+        return
 
     }
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
-  // Function for creating an account :yay:
-  let createAccHandler = async () => {
+// Function for creating an account :yay:
+let createAccHandler = async () => {
 
     // If not logged in continue
     if (!loggedIn) {
 
-      let username = usernameCreate.value;
-      let password = passwordCreate.value;
+        let username = usernameCreate.value;
+        let password = passwordCreate.value;
 
-      // Posts/sends data to the route found in server
-      let response = await fetch('/createUser', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+        // Posts/sends data to the route found in server
+        let response = await fetch('/createUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
 
-          fullName: '.',
-          username: username,
-          phoneNo: '.',
-          email: '.',
-          description: '.',
-          password: password
+                fullName: '.',
+                username: username,
+                phoneNo: '.',
+                email: '.',
+                description: '.',
+                password: password
+
+            })
 
         })
 
-      })
-
     }
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // Loops every .1 second running the following
-  setInterval(function() {
+// Loops every .1 second running the following
+setInterval(function() {
 
     refreshElements()
 
@@ -466,123 +474,109 @@
     localStorage.getItem("loggedIn") === "true" ? logInStyle() : null
     localStorage.getItem("loggedIn") === "true" ? loggedIn = true : null
 
-    for (card of cards) {
-
-        card.addEventListener('click', () => {
-
-            cardId = card.getAttribute("data-objectid")
-            localStorage.setItem("cardId", cardId)
-            localStorage.setItem("Checking", "Checking")
-            window.location.href = "/animalTemplate.html";
-
-        })
-
-    }
-
-  }, 500);
+}, 500);
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // Function for running every event listener on the page
-  let setupEventListeners = () => {
+// Function for running every event listener on the page
+let setupEventListeners = () => {
 
     // Runs the login handler when you click on the login button
     loginButton.addEventListener('click', async () => {
-      loginHandler();
+        loginHandler();
     });
 
     // Runs every time you type in the password input field
-    passwordCreate.addEventListener('keydown', (event) => {
+    passwordCreate ? passwordCreate.addEventListener('keydown', (event) => {
 
-      // Checks to see if the key you pressed was the enter key
-      if (event.keyCode === 13) {
+        // Checks to see if the key you pressed was the enter key
+        if (event.keyCode === 13) {
 
-        // Stops you from new lining.
-        event.preventDefault();
+            // Stops you from new lining.
+            event.preventDefault();
 
-        // Clicks the login (basically pressing enter after you type your password will submit the login)
-        loginButton.click()
+            // Clicks the login (basically pressing enter after you type your password will submit the login)
+            loginButton.click()
 
-      }
+        }
 
-    });
+    }) : null
 
 
     // Runs every time you type in the password input field
     passwordInput.addEventListener('keydown', (event) => {
 
-      // Checks to see if the key you pressed was the enter key
-      if (event.keyCode === 13) {
+        // Checks to see if the key you pressed was the enter key
+        if (event.keyCode === 13) {
 
-        // Stops you from new lining.
-        event.preventDefault();
+            // Stops you from new lining.
+            event.preventDefault();
 
-        // Clicks the login (basically pressing enter after you type your password will submit the login)
-        loginButton.click()
+            // Clicks the login (basically pressing enter after you type your password will submit the login)
+            loginButton.click()
 
-      }
+        }
 
     });
 
-
     // Runs createAccHandler when you click sign up btn
     signUpButton ? signUpButton.addEventListener('click', async () => {
-      createAccHandler();
+        createAccHandler();
     }) : null;
 
-  }
+}
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
-  // Runs when page gets loaded
-  let setupFilters = () => {
+// Runs when page gets loaded
+let setupFilters = () => {
 
     // Gets every input
     for (input of allFilterInputs) {
 
-      // Adds a changed event on each input, fires when something gets changed
-      input.addEventListener('change', () => {
+        // Adds a changed event on each input, fires when something gets changed
+        input.addEventListener('change', () => {
 
-        refreshElements();
+            refreshElements();
 
-        // Returning true or false if the value isn't empty for each input
-        let typeEmpty = typeInput.value !== "" ? false : true;
-        let filterEmpty = filterInput.value !== "" ? false : true;
-        let searchEmpty = searchInput.value !== "" ? false : true;
+            // Returning true or false if the value isn't empty for each input
+            let typeEmpty = typeInput.value !== "" ? false : true;
+            let filterEmpty = filterInput.value !== "" ? false : true;
+            let searchEmpty = searchInput.value !== "" ? false : true;
 
-        // Calls functions if its not empty with the input
-        !typeEmpty ? filterCards("byType", typeInput.value) : "";
-        !filterEmpty ? filterCards("byFilter", filterInput.value) : "";
+            // Calls functions if its not empty with the input
+            !typeEmpty ? filterCards("byType", typeInput.value) : "";
+            !filterEmpty ? filterCards("byFilter", filterInput.value) : "";
 
-        // Calls search function when user is typing
-        !searchEmpty ? searchQuery(searchInput.value) : "";
+            // Calls search function when user is typing
+            !searchEmpty ? searchQuery(searchInput.value) : "";
 
-      })
+        })
 
     }
 
     // Firing the search query function when you lift a key up while typing
     searchInput ? searchInput.addEventListener('keyup', () => {
-      searchQuery(searchInput.value)
+        searchQuery(searchInput.value)
     }) : "";
 
-  }
+}
 
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // Fires when you click an input
-  let filterCards = (...args) => {
+// Fires when you click an input
+let filterCards = (...args) => {
 
     // Seperates the type of filter the user has clicked and what they click on
     let [queryType, parameter] = args
@@ -591,157 +585,153 @@
 
     // If the passed querytype call a function
     if (queryType == "byType") {
-      hideCardsThatArent(parameter)
+        hideCardsThatArent(parameter)
     }
 
     // Calls sort function if argument is byfilter
     if (queryType == "byFilter") {
-      sortBy(parameter)
+        sortBy(parameter)
     }
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
-  // Gets called every time you let go of a key when youre typing in an input
-  let searchQuery = async (arg) => {
+// Gets called every time you let go of a key when youre typing in an input
+let searchQuery = async (arg) => {
 
     // Getting every title of each animal on the page
     for (title of titles) {
 
-      // Converting the title into lowercase and checking to see if it has the argument in it
-      if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
+        // Converting the title into lowercase and checking to see if it has the argument in it
+        if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
 
-        // Showing relevative cards
-        title.parentNode.parentNode.style.display = "block"
+            // Showing relevative cards
+            title.parentNode.parentNode.style.display = "block"
 
-      } else {
+        } else {
 
-        // Hiding irrelevant results
-        title.parentNode.parentNode.style.display = "none"
+            // Hiding irrelevant results
+            title.parentNode.parentNode.style.display = "none"
 
-      }
+        }
 
     }
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // I seriously can't be bothered commenting for this
-  let sortBy = (arg) => {
+// I seriously can't be bothered commenting for this
+let sortBy = (arg) => {
 
     if (alreadyStored == false) {
-      for (var i = 0; i < cards.length; i++) {
-        defaultSorted.push({
-          "element": cards[i]
-        })
-      }
-      alreadyStored = true
+        for (var i = 0; i < cards.length; i++) {
+            defaultSorted.push({
+                "element": cards[i]
+            })
+        }
+        alreadyStored = true
     }
 
     switch (arg) {
-      case 'lowest':
-        for (card of cards) {
-          pricesSorted.push({
-            "price": card.getAttribute("data-price"),
-            "element": card
-          });
-          pricesSorted.sort((a, b) => (a.price - b.price));
-        }
-        for (let i = 0; i < pricesSorted.length; i++) {
-          cardParent.appendChild(pricesSorted[i].element)
-        }
-        break;
+        case 'lowest':
+            for (card of cards) {
+                pricesSorted.push({
+                    "price": card.getAttribute("data-price"),
+                    "element": card
+                });
+                pricesSorted.sort((a, b) => (a.price - b.price));
+            }
+            for (let i = 0; i < pricesSorted.length; i++) {
+                cardParent.appendChild(pricesSorted[i].element)
+            }
+            break;
 
-      case 'highest':
-        for (card of cards) {
-          pricesSorted.push({
-            "price": card.getAttribute("data-price"),
-            "element": card
-          });
-          pricesSorted.sort((a, b) => (b.price - a.price));
-        }
-        for (let i = 0; i < pricesSorted.length; i++) {
-          cardParent.appendChild(pricesSorted[i].element)
-        }
-        break;
+        case 'highest':
+            for (card of cards) {
+                pricesSorted.push({
+                    "price": card.getAttribute("data-price"),
+                    "element": card
+                });
+                pricesSorted.sort((a, b) => (b.price - a.price));
+            }
+            for (let i = 0; i < pricesSorted.length; i++) {
+                cardParent.appendChild(pricesSorted[i].element)
+            }
+            break;
 
-      case 'viewed':
-        for (card of cards) {
-          ratingsSorted.push({
-            "rating": card.getAttribute("data-rating"),
-            "element": card
-          });
-          ratingsSorted.sort((a, b) => (b.rating - a.rating));
-        }
-        for (let i = 0; i < ratingsSorted.length; i++) {
-          cardParent.appendChild(ratingsSorted[i].element)
-        }
-        break;
+        case 'viewed':
+            for (card of cards) {
+                ratingsSorted.push({
+                    "rating": card.getAttribute("data-rating"),
+                    "element": card
+                });
+                ratingsSorted.sort((a, b) => (b.rating - a.rating));
+            }
+            for (let i = 0; i < ratingsSorted.length; i++) {
+                cardParent.appendChild(ratingsSorted[i].element)
+            }
+            break;
 
-      case 'none':
-        for (let i = 0; i < defaultSorted.length; i++) {
-          cardParent.appendChild(defaultSorted[i].element)
-        }
-        break;
+        case 'none':
+            for (let i = 0; i < defaultSorted.length; i++) {
+                cardParent.appendChild(defaultSorted[i].element)
+            }
+            break;
 
     }
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
-  // Function for filtering
-  let hideCardsThatArent = (arg) => {
+// Function for filtering
+let hideCardsThatArent = (arg) => {
 
     // Loop getting every element called cards
     for (card of cards) {
 
-      // Ternary for checking the cards data against the argument passed
-      let relevantCard = arg === card.getAttribute("data-animalType") ? true : false
+        // Ternary for checking the cards data against the argument passed
+        let relevantCard = arg === card.getAttribute("data-animalType") ? true : false
 
-      // If not relevant then hide it
-      if (!relevantCard) {
-        card.style.display = "none"
-      }
+        // If not relevant then hide it
+        if (!relevantCard) {
+            card.style.display = "none"
+        }
 
-      // If relevant show
-      if (relevantCard) {
-        card.style.display = "block"
-      }
+        // If relevant show
+        if (relevantCard) {
+            card.style.display = "block"
+        }
 
-      // If filter reset show all
-      if (arg === "all") {
-        card.style.display = "block"
-      }
+        // If filter reset show all
+        if (arg === "all") {
+            card.style.display = "block"
+        }
 
     }
 
-  }
+}
 
 
 
-  // ------------------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-  // STARTUP TASKS
-  handleHomeAnimals();
-  refreshElements();
-  setupEventListeners();
-  setupFilters();
-
-
-
-})();
+// STARTUP TASKS
+handleHomeAnimals();
+refreshElements();
+setupEventListeners();
+setupFilters();
