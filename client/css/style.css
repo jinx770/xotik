@@ -173,7 +173,7 @@ input:-webkit-autofill:hover {
 .select {
   width: 250px;
   height: 40px;
-  background: none;
+  background-color: #272727;
   border: none;
   border-bottom: 1px solid #F8F1DE;
   font-size: 16px;
@@ -257,15 +257,15 @@ input:-webkit-autofill:hover {
 }
 
 .pulse-bubble-1 {
-  animation: pulse .4s ease 0s infinite alternate;
+  animation: pulse 0.4s ease 0s infinite alternate;
 }
 
 .pulse-bubble-2 {
-  animation: pulse .4s ease .2s infinite alternate;
+  animation: pulse 0.4s ease 0.2s infinite alternate;
 }
 
 .pulse-bubble-3 {
-  animation: pulse .4s ease .4s infinite alternate;
+  animation: pulse 0.4s ease 0.4s infinite alternate;
 }
 
 @keyframes pulse {
@@ -274,7 +274,7 @@ input:-webkit-autofill:hover {
     transform: scale(1);
   }
   to {
-    opacity: .25;
+    opacity: 0.25;
     transform: scale(0.75);
   }
 }
@@ -851,8 +851,8 @@ input:-webkit-autofill:hover {
   margin-bottom: 30px;
 }
 
-.faq-content,
-.contact-content {
+.contact-content,
+.faq-content {
   width: 90%;
   margin: auto;
 }
@@ -920,8 +920,8 @@ input:-webkit-autofill:hover {
   width: 90%;
 }
 
-.input-name,
-.input-email {
+.input-email,
+.input-name {
   width: 30%;
 }
 
@@ -960,6 +960,14 @@ input:-webkit-autofill:hover {
   justify-content: center;
 }
 
+.listing-left {
+  width: 60%;
+}
+
+.listing-right {
+  width: 35%;
+}
+
 .listing-images-section {
   margin-top: 30px;
   margin-bottom: 100px;
@@ -973,6 +981,7 @@ input:-webkit-autofill:hover {
 .ignore-me,
 .listing-image {
   margin-top: 25px;
+  margin-bottom: 25px;
   position: absolute;
   width: 400px;
   height: 400px;
@@ -982,6 +991,18 @@ input:-webkit-autofill:hover {
 
 .ignore-me {
   visibility: hidden;
+}
+
+.listing-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+.listing-image img {
+  height: 90%;
+  width: 90%;
+  object-fit: cover;
 }
 
 .add-img-btn {
@@ -995,22 +1016,14 @@ input:-webkit-autofill:hover {
 .add-img-btn:hover i {
   opacity: 1;
 }
+.add-img-btn:hover .listing-image {
+  opacity: .5;
+}
 .add-img-btn i {
   color: #F8F1DE;
   font-size: 30px;
   opacity: 0.4;
   transition: 0.5s ease;
-}
-
-.listing-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.listing-image img {
-  height: 90%;
-  width: 90%;
-  object-fit: cover;
 }
 
 .new-listing-form {
