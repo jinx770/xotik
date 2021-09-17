@@ -304,6 +304,7 @@
                 </div>
             `
         }
+
     }
 
 
@@ -469,11 +470,13 @@
 
         card.addEventListener('click', () => {
 
-            localStorage.setItem("cardName", card.getAttribute("data-animalName"))
+            cardId = card.getAttribute("data-objectid")
+            localStorage.setItem("cardId", cardId)
             localStorage.setItem("Checking", "Checking")
             window.location.href = "/animalTemplate.html";
 
         })
+
     }
 
   }, 500);

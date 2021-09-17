@@ -39,13 +39,32 @@ app.get('/findAnimal', async ( req, res ) => {
     // Uses the query passed in the request as its search query
     let query = req.query.q
 
-    // If there is no query then calls the function for finding every animal in the database function
-    if ( !query ) {
+    let id = req.query.id
+
+    if (query) {
+
+        console.log('query');
+        return res.send(await functions.FindAnimal( query ))
+
+    } else if (id) {
+
+        console.log('id');
+        return res.send(await functions.FindAnimalById( id ))
+
+    } else {
+
+        console.log('find all animals');
         return res.send(await functions.FindEveryAnimal())
+
     }
 
-    // If there is a query then returns what it finds with the query as an argument
-    return res.send(await functions.FindAnimal(query))
+    // If there is no query then calls the function for find every animal in the database function
+    // if ( !query ) {
+    //     return res.send(await functions.FindEveryAnimal())
+    // }
+    //
+    // // If there is a query then returns what it finds with the query as an argument
+    // return res.send(await functions.FindAnimal(query))
 
 })
 
@@ -94,7 +113,7 @@ app.post('/createUser', async ( req, res ) => {
 
     // Shorthand variable creation
     let { fullName, username, phoneNo, email, description, password } = req.body;
-
+    
     // Hashes the password through function
     let hashedPassword = await functions.HashPassword(password)
 

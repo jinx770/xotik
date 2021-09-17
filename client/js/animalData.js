@@ -3,7 +3,7 @@
     let animalDetails = async () => {
 
         // Grabbing individual animal in db through it's id
-        response = await fetch(`/findAnimal?q=${localStorage.getItem('cardName')}`)
+        response = await fetch(`/findAnimal?id=${localStorage.getItem('cardId')}`)
 
         // Handling the promise
         let animalData = await response.json();
@@ -24,7 +24,6 @@
         animalDescription.textContent = animalData[0].description;
         animalName.textContent = animalData[0].name;
         animalImg.src = animalData[0].url
-
 
     }
 
