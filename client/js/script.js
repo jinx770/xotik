@@ -496,6 +496,23 @@
     });
 
     // Runs every time you type in the password input field
+    passwordCreate.addEventListener('keydown', (event) => {
+
+      // Checks to see if the key you pressed was the enter key
+      if (event.keyCode === 13) {
+
+        // Stops you from new lining.
+        event.preventDefault();
+
+        // Clicks the login (basically pressing enter after you type your password will submit the login)
+        loginButton.click()
+
+      }
+
+    });
+
+
+    // Runs every time you type in the password input field
     passwordInput.addEventListener('keydown', (event) => {
 
       // Checks to see if the key you pressed was the enter key
@@ -510,6 +527,7 @@
       }
 
     });
+
 
     // Runs createAccHandler when you click sign up btn
     signUpButton ? signUpButton.addEventListener('click', async () => {
