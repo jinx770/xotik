@@ -731,7 +731,7 @@ let hideCardsThatArent = (arg) => {
 
 
 // STARTUP TASKS
-handleHomeAnimals();
+window.location.href == "http://localhost:3000/index.html" ? handleHomeAnimals() : null
 refreshElements();
 setupEventListeners();
 setupFilters();

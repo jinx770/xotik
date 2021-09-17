@@ -36,39 +36,19 @@ app.post('/createAnimal', async ( req, res ) => {
 // Method for attempting to find an animal in the database
 app.get('/findAnimal', async ( req, res ) => {
 
-    // Uses the query passed in the request as its search query
-    let query = req.query.q
-
     let id = req.query.id
 
-    if (query) {
-
-        console.log('query');
-        return res.send(await functions.FindAnimal( query ))
-
-    }
-
-    if (id) {
-
-        console.log('id');
-        return res.send(await functions.FindAnimalById( id ))
-
-    }
-
-    if ( !query ){
-
-        console.log('find all animals');
+    // If no argument is passed in the request, return all animals
+    if (!id) {
+        console.log(`TASK //
+            return all animals \n`)
         return res.send(await functions.FindEveryAnimal())
-
     }
 
-    // If there is no query then calls the function for find every animal in the database function
-    // if ( !query ) {
-    //     return res.send(await functions.FindEveryAnimal())
-    // }
-    //
-    // // If there is a query then returns what it finds with the query as an argument
-    // return res.send(await functions.FindAnimal(query))
+    // Uses the query passed in the request as its search query
+    console.log(`TASK //
+            return searched animal \n`)
+    return res.send(await functions.FindAnimalById( id ))
 
 })
 
