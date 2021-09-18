@@ -1,17 +1,22 @@
 (function() {
 
-
-
     window.animalData = ""
     window.div = document.createElement("div") || "";
     window.displayOwner = document.querySelector('.username') || "";
+    window.displayLicence = document.querySelector('.licence') || "";
     window.displayImage = document.querySelector('.animal-img') || "";
     window.displayName = document.querySelector('.animal-name') || "";
     window.displayPrice = document.querySelector('.price-value') || "";
+    window.displayDelivery = document.querySelector('.delivery') || "";
+    window.addToCartButton = document.querySelector('#addToCart') || "";
     window.displayLocation = document.querySelector(".sellers-location") || "";
     window.displayDescription = document.querySelector('.animal-description') || "";
 
+    window.items = localStorage.getItem('cartItems')
 
+
+    localStorage.getItem('loggedIn') === 'true' ? logInStyle() : null
+    localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -33,7 +38,53 @@
         displayPrice.textContent = animalData[0].price;
         displayImage.src = animalData[0].url
 
-        console.log(animalData)
+        animalData[0].delivery == "true"
+            ? displayDelivery.childNodes[1].className = "fa fa-check check"
+            : displayDelivery.childNodes[1].className = "fa fa-times times"
+
+        animalData[0].license == "true"
+            ? displayLicence.childNodes[1].className = "fa fa-check check"
+            : displayLicence.childNodes[1].className = "fa fa-times times"
+
+        addToCartButton.addEventListener('click', () => {
+
+            let cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+            cartList.push(animalData[0])
+
+            localStorage.setItem("somethingInBasket", true)
+            localStorage.setItem("cartItems", JSON.stringify(cartList))
+            updateCart();
+            window.location.href = "./cart.html"
+
+        })
+
+    }
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+    let updateCart = () => {
+
+        let cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+        for (item of cartList) {
+            cartParent.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-img">
+                            <img src="" alt="">
+                        </div>
+                    <div class="cart-item-text">
+                        <h5 class="cart-item-title">Slinky Lizard</h5>
+                        <div class="cart-item-text-row">
+                            <h6 class="cart-item-price">$499</h6>
+                            <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
+                        </div>
+                    </div>
+                </div>
+            `
+        }
     }
 
 

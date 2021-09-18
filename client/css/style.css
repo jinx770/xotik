@@ -562,6 +562,15 @@ input:-webkit-autofill:hover {
   height: 90%;
 }
 
+.cart-image {
+    height: 100%;
+    position:relative;
+    left:-20px;
+    margin-right:10px;
+    overflow: hidden;
+}
+
+
 .cart-item-content {
   display: flex;
   flex-direction: column;
@@ -585,6 +594,7 @@ input:-webkit-autofill:hover {
 .cart-item-img {
   height: 50px;
   width: 50px;
+  overflow: hidden;
   margin-right: 10px;
   border: 1px solid #F8F1DE;
 }
