@@ -54,37 +54,12 @@
             localStorage.setItem("somethingInBasket", true)
             localStorage.setItem("cartItems", JSON.stringify(cartList))
             updateCart();
-            window.location.href = "./cart.html"
+            setTimeout(() => {
+                cart.click()
+            }, 500)
 
         })
 
-    }
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-    let updateCart = () => {
-
-        let cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
-        for (item of cartList) {
-            cartParent.innerHTML += `
-                    <div class="cart-item">
-                        <div class="cart-item-img">
-                            <img src="" alt="">
-                        </div>
-                    <div class="cart-item-text">
-                        <h5 class="cart-item-title">Slinky Lizard</h5>
-                        <div class="cart-item-text-row">
-                            <h6 class="cart-item-price">$499</h6>
-                            <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
-                        </div>
-                    </div>
-                </div>
-            `
-        }
     }
 
 
