@@ -93,14 +93,19 @@ $('#cart').click(function() {
     // fade in cart content
     // will need if statement to check if items in cart or not
     // fade in for empty cart
-    $('#emptyCartContent').css('display', 'flex');
-    $('#emptyCartContent').hide();
-    $('#emptyCartContent').fadeIn('slow');
+
+    if (localStorage.getItem('somethingInBasket') == "true") {
+        $('#fullCartContent').css('display', 'flex');
+        $('#fullCartContent').hide();
+        $('#fullCartContent').fadeIn('slow');
+        updateCart();
+    } else {
+        $('#emptyCartContent').css('display', 'flex');
+        $('#emptyCartContent').hide();
+        $('#emptyCartContent').fadeIn('slow');
+    }
 
     // fade in if items in cart
-    // $('#fullCartContent').css('display', 'flex');
-    // $('#fullCartContent').hide();
-    // $('#fullCartContent').fadeIn('slow');
 
     // remove other content
     $('#loginContent').css('display', 'none');
@@ -166,10 +171,12 @@ $('#questionExitBtn').click(function() {
 // Logic check for the current session, gotta define it initially
 window.loggedIn = false
 window.alreadyStored = false;
-window.currentSession = '';
+
+window.cartItems = []
 window.pricesSorted = [];
 window.ratingsSorted = [];
 window.defaultSorted = [];
+window.currentSession = '';
 
 
 // ----------------------------------------------------------------------------------------------------------------------------------
@@ -180,8 +187,6 @@ window.defaultSorted = [];
 let refreshElements = () => {
 
     // Declare all values and buttons here, any sort of variable
-    window.currentSession;
-
     window.titles = document.querySelectorAll('.title') || '';
     window.modalParent = document.querySelector('.modal') || '';
     window.allPrices = document.querySelectorAll('.price') || '';
@@ -209,6 +214,8 @@ let refreshElements = () => {
     window.cards = document.querySelectorAll('.card') || '';
     window.cardParent = document.querySelector('.all-listings') || '';
 
+    window.cartParent = document.querySelector('.cart-item-content') || "";
+
 }
 
 
@@ -226,8 +233,8 @@ let logInStyle = () => {
     usernameInput.style.display = 'none'
     passwordInput.style.display = 'none'
     createAccountButton.style.display = 'none'
-    loginPopOver.style.height = '14%'
-    loginPopOver.style.paddingBottom = '30px'
+    // loginPopOver.style.height = '14%'
+    // loginPopOver.style.paddingBottom = '30px'
 
 }
 
@@ -460,6 +467,32 @@ let createAccHandler = async () => {
 
     }
 
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+let updateCart = () => {
+
+    let cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+    for (item of cartList) {
+        cartParent.innerHTML += `
+                <div class="cart-item">
+                    <div class="cart-item-img">
+                        <img class="cart-image" src="${item.url}" alt="">
+                    </div>
+                <div class="cart-item-text">
+                    <h5 class="cart-item-title">${item.name}</h5>
+                    <div class="cart-item-text-row">
+                        <h6 class="cart-item-price">$${item.price}</h6>
+                        <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
+                    </div>
+                </div>
+            </div>
+        `
+    }
 }
 
 
