@@ -215,6 +215,8 @@ let refreshElements = () => {
     window.cardParent = document.querySelector('.all-listings') || '';
 
     window.cartParent = document.querySelector('.cart-item-content') || "";
+    window.cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+
 
 }
 
@@ -330,6 +332,16 @@ let getId = (e) => {
 
 
 
+let redirect = (a) => {
+    window.location.href = a
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 // Function for checking to see if the inputted data is the same in the database
 let checkLoginValidity = async (...query) => {
 
@@ -352,6 +364,40 @@ let checkLoginValidity = async (...query) => {
 
     // Returns the true/false if they've entered the right username and password
     return result
+
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// Function invoked when user clicks remove button in the cart
+let removeFromPage = (obj) => {
+
+    // Getting id of the item they click
+    let id = obj.parentNode.parentNode.parentNode.getAttribute("data-id")
+
+    // Running loop to check the item they click against what we've saved in the array
+    for (item of cartList) {
+
+        // console.log(item._id, id)
+        // Locating the item they click with an item in the array
+        if (item._id == id) {
+
+            // Removing it from the cart div
+            obj.parentNode.parentNode.parentNode.parentNode.remove()
+
+            // Removing it from the array
+            removeFromArray(cartList, item)
+
+            // Updating localstorage with the new array
+            localStorage.setItem("cartItems", JSON.stringify(cartList))
+
+        }
+
+    }
 
 }
 
@@ -474,25 +520,86 @@ let createAccHandler = async () => {
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
+
+// Updates when user loads any page
 let updateCart = () => {
 
-    let cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+    // Clearing the div
+    cartParent.innerHTML = ""
+
+    // Looping through all items locally stored
     for (item of cartList) {
+
+        // Creating new divs for the cart purchases
         cartParent.innerHTML += `
-                <div class="cart-item">
+                <div class="cart-item" id="${item._id}" data-id="${item._id}">
                     <div class="cart-item-img">
                         <img class="cart-image" src="${item.url}" alt="">
                     </div>
                 <div class="cart-item-text">
-                    <h5 class="cart-item-title">${item.name}</h5>
+                    <h5 class="cart-item-title data-id="${item._id}"">${item.name}</h5>
                     <div class="cart-item-text-row">
                         <h6 class="cart-item-price">$${item.price}</h6>
-                        <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
+                        <h6 class="cart-remove-btn" onclick="remove(this)" id="cartRemoveBtn">Remove</h6>
                     </div>
                 </div>
             </div>
         `
     }
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// Function for removing an item in the array
+function removeFromArray(arr, value) {
+
+    // Checking the index of the item in the array passed
+    let index = arr.indexOf(value);
+
+    // Cutting it from the array
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+
+    // Returning the new array
+    return arr;
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// Function invoked when user clicks remove button in the cart
+function remove(obj) {
+
+    // Getting id of the item they click
+    let id = obj.parentNode.parentNode.parentNode.getAttribute("data-id")
+
+    // Running loop to check the item they click against what we've saved in the array
+    for (item of cartList) {
+
+        // Locating the item they click with an item in the array
+        if (item._id == id) {
+
+            // Removing it from the cart div
+            obj.parentNode.parentNode.parentNode.remove()
+
+            // Removing it from the array
+            removeFromArray(cartList, item)
+
+            // Updating localstorage with the new array
+            localStorage.setItem("cartItems", JSON.stringify(cartList))
+
+        }
+
+    }
+
 }
 
 
@@ -512,8 +619,13 @@ setInterval(function() {
 
     // Modal listener
     doneButton ? doneButton.addEventListener('click', async () => {
+
+        // Removes the popup modal
         modalParent.remove();
+
+        // Enables scroll once again
         enableScroll();
+
     }) : null;
 
 }, 500);
@@ -672,7 +784,7 @@ let searchQuery = async (arg) => {
 
 
 
-// I seriously can't be bothered commenting for this
+// I seriously can't be bothered commenting for this, the logic is an actual eyesore
 let sortBy = (arg) => {
 
     if (alreadyStored == false) {
@@ -773,16 +885,16 @@ let hideCardsThatArent = (arg) => {
 
 
 
-    let disableScroll = () => {
-        // Get the current page scroll position
-        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+let disableScroll = () => {
+    // Get the current page scroll position
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
 
-            // if any scroll is attempted, set this to the previous value
-            window.onscroll = function() {
-                window.scrollTo(scrollLeft, scrollTop);
-            };
-    }
+        // if any scroll is attempted, set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+}
 
 
 
@@ -790,9 +902,10 @@ let hideCardsThatArent = (arg) => {
 
 
 
-    let enableScroll = () => {
-        window.onscroll = function() {};
-    }
+// Enabling scrolling
+let enableScroll = () => {
+    window.onscroll = function() {};
+}
 
 
 
@@ -806,8 +919,8 @@ let createAlert = (msg) => {
           <h3>${msg}</h3>
           <button type='button' class='button-secondary modalDone' name='button'>Done</button>
         </div>`
-        headerPopover.style.dispaly == "block" ? loginButton.click() : null
-        disableScroll();
+    headerPopover.style.dispaly == "block" ? loginButton.click() : null
+    disableScroll();
 
 }
 
