@@ -214,6 +214,9 @@ let refreshElements = () => {
     window.closeLoginButton = document.querySelector('.popover-exit-btn') || '';
     window.createAccountButton = document.querySelector('#createAccountBtn') || '';
 
+    window.userListing = document.querySelectorAll('.user-listing') || '';
+    window.userListingParent = document.querySelector('.user-all-listings') || '';
+
     window.cards = document.querySelectorAll('.card') || '';
     window.cardParent = document.querySelector('.all-listings') || '';
 
