@@ -154,8 +154,7 @@ $('#askQuestionBtn').click(function() {
 
 
 $('#sendBtn').click(function() {
-    let questionInput = document.querySelector('#questionInput').value
-    console.log(questionInput);
+
     $('#askQuestionForm').hide('slow');
 })
 
@@ -440,41 +439,6 @@ let hideCardsThatArent = (arg) => {
     }
 
 }
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-// -- COMMENT LOGIC
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-let createCommentRequest = ( q, a ) => {
-
-    window.comments = []
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

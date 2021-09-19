@@ -70,7 +70,7 @@ app.post('/updateAnimal', async ( req, res ) => {
             updating animal information \n`)
 
     // Calling function in backEnd/index.js with relevant arguments being passed
-    return res.send(await functions.UpdateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery, comments ))
+    return res.send(await functions.UpdateAnimal({ name, type, url, price, rating, description, quantity, owner, license, delivery, comments }))
 
 })
 

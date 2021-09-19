@@ -200,7 +200,7 @@
                     owner: currentSession,
                     license: licenseInput,
                     delivery: deliveryInput,
-                    comments: comments
+                    comments: []
 
                 })
 

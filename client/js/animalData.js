@@ -1,25 +1,23 @@
 (function() {
 
     window.animalData = ""
+    window.items = localStorage.getItem('cartItems')
     window.div = document.createElement("div") || "";
+    window.sendComment = document.querySelector('#sendBtn') || "";
     window.displayOwner = document.querySelector('.username') || "";
     window.displayLicence = document.querySelector('.licence') || "";
     window.displayImage = document.querySelector('.animal-img') || "";
     window.displayName = document.querySelector('.animal-name') || "";
+    window.questionsParent = document.querySelector('.questions') || "";
     window.displayPrice = document.querySelector('.price-value') || "";
     window.displayDelivery = document.querySelector('.delivery') || "";
     window.addToCartButton = document.querySelector('#addToCart') || "";
+    window.questionInput = document.querySelector('#questionInput') || "";
     window.displayLocation = document.querySelector(".sellers-location") || "";
     window.displayDescription = document.querySelector('.animal-description') || "";
 
-    window.items = localStorage.getItem('cartItems')
-
-
     localStorage.getItem('loggedIn') === 'true' ? logInStyle() : null
     localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
 
 
     let animalDetails = async () => {
@@ -38,13 +36,13 @@
         displayPrice.textContent = animalData[0].price;
         displayImage.src = animalData[0].url
 
-        animalData[0].delivery == "true"
-            ? displayDelivery.childNodes[1].className = "fa fa-check check"
-            : displayDelivery.childNodes[1].className = "fa fa-times times"
+        animalData[0].delivery == "true" ?
+            displayDelivery.childNodes[1].className = "fa fa-check check" :
+            displayDelivery.childNodes[1].className = "fa fa-times times"
 
-        animalData[0].license == "true"
-            ? displayLicence.childNodes[1].className = "fa fa-check check"
-            : displayLicence.childNodes[1].className = "fa fa-times times"
+        animalData[0].license == "true" ?
+            displayLicence.childNodes[1].className = "fa fa-check check" :
+            displayLicence.childNodes[1].className = "fa fa-times times"
 
         addToCartButton.addEventListener('click', () => {
 
@@ -60,11 +58,16 @@
 
         })
 
+        loadComments()
+
     }
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+
+    // ------------------------------------------------------------------------------------------------------------------------------------
+    // -- RANDOM STUFF
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -80,12 +83,6 @@
 
     }, 100)
 
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
     let disableScroll = () => {
         // Get the current page scroll position
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -97,21 +94,9 @@
             };
     }
 
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
     let enableScroll = () => {
         window.onscroll = function() {};
     }
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
     let hideUntilLoaded = () => {
         div.style.width = "100%";
@@ -130,9 +115,82 @@
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------------------------------------
+    // -- COMMENT LOGIC
+    // ------------------------------------------------------------------------------------------------------------------------------------
 
 
+
+    window.comments = []
+
+
+
+    sendComment.addEventListener('click', () => {
+
+        comments.push([questionInput.value,""])
+
+        createCommentRequest(comments)
+        questionInput.value = ""
+    })
+
+
+
+
+    let createCommentRequest = async ( q ) => {
+
+        let response = await fetch('/updateAnimal', {
+            method: "post",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+
+                name: animalData[0].name,
+                type: animalData[0].type,
+                url: animalData[0].url,
+                price: animalData[0].price,
+                rating: animalData[0].rating,
+                description: animalData[0].description,
+                quantity: animalData[0].quantity,
+                owner: animalData[0].owner,
+                license: animalData[0].license,
+                delivery: animalData[0].delivery,
+                comments: comments
+
+            })
+
+        });
+
+        loadComments()
+
+    }
+
+
+
+
+
+
+
+
+
+    let loadComments = () => {
+
+        questionsParent.innerHTML = ""
+
+        for (comment of animalData[0].comments) {
+            console.log(comment)
+            questionsParent.innerHTML += `
+                <div class="question-block">
+                    <div class="question">
+                        <h5 class="q">Q: ${comment[0]}</h5>
+                        <h5 class="question-text"></h5>
+                    </div>
+                    <div class="answer">
+                        <h5 class="q">A:</h5>
+                        <h5 class="answer-text"></h5>
+                    </div>
+                </div>
+            `
+        }
+    }
 
     hideUntilLoaded()
     animalDetails()
