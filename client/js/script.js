@@ -217,57 +217,12 @@ let refreshElements = () => {
     window.cartParent = document.querySelector('.cart-item-content') || "";
     window.cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
 
-
 }
 
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-// Basic style function for changing styles with js
-let logInStyle = () => {
-
-    // Styling
-    loginButton.textContent = 'Log Out';
-    sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
-    usernameInput.style.display = 'none'
-    passwordInput.style.display = 'none'
-    createAccountButton.style.display = 'none'
-    // loginPopOver.style.height = '14%'
-    // loginPopOver.style.paddingBottom = '30px'
-
-}
-
-
-
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-// Basic style function for undoing previously done styling via js
-let logOutStyle = () => {
-
-    // Clears the current session username when they sign out
-    currentSession = null;
-
-    // State check
-    loggedIn = true
-
-    // Styling
-    loginButton.textContent = 'Log In';
-    sessionHeader.textContent = `Log In`
-    usernameInput.style.display = 'block'
-    passwordInput.style.display = 'block'
-    createAccountButton.style.display = 'block'
-    loginPopOver.style.height = '50vh'
-    loginPopOver.style.paddingBottom = '0'
-
-}
-
-
-
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -315,29 +270,177 @@ let handleHomeAnimals = async () => {
     }
 }
 
+// Runs when page gets loaded
+let setupFilters = () => {
 
+    // Gets every input
+    for (input of allFilterInputs) {
 
-// ------------------------------------------------------------------------------------------------------------------------------------
+        // Adds a changed event on each input, fires when something gets changed
+        input.addEventListener('change', () => {
 
+            refreshElements();
 
+            // Returning true or false if the value isn't empty for each input
+            let typeEmpty = typeInput.value !== '' ? false : true;
+            let filterEmpty = filterInput.value !== '' ? false : true;
+            let searchEmpty = searchInput.value !== '' ? false : true;
 
-let getId = (e) => {
-    localStorage.setItem('cardId', e.getAttribute('data-objectid'))
-    window.location.href = '/animalTemplate.html';
+            // Calls functions if its not empty with the input
+            !typeEmpty ? filterCards('byType', typeInput.value) : '';
+            !filterEmpty ? filterCards('byFilter', filterInput.value) : '';
+
+            // Calls search function when user is typing
+            !searchEmpty ? searchQuery(searchInput.value) : '';
+
+        })
+
+    }
+
+    // Firing the search query function when you lift a key up while typing
+    searchInput ? searchInput.addEventListener('keyup', () => {
+        searchQuery(searchInput.value)
+    }) : '';
+
+}
+
+// Fires when you click an input
+let filterCards = (...args) => {
+
+    // Seperates the type of filter the user has clicked and what they click on
+    let [queryType, parameter] = args
+
+    refreshElements();
+
+    // If the passed querytype call a function
+    if (queryType == 'byType') {
+        hideCardsThatArent(parameter)
+    }
+
+    // Calls sort function if argument is byfilter
+    if (queryType == 'byFilter') {
+        sortBy(parameter)
+    }
+
+}
+
+// Gets called every time you let go of a key when youre typing in an input
+let searchQuery = async (arg) => {
+
+    // Getting every title of each animal on the page
+    for (title of titles) {
+
+        // Converting the title into lowercase and checking to see if it has the argument in it
+        if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
+
+            // Showing relevative cards
+            title.parentNode.parentNode.style.display = 'block'
+
+        } else {
+
+            // Hiding irrelevant results
+            title.parentNode.parentNode.style.display = 'none'
+
+        }
+
+    }
+
+}
+
+// I seriously can't be bothered commenting for this, the logic is an actual eyesore
+let sortBy = (arg) => {
+
+    if (alreadyStored == false) {
+        for (var i = 0; i < cards.length; i++) {
+            defaultSorted.push({
+                'element': cards[i]
+            })
+        }
+        alreadyStored = true
+    }
+
+    switch (arg) {
+        case 'lowest':
+            for (card of cards) {
+                pricesSorted.push({
+                    'price': card.getAttribute('data-price'),
+                    'element': card
+                });
+                pricesSorted.sort((a, b) => (a.price - b.price));
+            }
+            for (let i = 0; i < pricesSorted.length; i++) {
+                cardParent.appendChild(pricesSorted[i].element)
+            }
+            break;
+
+        case 'highest':
+            for (card of cards) {
+                pricesSorted.push({
+                    'price': card.getAttribute('data-price'),
+                    'element': card
+                });
+                pricesSorted.sort((a, b) => (b.price - a.price));
+            }
+            for (let i = 0; i < pricesSorted.length; i++) {
+                cardParent.appendChild(pricesSorted[i].element)
+            }
+            break;
+
+        case 'viewed':
+            for (card of cards) {
+                ratingsSorted.push({
+                    'rating': card.getAttribute('data-rating'),
+                    'element': card
+                });
+                ratingsSorted.sort((a, b) => (b.rating - a.rating));
+            }
+            for (let i = 0; i < ratingsSorted.length; i++) {
+                cardParent.appendChild(ratingsSorted[i].element)
+            }
+            break;
+
+        case 'none':
+            for (let i = 0; i < defaultSorted.length; i++) {
+                cardParent.appendChild(defaultSorted[i].element)
+            }
+            break;
+
+    }
+
+}
+
+// Function for filtering
+let hideCardsThatArent = (arg) => {
+
+    // Loop getting every element called cards
+    for (card of cards) {
+
+        // Ternary for checking the cards data against the argument passed
+        let relevantCard = arg === card.getAttribute('data-animalType') ? true : false
+
+        // If not relevant then hide it
+        if (!relevantCard) {
+            card.style.display = 'none'
+        }
+
+        // If relevant show
+        if (relevantCard) {
+            card.style.display = 'block'
+        }
+
+        // If filter reset show all
+        if (arg === 'all') {
+            card.style.display = 'block'
+        }
+
+    }
+
 }
 
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-let redirect = (a) => {
-    window.location.href = a
-}
-
-
-
+// -- LOGIN LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -366,44 +469,6 @@ let checkLoginValidity = async (...query) => {
     return result
 
 }
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-// Function invoked when user clicks remove button in the cart
-let removeFromPage = (obj) => {
-
-    // Getting id of the item they click
-    let id = obj.parentNode.parentNode.parentNode.getAttribute("data-id")
-
-    // Running loop to check the item they click against what we've saved in the array
-    for (item of cartList) {
-
-        // console.log(item._id, id)
-        // Locating the item they click with an item in the array
-        if (item._id == id) {
-
-            // Removing it from the cart div
-            obj.parentNode.parentNode.parentNode.parentNode.remove()
-
-            // Removing it from the array
-            removeFromArray(cartList, item)
-
-            // Updating localstorage with the new array
-            localStorage.setItem("cartItems", JSON.stringify(cartList))
-
-        }
-
-    }
-
-}
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -480,9 +545,6 @@ let loginHandler = async () => {
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
 // Function for creating an account :yay:
 let createAccHandler = async () => {
 
@@ -515,8 +577,44 @@ let createAccHandler = async () => {
 
 }
 
+// Basic style function for changing styles with js
+let logInStyle = () => {
+
+    // Styling
+    loginButton.textContent = 'Log Out';
+    sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
+    usernameInput.style.display = 'none'
+    passwordInput.style.display = 'none'
+    createAccountButton.style.display = 'none'
+    // loginPopOver.style.height = '14%'
+    // loginPopOver.style.paddingBottom = '30px'
+
+}
+
+// Basic style function for undoing previously done styling via js
+let logOutStyle = () => {
+
+    // Clears the current session username when they sign out
+    currentSession = null;
+
+    // State check
+    loggedIn = true
+
+    // Styling
+    loginButton.textContent = 'Log In';
+    sessionHeader.textContent = `Log In`
+    usernameInput.style.display = 'block'
+    passwordInput.style.display = 'block'
+    createAccountButton.style.display = 'block'
+    loginPopOver.style.height = '50vh'
+    loginPopOver.style.paddingBottom = '0'
+
+}
 
 
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// CART LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -548,12 +646,6 @@ let updateCart = () => {
     }
 }
 
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 // Function for removing an item in the array
 function removeFromArray(arr, value) {
 
@@ -568,12 +660,6 @@ function removeFromArray(arr, value) {
     // Returning the new array
     return arr;
 }
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Function invoked when user clicks remove button in the cart
 function remove(obj) {
@@ -602,8 +688,38 @@ function remove(obj) {
 
 }
 
+// This is a clone of the one above, except it removes one parent above the previous
+let removeFromPage = (obj) => {
+
+    // Getting id of the item they click
+    let id = obj.parentNode.parentNode.parentNode.getAttribute("data-id")
+
+    // Running loop to check the item they click against what we've saved in the array
+    for (item of cartList) {
+
+        // console.log(item._id, id)
+        // Locating the item they click with an item in the array
+        if (item._id == id) {
+
+            // Removing it from the cart div
+            obj.parentNode.parentNode.parentNode.parentNode.remove()
+
+            // Removing it from the array
+            removeFromArray(cartList, item)
+
+            // Updating localstorage with the new array
+            localStorage.setItem("cartItems", JSON.stringify(cartList))
+
+        }
+
+    }
+
+}
 
 
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// RANDOM STUFF
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -630,11 +746,14 @@ setInterval(function() {
 
 }, 500);
 
+let getId = (e) => {
+    localStorage.setItem('cardId', e.getAttribute('data-objectid'))
+    window.location.href = '/animalTemplate.html';
+}
 
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
+let redirect = (a) => {
+    window.location.href = a
+}
 
 // Function for running every event listener on the page
 let setupEventListeners = () => {
@@ -660,7 +779,6 @@ let setupEventListeners = () => {
 
     }) : null
 
-
     // Runs every time you type in the password input field
     passwordInput.addEventListener('keydown', (event) => {
 
@@ -684,207 +802,6 @@ let setupEventListeners = () => {
 
 }
 
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-// Runs when page gets loaded
-let setupFilters = () => {
-
-    // Gets every input
-    for (input of allFilterInputs) {
-
-        // Adds a changed event on each input, fires when something gets changed
-        input.addEventListener('change', () => {
-
-            refreshElements();
-
-            // Returning true or false if the value isn't empty for each input
-            let typeEmpty = typeInput.value !== '' ? false : true;
-            let filterEmpty = filterInput.value !== '' ? false : true;
-            let searchEmpty = searchInput.value !== '' ? false : true;
-
-            // Calls functions if its not empty with the input
-            !typeEmpty ? filterCards('byType', typeInput.value) : '';
-            !filterEmpty ? filterCards('byFilter', filterInput.value) : '';
-
-            // Calls search function when user is typing
-            !searchEmpty ? searchQuery(searchInput.value) : '';
-
-        })
-
-    }
-
-    // Firing the search query function when you lift a key up while typing
-    searchInput ? searchInput.addEventListener('keyup', () => {
-        searchQuery(searchInput.value)
-    }) : '';
-
-}
-
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-// Fires when you click an input
-let filterCards = (...args) => {
-
-    // Seperates the type of filter the user has clicked and what they click on
-    let [queryType, parameter] = args
-
-    refreshElements();
-
-    // If the passed querytype call a function
-    if (queryType == 'byType') {
-        hideCardsThatArent(parameter)
-    }
-
-    // Calls sort function if argument is byfilter
-    if (queryType == 'byFilter') {
-        sortBy(parameter)
-    }
-
-}
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-// Gets called every time you let go of a key when youre typing in an input
-let searchQuery = async (arg) => {
-
-    // Getting every title of each animal on the page
-    for (title of titles) {
-
-        // Converting the title into lowercase and checking to see if it has the argument in it
-        if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
-
-            // Showing relevative cards
-            title.parentNode.parentNode.style.display = 'block'
-
-        } else {
-
-            // Hiding irrelevant results
-            title.parentNode.parentNode.style.display = 'none'
-
-        }
-
-    }
-
-}
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-// I seriously can't be bothered commenting for this, the logic is an actual eyesore
-let sortBy = (arg) => {
-
-    if (alreadyStored == false) {
-        for (var i = 0; i < cards.length; i++) {
-            defaultSorted.push({
-                'element': cards[i]
-            })
-        }
-        alreadyStored = true
-    }
-
-    switch (arg) {
-        case 'lowest':
-            for (card of cards) {
-                pricesSorted.push({
-                    'price': card.getAttribute('data-price'),
-                    'element': card
-                });
-                pricesSorted.sort((a, b) => (a.price - b.price));
-            }
-            for (let i = 0; i < pricesSorted.length; i++) {
-                cardParent.appendChild(pricesSorted[i].element)
-            }
-            break;
-
-        case 'highest':
-            for (card of cards) {
-                pricesSorted.push({
-                    'price': card.getAttribute('data-price'),
-                    'element': card
-                });
-                pricesSorted.sort((a, b) => (b.price - a.price));
-            }
-            for (let i = 0; i < pricesSorted.length; i++) {
-                cardParent.appendChild(pricesSorted[i].element)
-            }
-            break;
-
-        case 'viewed':
-            for (card of cards) {
-                ratingsSorted.push({
-                    'rating': card.getAttribute('data-rating'),
-                    'element': card
-                });
-                ratingsSorted.sort((a, b) => (b.rating - a.rating));
-            }
-            for (let i = 0; i < ratingsSorted.length; i++) {
-                cardParent.appendChild(ratingsSorted[i].element)
-            }
-            break;
-
-        case 'none':
-            for (let i = 0; i < defaultSorted.length; i++) {
-                cardParent.appendChild(defaultSorted[i].element)
-            }
-            break;
-
-    }
-
-}
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-// Function for filtering
-let hideCardsThatArent = (arg) => {
-
-    // Loop getting every element called cards
-    for (card of cards) {
-
-        // Ternary for checking the cards data against the argument passed
-        let relevantCard = arg === card.getAttribute('data-animalType') ? true : false
-
-        // If not relevant then hide it
-        if (!relevantCard) {
-            card.style.display = 'none'
-        }
-
-        // If relevant show
-        if (relevantCard) {
-            card.style.display = 'block'
-        }
-
-        // If filter reset show all
-        if (arg === 'all') {
-            card.style.display = 'block'
-        }
-
-    }
-
-}
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 let disableScroll = () => {
     // Get the current page scroll position
     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -896,21 +813,10 @@ let disableScroll = () => {
         };
 }
 
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 // Enabling scrolling
 let enableScroll = () => {
     window.onscroll = function() {};
 }
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
 
 let createAlert = (msg) => {
 
@@ -927,10 +833,9 @@ let createAlert = (msg) => {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 // STARTUP TASKS
+// ------------------------------------------------------------------------------------------------------------------------------------
+
 window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 refreshElements();
 setupEventListeners();
