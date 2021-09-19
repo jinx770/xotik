@@ -21,7 +21,9 @@ app.post('/createAnimal', async ( req, res ) => {
     // Shorthand variable creation explained in our backEnd/index.js
     let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
 
-    console.log(url.length)
+    console.log(`\n TASK //
+            creating animal \n`)
+
     // Dunno if this will 100% work until we test it on the 13th, should create an animal in the database
     return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
 
@@ -36,35 +38,19 @@ app.post('/createAnimal', async ( req, res ) => {
 // Method for attempting to find an animal in the database
 app.get('/findAnimal', async ( req, res ) => {
 
-    // Uses the query passed in the request as its search query
-    let query = req.query.q
-
     let id = req.query.id
 
-    if (query) {
-
-        console.log('query');
-        return res.send(await functions.FindAnimal( query ))
-
-    } else if (id) {
-
-        console.log('id');
-        return res.send(await functions.FindAnimalById( id ))
-
-    } else {
-
-        console.log('find all animals');
+    // If no argument is passed in the request, return all animals
+    if (!id) {
+        console.log(`\n TASK //
+            return all animals \n`)
         return res.send(await functions.FindEveryAnimal())
-
     }
 
-    // If there is no query then calls the function for find every animal in the database function
-    // if ( !query ) {
-    //     return res.send(await functions.FindEveryAnimal())
-    // }
-    //
-    // // If there is a query then returns what it finds with the query as an argument
-    // return res.send(await functions.FindAnimal(query))
+    // Uses the query passed in the request as its search query
+    console.log(`\n TASK //
+            return searched animal \n`)
+    return res.send(await functions.FindAnimalById( id ))
 
 })
 
@@ -79,6 +65,9 @@ app.post('/updateAnimal', async ( req, res ) => {
 
     // Shorthand variable creation
     let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
+
+    console.log(`\n TASK //
+            updating animal information \n`)
 
     // Calling function in backEnd/index.js with relevant arguments being passed
     return res.send(await functions.UpdateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
@@ -98,6 +87,9 @@ app.delete('/removeAnimal', async ( req, res ) => {
     // It'll get the name of what we click on an pass it in this method to remove it from the database
     let animal = req.body.name
 
+    console.log(`\n TASK //
+            removing animal \n`)
+
     // Calls the function to remove it's argument
     return res.send(await functions.RemoveAnimal( animal ))
 })
@@ -113,9 +105,12 @@ app.post('/createUser', async ( req, res ) => {
 
     // Shorthand variable creation
     let { fullName, username, phoneNo, email, description, password } = req.body;
-    
+
     // Hashes the password through function
     let hashedPassword = await functions.HashPassword(password)
+
+    console.log(`\n TASK //
+            creating user \n`)
 
     // Calling the create user function with relevant fields
     return res.send(await functions.CreateUser( fullName, username, phoneNo, email, description, hashedPassword ))
@@ -138,6 +133,9 @@ app.get('/findUser', async ( req, res ) => {
     if (!username && !password) {
       return res.send(await functions.FindEveryUser())
     }
+
+    console.log(`\n TASK //
+            searching for user \n`)
 
     // Find and check user and password details
     return res.send(await functions.FindUser(username, password))
