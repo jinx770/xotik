@@ -1030,6 +1030,10 @@ input:-webkit-autofill:hover {
 // CREATE LISTING PAGE :::::::::::::::::::::::::::
 
 .listing-content {
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  padding-top: 80px;
 }
 
 .listing-left {
@@ -1037,13 +1041,15 @@ input:-webkit-autofill:hover {
 }
 
 .listing-right {
-  width: 35%;
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .listing-images-section {
-  margin-top: 30px;
-  margin-bottom: 100px;
+  margin-top: 90px;
   height: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1159,7 +1165,12 @@ input:-webkit-autofill:hover {
 .listing-btn {
   display: flex;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
+  margin-top: -20px;
+
+  button {
+    width: 200px;
+  }
 }
 // CREATE LISTING PAGE ENDS::::::::::::::::::::::
 // ANIMAL PAGE BEGINS ::::::::::::::::::::::::::
@@ -1172,36 +1183,14 @@ input:-webkit-autofill:hover {
 
   .main-image {
     width: 100%;
-    height: 55vh;
+    height: 60vh;
     margin-bottom: 10px;
 
     img {
       width: 100%;
       height: 100%;
-      border: 1px solid $offwhite;
+      box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
       object-fit: cover;
-    }
-  }
-
-  .alt-images {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-
-    .alt-img {
-      width: 32%;
-      height: 20vh;
-      margin-bottom: 10px;
-      border: 1px solid $offwhite;
-
-      img {
-        width: 100%;
-        height: 100%;
-        border: 1px solid $offwhite;
-        object-fit: cover;
-      }
     }
   }
 }
@@ -1279,7 +1268,7 @@ input:-webkit-autofill:hover {
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  height: 45vh;
+  min-height: 100px;;
 }
 
 .listing-price {
@@ -1287,6 +1276,7 @@ input:-webkit-autofill:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 30px;
 }
 
 .price {
