@@ -139,34 +139,20 @@ p {
 
 .modal {
   border: 1px solid #F8F1DE;
-  width: 100%;
-  z-index:100000;
-  height:100%;
-  position:fixed;
-  padding:50px;
+  width: 30%;
+  margin: auto;
   border-radius: 15px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  padding: 20px;
   backdrop-filter: blur(10px);
 }
 
-.modal h3 {
-  position: fixed;
-  top:50%;
-  left:50%;
-  align-content: center;
-  transform:translate(-50%,-50%);
-  text-align:center;
-  padding-bottom: 40px;
+.modal h5 {
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .modalDone {
-  position: fixed;
-  top:55%;
-  left:50%;
-  transform:translate(-50%,-50%);
-
+  margin: auto;
 }
 
 .forms {
@@ -561,15 +547,6 @@ input:-webkit-autofill:hover {
   height: 90%;
 }
 
-.cart-image {
-    height: 100%;
-    position:relative;
-    left:-20px;
-    margin-right:10px;
-    overflow: hidden;
-}
-
-
 .cart-item-content {
   display: flex;
   flex-direction: column;
@@ -593,7 +570,6 @@ input:-webkit-autofill:hover {
 .cart-item-img {
   height: 50px;
   width: 50px;
-  overflow: hidden;
   margin-right: 10px;
   border: 1px solid #F8F1DE;
 }
@@ -1640,25 +1616,6 @@ input:-webkit-autofill:hover {
 }
 .newsletter-form .newsletter-form-input input {
   margin-right: 30.5px;
-}
-
-.testrun {
-    position: absolute;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%, -50%);
-}
-
-.data-page {
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-
-}
-
-.usernameHover {
-    cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
