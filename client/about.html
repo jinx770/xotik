@@ -17,73 +17,73 @@
 </head>
 
 <body>
-<!-- header begins -->
-<div class="header-background"></div>
-<div class="header-background-blur"></div>
+  <!-- header begins -->
+  <div class="header-background"></div>
+  <div class="header-background-blur"></div>
 
-<div class="header">
-  <div class="header-content">
-    <div class="header-nav">
-      <img class="header-logo" id="logoBtn" src="img/logo.svg" alt="">
-      <div class="nav-item" id="animalsBtn">
-        <h5>Animals</h5>
+  <div class="header">
+    <div class="header-content">
+      <div class="header-nav">
+        <img class="header-logo" id="logoBtn" src="img/logo.svg" alt="">
+        <div class="nav-item" id="animalsBtn">
+          <h5>Animals</h5>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h5>Who We Are</h5>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h5>Create Listing</h5>
+        </div>
       </div>
-      <div class="nav-item" id="whoBtn">
-        <h5>Who We Are</h5>
-      </div>
-      <div class="nav-item" id="listingBtn">
-        <h5>Create Listing</h5>
+
+      <div class="header-icons">
+        <i class="fa fa-user" aria-hidden="true" id="user"></i>
+        <i class="fa fa-shopping-cart" aria-hidden="true" id="cart"></i>
       </div>
     </div>
+  </div>
 
-    <div class="header-icons">
-      <i class="fa fa-user" aria-hidden="true" id="user"></i>
-      <i class="fa fa-shopping-cart" aria-hidden="true" id="cart"></i>
+  <!-- header popover begins -->
+
+  <div class="header-popover" id="headerPopover">
+    <!-- <div class="header-arrow" id="#headerArrow"></div> -->
+    <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
     </div>
-  </div>
-</div>
-
-<!-- header popover begins -->
-
-<div class="header-popover" id="headerPopover">
-  <!-- <div class="header-arrow" id="#headerArrow"></div> -->
-  <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
-  </div>
-  <div class="login-popover-content" id="loginContent">
-    <h4 id="sessionHeader">Log In</h4>
-    <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
-    <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
-    <button id="submitLogin" class="button-secondary">Log In</button>
-    <h6 class="create-account" id="createAccountBtn">Create Account</h6>
-  </div>
-
-  <div class="create-account-popover-content" id="createAccountContent">
-    <h4>Create Account</h4>
-    <input class="input" placeholder="Username" type="text" id="usernameCreate">
-    <input class="input" placeholder="Password" type="password" id="passwordCreate">
-    <button class="button-secondary" id="signUpBtn">Sign Up</button>
-  </div>
-
-  <!-- if cart is empty -->
-  <div class="empty-cart-content" id="emptyCartContent">
-    <h4>Cart</h4>
-    <h6>Cart is empty</h6>
-  </div>
-
-  <!-- if cart has items -->
-  <div class="full-cart-content" id="fullCartContent">
-    <h4 class="cart-header">Cart</h4>
-    <div class="cart-item-content">
-
+    <div class="login-popover-content" id="loginContent">
+      <h4 id="sessionHeader">Log In</h4>
+      <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
+      <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
+      <button id="submitLogin" class="button-secondary">Log In</button>
+      <h6 class="create-account" id="createAccountBtn">Create Account</h6>
     </div>
-    <h6 class="check-out-btn" onclick="redirect('/cart.html')" id="checkOutBtn">Check Out</h6>
+
+    <div class="create-account-popover-content" id="createAccountContent">
+      <h4>Create Account</h4>
+      <input class="input" placeholder="Username" type="text" id="usernameCreate">
+      <input class="input" placeholder="Password" type="password" id="passwordCreate">
+      <button class="button-secondary" id="signUpBtn">Sign Up</button>
+    </div>
+
+    <!-- if cart is empty -->
+    <div class="empty-cart-content" id="emptyCartContent">
+      <h4>Cart</h4>
+      <h6>Cart is empty</h6>
+    </div>
+
+    <!-- if cart has items -->
+    <div class="full-cart-content" id="fullCartContent">
+      <h4 class="cart-header">Cart</h4>
+      <div class="cart-item-content">
+
+      </div>
+      <h6 class="check-out-btn" onclick="redirect('/cart.html')" id="checkOutBtn">Check Out</h6>
+    </div>
+
   </div>
+  <!-- header popover end -->
 
-</div>
-<!-- header popover end -->
-
-<!-- header popover end -->
-<!-- header ENDS -->
+  <!-- header popover end -->
+  <!-- header ENDS -->
 
   <div class="who">
     <div class="about-content">
@@ -93,15 +93,16 @@
           <p class="who-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             <br><br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </div>
 
         <h3 class="partners-head">Our Partners:</h2>
-        <div class="partners">
-          <img class="partner1" src="img/wildlife.png" alt="">
-          <img class="partner2" src="img/partner2.png" alt="">
-        </div>
+          <div class="partners">
+            <img class="partner1" src="img/wildlife.png" alt="">
+            <img class="partner2" src="img/partner2.png" alt="">
+          </div>
       </div>
       <div class="who-img-container">
         <img class="who-img" src="img/dragon.jpg" alt="">
@@ -122,7 +123,8 @@
             commodo
             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             <br><br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
 
           <div class="safety-icons">
@@ -132,8 +134,8 @@
               <p>Customers obtain a lisence relevant to the animal, in compliance with government regulations.</p>
             </div>
             <div class="enclosure-cont">
-                <img class="enclosure" src="img/enclosure.svg" alt="">
-                <p>Customers submit proof of owning the appropriate animal enclosures and/or anything else the amimal may need before purchases can be completed.</p>
+              <img class="enclosure" src="img/enclosure.svg" alt="">
+              <p>Customers submit proof of owning the appropriate animal enclosures and/or anything else the amimal may need before purchases can be completed.</p>
             </div>
           </div>
         </div>
@@ -143,46 +145,46 @@
 
 
   <div class="contact-faq">
-      <div class="faq">
-        <div class="faq-content">
-          <h1 class="faq-head">FAQ's</h1>
-          <button class="collapsible">Do I need a lisence?</button>
-          <div class="contents">
-            <p>Each listing will show if a lisence is required or not depending on the animal.<br>If a lisence if required, you will need to submit proof before purchase.</p>
-          </div>
-
-          <button class="collapsible">What animals can I own?</button>
-
-          <div class="contents">
-            <p>Across Australia and New Zealand, there are a number of exotic pets legally able to be owned. Some of these are: Axolots, Chelonians, Turtles, Tortoises, Dragons, Leopard Gecko, Newts, Skinks, Grey African Parrots & more. <br>All animals
-              listed on our site are legal to own within Australia and NZ.</p>
-          </div>
-
-          <button class="collapsible">How will I know what to feed my new pet?</button>
-          <div class="contents">
-            <p>Upon the completion of a sale, the seller will provide you with in depth information to equip you to care for your new friend.</p>
-          </div>
+    <div class="faq">
+      <div class="faq-content">
+        <h1 class="faq-head">FAQ's</h1>
+        <button class="collapsible">Do I need a lisence?</button>
+        <div class="contents">
+          <p>Each listing will show if a lisence is required or not depending on the animal.<br>If a lisence if required, you will need to submit proof before purchase.</p>
         </div>
-      </div>
 
-      <!-- Contact Section -->
-      <div class="contact">
-        <div class="contact-content">
-          <h1 class="contact-head">Contact Us</h1>
-          <div class="name-email">
-            <input class="input-name input" type="text" name="" value="" placeholder="Full Name">
-            <input class="input-email input" type="email" name="" value="" placeholder="Email">
-          </div>
-          <div class="contact-message">
-            <textarea id="description" class="textarea" name="name" rows="8" cols="80" placeholder="Description" value="" required></textarea>
-          </div>
-          <br><br>
-          <div class="sendBtn">
-              <button class="button-secondary" type="button" name="button">Send</button>
-          </div>
+        <button class="collapsible">What animals can I own?</button>
+
+        <div class="contents">
+          <p>Across Australia and New Zealand, there are a number of exotic pets legally able to be owned. Some of these are: Axolots, Chelonians, Turtles, Tortoises, Dragons, Leopard Gecko, Newts, Skinks, Grey African Parrots & more. <br>All animals
+            listed on our site are legal to own within Australia and NZ.</p>
+        </div>
+
+        <button class="collapsible">How will I know what to feed my new pet?</button>
+        <div class="contents">
+          <p>Upon the completion of a sale, the seller will provide you with in depth information to equip you to care for your new friend.</p>
         </div>
       </div>
     </div>
+
+    <!-- Contact Section -->
+    <div class="contact">
+      <div class="contact-content">
+        <h1 class="contact-head">Contact Us</h1>
+        <div class="name-email">
+          <input class="input-name input" type="text" name="" value="" placeholder="Full Name">
+          <input class="input-email input" type="email" name="" value="" placeholder="Email">
+        </div>
+        <div class="contact-message">
+          <textarea id="description" class="textarea" name="name" rows="8" cols="80" placeholder="Description" value="" required></textarea>
+        </div>
+        <br><br>
+        <div class="sendBtn">
+          <button class="button-secondary" type="button" name="button">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- footer begins -->
 
   <div class="footer">
@@ -228,6 +230,7 @@
   <div class="modal-here"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="src/velocity.js"></script>
   <script src="js/script.js"></script>
 </body>
 

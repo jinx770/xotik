@@ -499,8 +499,9 @@ input:-webkit-autofill:hover {
   right: 2%;
   top: 100px;
   display: none;
-  height: 50vh;
-  width: 300px;
+  height: 0px;
+  overflow: hidden;
+  width: 0px;
   border: 1px solid $offwhite;
   background: none;
   z-index: 9999999999;
@@ -534,6 +535,21 @@ input:-webkit-autofill:hover {
   align-items: center;
   cursor: pointer;
   color: $offwhite;
+}
+
+.popover-header-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .create-account {
+    opacity: 0.5;
+
+    &:hover {
+    opacity: 1;
+  }
+  }
 }
 
 .login-popover-content {

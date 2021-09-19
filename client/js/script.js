@@ -49,10 +49,56 @@ $('#listingBtn').click(function() {
 // header popover begins
 
 
+// if (localStorage.getItem("loggedIn") === "true") { do stuff }
 
 // ?ICONS :::::::::::::::::::::;
 // click on user icon
 $('#user').click(function() {
+
+  if ($('#user').hasClass('checked')) {
+
+    // $('#user').removeClass('checked');
+
+  } else {
+
+    $('#user').removeClass('checked');
+
+    if (localStorage.getItem("loggedIn") === "true") {
+
+      $("#headerPopover").velocity({
+        width: "350px",
+      }, {
+        duration: 500,
+        easing: "easeInOutQuint",
+        delay: 0,
+      });
+
+      $("#headerPopover").velocity({
+        height: "200px",
+      }, {
+        duration: 500,
+        easing: "easeInOutQuint",
+        delay: 0,
+      });
+
+    } else {
+      $("#headerPopover").velocity({
+        width: "350px",
+      }, {
+        duration: 500,
+        easing: "easeInOutQuint",
+        delay: 0,
+      });
+
+      $("#headerPopover").velocity({
+        height: "400px",
+      }, {
+        duration: 500,
+        easing: "easeInOutQuint",
+        delay: 0,
+      });
+    }
+
     //fade in popover
     $('#headerPopover').fadeIn('slow');
     // fade in login content
@@ -63,7 +109,15 @@ $('#user').click(function() {
     $('#emptyCartContent').css('display', 'none');
     $('#fullCartContent').css('display', 'none');
     $('#createAccountContent').css('display', 'none');
+
+  }
+
+
+
 });
+
+
+//
 
 // show create account content on click
 $('#createAccountBtn').click(function() {
@@ -99,10 +153,42 @@ $('#cart').click(function() {
         $('#fullCartContent').hide();
         $('#fullCartContent').fadeIn('slow');
         updateCart();
+
+        $("#headerPopover").velocity({
+          width: "350px",
+        }, {
+          duration: 500,
+          easing: "easeInOutQuint",
+          delay: 0,
+        });
+
+        $("#headerPopover").velocity({
+          height: "400px",
+        }, {
+          duration: 500,
+          easing: "easeInOutQuint",
+          delay: 0,
+        });
     } else {
         $('#emptyCartContent').css('display', 'flex');
         $('#emptyCartContent').hide();
         $('#emptyCartContent').fadeIn('slow');
+
+        $("#headerPopover").velocity({
+          width: "350px",
+        }, {
+          duration: 500,
+          easing: "easeInOutQuint",
+          delay: 0,
+        });
+
+        $("#headerPopover").velocity({
+          height: "200px",
+        }, {
+          duration: 500,
+          easing: "easeInOutQuint",
+          delay: 0,
+        });
     }
 
     // fade in if items in cart
@@ -115,11 +201,31 @@ $('#cart').click(function() {
 
 
 $('#popoverExit').click(function() {
+
+  $('#headerPopover').addClass('checked');
+
+  $("#headerPopover").velocity({
+    height: "0px",
+  }, {
+    duration: 500,
+    easing: "easeInOutQuint",
+    delay: 0,
+  });
+
+  $("#headerPopover").velocity({
+    width: "0px",
+  }, {
+    duration: 500,
+    easing: "easeInOutQuint",
+    delay: 0,
+  });
+
     $('#headerPopover').fadeOut('slow');
-    $('#loginContent').fadeOut('slow');
-    $('#emptyCartContent').fadeOut('slow');
-    $('#fullCartContent').css('display', 'none');
-    $('#createAccountContent').fadeOut('slow');
+    // $('#loginContent').fadeOut('slow');
+    // $('#emptyCartContent').fadeOut('slow');
+    // $('#fullCartContent').css('display', 'none');
+    // $('#createAccountContent').fadeOut('slow');
+
 });
 
 
