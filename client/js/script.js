@@ -216,6 +216,8 @@ let refreshElements = () => {
 
     window.cartParent = document.querySelector('.cart-item-content') || "";
     window.cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+    localStorage.getItem("loggedIn") ? "" : localStorage.setItem("loggedIn",false)
+
 
 }
 
