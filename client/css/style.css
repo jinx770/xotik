@@ -455,8 +455,9 @@ input:-webkit-autofill:hover {
   right: 2%;
   top: 100px;
   display: none;
-  height: 50vh;
-  width: 300px;
+  height: 0px;
+  overflow: hidden;
+  width: 0px;
   border: 1px solid #F8F1DE;
   background: none;
   z-index: 9999999999;
@@ -490,6 +491,19 @@ input:-webkit-autofill:hover {
   align-items: center;
   cursor: pointer;
   color: #F8F1DE;
+}
+
+.popover-header-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.popover-header-top .create-account {
+  opacity: 0.5;
+}
+.popover-header-top .create-account:hover {
+  opacity: 1;
 }
 
 .login-popover-content {
