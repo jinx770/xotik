@@ -115,7 +115,7 @@
         if (currentSession == "null") {
 
             // If theyre signed out then alert them to login in
-            alert("Please login first!")
+            createAlert("Please login first!")
 
             // Open the login UI
             loginIcon.click()
@@ -166,7 +166,7 @@
         // Calling our function for checking if every item in an array matches
         // Returning nothing if it does to allow for it to continue
         // If they don't all match to true, then it'll alert you to correct your inputs
-        checker(results) ? "" : alert("Please make sure all inputs are filled in!")
+        checker(results) ? "" : createAlert("Please make sure all inputs are filled in!")
 
         // Returning true/false
         return checker(results)
@@ -205,14 +205,11 @@
 
             });
 
-            alert("Success!")
+            createAlert("Success!")
 
             setTimeout(() => {
                 location.reload()
             },2000)
-
-            console.log(url.length)
-
 
         }
 
