@@ -248,7 +248,7 @@ let handleHomeAnimals = async () => {
 
         // Setting each card up with relevant fields filled out using backticks
         cardParent.innerHTML += `
-                <div class='card' onclick='getId(this)' data-objectId='${card._id}' data-price='${card.price}' data-animalName='${card.name}' data-rating='${card.rating.charAt(0)}' data-animalType='${card.type}'>
+                <div class='card hvr-float' onclick='getId(this)' data-objectId='${card._id}' data-price='${card.price}' data-animalName='${card.name}' data-rating='${card.rating.charAt(0)}' data-animalType='${card.type}'>
                     <div class='top-info'>
                         <div class='username'>
                             <h5>${card.owner}</h5>
@@ -444,6 +444,41 @@ let hideCardsThatArent = (arg) => {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
+// -- COMMENT LOGIC
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+let createCommentRequest = ( q, a ) => {
+
+    window.comments = []
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
 // -- LOGIN LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -473,8 +508,6 @@ let checkLoginValidity = async (...query) => {
     return result
 
 }
-
-
 
 // Login handler function, basically for checking to see if the user is logging in or signing out!
 let loginHandler = async () => {
@@ -546,8 +579,6 @@ let loginHandler = async () => {
     }
 
 }
-
-
 
 // Function for creating an account :yay:
 let createAccHandler = async () => {

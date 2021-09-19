@@ -199,7 +199,8 @@
                     quantity: 10,
                     owner: currentSession,
                     license: licenseInput,
-                    delivery: deliveryInput
+                    delivery: deliveryInput,
+                    comments: comments
 
                 })
 
