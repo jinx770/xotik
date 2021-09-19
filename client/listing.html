@@ -45,6 +45,8 @@
     </div>
   </div>
 
+  <!-- header popover begins -->
+
   <div class="header-popover" id="headerPopover">
     <!-- <div class="header-arrow" id="#headerArrow"></div> -->
     <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
@@ -59,11 +61,10 @@
 
     <div class="create-account-popover-content" id="createAccountContent">
       <h4>Create Account</h4>
-      <input autocomplete="off" class="input" placeholder="Username" type="text" id="usernameCreate">
-      <input autocomplete="off" class="input" placeholder="Password" type="password" id="passwordCreate">
+      <input class="input" placeholder="Username" type="text" id="usernameCreate">
+      <input class="input" placeholder="Password" type="password" id="passwordCreate">
       <button class="button-secondary" id="signUpBtn">Sign Up</button>
     </div>
-
 
     <!-- if cart is empty -->
     <div class="empty-cart-content" id="emptyCartContent">
@@ -75,31 +76,20 @@
     <div class="full-cart-content" id="fullCartContent">
       <h4 class="cart-header">Cart</h4>
       <div class="cart-item-content">
-        <div class="cart-item">
-          <div class="cart-item-img">
-            <img src="" alt="">
-          </div>
-          <div class="cart-item-text">
-            <h5 class="cart-item-title">Slinky Lizard</h5>
-            <div class="cart-item-text-row">
-              <h6 class="cart-item-price">$499</h6>
-              <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
-            </div>
-          </div>
-        </div>
 
       </div>
-      <h6 class="check-out-btn" id="checkOutBtn">Check Out</h6>
+      <h6 class="check-out-btn" onclick="redirect('/cart.html')" id="checkOutBtn">Check Out</h6>
     </div>
 
   </div>
   <!-- header popover end -->
 
+
   <!-- header ENDS -->
 
-  <div class="content">
+  <div class="content listing-content">
 
-    <div class="left-col">
+    <div class="left-col listing-left">
       <div class="new-listing-form">
         <h1>Create Listing</h1>
         <br><br>
@@ -140,7 +130,7 @@
     </div>
     <!-- left col ends -->
 
-    <div class="right-col">
+    <div class="right-col listing-right">
       <div class="listing-images-section">
         <div class="add-images-section">
           <h5>Add images to your listing.</h5>
@@ -207,6 +197,7 @@
 
   </div>
   <!-- footer ends -->
+  <div class="modal-here"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>

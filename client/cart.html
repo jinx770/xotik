@@ -23,6 +23,7 @@
 
   <div class="header-background"></div>
   <div class="header-background-blur"></div>
+
   <div class="header">
     <div class="header-content">
       <div class="header-nav">
@@ -45,14 +46,16 @@
     </div>
   </div>
 
+  <!-- header popover begins -->
+
   <div class="header-popover" id="headerPopover">
     <!-- <div class="header-arrow" id="#headerArrow"></div> -->
     <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
     </div>
     <div class="login-popover-content" id="loginContent">
-      <h4 id="sessionHeader" >Log In</h4>
-      <input autocomplete="off" class="input" placeholder="Username" type="text" id="usernameCreate">
-      <input autocomplete="off" class="input" placeholder="Password" type="password" id="usernamePassword">
+      <h4 id="sessionHeader">Log In</h4>
+      <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
+      <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
       <button id="submitLogin" class="button-secondary">Log In</button>
       <h6 class="create-account" id="createAccountBtn">Create Account</h6>
     </div>
@@ -64,7 +67,6 @@
       <button class="button-secondary" id="signUpBtn">Sign Up</button>
     </div>
 
-
     <!-- if cart is empty -->
     <div class="empty-cart-content" id="emptyCartContent">
       <h4>Cart</h4>
@@ -75,34 +77,24 @@
     <div class="full-cart-content" id="fullCartContent">
       <h4 class="cart-header">Cart</h4>
       <div class="cart-item-content">
-        <div class="cart-item">
-          <div class="cart-item-img">
-            <img src="" alt="">
-          </div>
-          <div class="cart-item-text">
-            <h5 class="cart-item-title">Slinky Lizard</h5>
-            <div class="cart-item-text-row">
-              <h6 class="cart-item-price">$499</h6>
-              <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
-            </div>
-          </div>
-        </div>
 
       </div>
-      <h6 class="check-out-btn" id="checkOutBtn">Check Out</h6>
+      <h6 class="check-out-btn" onclick="redirect('/cart.html')" id="checkOutBtn">Check Out</h6>
     </div>
 
   </div>
   <!-- header popover end -->
 
+
   <!-- header ENDS -->
 
   <div class="content cart-page-content">
     <h1 class="cart-page-header">My Cart</h1>
-    <div class="cart-page-item">
-      <div class="cart-page-item-content">
+
+    <!-- <div class="cart-page-item">
+     <div class="cart-page-item-content">
         <div class="cart-page-img">
-          <img src="img/heo-alt.jpg" alt="">
+          <img src="img/hero-alt.jpg" alt="">
         </div>
         <div class="cart-page-item-text">
           <div class="cart-page-item-details">
@@ -115,12 +107,10 @@
           </div>
         </div>
       </div>
-
-    </div>
-  <div class="checkout-btn">
-    <button class="button-secondary" type="button" name="button">Checkout</button>
+    </div> -->
   </div>
-
+  <div class="checkout-btn">
+      <button id="checkoutButton" class="button-secondary" type="button" name="button">Checkout</button>
   </div>
   <!-- page content ends -->
   <br><br><br>
@@ -168,10 +158,11 @@
 
   </div>
   <!-- footer ends -->
+  <div class="modal-here"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
-  <script src="js/listingHandler.js"></script>
+  <script src="js/cartHandler.js"></script>
 </body>
 
 </html>

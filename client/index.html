@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/style.css">
   <title></title>
 </head>
@@ -66,7 +67,6 @@
       <button class="button-secondary" id="signUpBtn">Sign Up</button>
     </div>
 
-
     <!-- if cart is empty -->
     <div class="empty-cart-content" id="emptyCartContent">
       <h4>Cart</h4>
@@ -77,21 +77,9 @@
     <div class="full-cart-content" id="fullCartContent">
       <h4 class="cart-header">Cart</h4>
       <div class="cart-item-content">
-        <div class="cart-item">
-          <div class="cart-item-img">
-            <img src="" alt="">
-          </div>
-          <div class="cart-item-text">
-            <h5 class="cart-item-title">Slinky Lizard</h5>
-            <div class="cart-item-text-row">
-              <h6 class="cart-item-price">$499</h6>
-              <h6 class="cart-remove-btn" id="cartRemoveBtn">Remove</h6>
-            </div>
-          </div>
-        </div>
 
       </div>
-      <h6 class="check-out-btn" id="checkOutBtn">Check Out</h6>
+      <h6 class="check-out-btn" onclick="redirect('/cart.html')" id="checkOutBtn">Check Out</h6>
     </div>
 
   </div>
@@ -145,6 +133,7 @@
 
 
   <!-- Search Container Ends -->
+
 
   <div class="all-listings">
 
@@ -200,10 +189,11 @@
       </div>
     </div>
     <!-- footer-content ends -->
-
   </div>
   <!-- footer ends -->
 
+
+  <div class="modal-here"></div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
 </body>
