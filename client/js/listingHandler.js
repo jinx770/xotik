@@ -166,12 +166,16 @@ let validateInputs = () => {
 // -- POST METHOD
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// If listing button is pressed
 listingButton.addEventListener('click', async () => {
 
+    // Verify that the user is logged in and all fields are filled out
     if (verifyLogin() && validateInputs()) {
 
+        // Refresh fields
         getElements();
 
+        // Create response for animal
         let response = await fetch('/createAnimal', {
             method: 'post',
             headers: {
@@ -189,14 +193,17 @@ listingButton.addEventListener('click', async () => {
                 owner: currentSession,
                 license: licenseInput,
                 delivery: deliveryInput,
-                comments: []
+                comments: [],
+                location: locationInput
 
             })
 
         });
 
+        // Alert successful
         createAlert('Success!')
 
+        // Reload page after 2 seconds
         setTimeout(() => {
             location.reload()
         }, 2000)

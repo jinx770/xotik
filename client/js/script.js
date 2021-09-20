@@ -47,22 +47,6 @@ $('#logoBtn').click(function() {
     window.location.href = 'index.html';
 });
 
-$('#animalsBtn').click(function() {
-
-    if (window.location.href = 'index.html') {
-
-        // $([document.documentElement, document.body]).animate({
-        //   scrollTop: $('#listingSection').offset().top
-        // }, 1500);
-        console.log('On inddex.html');
-
-    } else {
-        // window.location.href = 'index.html';
-        console.log('NOT on inddex.html');
-    }
-
-});
-
 //
 $('#whoBtn').click(function() {
     window.location.href = 'about.html';
@@ -468,7 +452,9 @@ let loginHandler = async () => {
 let createAccHandler = async () => {
 
     // If not logged in continue
-    if (!loggedIn) {
+    if (localStorage.getItem("loggedIn") === "false") {
+
+        refreshElements();
 
         let username = usernameCreate.value;
         let password = passwordCreate.value;
@@ -1000,7 +986,10 @@ let createAlert = (msg) => {
 // STARTUP TASKS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-window.location.href == 'http://localhost:3000/index.html' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000' ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
 refreshElements();
 setupEventListeners();
 setupFilters();
