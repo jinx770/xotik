@@ -8,7 +8,7 @@
     let config = require('./config.json')
 
     let User = require('./models/user.js')
-    let Animal = require("./models/animal.js");
+    let Animal = require('./models/animal.js');
 
     // Connecting our database to our backend
     mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@xotik.s1wn9.mongodb.net/xotik?retryWrites=true&w=majority`);
@@ -31,8 +31,8 @@
         let checkAnimal = await FindAnimal(name);
 
         // Ternary operator for checking if the animal returned is indeed an animal or
-        // if it's errored and has come up with "undefined"
-        let newAnimal = checkAnimal[0] && checkAnimal[0].name || ""
+        // if it's errored and has come up with 'undefined'
+        let newAnimal = checkAnimal[0] && checkAnimal[0].name || ''
 
         // Ternary operator, now that we've got the animal, we can check to see if the name already exists in the database
         // Can't comment on each line here since it's technically one line, i.e (condition) ? success : fail, I've just seperated it so its easier to read,
@@ -156,7 +156,7 @@
         let checkAnimal = foundAnimal.length === 0 ? '' : foundAnimal
 
         // Ternary op for setting a variable as the username of the result or nothing if it doesn't exist, error prevention !
-        let animalExists = checkAnimal[0] && checkAnimal[0].name || ""
+        let animalExists = checkAnimal[0] && checkAnimal[0].name || ''
 
         // Another ternary operator for comparing the animal returned's username with the inputted argument
         // The condition would result in true, meaning it will move onto the deleteOne function and delete the returned animal from the database
@@ -192,8 +192,8 @@
         // Requesting info from the database, using the username as a query
         let checkUser = await FindUser(username);
 
-        // Checking to see if the returned data is a document, if its not then switch it to ""
-        let newUser = checkUser[0] && checkUser[0].username || ""
+        // Checking to see if the returned data is a document, if its not then switch it to ''
+        let newUser = checkUser[0] && checkUser[0].username || ''
 
         // If user exists then return user already exists, if it doesn't then creating and save the new user
         newUser === username
@@ -235,7 +235,7 @@
         let foundUser = await User.find({ username: username });
 
         // If user does not exist return false
-        if (typeof foundUser[0] === "undefined"){
+        if (typeof foundUser[0] === 'undefined'){
           return false;
         }
 
@@ -300,7 +300,7 @@
         let checkUser = foundUser.length === 0 ? '' : foundUser
 
         // Checks to see if its got a username field
-        let userExists = checkUser[0] && checkUser[0].username || ""
+        let userExists = checkUser[0] && checkUser[0].username || ''
 
         // Deletes the entire document if the username matches
         // Logs results with a right arrow function
@@ -319,7 +319,7 @@
 
 
     // Acknowledges that the code is running without any ghost errors
-    console.log("Running...\n")
+    console.log('Running...\n')
 
     // Export our functions to the server.js so they still get ran after we require them
     module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails}
