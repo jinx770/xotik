@@ -906,6 +906,10 @@ let setupEventListeners = () => {
         loginHandler();
     });
 
+    myAccountBtn.addEventListener('click', () => {
+        loggedIn != true ? createAlert("Log in to view your account!") : window.location.href="/user.html"
+    })
+
     // Runs every time you type in the password input field
     passwordCreate ? passwordCreate.addEventListener('keydown', (event) => {
 
@@ -979,7 +983,9 @@ let createAlert = (msg) => {
 // STARTUP TASKS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
+
+
+window.location.href == 'http://localhost:3000/index.html' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
 refreshElements();
 setupEventListeners();
 setupFilters();
