@@ -9,8 +9,10 @@ Body {
   width: 100%;
   height: 100%;
   margin: auto;
-  background: #272727;
+  background: $black;
 }
+
+
 // header set ::::::::::::::::::::::::::::::::::::::
 
 h1 {
@@ -451,7 +453,7 @@ input:-webkit-autofill:hover {
   height: 100px;
   z-index: 9999;
   backdrop-filter: blur(10px);
-  background-image: linear-gradient(to top, rgba(#ffffff, 0), $black);
+  // background-image: linear-gradient(to top, rgba(#ffffff, 0), $black);
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
@@ -468,6 +470,7 @@ input:-webkit-autofill:hover {
   width: 100%;
   height: 100px;
   z-index: 99999;
+  opacity: 1;
 }
 
 .header-content {
@@ -552,7 +555,7 @@ input:-webkit-autofill:hover {
 // login popover begins ::::::::::::::::::::::::::
 
 .header-popover {
-  padding-top: 50px;
+  padding: 50px 0 30px 0;
   position: fixed;
   right: 2%;
   top: 100px;
@@ -815,6 +818,8 @@ input:-webkit-autofill:hover {
 
 .background-image {
   background-image: url("../img/gecko.jpg");
+  -webkit-mask-image:-webkit-gradient(linear, left 70%, left bottom, from(#262626), to(rgba(#262626, 0)));
+  mask-image: linear-gradient(to bottom, #262626 90%, rgba(0,0,0,0));
   height: 100vh;
   width: 100%;
   background-position: center;
@@ -831,8 +836,9 @@ input:-webkit-autofill:hover {
   flex-direction: column;
   position: absolute;
   margin: auto;
-  top: 25%;
+  top: 40%;
   left: 8%;
+  opacity: 0;
 }
 
 .xotik {
@@ -1036,6 +1042,11 @@ input:-webkit-autofill:hover {
 
 .contact-faq {
   display: flex;
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .faq {
@@ -1054,6 +1065,9 @@ input:-webkit-autofill:hover {
 .faq-content {
   width: 90%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .collapsible {
@@ -1067,6 +1081,7 @@ input:-webkit-autofill:hover {
   padding-left: 2%;
   color: #F8F1DE;
   font-size: 20px;
+  font-weight: 100;
 }
 
 .collapsible:after {
@@ -1095,7 +1110,7 @@ input:-webkit-autofill:hover {
   flex-direction: column;
   align-items: center;
   width: 40%;
-  margin: 60px auto;
+  margin: auto;
 }
 
 .contact-head {
@@ -1118,12 +1133,13 @@ input:-webkit-autofill:hover {
   flex-direction: column;
   justify-content: center;
   margin: auto;
-  width: 80%;
+  align-items: center;
+  width: 100%;
 }
 
 .input-email,
 .input-name {
-  width: 30%;
+  width: 85%;
 }
 
 .contact-msg {
@@ -1133,6 +1149,7 @@ input:-webkit-autofill:hover {
   padding-top: 3%;
   padding-left: 4%;
   padding-bottom: 200px;
+  width: 100%;
   color: #F8F1DE;
   font-size: 20px;
 }
@@ -1140,7 +1157,7 @@ input:-webkit-autofill:hover {
 .contact-message {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
@@ -1285,6 +1302,7 @@ input:-webkit-autofill:hover {
   width: 100%;
   justify-content: center;
   margin-top: -20px;
+  margin-bottom: 100px;
 
   button {
     width: 200px;
