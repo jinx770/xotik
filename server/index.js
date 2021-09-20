@@ -69,12 +69,21 @@
 
     }
 
-    // The same as above but passing through an id
+    // The same as above but passing through animal id
     let FindAnimalById = async ( args ) => {
 
         let foundAnimal = await Animal.find({ _id: args })
         let animalExists = foundAnimal.length === 0 ? false : foundAnimal
         return animalExists
+    }
+
+    // The same as above but passing through owner
+    let FindAnimalByOwner = async ( args ) => {
+
+        let foundAnimal = await Animal.find({ owner: args })
+        let animalExists = foundAnimal.length === 0 ? false : foundAnimal
+        return animalExists
+
     }
 
     // For gathering every animal in the database
@@ -251,6 +260,13 @@
 
     }
 
+    // Returning userdetails
+    let FindUserDetails = async ( username ) => {
+        let foundUser = await User.find({ username: username });
+        console.log(foundUser);
+        return foundUser;
+    }
+
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
@@ -305,18 +321,8 @@
     // Acknowledges that the code is running without any ghost errors
     console.log("Running...\n")
 
-    // RemoveAnimal("Squirrel")
-    // RemoveAnimal("Sea Turtle")
-    // RemoveAnimal("Turtle")
-    // RemoveAnimal("Ashera Cat")
-    // RemoveAnimal("Koala")
-    // RemoveAnimal("Meerkat")
-    // RemoveAnimal("White Seal")
-    // RemoveAnimal("White Tegus ")
-    // RemoveAnimal("Tasmanian Devil")
-
     // Export our functions to the server.js so they still get ran after we require them
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById}
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails}
 
 
 })();

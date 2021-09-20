@@ -39,18 +39,22 @@ app.post('/createAnimal', async ( req, res ) => {
 app.get('/findAnimal', async ( req, res ) => {
 
     let id = req.query.id
+    let owner = req.query.owner
 
-    // If no argument is passed in the request, return all animals
-    if (!id) {
+    if (owner) {
         console.log(`\n TASK //
-            return all animals \n`)
-        return res.send(await functions.FindEveryAnimal())
+            return user's animals \n`)
+        return res.send(await functions.FindAnimalByOwner( owner ))
+    } else if (!id) {
+          console.log(`\n TASK //
+              return all animals \n`)
+          return res.send(await functions.FindEveryAnimal())
+    } else {
+        // Uses the query passed in the request as its search query
+        console.log(`\n TASK //
+                return searched animal \n`)
+        return res.send(await functions.FindAnimalById( id ))
     }
-
-    // Uses the query passed in the request as its search query
-    console.log(`\n TASK //
-            return searched animal \n`)
-    return res.send(await functions.FindAnimalById( id ))
 
 })
 
@@ -139,6 +143,15 @@ app.get('/findUser', async ( req, res ) => {
 
     // Find and check user and password details
     return res.send(await functions.FindUser(username, password))
+})
+
+// Finding specific user's details
+app.get('/findUserDetails', async ( req, res ) => {
+
+    let username = req.query.u;
+
+    //returning user details
+    return res.send(await functions.FindUserDetails(username))
 })
 
 
