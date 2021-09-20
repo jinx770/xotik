@@ -5,6 +5,7 @@
 // -- DECLARATIONS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// Predefining variables
 window.url;
 window.cache = ['']
 window.currentSession = localStorage.getItem('currentSession')
@@ -30,8 +31,10 @@ let getElements = () => {
 
 }
 
+// Refreshing elements
 getElements();
 
+// Uhhhh
 uploadImage.style.visibility = 'hidden'
 
 

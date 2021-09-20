@@ -830,6 +830,7 @@ let remove = ( obj ) => {
 
     }
 
+    // Update cart with current array
     updateCart();
 
 }
@@ -860,6 +861,7 @@ let removeFromPage = (obj) => {
 
     }
 
+    // Update cart with current array
     updateCart();
 
 }
@@ -892,11 +894,13 @@ setInterval(function() {
 
 }, 500);
 
+// Get Id of the current element
 let getId = (e) => {
     localStorage.setItem('cardId', e.getAttribute('data-objectid'))
     window.location.href = '/animalTemplate.html';
 }
 
+// Redirect function
 let redirect = (a) => {
     cartList.length == 0 ? createAlert('Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)') : window.location.href = a
 }
@@ -968,14 +972,20 @@ let enableScroll = () => {
     window.onscroll = function() {};
 }
 
+// Modal creator
 let createAlert = (msg) => {
 
+    // Adding modal pop over that overlays onto the screen with the error message
     document.querySelector('.modal-here').innerHTML += `
         <div class='modal'>
           <h3>${msg}</h3>
           <button type='button' class='button-secondary modalDone' name='button'>Done</button>
         </div>`
-    headerPopover.style.dispaly == 'block' ? loginButton.click() : null
+
+    // Close login window if entered incorrectly
+    headerPopover.style.display == 'block' ? loginButton.click() : null
+
+    // Disable scroll function so they cant avoid it
     disableScroll();
 
 }
@@ -986,10 +996,13 @@ let createAlert = (msg) => {
 // STARTUP TASKS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// Validating routes
 window.location.href == 'http://localhost:3000' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
+
+// Tasks
 refreshElements();
 setupEventListeners();
 setupFilters();
