@@ -49,56 +49,10 @@ $('#listingBtn').click(function() {
 // header popover begins
 
 
-// if (localStorage.getItem("loggedIn") === "true") { do stuff }
 
 // ?ICONS :::::::::::::::::::::;
 // click on user icon
 $('#user').click(function() {
-
-  if ($('#user').hasClass('checked')) {
-
-    // $('#user').removeClass('checked');
-
-  } else {
-
-    $('#user').removeClass('checked');
-
-    if (localStorage.getItem("loggedIn") === "true") {
-
-      $("#headerPopover").velocity({
-        width: "350px",
-      }, {
-        duration: 500,
-        easing: "easeInOutQuint",
-        delay: 0,
-      });
-
-      $("#headerPopover").velocity({
-        height: "200px",
-      }, {
-        duration: 500,
-        easing: "easeInOutQuint",
-        delay: 0,
-      });
-
-    } else {
-      $("#headerPopover").velocity({
-        width: "350px",
-      }, {
-        duration: 500,
-        easing: "easeInOutQuint",
-        delay: 0,
-      });
-
-      $("#headerPopover").velocity({
-        height: "400px",
-      }, {
-        duration: 500,
-        easing: "easeInOutQuint",
-        delay: 0,
-      });
-    }
-
     //fade in popover
     $('#headerPopover').fadeIn('slow');
     // fade in login content
@@ -109,15 +63,7 @@ $('#user').click(function() {
     $('#emptyCartContent').css('display', 'none');
     $('#fullCartContent').css('display', 'none');
     $('#createAccountContent').css('display', 'none');
-
-  }
-
-
-
 });
-
-
-//
 
 // show create account content on click
 $('#createAccountBtn').click(function() {
@@ -153,42 +99,10 @@ $('#cart').click(function() {
         $('#fullCartContent').hide();
         $('#fullCartContent').fadeIn('slow');
         updateCart();
-
-        $("#headerPopover").velocity({
-          width: "350px",
-        }, {
-          duration: 500,
-          easing: "easeInOutQuint",
-          delay: 0,
-        });
-
-        $("#headerPopover").velocity({
-          height: "400px",
-        }, {
-          duration: 500,
-          easing: "easeInOutQuint",
-          delay: 0,
-        });
     } else {
         $('#emptyCartContent').css('display', 'flex');
         $('#emptyCartContent').hide();
         $('#emptyCartContent').fadeIn('slow');
-
-        $("#headerPopover").velocity({
-          width: "350px",
-        }, {
-          duration: 500,
-          easing: "easeInOutQuint",
-          delay: 0,
-        });
-
-        $("#headerPopover").velocity({
-          height: "200px",
-        }, {
-          duration: 500,
-          easing: "easeInOutQuint",
-          delay: 0,
-        });
     }
 
     // fade in if items in cart
@@ -201,31 +115,11 @@ $('#cart').click(function() {
 
 
 $('#popoverExit').click(function() {
-
-  $('#headerPopover').addClass('checked');
-
-  $("#headerPopover").velocity({
-    height: "0px",
-  }, {
-    duration: 500,
-    easing: "easeInOutQuint",
-    delay: 0,
-  });
-
-  $("#headerPopover").velocity({
-    width: "0px",
-  }, {
-    duration: 500,
-    easing: "easeInOutQuint",
-    delay: 0,
-  });
-
     $('#headerPopover').fadeOut('slow');
-    // $('#loginContent').fadeOut('slow');
-    // $('#emptyCartContent').fadeOut('slow');
-    // $('#fullCartContent').css('display', 'none');
-    // $('#createAccountContent').fadeOut('slow');
-
+    $('#loginContent').fadeOut('slow');
+    $('#emptyCartContent').fadeOut('slow');
+    $('#fullCartContent').css('display', 'none');
+    $('#createAccountContent').fadeOut('slow');
 });
 
 
@@ -260,7 +154,8 @@ $('#askQuestionBtn').click(function() {
 
 
 $('#sendBtn').click(function() {
-
+    let questionInput = document.querySelector('#questionInput').value
+    console.log(questionInput);
     $('#askQuestionForm').hide('slow');
 })
 
@@ -269,10 +164,7 @@ $('#questionExitBtn').click(function() {
 })
 
 
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-// -- DISPLAY DETAILS
-// ------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -280,17 +172,19 @@ $('#questionExitBtn').click(function() {
 window.loggedIn = false
 window.alreadyStored = false;
 
-// Empty arrays
 window.cartItems = []
 window.pricesSorted = [];
 window.ratingsSorted = [];
 window.defaultSorted = [];
 window.currentSession = '';
-
-// Basic check to prevent errors
 localStorage.getItem("loggedIn")
     ? ""
     : localStorage.setItem("loggedIn",false)
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+
+
 
 // Refresh all html vars
 let refreshElements = () => {
@@ -335,7 +229,7 @@ let refreshElements = () => {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-// -- ANIMAL CARDS
+// ------------------------------------------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -357,7 +251,7 @@ let handleHomeAnimals = async () => {
 
         // Setting each card up with relevant fields filled out using backticks
         cardParent.innerHTML += `
-                <div class='card hvr-float' onclick='getId(this)' data-objectId='${card._id}' data-price='${card.price}' data-animalName='${card.name}' data-rating='${card.rating.charAt(0)}' data-animalType='${card.type}'>
+                <div class='card' onclick='getId(this)' data-objectId='${card._id}' data-price='${card.price}' data-animalName='${card.name}' data-rating='${card.rating.charAt(0)}' data-animalType='${card.type}'>
                     <div class='top-info'>
                         <div class='username'>
                             <h5>${card.owner}</h5>
@@ -583,6 +477,8 @@ let checkLoginValidity = async (...query) => {
 
 }
 
+
+
 // Login handler function, basically for checking to see if the user is logging in or signing out!
 let loginHandler = async () => {
 
@@ -654,6 +550,8 @@ let loginHandler = async () => {
 
 }
 
+
+
 // Function for creating an account :yay:
 let createAccHandler = async () => {
 
@@ -663,31 +561,24 @@ let createAccHandler = async () => {
         let username = usernameCreate.value;
         let password = passwordCreate.value;
 
-        if (username == "" || password == "") {
-            createAlert("Please make sure all fields are filled out!")
-            return
-        } else {
+        // Posts/sends data to the route found in server
+        let response = await fetch('/createUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
 
-            // Posts/sends data to the route found in server
-            let response = await fetch('/createUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-
-                    fullName: '.',
-                    username: username,
-                    phoneNo: '.',
-                    email: '.',
-                    description: '.',
-                    password: password
-
-                })
+                fullName: '.',
+                username: username,
+                phoneNo: '.',
+                email: '.',
+                description: '.',
+                password: password
 
             })
 
-        }
+        })
 
     }
 
@@ -868,7 +759,7 @@ let getId = (e) => {
 }
 
 let redirect = (a) => {
-    cartList.length == 0 ? createAlert("Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)") : window.location.href = a
+    window.location.href = a
 }
 
 // Function for running every event listener on the page
