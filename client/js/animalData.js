@@ -153,7 +153,8 @@ let updateCommentRequest = async () => {
             owner: animalData[0].owner,
             license: animalData[0].license,
             delivery: animalData[0].delivery,
-            comments: comments
+            comments: comments,
+            location: location
 
         })
 

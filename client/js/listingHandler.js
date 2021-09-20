@@ -198,7 +198,8 @@ listingButton.addEventListener('click', async () => {
                 owner: currentSession,
                 license: licenseInput,
                 delivery: deliveryInput,
-                comments: []
+                comments: [],
+                location: location 
 
             })
 

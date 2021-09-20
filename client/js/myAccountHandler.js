@@ -106,6 +106,17 @@
         `
 
 
+          detail.addEventListener('input', async () => {
+            listingHandler.innerHTML = `
+              <h6 id="saveUpdatesBtn">Save Updates</h6>
+            `
+            saveUpdatesBtn.addEventListener('click', async () => {
+              listingHandler.innerHTML = `
+                  <h6 id="deleteListingBtn">Delete Listing</h6>
+              `
+              updateListingDetails()
+            })
+          })
 
     }
     // end of loop
@@ -123,64 +134,64 @@
 
 
 
-    for (detail of editableDetails){
-      detail.addEventListener('input', async () => {
-        listingHandler.innerHTML = `
-          <h6 id="saveUpdatesBtn">Save Updates</h6>
-        `
-        saveUpdatesBtn.addEventListener('click', async () => {
-          listingHandler.innerHTML = `
-              <h6 id="deleteListingBtn">Delete Listing</h6>
-          `
-          updateListingDetails()
-        })
-      })
-    }
-
-    updateListingDetails = async () => {
-      let name = editableDetails[0].textContent;
-      let price = editableDetails[1].textContent; //needs to be changed to number parseInt, parseFloat, number
-      let location = editableDetails[2].textContent;
-      let description = editableDetails[3].textContent;
-
-      licenseCheck = document.querySelector('#licenseCheck');
-
-      license == 'checked'
-      ? licenseDB = 'true'
-      : licenseDB = 'false'
-
-      delivery == 'checked'
-      ? deliveryDB = 'true'
-      : deliveryDB = 'false'
-
-      console.log(name, price, location, description, licenseDB, deliveryDB);
-      console.log('saved!');
-
-      // let response = await fetch('/updateAnimal', {
-      //     method: 'POST',
-      //     headers: {
-      //         'Content-Type': 'application/json'
-      //     },
-      //     body: JSON.stringify({
-      //
-      //         name: name,
-      //         type: typeInput,
-      //         // url: url,
-      //         price: parseInt(price),
-      //         rating: `${Math.floor(Math.random() * 11)}/10`,
-      //         description: description,
-      //         quantity: 10,
-      //         // owner: currentSession,
-      //         license: licenseInput,
-      //         delivery: deliveryInput
-      //         // comments: []
-      //
-      //     })
-      // });
-
-
-
-    }
+    // for (detail of editableDetails){
+    //   detail.addEventListener('input', async () => {
+    //     listingHandler.innerHTML = `
+    //       <h6 id="saveUpdatesBtn">Save Updates</h6>
+    //     `
+    //     saveUpdatesBtn.addEventListener('click', async () => {
+    //       listingHandler.innerHTML = `
+    //           <h6 id="deleteListingBtn">Delete Listing</h6>
+    //       `
+    //       updateListingDetails()
+    //     })
+    //   })
+    // }
+    //
+    // updateListingDetails = async () => {
+    //   let name = editableDetails[0].textContent;
+    //   let price = editableDetails[1].textContent; //needs to be changed to number parseInt, parseFloat, number
+    //   let location = editableDetails[2].textContent;
+    //   let description = editableDetails[3].textContent;
+    //
+    //   licenseCheck = document.querySelector('#licenseCheck');
+    //
+    //   license == 'checked'
+    //   ? licenseDB = 'true'
+    //   : licenseDB = 'false'
+    //
+    //   delivery == 'checked'
+    //   ? deliveryDB = 'true'
+    //   : deliveryDB = 'false'
+    //
+    //   console.log(name, price, location, description, licenseDB, deliveryDB);
+    //   console.log('saved!');
+    //
+    //   // let response = await fetch('/updateAnimal', {
+    //   //     method: 'POST',
+    //   //     headers: {
+    //   //         'Content-Type': 'application/json'
+    //   //     },
+    //   //     body: JSON.stringify({
+    //   //
+    //   //         name: name,
+    //   //         type: typeInput,
+    //   //         // url: url,
+    //   //         price: parseInt(price),
+    //   //         rating: `${Math.floor(Math.random() * 11)}/10`,
+    //   //         description: description,
+    //   //         quantity: 10,
+    //   //         // owner: currentSession,
+    //   //         license: licenseInput,
+    //   //         delivery: deliveryInput
+    //   //         // comments: []
+    //   //
+    //   //     })
+    //   // });
+    //
+    //
+    //
+    // }
     // end of update listing
 
 
