@@ -660,24 +660,31 @@ let createAccHandler = async () => {
         let username = usernameCreate.value;
         let password = passwordCreate.value;
 
-        // Posts/sends data to the route found in server
-        let response = await fetch('/createUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+        if (username == "" || password == "") {
+            createAlert("Please make sure all fields are filled out!")
+            return
+        } else {
 
-                fullName: '.',
-                username: username,
-                phoneNo: '.',
-                email: '.',
-                description: '.',
-                password: password
+            // Posts/sends data to the route found in server
+            let response = await fetch('/createUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+
+                    fullName: '.',
+                    username: username,
+                    phoneNo: '.',
+                    email: '.',
+                    description: '.',
+                    password: password
+
+                })
 
             })
 
-        })
+        }
 
     }
 
