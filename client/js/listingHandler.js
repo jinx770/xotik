@@ -1,21 +1,21 @@
 let getElements = () => {
 
-    window.addImageListingButton = document.querySelector(".add-img-btn") || "";
-    window.listingButton = document.querySelector(".listing-btn") || "";
+    window.addImageListingButton = document.querySelector('.add-img-btn') || '';
+    window.listingButton = document.querySelector('.listing-btn') || '';
 
-    window.fileInput = document.querySelector(".ignore-me") || "";
-    window.uploadImage = document.querySelector(".uploaded-image") || "";
-    window.imageHolder = document.querySelector(".test-div-images") || "";
-    window.loginIcon = document.querySelector(".fa-user")
+    window.fileInput = document.querySelector('.ignore-me') || '';
+    window.uploadImage = document.querySelector('.uploaded-image') || '';
+    window.imageHolder = document.querySelector('.test-div-images') || '';
+    window.loginIcon = document.querySelector('.fa-user')
 
-    window.nameInput = document.querySelector("#name").value
-    window.typeInput = document.querySelector("#type").value
-    window.locationInput = document.querySelector("#location").value
-    window.priceInput = document.querySelector("#price").value
-    window.licenseInput = document.querySelector("#licence").checked
-    window.deliveryInput = document.querySelector("#delivery").checked
-    window.descriptionInput = document.querySelector("#description").value
-    window.listingInputs = document.querySelectorAll(".listing-input") || "";
+    window.nameInput = document.querySelector('#name').value
+    window.typeInput = document.querySelector('#type').value
+    window.locationInput = document.querySelector('#location').value
+    window.priceInput = document.querySelector('#price').value
+    window.licenseInput = document.querySelector('#licence').checked
+    window.deliveryInput = document.querySelector('#delivery').checked
+    window.descriptionInput = document.querySelector('#description').value
+    window.listingInputs = document.querySelectorAll('.listing-input') || '';
 
 }
 
@@ -27,9 +27,9 @@ getElements();
 
 
 window.url;
-window.cache = [""]
-window.currentSession = localStorage.getItem("currentSession")
-uploadImage.style.visibility = "hidden"
+window.cache = ['']
+window.currentSession = localStorage.getItem('currentSession')
+uploadImage.style.visibility = 'hidden'
 
 
 
@@ -44,7 +44,7 @@ let handleFileSelect = (e) => {
     setInterval(() => {
 
         // Gets the inputted file of our input
-        let file = $("input[type=file]").get(0).files[0];
+        let file = $('input[type=file]').get(0).files[0];
 
         // Making sure file has been successfully defined
         if (file) {
@@ -60,12 +60,12 @@ let handleFileSelect = (e) => {
 
                 // The source attribute gets changed to the result of our fileReaders request when we call it with readAsDataURL
                 uploadImage.src = reader.result
-                uploadImage.style.visibility = "visible"
+                uploadImage.style.visibility = 'visible'
                 url = reader.result
 
 
                 // Clearing the input so it doesn't loop add the current value to the array - thanks toby for letting me know
-                fileInput.value = ""
+                fileInput.value = ''
 
             }
 
@@ -108,10 +108,10 @@ addImageListingButton.addEventListener('click', () => {
 let verifyLogin = () => {
 
     // Checking to see if theyre signed in by looking for string we store in localstorage if theyre signed out
-    if (currentSession == "null") {
+    if (currentSession == 'null') {
 
         // If theyre signed out then alert them to login in
-        createAlert("Please login first!")
+        createAlert('Please login first!')
 
         // Open the login UI
         loginIcon.click()
@@ -145,7 +145,7 @@ let validateInputs = () => {
     // Function for checking every item in an array is equal to true
     let checker = arr => arr.every(v => v === true);
 
-    // Looping over all elements with "listing-input" as a class
+    // Looping over all elements with 'listing-input' as a class
     for (let i = 0; i < listingInputs.length; i++) {
 
         // Getting the values
@@ -162,7 +162,7 @@ let validateInputs = () => {
     // Calling our function for checking if every item in an array matches
     // Returning nothing if it does to allow for it to continue
     // If they don't all match to true, then it'll alert you to correct your inputs
-    checker(results) ? "" : createAlert("Please make sure all inputs are filled in!")
+    checker(results) ? '' : createAlert('Please make sure all inputs are filled in!')
 
     // Returning true/false
     return checker(results)
@@ -182,7 +182,7 @@ listingButton.addEventListener('click', async () => {
         getElements();
 
         let response = await fetch('/createAnimal', {
-            method: "post",
+            method: 'post',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -204,7 +204,7 @@ listingButton.addEventListener('click', async () => {
 
         });
 
-        createAlert("Success!")
+        createAlert('Success!')
 
         setTimeout(() => {
             location.reload()

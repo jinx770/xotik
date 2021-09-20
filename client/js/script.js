@@ -21,20 +21,20 @@ for (i = 0; i < coll.length; i++) {
 
 window.onload = (event) => {
 
-  $("#hero").velocity({
-    top: "25%",
-    opacity: "1",
+  $('#hero').velocity({
+    top: '25%',
+    opacity: '1',
   }, {
     duration: 2000,
-    easing: "spring",
+    easing: 'spring',
     delay: 500,
   });
 
-  // $("#header").velocity({
+  // $('#header').velocity({
   //   opacity: 1,
   // }, {
   //   duration: 1000,
-  //   easing: "ease-in",
+  //   easing: 'ease-in',
   //   delay: 1500,
   // });
 
@@ -74,7 +74,7 @@ $('#listingBtn').click(function() {
 // header popover begins
 
 
-// if (localStorage.getItem("loggedIn") === "true") { do stuff }
+// if (localStorage.getItem('loggedIn') === 'true') { do stuff }
 
 // ?ICONS :::::::::::::::::::::;
 // click on user icon
@@ -88,38 +88,38 @@ $('#user').click(function() {
 
     $('#user').removeClass('checked');
 
-    if (localStorage.getItem("loggedIn") === "true") {
+    if (localStorage.getItem('loggedIn') === 'true') {
 
-      $("#headerPopover").velocity({
-        width: "350px",
+      $('#headerPopover').velocity({
+        width: '350px',
       }, {
         duration: 500,
-        easing: "easeInOutQuint",
+        easing: 'easeInOutQuint',
         delay: 0,
       });
 
-      $("#headerPopover").velocity({
-        height: "200px",
+      $('#headerPopover').velocity({
+        height: '200px',
       }, {
         duration: 500,
-        easing: "easeInOutQuint",
+        easing: 'easeInOutQuint',
         delay: 0,
       });
 
     } else {
-      $("#headerPopover").velocity({
-        width: "350px",
+      $('#headerPopover').velocity({
+        width: '350px',
       }, {
         duration: 500,
-        easing: "easeInOutQuint",
+        easing: 'easeInOutQuint',
         delay: 0,
       });
 
-      $("#headerPopover").velocity({
-        height: "400px",
+      $('#headerPopover').velocity({
+        height: '400px',
       }, {
         duration: 500,
-        easing: "easeInOutQuint",
+        easing: 'easeInOutQuint',
         delay: 0,
       });
     }
@@ -173,25 +173,25 @@ $('#cart').click(function() {
     // will need if statement to check if items in cart or not
     // fade in for empty cart
 
-    if (localStorage.getItem('somethingInBasket') == "true") {
+    if (localStorage.getItem('somethingInBasket') == 'true') {
         $('#fullCartContent').css('display', 'flex');
         $('#fullCartContent').hide();
         $('#fullCartContent').fadeIn('slow');
         updateCart();
 
-        $("#headerPopover").velocity({
-          width: "350px",
+        $('#headerPopover').velocity({
+          width: '350px',
         }, {
           duration: 500,
-          easing: "easeInOutQuint",
+          easing: 'easeInOutQuint',
           delay: 0,
         });
 
-        $("#headerPopover").velocity({
-          height: "400px",
+        $('#headerPopover').velocity({
+          height: '400px',
         }, {
           duration: 500,
-          easing: "easeInOutQuint",
+          easing: 'easeInOutQuint',
           delay: 0,
         });
     } else {
@@ -199,19 +199,19 @@ $('#cart').click(function() {
         $('#emptyCartContent').hide();
         $('#emptyCartContent').fadeIn('slow');
 
-        $("#headerPopover").velocity({
-          width: "350px",
+        $('#headerPopover').velocity({
+          width: '350px',
         }, {
           duration: 500,
-          easing: "easeInOutQuint",
+          easing: 'easeInOutQuint',
           delay: 0,
         });
 
-        $("#headerPopover").velocity({
-          height: "200px",
+        $('#headerPopover').velocity({
+          height: '200px',
         }, {
           duration: 500,
-          easing: "easeInOutQuint",
+          easing: 'easeInOutQuint',
           delay: 0,
         });
     }
@@ -229,19 +229,19 @@ $('#popoverExit').click(function() {
 
   $('#headerPopover').addClass('checked');
 
-  $("#headerPopover").velocity({
-    height: "0px",
+  $('#headerPopover').velocity({
+    height: '0px',
   }, {
     duration: 500,
-    easing: "easeInOutQuint",
+    easing: 'easeInOutQuint',
     delay: 0,
   });
 
-  $("#headerPopover").velocity({
-    width: "0px",
+  $('#headerPopover').velocity({
+    width: '0px',
   }, {
     duration: 500,
-    easing: "easeInOutQuint",
+    easing: 'easeInOutQuint',
     delay: 0,
   });
 
@@ -313,9 +313,13 @@ window.defaultSorted = [];
 window.currentSession = '';
 
 // Basic check to prevent errors
-localStorage.getItem("loggedIn")
-    ? ""
-    : localStorage.setItem("loggedIn",false)
+localStorage.getItem('loggedIn')
+    ? ''
+    : localStorage.setItem('loggedIn', false)
+
+localStorage.getItem('cartCost')
+    ? ''
+    : localStorage.setItem('cartCost', [])
 
 // Refresh all html vars
 let refreshElements = () => {
@@ -351,9 +355,9 @@ let refreshElements = () => {
     window.cards = document.querySelectorAll('.card') || '';
     window.cardParent = document.querySelector('.all-listings') || '';
 
-    window.cartParent = document.querySelector('.cart-item-content') || "";
-    window.cartList = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
-
+    window.cartParent = document.querySelector('.cart-item-content') || '';
+    window.total = document.querySelector('.checkout-popover-bottom').childNodes[1] || '';
+    window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
 
 }
 
@@ -688,8 +692,8 @@ let createAccHandler = async () => {
         let username = usernameCreate.value;
         let password = passwordCreate.value;
 
-        if (username == "" || password == "") {
-            createAlert("Please make sure all fields are filled out!")
+        if (username == '' || password == '') {
+            createAlert('Please make sure all fields are filled out!')
             return
         } else {
 
@@ -764,31 +768,42 @@ let logOutStyle = () => {
 let updateCart = () => {
 
     // Clearing the div
-    cartParent.innerHTML = ""
+    cartParent.innerHTML = '';
+
+    window.cartCost = []
+    localStorage.setItem('cartCost', JSON.stringify([]))
+
 
     // Looping through all items locally stored
     for (item of cartList) {
 
+        cartCost.push(item.price)
+
         // Creating new divs for the cart purchases
         cartParent.innerHTML += `
-                <div class="cart-item" id="${item._id}" data-id="${item._id}">
-                    <div class="cart-item-img">
-                        <img class="cart-image" src="${item.url}" alt="">
+                <div class='cart-item' id='${item._id}' data-id='${item._id}'>
+                    <div class='cart-item-img'>
+                        <img class='cart-image' src='${item.url}' alt=''>
                     </div>
-                <div class="cart-item-text">
-                    <h5 class="cart-item-title data-id="${item._id}"">${item.name}</h5>
-                    <div class="cart-item-text-row">
-                        <h6 class="cart-item-price">$${item.price}</h6>
-                        <h6 class="cart-remove-btn" onclick="remove(this)" id="cartRemoveBtn">Remove</h6>
+                <div class='cart-item-text'>
+                    <h5 class='cart-item-title data-id='${item._id}''>${item.name}</h5>
+                    <div class='cart-item-text-row'>
+                        <h6 class='cart-item-price'>$${item.price.toLocaleString()}</h6>
+                        <h6 class='cart-remove-btn' onclick='remove(this)' id='cartRemoveBtn'>Remove</h6>
                     </div>
                 </div>
             </div>
         `
     }
+    console.log(cartCost)
+    localStorage.setItem('cartCost', JSON.stringify(cartCost))
+
+    window.sum = cartCost.reduce((partial_sum, a) => partial_sum + a,0);
+    total.textContent = `Total: $${sum.toLocaleString()}`
 }
 
 // Function for removing an item in the array
-function removeFromArray(arr, value) {
+let removeFromArray = ( arr, value ) => {
 
     // Checking the index of the item in the array passed
     let index = arr.indexOf(value);
@@ -803,10 +818,10 @@ function removeFromArray(arr, value) {
 }
 
 // Function invoked when user clicks remove button in the cart
-function remove(obj) {
+let remove = ( obj ) => {
 
     // Getting id of the item they click
-    let id = obj.parentNode.parentNode.parentNode.getAttribute("data-id")
+    let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
 
     // Running loop to check the item they click against what we've saved in the array
     for (item of cartList) {
@@ -821,11 +836,13 @@ function remove(obj) {
             removeFromArray(cartList, item)
 
             // Updating localstorage with the new array
-            localStorage.setItem("cartItems", JSON.stringify(cartList))
+            localStorage.setItem('cartItems', JSON.stringify(cartList))
 
         }
 
     }
+
+    updateCart();
 
 }
 
@@ -833,7 +850,7 @@ function remove(obj) {
 let removeFromPage = (obj) => {
 
     // Getting id of the item they click
-    let id = obj.parentNode.parentNode.parentNode.getAttribute("data-id")
+    let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
 
     // Running loop to check the item they click against what we've saved in the array
     for (item of cartList) {
@@ -849,11 +866,13 @@ let removeFromPage = (obj) => {
             removeFromArray(cartList, item)
 
             // Updating localstorage with the new array
-            localStorage.setItem("cartItems", JSON.stringify(cartList))
+            localStorage.setItem('cartItems', JSON.stringify(cartList))
 
         }
 
     }
+
+    updateCart();
 
 }
 
@@ -893,7 +912,7 @@ let getId = (e) => {
 }
 
 let redirect = (a) => {
-    cartList.length == 0 ? createAlert("Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)") : window.location.href = a
+    cartList.length == 0 ? createAlert('Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)') : window.location.href = a
 }
 
 // Function for running every event listener on the page
@@ -905,7 +924,7 @@ let setupEventListeners = () => {
     });
 
     myAccountBtn.addEventListener('click', () => {
-        loggedIn != true ? createAlert("Log in to view your account!") : window.location.href="/user.html"
+        loggedIn != true ? createAlert('Log in to view your account!') : window.location.href='/user.html'
     })
 
     // Runs every time you type in the password input field
@@ -970,7 +989,7 @@ let createAlert = (msg) => {
           <h3>${msg}</h3>
           <button type='button' class='button-secondary modalDone' name='button'>Done</button>
         </div>`
-    headerPopover.style.dispaly == "block" ? loginButton.click() : null
+    headerPopover.style.dispaly == 'block' ? loginButton.click() : null
     disableScroll();
 
 }
