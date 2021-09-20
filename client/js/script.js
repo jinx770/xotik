@@ -858,7 +858,7 @@ let getId = (e) => {
 }
 
 let redirect = (a) => {
-    window.location.href = a
+    cartList.length == 0 ? createAlert("Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)") : window.location.href = a
 }
 
 // Function for running every event listener on the page
