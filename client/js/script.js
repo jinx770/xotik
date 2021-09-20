@@ -795,11 +795,10 @@ let updateCart = () => {
             </div>
         `
     }
-    console.log(cartCost)
-    localStorage.setItem('cartCost', JSON.stringify(cartCost))
 
-    window.sum = cartCost.reduce((partial_sum, a) => partial_sum + a,0);
-    total.textContent = `Total: $${sum.toLocaleString()}`
+    localStorage.setItem('cartCost', JSON.stringify(cartCost))
+    total.textContent = `Total: $${cartCost.reduce((partial_sum, a) => partial_sum + a,0).toLocaleString()}`
+
 }
 
 // Function for removing an item in the array
