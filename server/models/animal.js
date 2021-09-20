@@ -12,7 +12,8 @@ let animalSchema = new mongoose.Schema({
     owner: String,
     license: String,
     delivery: String,
-    comments: Array
+    comments: Array,
+    location: String
 
 });
 

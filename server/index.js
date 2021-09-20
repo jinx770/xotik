@@ -24,7 +24,7 @@
 
         // Creating variables for every argument passed in the function
         // This purely avoids having to do spam variables and we can do it all at once!
-        let [ name, type, url, price, rating, description, quantity, owner, license, delivery, comments ] = args
+        let [ name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location ] = args
 
         // Checks to see if the animal being created already exists
         // Returning the animal if true and returning false if it cant be found
@@ -41,7 +41,7 @@
             ? console.log(` RESULT //
             cannot find animal \n`)
             : (
-                new Animal({ name, type, url, price, rating, description, quantity, owner, license, delivery, comments }).save()
+                new Animal({ name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location }).save()
                 && console.log(` RESULT //
             animal successfully added \n`)
             )
@@ -107,7 +107,7 @@
     let UpdateAnimal = async ( args ) => {
 
         // Creating variables for every argument passed in the function
-        let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments } = args
+        let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = args
 
         // Finds the first result for the search query, using its name sets the new fields to the inputted arguments
         // -- Can't comment in any of this as it's also suppose to be on one line, i.e findOneAndUpdate({field: field1}, {$set: {field: field1, field: field1}, {new: true}})
@@ -126,6 +126,7 @@
                  license: license,
                  delivery: delivery,
                  comments: comments,
+                 location: location
              }
          }, {
              new: true
