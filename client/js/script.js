@@ -260,8 +260,7 @@ $('#askQuestionBtn').click(function() {
 
 
 $('#sendBtn').click(function() {
-    let questionInput = document.querySelector('#questionInput').value
-    console.log(questionInput);
+
     $('#askQuestionForm').hide('slow');
 })
 
@@ -270,7 +269,10 @@ $('#questionExitBtn').click(function() {
 })
 
 
-// ----------------------------------------------------------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- DISPLAY DETAILS
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -278,19 +280,17 @@ $('#questionExitBtn').click(function() {
 window.loggedIn = false
 window.alreadyStored = false;
 
+// Empty arrays
 window.cartItems = []
 window.pricesSorted = [];
 window.ratingsSorted = [];
 window.defaultSorted = [];
 window.currentSession = '';
+
+// Basic check to prevent errors
 localStorage.getItem("loggedIn")
     ? ""
     : localStorage.setItem("loggedIn",false)
-
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Refresh all html vars
 let refreshElements = () => {
@@ -332,7 +332,7 @@ let refreshElements = () => {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-// ------------------------------------------------------------------------------------------------------------------------------------
+// -- ANIMAL CARDS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -580,8 +580,6 @@ let checkLoginValidity = async (...query) => {
 
 }
 
-
-
 // Login handler function, basically for checking to see if the user is logging in or signing out!
 let loginHandler = async () => {
 
@@ -652,8 +650,6 @@ let loginHandler = async () => {
     }
 
 }
-
-
 
 // Function for creating an account :yay:
 let createAccHandler = async () => {
