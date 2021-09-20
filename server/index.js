@@ -321,6 +321,9 @@
     // Acknowledges that the code is running without any ghost errors
     console.log('Running...\n')
 
+    RemoveAnimal("Sea Turtle")
+    RemoveAnimal("Peacock")
+
     // Export our functions to the server.js so they still get ran after we require them
     module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails}
 

@@ -137,8 +137,6 @@ $('#user').click(function() {
 
   }
 
-
-
 });
 
 
@@ -300,7 +298,6 @@ $('#questionExitBtn').click(function() {
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
-
 // Logic check for the current session, gotta define it initially
 window.loggedIn = false
 window.alreadyStored = false;
@@ -355,6 +352,10 @@ let refreshElements = () => {
     window.cards = document.querySelectorAll('.card') || '';
     window.cardParent = document.querySelector('.all-listings') || '';
 
+    window.navAnimals = document.querySelector('#animalsBtn') || '';
+    window.navWhoWeAre = document.querySelector('#whoBtn') || '';
+    window.navListing = document.querySelector('#listingBtn') || '';
+
     window.cartParent = document.querySelector('.cart-item-content') || '';
     window.total = document.querySelector('.checkout-popover-bottom').childNodes[1] || '';
     window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
@@ -364,10 +365,187 @@ let refreshElements = () => {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-// -- ANIMAL CARDS
+// -- LOGIN LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// Function for checking to see if the inputted data is the same in the database
+let checkLoginValidity = async (...query) => {
 
+    // Splitting arguments into variables called u and p for username, password
+    let [u, p] = query
+
+    // Sending through query variables to validate, returns true or false if login details are valid
+    let data = await fetch(`/findUser?u=${u}&p=${p}`)
+    let result = await data.json()
+
+    // Check to see if inputs are empty
+    u == '' || p == '' ? data = false : data = true
+
+    // If logged in already, calls the function for signing out before it returns the result
+    // If not, then ignore and continue
+    loggedIn ? loginHandler() : null;
+
+    // Saving the name of the user who's logged in for later
+    window.attemptedLogin = u;
+
+    // Returns the true/false if they've entered the right username and password
+    return result
+
+}
+
+// Login handler function, basically for checking to see if the user is logging in or signing out!
+let loginHandler = async () => {
+
+    // Refresh all dom elements to get new values in-case they change
+    refreshElements();
+
+    // If not logged then continue
+    if (!loggedIn) {
+
+        // Function call for validation of users inputs, returns true or false
+        let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
+
+        // If true
+        if (loginCheck) {
+
+            // Change the style of the login bar and the text
+            logInStyle();
+
+            // Changing the current session to the username of whoever logged in
+            currentSession = attemptedLogin;
+
+            // Closing the login field
+            closeLoginButton.click();
+
+            // Something to say you've logged in for debugging purposes
+            console.log('Signing in')
+
+            // Changing value to true, for next time you login
+            loggedIn = true
+
+            // Saving to localstorage so we can use it in other pages
+            localStorage.setItem('currentSession', currentSession)
+            localStorage.setItem('loggedIn', loggedIn)
+
+            // Ending the thread so it doesnt alert
+            return
+
+        }
+
+        // Alerts incorrect if the user doesn't login properly
+        createAlert('Incorrect login!')
+        closeLoginButton.click();
+
+    }
+
+    // If logged in, and pressing the button
+    if (loggedIn) {
+
+        // Change the log out back to its original layout
+        logOutStyle()
+
+        // Closes the login field
+        closeLoginButton.click();
+
+        // Debugging purposes
+        console.log('Signing out')
+
+        // Changing logged in to false so it can validate once
+        loggedIn = false
+
+        // Saving to localstorage so we can use it in other pages
+        localStorage.setItem('currentSession', currentSession)
+        localStorage.setItem('loggedIn', loggedIn)
+
+        // Best practice return
+        return
+
+    }
+
+}
+
+// Function for creating an account :yay:
+let createAccHandler = async () => {
+
+    // If not logged in continue
+    if (!loggedIn) {
+
+        let username = usernameCreate.value;
+        let password = passwordCreate.value;
+
+        // Check to make sure the account the user is creating isnt empty
+        if (username == '' || password == '') {
+
+            // Alerting if it is empty
+            createAlert('Please make sure all fields are filled out!')
+
+            // Ending thread to prevent it from continuing
+            return
+
+        } else {
+
+            // Post request to the server, with relevant data sent
+            let response = await fetch('/createUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+
+                    fullName: '.',
+                    username: username,
+                    phoneNo: '.',
+                    email: '.',
+                    description: '.',
+                    password: password
+
+                })
+
+            })
+
+        }
+
+    }
+
+}
+
+// Basic style function for changing styles with js
+let logInStyle = () => {
+
+    // Styling
+    loginButton.textContent = 'Log Out';
+    sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
+    usernameInput.style.display = 'none'
+    passwordInput.style.display = 'none'
+    createAccountButton.style.display = 'none'
+
+}
+
+// Basic style function for undoing previously done styling via js
+let logOutStyle = () => {
+
+    // Clears the current session username when they sign out
+    currentSession = null;
+
+    // State check
+    loggedIn = true
+
+    // Styling
+    loginButton.textContent = 'Log In';
+    sessionHeader.textContent = `Log In`
+    usernameInput.style.display = 'block'
+    passwordInput.style.display = 'block'
+    createAccountButton.style.display = 'block'
+    loginPopOver.style.height = '50vh'
+    loginPopOver.style.paddingBottom = '0'
+
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- ANIMAL CARDS
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 // Function for handling the animal cards on the front page.
 let handleHomeAnimals = async () => {
@@ -580,189 +758,9 @@ let hideCardsThatArent = (arg) => {
 }
 
 
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-// -- LOGIN LOGIC
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-// Function for checking to see if the inputted data is the same in the database
-let checkLoginValidity = async (...query) => {
-
-    // Splitting arguments into variables called u and p for username, password
-    let [u, p] = query
-
-    // Sending through query variables to validate, returns true or false if login details are valid
-    let data = await fetch(`/findUser?u=${u}&p=${p}`)
-    let result = await data.json()
-
-    // Check to see if inputs are empty
-    u == '' || p == '' ? data = false : data = true
-
-    // If logged in already, calls the function for signing out before it returns the result
-    // If not, then ignore and continue
-    loggedIn ? loginHandler() : null;
-
-    // Saving the name of the user who's logged in for later
-    window.attemptedLogin = u;
-
-    // Returns the true/false if they've entered the right username and password
-    return result
-
-}
-
-// Login handler function, basically for checking to see if the user is logging in or signing out!
-let loginHandler = async () => {
-
-    // Refresh all dom elements to get new values in-case they change
-    refreshElements();
-
-    // If not logged then continue
-    if (!loggedIn) {
-
-        // Function call for validation of users inputs, returns true or false
-        let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
-
-        // If true
-        if (loginCheck) {
-
-            // Change the style of the login bar and the text
-            logInStyle();
-
-            // Changing the current session to the username of whoever logged in
-            currentSession = attemptedLogin;
-
-            // Closing the login field
-            closeLoginButton.click();
-
-            // Something to say you've logged in for debugging purposes
-            console.log('Signing in')
-
-            // Changing value to true, for next time you login
-            loggedIn = true
-
-            // Saving to localstorage so we can use it in other pages
-            localStorage.setItem('currentSession', currentSession)
-            localStorage.setItem('loggedIn', loggedIn)
-
-            // Ending the thread so it doesnt alert
-            return
-
-        }
-
-        // Alerts incorrect if the user doesn't login properly
-        createAlert('Incorrect login!')
-        closeLoginButton.click();
-
-    }
-
-    // If logged in, and pressing the button
-    if (loggedIn) {
-
-        // Change the log out back to its original layout
-        logOutStyle()
-
-        // Closes the login field
-        closeLoginButton.click();
-
-        // Debugging purposes
-        console.log('Signing out')
-
-        // Changing logged in to false so it can validate once
-        loggedIn = false
-
-        // Saving to localstorage so we can use it in other pages
-        localStorage.setItem('currentSession', currentSession)
-        localStorage.setItem('loggedIn', loggedIn)
-
-        // Best practice return
-        return
-
-    }
-
-}
-
-// Function for creating an account :yay:
-let createAccHandler = async () => {
-
-    // If not logged in continue
-    if (!loggedIn) {
-
-        let username = usernameCreate.value;
-        let password = passwordCreate.value;
-
-        if (username == '' || password == '') {
-            createAlert('Please make sure all fields are filled out!')
-            return
-        } else {
-
-            // Posts/sends data to the route found in server
-            let response = await fetch('/createUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-
-                    fullName: '.',
-                    username: username,
-                    phoneNo: '.',
-                    email: '.',
-                    description: '.',
-                    password: password
-
-                })
-
-            })
-
-        }
-
-    }
-
-}
-
-// Basic style function for changing styles with js
-let logInStyle = () => {
-
-    // Styling
-    loginButton.textContent = 'Log Out';
-    sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
-    usernameInput.style.display = 'none'
-    passwordInput.style.display = 'none'
-    createAccountButton.style.display = 'none'
-    // loginPopOver.style.height = '14%'
-    // loginPopOver.style.paddingBottom = '30px'
-
-}
-
-// Basic style function for undoing previously done styling via js
-let logOutStyle = () => {
-
-    // Clears the current session username when they sign out
-    currentSession = null;
-
-    // State check
-    loggedIn = true
-
-    // Styling
-    loginButton.textContent = 'Log In';
-    sessionHeader.textContent = `Log In`
-    usernameInput.style.display = 'block'
-    passwordInput.style.display = 'block'
-    createAccountButton.style.display = 'block'
-    loginPopOver.style.height = '50vh'
-    loginPopOver.style.paddingBottom = '0'
-
-}
-
-
-
 // ------------------------------------------------------------------------------------------------------------------------------------
 // CART LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Updates when user loads any page
 let updateCart = () => {
@@ -770,6 +768,7 @@ let updateCart = () => {
     // Clearing the div
     cartParent.innerHTML = '';
 
+    // Emptying the current cart cost
     window.cartCost = []
     localStorage.setItem('cartCost', JSON.stringify([]))
 
@@ -777,6 +776,7 @@ let updateCart = () => {
     // Looping through all items locally stored
     for (item of cartList) {
 
+        // Collecting the cost of each item in the cart
         cartCost.push(item.price)
 
         // Creating new divs for the cart purchases
@@ -796,8 +796,11 @@ let updateCart = () => {
         `
     }
 
+    // Appending cart cost
     localStorage.setItem('cartCost', JSON.stringify(cartCost))
-    total.textContent = `Total: $${cartCost.reduce((partial_sum, a) => partial_sum + a,0).toLocaleString()}`
+
+    // Rightarrow func for adding each item in an array together
+    total.textContent = `Total: $${cartCost.reduce((current, a) => current + a, 0).toLocaleString()}`
 
 }
 
@@ -880,8 +883,6 @@ let removeFromPage = (obj) => {
 // ------------------------------------------------------------------------------------------------------------------------------------
 // RANDOM STUFF
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Loops every .1 second running the following
 setInterval(function() {
@@ -998,8 +999,6 @@ let createAlert = (msg) => {
 // ------------------------------------------------------------------------------------------------------------------------------------
 // STARTUP TASKS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 window.location.href == 'http://localhost:3000/index.html' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
 refreshElements();

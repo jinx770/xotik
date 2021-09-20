@@ -1,9 +1,7 @@
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-// -- DISPLAY DETAILS
+// -- DECLARATIONS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 window.animalData = ''
 window.items = localStorage.getItem('cartItems')
@@ -27,10 +25,10 @@ localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
 window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 
 
+
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
 
 let animalDetails = async () => {
 
@@ -58,8 +56,6 @@ let animalDetails = async () => {
         displayLicence.childNodes[1].className = 'fa fa-times times'
 
 
-
-
     addToCartButton.addEventListener('click', () => {
 
         cartList.push(animalData[0])
@@ -82,8 +78,6 @@ let animalDetails = async () => {
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- RANDOM STUFF
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 setInterval(async () => {
     try {
@@ -122,16 +116,12 @@ let hideUntilLoaded = () => {
 // -- COMMENT LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
 sendComment.addEventListener('click', () => {
     comments.push([questionInput.value, ''])
     updateCommentRequest(comments)
     loadComments()
     questionInput.value = ''
 })
-
-
-
 
 let updateCommentRequest = async () => {
 
@@ -210,6 +200,11 @@ let loadComments = () => {
     }
 }
 
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- CALLS
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 hideUntilLoaded()
 animalDetails()
