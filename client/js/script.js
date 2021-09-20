@@ -1,3 +1,6 @@
+
+
+
 // collapsible for FAQ page
 var coll = document.getElementsByClassName('collapsible');
 var i;
@@ -15,6 +18,28 @@ for (i = 0; i < coll.length; i++) {
         }
     });
 }
+
+window.onload = (event) => {
+
+  $("#hero").velocity({
+    top: "25%",
+    opacity: "1",
+  }, {
+    duration: 2000,
+    easing: "spring",
+    delay: 500,
+  });
+
+  // $("#header").velocity({
+  //   opacity: 1,
+  // }, {
+  //   duration: 1000,
+  //   easing: "ease-in",
+  //   delay: 1500,
+  // });
+
+};
+
 
 
 // nav clicks
