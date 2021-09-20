@@ -880,7 +880,7 @@ let setupEventListeners = () => {
     });
 
     myAccountBtn.addEventListener('click', () => {
-        window.location.href="/user.html"
+        loggedIn != true ? createAlert("Log in to view your account!") : window.location.href="/user.html"
     })
 
     // Runs every time you type in the password input field
