@@ -1689,8 +1689,12 @@ input:-webkit-autofill:hover {
     }
   }
 }
-// footer begins ::::::::::::::::::::::::::::::::::
 
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+// footer begins ::::::::::::::::::::::::::::::::::
 .footer {
   display: flex;
   justify-content: center;
