@@ -99,12 +99,15 @@ setInterval(async () => {
 let hideUntilLoaded = () => {
     div.style.width = "100%";
     div.style.height = "100%";
-    div.style.background = "#121212";
+    div.style.background = "#272727";
     div.style.top = "0px"
     div.style.position = "absolute"
+    div.style.display = "flex"
+    div.style.justifyContent = "center"
+    div.style.flexDirection = "column"
+    div.style.alignItems = "center"
     div.innerHTML += `
-            <img class="data-page" src="https://app.sophya.ai/images/system/loading-cat-transparent.gif">
-            <h3 style="margin-top:200px;" class="data-page"> Loading.. </h3>
+            <img class="data-page" src="img/loading.gif">
 
         `
     disableScroll();

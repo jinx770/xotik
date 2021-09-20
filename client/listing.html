@@ -23,6 +23,7 @@
 
   <div class="header-background"></div>
   <div class="header-background-blur"></div>
+
   <div class="header">
     <div class="header-content">
       <div class="header-nav">
@@ -51,8 +52,13 @@
     <!-- <div class="header-arrow" id="#headerArrow"></div> -->
     <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
     </div>
+
     <div class="login-popover-content" id="loginContent">
-      <h4 id="sessionHeader">Log In</h4>
+      <div class="popover-header-top">
+        <h4 id="sessionHeader">Log In</h4>
+        <br>
+        <h6 class="create-account" id="myAccountBtn">My Account</h6>
+      </div>
       <input autocomplete="off" id="username" class="input" placeholder="Username" type="text">
       <input autocomplete="off" id="password" class="input" placeholder="Password" type="password">
       <button id="submitLogin" class="button-secondary">Log In</button>
@@ -78,12 +84,14 @@
       <div class="cart-item-content">
 
       </div>
+      <div class="checkout-popover-bottom">
+        <h5>Total:</h5>
       <h6 class="check-out-btn" onclick="redirect('/cart.html')" id="checkOutBtn">Check Out</h6>
+      </div>
     </div>
 
   </div>
   <!-- header popover end -->
-
 
   <!-- header ENDS -->
 
