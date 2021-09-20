@@ -19,13 +19,13 @@ app.use(express.urlencoded({limit: '50mb', extended: true}));
 app.post('/createAnimal', async ( req, res ) => {
 
     // Shorthand variable creation explained in our backEnd/index.js
-    let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
+    let { name, type, url, price, rating, description, quantity, owner, license, delivery, comments } = req.body
 
     console.log(`\n TASK //
             creating animal \n`)
 
     // Dunno if this will 100% work until we test it on the 13th, should create an animal in the database
-    return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
+    return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery, comments ))
 
 })
 
@@ -72,13 +72,13 @@ app.get('/findAnimal', async ( req, res ) => {
 app.post('/updateAnimal', async ( req, res ) => {
 
     // Shorthand variable creation
-    let { name, type, url, price, rating, description, quantity, owner, license, delivery } = req.body
+    let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments } = req.body
 
     console.log(`\n TASK //
             updating animal information \n`)
 
     // Calling function in backEnd/index.js with relevant arguments being passed
-    return res.send(await functions.UpdateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery ))
+    return res.send(await functions.UpdateAnimal({ id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments }))
 
 })
 
