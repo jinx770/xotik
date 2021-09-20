@@ -40,25 +40,21 @@ app.get('/findAnimal', async ( req, res ) => {
 
     let id = req.query.id
     let owner = req.query.owner
-    console.log(owner);
 
-    // If no argument is passed in the request, return all animals
-    if (!id) {
+    if (owner) {
         console.log(`\n TASK //
-            return all animals \n`)
-        return res.send(await functions.FindEveryAnimal())
-    } else if (owner){
-      console.log(`\n TASK //
-          return owner's animals \n`)
-      return res.send(await functions.FindAnimalByOwner( owner ))
+            return user's animals \n`)
+        return res.send(await functions.FindAnimalByOwner( owner ))
+    } else if (!id) {
+          console.log(`\n TASK //
+              return all animals \n`)
+          return res.send(await functions.FindEveryAnimal())
     } else {
-      // Uses the query passed in the request as its search query
-      console.log(`\n TASK //
-              return searched animal \n`)
-      return res.send(await functions.FindAnimalById( id ))
+        // Uses the query passed in the request as its search query
+        console.log(`\n TASK //
+                return searched animal \n`)
+        return res.send(await functions.FindAnimalById( id ))
     }
-
-
 
 })
 
