@@ -24,7 +24,7 @@
 
         // Creating variables for every argument passed in the function
         // This purely avoids having to do spam variables and we can do it all at once!
-        let [ name, type, url, price, rating, description, quantity, owner, license, delivery ] = args
+        let [ name, type, url, price, rating, description, quantity, owner, license, delivery, comments ] = args
 
         // Checks to see if the animal being created already exists
         // Returning the animal if true and returning false if it cant be found
@@ -41,7 +41,7 @@
             ? console.log(` RESULT //
             cannot find animal \n`)
             : (
-                new Animal({ name, type, url, price, rating, description, quantity, owner, license, delivery }).save()
+                new Animal({ name, type, url, price, rating, description, quantity, owner, license, delivery, comments }).save()
                 && console.log(` RESULT //
             animal successfully added \n`)
             )
@@ -86,10 +86,6 @@
 
     }
 
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
     // For gathering every animal in the database
     let FindEveryAnimal = async () => {
 
@@ -108,24 +104,28 @@
 
 
     // Function for updating the animals in database
-    let UpdateAnimal = async ( ... args ) => {
+    let UpdateAnimal = async ( args ) => {
 
         // Creating variables for every argument passed in the function
-        let [ name, tags, url, price, rating, description, quantity ] = args
+        let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments } = args
 
         // Finds the first result for the search query, using its name sets the new fields to the inputted arguments
         // -- Can't comment in any of this as it's also suppose to be on one line, i.e findOneAndUpdate({field: field1}, {$set: {field: field1, field: field1}, {new: true}})
         Animal.findOneAndUpdate({
-            animal: name
+            _id: id
          }, {
              $set: {
                  animal: name,
-                 tags: tags,
+                 type: type,
                  url: url,
                  price: price,
                  rating: rating,
                  description: description,
-                 quantity: quantity
+                 quantity: quantity,
+                 owner: owner,
+                 license: license,
+                 delivery: delivery,
+                 comments: comments,
              }
          }, {
              new: true
@@ -134,10 +134,8 @@
 
                 // If something happens such as mongodb is down, it wont error but it'll console log something went wrong
                 if (err) {
-                    console.log(` RESULT //
-            unable to connect to mongodb \n`)
+                    console.log(doc);
                 }
-                console.log(doc);
             }
         );
     }
@@ -323,19 +321,8 @@
     // Acknowledges that the code is running without any ghost errors
     console.log("Running...\n")
 
-    // RemoveAnimal("Squirrel")
-    // RemoveAnimal("Otter")
-    // RemoveAnimal("Turtle")
-    // RemoveAnimal("Ashera Cat")
-    // RemoveAnimal("Koala")
-    // RemoveAnimal("Meerkat")
-    // RemoveAnimal("White Seal")
-    // RemoveAnimal("White Tegus ")
-    // RemoveAnimal("Tasmanian Devil")
-
     // Export our functions to the server.js so they still get ran after we require them
     module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails}
-    //rane added password
 
 
 })();
