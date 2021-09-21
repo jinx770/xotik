@@ -44,7 +44,7 @@ window.onload = (event) => {
 
     }
 
-  },100)
+  }, 100)
 
 };
 
@@ -304,57 +304,6 @@ $('#questionExitBtn').click(function() {
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-// swipe down from header menu will slide down from Stops
-// small screens only
-let touchstartY= 0
-let touchendY = 0
-
-const slider = document.querySelector('.header')
-
-function handleGesture() {
-  console.log(touchendY);
-  console.log(touchstartY);
-
-  if (touchendY < touchstartY) {
-    // swipe Up
-
-    alert('fghjk')
-
-    $('.responsive-nav').velocity({
-      top: '-100%',
-    }, {
-      duration:1000,
-      easing: 'easeInOutQuint',
-      delay: 0,
-    });
-
-    disableScroll();
-  }
-
-
-  if (touchendY > touchstartY) {
-    // swipe down
-    $('.responsive-nav').velocity({
-      top: '0',
-    }, {
-      duration:1000,
-      easing: 'easeInOutQuint',
-      delay: 0,
-    });
-
-
-  }
-};
-
-slider.addEventListener('touchstart', e => {
-  touchstartY = e.changedTouches[0].screenY
-});
-
-slider.addEventListener('touchend', e => {
-  touchendY = e.changedTouches[0].screenY
-  handleGesture()
-});
 
 
 
@@ -1043,6 +992,82 @@ let createAlert = (msg) => {
   disableScroll();
 
 }
+
+
+
+(async () => {
+  let touchstartY = 0
+  let touchendY = 0
+
+  let navSlider = document.querySelector('.header')
+
+  function swipeDown() {
+    if (touchstartY > touchendY) {
+      $('.responsive-nav').velocity({
+        top: '0',
+      }, {
+        duration: 1000,
+        easing: 'easeInOutQuint',
+        delay: 0,
+      });
+    }
+  };
+
+  navSlider.addEventListener('touchstart', e => {
+    disableScroll();
+    touchstartY = e.changedTouches[0].screenY
+  });
+
+
+
+  navSlider.addEventListener('touchend', e => {
+    touchstartY = e.changedTouches[0].screenY
+    swipeDown();
+  });
+})();
+
+
+
+
+
+
+(async () => {
+  let touchstartY = 0
+  let touchendY = 0
+
+
+
+  let responsiveNav = document.querySelector('.responsive-nav')
+
+
+
+  function swipeUp() {
+    if (touchstartY > touchendY) {
+      $('.responsive-nav').velocity({
+        top: '-100%',
+      }, {
+        duration: 1000,
+        easing: 'easeInOutQuint',
+        delay: 0,
+      });
+    }
+  };
+
+
+
+  responsiveNav.addEventListener('touchstart', e => {
+    touchstartY = e.changedTouches[0].screenY
+  });
+
+
+  responsiveNav.addEventListener('touchend', e => {
+    touchstartY = e.changedTouches[0].screenY
+    console.log(touchstartY, touchendY)
+    swipeUp()
+    enableScroll();
+  });
+})();
+
 
 
 
