@@ -1001,7 +1001,7 @@ let createAlert = (msg) => {
 
 
 
-window.location.href == 'http://localhost:3000/index.html' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000/index.html#listingSection' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
 refreshElements();
 setupEventListeners();
 setupFilters();
