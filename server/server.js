@@ -1,21 +1,29 @@
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- DECLARATIONS
+// ------------------------------------------------------------------------------------------------------------------------------------
+
 let express = require('express');
 let bodyParser = require('body-parser');
 let functions = require("./index.js");
 
 let port = 3000;
 let app = express();
+
+// Making more space for our images
 app.use(express.json({limit: '50mb', extended: true}));
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
+// -- ANIMAL REQUESTS
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 // Method for creating our animal, gets called on the client when user clicks create listing
 // Gets their fields with with the request body passed when we make a request from the client
-// Let me know if you need a more detailed explanation
 app.post('/createAnimal', async ( req, res ) => {
 
     // Shorthand variable creation explained in our backEnd/index.js
@@ -28,12 +36,6 @@ app.post('/createAnimal', async ( req, res ) => {
     return res.send(await functions.CreateAnimal( name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location ))
 
 })
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Method for attempting to find an animal in the database
 app.get('/findAnimal', async ( req, res ) => {
@@ -58,31 +60,21 @@ app.get('/findAnimal', async ( req, res ) => {
 
 })
 
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 // Method for updating fields of an animal document in the database
 app.post('/updateAnimal', async ( req, res ) => {
 
     // Shorthand variable creation
     let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = req.body
+
     //
     // console.log(`\n TASK //
     //         updating animal information \n`)
     // console.log(id, name, ' - server.js');
+
     // Calling function in backEnd/index.js with relevant arguments being passed
     return res.send(await functions.UpdateAnimal({ id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location }))
 
 })
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Remove animal from database method
 app.delete('/removeAnimal', async ( req, res ) => {
@@ -101,8 +93,8 @@ app.delete('/removeAnimal', async ( req, res ) => {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
+// -- USER REQUESTS
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 // For creating a user via our sign up system, will probably remove some of the fields later on :)
 app.post('/createUser', async ( req, res ) => {
@@ -120,12 +112,6 @@ app.post('/createUser', async ( req, res ) => {
     return res.send(await functions.CreateUser( fullName, username, phoneNo, email, description, hashedPassword ))
 
 })
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Searching for a user method
 app.get('/findUser', async ( req, res ) => {
@@ -157,8 +143,8 @@ app.get('/findUserDetails', async ( req, res ) => {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
+// -- RUNNING
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 // Runs frontEnd on express
 app.use(express.static("client"));
