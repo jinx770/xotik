@@ -6,40 +6,64 @@
   window.listingDescription = document.querySelector('.user-listing-description') || '';
   window.editableDetails = document.querySelectorAll('.editable') || '';
 
-
-
-  let myAccount = async () => {
-
+  // Finding user details
+  let userDetails = async () => {
     username = localStorage.getItem('currentSession')
-
-    // Finding user details
     let userResponse = await fetch(`/findUserDetails?u=${username}`)
     let userDetails = await userResponse.json();
     userDetailParent.innerHTML = '';
     userDetailParent.innerHTML = `
     <div class="user-details-header">
-      <h5>${userDetails[0].username}</h5>
+      <h5 id="usernameInput">${userDetails[0].username}</h5>
     </div>
 
 
 
     <div class="user-detals-content">
       <div class="user-details-top">
-        <h5>${userDetails[0].fullName}</h5>
-        <h5>${userDetails[0].email}</h5>
-        <h5>${userDetails[0].phoneNo}</h5>
+        <h5 contenteditable="true" id="fullName">${userDetails[0].fullName}</h5>
+        <h5 contenteditable="true" id="emailInput">${userDetails[0].email}</h5>
+        <h5 contenteditable="true" id="phoneInput">${userDetails[0].phoneNo}</h5>
       </div>
 
 
 
       <div class="user-details-bottom">
         <h6>About</h6>
-        <p>${userDetails[0].description}</p>
+        <p contenteditable="true" id="descriptionInput">${userDetails[0].description}</p>
       </div>
     </div>
     `
 
+    setInterval(async () => {
+      let usernameInput = document.querySelector('#usernameInput').textContent
+      let fullNameInput = document.querySelector('#fullName').textContent
+      let emailInput = document.querySelector('#emailInput').textContent
+      let descriptionInput = document.querySelector('#descriptionInput').textContent
+      let phoneInput = document.querySelector('#phoneInput').textContent
 
+      let response = await fetch('/updateUser', {
+          method: 'post',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+
+            fullName: fullNameInput,
+            username: usernameInput,
+            phoneNo: phoneInput,
+            email: emailInput,
+            description: descriptionInput
+
+          })
+      });
+
+    }, 1000)
+  }
+
+  userDetails()
+
+  let myAccount = async () => {
 
     // Finding the users animals
     let animalResponse = await fetch(`/findAnimal?owner=${username}`)
@@ -53,7 +77,6 @@
     // Displaying users animals
 
     for (userListings of allMyAnimals) {
-      console.log(userListings);
       userListings.license == 'true'
         ? license = 'checked'
         : license = ''
@@ -67,7 +90,7 @@
               <div class="user-listing-top">
                 <div class="user-listing-details">
                   <div class="row">
-                    <h4 contenteditable="true" class="editable userDetailsName" id="nameInput">${userListings.name}</h4>
+                    <h4 class="editable userDetailsName" id="nameInput">${userListings.name}</h4>
                     <h4> $ <span contenteditable="true" class="editable" id="priceInput">${userListings.price}</span></h4>
                   </div>
                   <h5 contenteditable="true" class="editable" id="locationInput">${userListings.location}</h5>
@@ -131,7 +154,7 @@
               })
 
           });
-        },1000)
+        }, 1000)
 
         let deleteListingBtns = document.querySelectorAll("#deleteListingBtn")
 
@@ -153,7 +176,7 @@
             createAlert('Post Deleted');
             let refresh = document.querySelector('.modalDone')
             refresh.addEventListener('click', () => {
-              location.reload()
+              location.reload();
             })
           })
           //event listener end

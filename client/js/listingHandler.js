@@ -206,10 +206,11 @@ listingButton.addEventListener('click', async () => {
         // Alert successful
         createAlert('Success!')
 
-        // Reload page after 2 seconds
-        setTimeout(() => {
-            location.reload()
-        }, 2000)
+        //Refreshes for new listing
+        let refresh = document.querySelector('.modalDone')
+        refresh.addEventListener('click', () => {
+          window.location.href = "listing.html";
+        })
 
     }
 

@@ -135,24 +135,7 @@
     }
 
 
-    // let update = async () => {
-    //   let id = '61490a563021796c6a6b986a'
-    //   let name = 'cheesesnake'
-    //   let type = 'reptile'
-    //   let url = ''
-    //   let price = 120
-    //   let rating = '5/10'
-    //   let description = 'a cool snake'
-    //   let quantity = 5
-    //   let owner = 'rraneighh'
-    //   let license = 'false'
-    //   let delivery = 'false'
-    //   let comments = ''
-    //   let location = 'auckland'
-    //   console.log(id);
-    //   UpdateAnimal({ id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location })
-    // }
-    // update()
+
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -183,8 +166,6 @@
                 )
             : console.log(` RESULT //
             unable to find animal to delete \n`)
-            console.log(arg);
-
 
     }
 
@@ -262,7 +243,7 @@
     // Returning userdetails
     let FindUserDetails = async ( username ) => {
         let foundUser = await User.find({ username: username });
-        console.log(foundUser);
+        // console.log(foundUser);
         return foundUser;
     }
 
@@ -275,6 +256,35 @@
         // Returns array of every user
         return foundUser;
 
+    }
+
+    // Function for updating the animals in database
+    let UpdateUser = async ( args ) => {
+
+        // Creating variables for every argument passed in the function
+        let { fullName, username, phoneNo, email, description, password } = args
+        // console.log(args);
+
+        User.findOneAndUpdate({
+            username: username
+         }, {
+             $set: {
+                 fullName: fullName,
+                 phoneNo: phoneNo,
+                 email: email,
+                 description: description,
+             }
+         }, {
+             new: true
+         },
+            (err, doc) => {
+
+                // If something happens such as mongodb is down, it wont error but it'll console log something went wrong
+                if (err) {
+                    // console.log(doc);
+                }
+            }
+        );
     }
 
     // Remove user from database function
@@ -310,7 +320,7 @@
     console.log('Running...\n')
 
     // Export our functions to the server.js so they still get ran after we require them
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails}
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails, UpdateUser}
 
 
 })();
