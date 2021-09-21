@@ -1,8 +1,8 @@
 (function() {
 
+    localStorage.setItem('editing', '')
     window.userDetailParent = document.querySelector('.user-details') || '';
     window.listingDescription = document.querySelector('.user-listing-description') || '';
-    window.editableDetails = document.querySelectorAll('.editable') || '';
 
   // Finding user details
   let userDetails = async () => {
@@ -28,7 +28,7 @@
 
       <div class="user-details-bottom">
         <h6>About</h6>
-        <p contenteditable="true" id="descriptionInput">${userDetails[0].description}</p>
+        <p contenteditable="true" id="userDescriptionInput">${userDetails[0].description}</p>
       </div>
     </div>
     `
@@ -37,11 +37,11 @@
       let usernameInput = document.querySelector('#usernameInput').textContent
       let fullNameInput = document.querySelector('#fullName').textContent
       let emailInput = document.querySelector('#emailInput').textContent
-      let descriptionInput = document.querySelector('#descriptionInput').textContent
+      let userDescriptionInput = document.querySelector('#userDescriptionInput').textContent
       let phoneInput = document.querySelector('#phoneInput').textContent
 
       let response = await fetch('/updateUser', {
-          method: 'post',
+          method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
@@ -51,7 +51,7 @@
             username: usernameInput,
             phoneNo: phoneInput,
             email: emailInput,
-            description: descriptionInput
+            userDescription: userDescriptionInput
 
           })
       });
@@ -62,125 +62,167 @@
 
   let myAnimals = async () => {
 
-    // Finding the users animals
-    let animalResponse = await fetch(`/findAnimal?owner=${username}`)
-    let allMyAnimals = await animalResponse.json()
-    if (allMyAnimals == false){
-      console.log('You have not posted an animal.');
-    }
+      // Finding the users animals
+      let animalResponse = await fetch(`/findAnimal?owner=${username}`)
+      let allMyAnimals = await animalResponse.json()
+      console.log(allMyAnimals, ' - allMyAnimals');
+      if (allMyAnimals == false){
+        console.log('You have not posted an animal.');
+        return false
+      }
 
+      function checkId( postId ){
+          let posts = document.querySelectorAll('.user-listing')
+          for (post of posts){
+                let postId = post.classList;
+                post.addEventListener('click', async () => {
+                localStorage.setItem('editing', postId[1])
+            })
+          }
+      }
 
-    userListingParent.innerHTML = '';
-    // Displaying users animals
+      userListingParent.innerHTML = '';
 
-    for (userListings of allMyAnimals) {
-      userListings.license == 'true'
-        ? license = 'checked'
-        : license = ''
+      for (perAnimal of allMyAnimals) {
+          perAnimal.license == 'true'
+          ? license = `<input post-id="license${perAnimal._id}" autocomplete="off" id="license" class="checkbox editable" type="checkbox" name="licence" checked required>`
+          : license = `<input post-id="license${perAnimal._id}" autocomplete="off" id="license" class="checkbox editable" type="checkbox" name="licence" required>`
 
-        userListings.delivery == 'true'
-        ? delivery = 'checked'
-        : delivery = ''
+          perAnimal.delivery == 'true'
+          ? delivery = `<input post-id="delivery${perAnimal._id}" id="delivery" class="checkbox editable" type="checkbox" name="delivery" checked required >`
+          : delivery = `<input post-id="delivery${perAnimal._id}" id="delivery" class="checkbox editable" type="checkbox" name="delivery"  required >`
 
-      userListingParent.innerHTML += `
-            <div class="user-listing">
-              <div class="user-listing-top">
-                <div class="user-listing-details">
-                  <div class="row">
-                    <h4 class="editable userDetailsName" id="nameInput">${userListings.name}</h4>
-                    <h4> $ <span contenteditable="true" class="editable" id="priceInput">${userListings.price}</span></h4>
+        userListingParent.innerHTML += `
+              <div class="user-listing ${perAnimal._id}">
+                <div class="user-listing-top">
+                  <div class="user-listing-details">
+                    <div class="row">
+                      <h4 contenteditable="true" class="editable userDetailsName" id="nameInput" post-id="name${perAnimal._id}">${perAnimal.name}</h4>
+                      <h4> $ <span contenteditable="true" class="editable" id="priceInput" post-id="price${perAnimal._id}">${perAnimal.price}</span></h4>
+                    </div>
+                    <h5 contenteditable="true" class="editable" id="locationInput" post-id="location${perAnimal._id}">${perAnimal.location}</h5>
+                    <div class="listing-checkbox user-checkbox">
+                      <div class="checkbox-row">
+                        ${license}
+                        <label for="license">
+                        <h6>License Required</h6>
+                        </label>
+                      </div>
+                      <div class="checkbox-row">
+                        ${delivery}
+                        <label for="delivery">
+                        <h6>Delivery Available</h6>
+                        </label>
+                      </div>
+                    </div>
                   </div>
-                  <h5 contenteditable="true" class="editable" id="locationInput">${userListings.location}</h5>
-                  <div class="listing-checkbox user-checkbox">
-                    <div class="checkbox-row">
-                      <input autocomplete="off" id="licence" class="checkbox editable" type="checkbox" name="licence" ${license} required>
-                      <label for="licence">
-                      <h6>License Required</h6>
-                      </label>
-                    </div>
-                    <div class="checkbox-row">
-                      <input id="delivery" class="checkbox editable" type="checkbox" name="delivery" ${delivery} required >
-                      <label for="delivery">
-                      <h6>Delivery Available</h6>
-                      </label>
-                    </div>
+                  <div class="user-listing-images">
+                    <img src="${perAnimal.url}" alt="">
                   </div>
                 </div>
-                <div class="user-listing-images">
-                  <img src="${userListings.url}" alt="">
+                <div class="user-details-bottom">
+                  <h6>About</h6>
+                  <p contenteditable="true" class="editable" id="descriptionInput" post-id="description${perAnimal._id}">${perAnimal.description}</p>
+                  <h6 id="deleteListingBtn">Delete Listing</h6>
                 </div>
               </div>
-              <div class="user-details-bottom">
-                <h6>About</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra eros eget dolor accumsan, nec efficitur mi maximus. Praesent dictum nec diam ut bibendum. Donec pretium dui a dolor vehicula maximus. Curabitur rutrum ex id mattis sollicitudin. Curabitur consectetur volutpat turpis ac scelerisque. Sed ut dui lorem. Aliquam convallis sem in ipsum fringilla bibendum. Duis eget elit in urna convallis fringilla. Fusce eget nisi laoreet, pellentesque libero at, tincidunt felis. Nam malesuada rhoncus ligula non vehicula.</p>
-              </div>
-            </div>
-        `
-        setInterval(async () => {
+          `
 
-          let nameInput = document.querySelector('#nameInput').textContent
-          let priceInput = document.querySelector('#priceInput').textContent
-          let descriptionInput = document.querySelector('#descriptionInput').textContent
-          let locationInput = document.querySelector('#locationInput').textContent
-          let deliveryCheck = document.querySelector('#delivery');
-          let deliveryInput = JSON.stringify(deliveryCheck.checked)
-          let licenseCheck = document.querySelector('#license');
-          let licenseInput = JSON.stringify(license.checked)
+          let deleteListingBtns = document.querySelectorAll("#deleteListingBtn")
 
-          let response = await fetch('/updateAnimal', {
-              method: 'post',
-              headers: {
+          for (deleteBtn of deleteListingBtns){
+            deleteBtn.addEventListener('click', async () => {
+              // console.log(perAnimal._id);
+              let response = await fetch('/removeAnimal', {
+                method: 'DELETE',
+                headers: {
                   'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
+                },
+                body: JSON.stringify({
 
-                  id: userListings._id,
-                  name: nameInput,
-                  type: userListings.type,
-                  url: userListings.url,
-                  price: priceInput,
-                  rating: userListings.rating,
-                  description: descriptionInput,
-                  quantity: userListings.quantity,
-                  owner: userListings.owner,
-                  license: licenseInput,
-                  delivery: deliveryInput,
-                  comments: userListings.comments,
-                  location: locationInput
+                  id: perAnimal._id,
 
+                })
+
+              });
+              createAlert('Post Deleted');
+              let refresh = document.querySelector('.modalDone')
+              refresh.addEventListener('click', () => {
+                location.reload();
+                localStorage.setItem('editing', '')
               })
+            })
+            //event listener end
+          }
+      }
 
-          });
-        }, 1000)
 
-        let deleteListingBtns = document.querySelectorAll("#deleteListingBtn")
+      // so that it doesn't spam errors when you delete a post and selectors can no longer find queries
 
-        for (deleteBtn of deleteListingBtns){
-          deleteBtn.addEventListener('click', async () => {
-            // console.log(userListings._id);
-            let response = await fetch('/removeAnimal', {
-              method: 'DELETE',
+
+      setInterval(function(){
+        if (!localStorage.getItem('editing')){
+            console.log('Click on a post to edit');
+        } else {
+            console.log('Editing a post');
+          setInterval(async () => {
+            let editing = localStorage.getItem('editing')
+            let nameInput = document.querySelector(`[post-id=name${CSS.escape(editing)}]`).textContent
+            let priceInput = document.querySelector(`[post-id=price${CSS.escape(editing)}]`).textContent
+            let descriptionInput = document.querySelector(`[post-id=description${CSS.escape(editing)}]`).textContent
+            let locationInput = document.querySelector(`[post-id=location${CSS.escape(editing)}]`).textContent
+            let deliveryCheck = document.querySelector(`[post-id=delivery${CSS.escape(editing)}]`);
+            let deliveryInput = deliveryCheck.checked
+            let delivery = ''
+            let licenseCheck = document.querySelector(`[post-id=license${CSS.escape(editing)}]`);
+            let licenseInput = licenseCheck.checked
+            let license = ''
+
+            if (deliveryInput) {
+              delivery = 'true'
+            } else {
+              delivery = 'false'
+            }
+
+            if (licenseInput) {
+              license = 'true'
+            } else {
+              license = 'false'
+            }
+
+            let response = await fetch('/updateAnimal', {
+              method: 'post',
               headers: {
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
 
-                id: userListings._id,
+                id: localStorage.getItem('editing'),
+                animalName: nameInput,
+                type: perAnimal.type,
+                url: perAnimal.url,
+                price: priceInput,
+                rating: perAnimal.rating,
+                description: descriptionInput,
+                quantity: perAnimal.quantity,
+                owner: perAnimal.owner,
+                license: licenseInput,
+                delivery: deliveryInput,
+                comments: perAnimal.comments,
+                location: locationInput
 
               })
 
             });
-            createAlert('Post Deleted');
-            let refresh = document.querySelector('.modalDone')
-            refresh.addEventListener('click', () => {
-              location.reload();
-            })
-          })
-          //event listener end
+
+          }, 1000)
+          // setInterval to update content
         }
-    }
-    // end of loop
+      }, 1000)
+      // setInterval for checking if there is a post currently being edited
+      checkId();
   }
+  // end of myAnimals
 
   userDetails()
   myAnimals()
