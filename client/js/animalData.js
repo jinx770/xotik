@@ -1,9 +1,7 @@
 
 // ------------------------------------------------------------------------------------------------------------------------------------
-// -- DISPLAY DETAILS
+// -- DECLARATIONS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 window.animalData = ''
 window.items = localStorage.getItem('cartItems')
@@ -13,7 +11,7 @@ window.displayOwner = document.querySelector('.username') || '';
 window.displayLicence = document.querySelector('.licence') || '';
 window.displayImage = document.querySelector('.animal-img') || '';
 window.displayName = document.querySelector('.animal-name') || '';
-window.questionsParent = document.querySelector('.questions') || '';
+window.questionsParent = document.querySelector('.questions-two') || '';
 window.displayPrice = document.querySelector('.price-value') || '';
 window.displayDelivery = document.querySelector('.delivery') || '';
 window.addToCartButton = document.querySelector('#addToCart') || '';
@@ -27,10 +25,10 @@ localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
 window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 
 
+
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
 
 let animalDetails = async () => {
 
@@ -58,8 +56,6 @@ let animalDetails = async () => {
         displayLicence.childNodes[1].className = 'fa fa-times times'
 
 
-
-
     addToCartButton.addEventListener('click', () => {
 
         cartList.push(animalData[0])
@@ -82,8 +78,6 @@ let animalDetails = async () => {
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- RANDOM STUFF
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 setInterval(async () => {
     try {
@@ -122,16 +116,12 @@ let hideUntilLoaded = () => {
 // -- COMMENT LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
 sendComment.addEventListener('click', () => {
     comments.push([questionInput.value, ''])
     updateCommentRequest(comments)
     loadComments()
     questionInput.value = ''
 })
-
-
-
 
 let updateCommentRequest = async () => {
 
@@ -153,13 +143,25 @@ let updateCommentRequest = async () => {
             owner: animalData[0].owner,
             license: animalData[0].license,
             delivery: animalData[0].delivery,
-            comments: comments
+            comments: comments,
+            location: location
 
         })
 
     });
 
 }
+
+let removeComment = ( e ) => {
+    let thingy = document.querySelectorAll('.question-block')
+    let currentElement = thingy[e.getAttribute('data-i')]
+    let elementInArray = comments[e.getAttribute('data-i')]
+
+    removeFromArray(comments, elementInArray)
+    updateCommentRequest();
+    loadComments();
+}
+
 
 let checkLogin = () => {
     return localStorage.getItem('currentSession') === animalData[0].owner ? true : false
@@ -195,21 +197,31 @@ let loadComments = () => {
     let i = 0
     for (comment of animalData[0].comments) {
         questionsParent.innerHTML += `
-                <div class='question-block'>
-                    <div class='question'>
+                <div class="question-block">
+                  <div onclick="removeComment(this)" data-i='${i}' class="delete-question">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </div>
+                  <div class="qa-section">
+                    <div class="question">
                         <h5 style='opacity: 1;' class='q'>Q:</h5>
                         <h5 class='question-text'>${comment[0]}</h5>
                     </div>
-                    <div class='answer'>
-                        <h5 class='q'> A:</h5>
-                        <h5 contenteditable style='opacity: .5' data-i='${i}' class='answer-text' onclick='answerQuestion(this)'> ${ comment[1] != '' ? comment[1] : 'Click me!' }</h5>
+                    <div class="answer">
+                    <h5 class='q'> A:</h5>
+                    <h5 contenteditable style='opacity: .5' data-i='${i}' class='answer-text' onclick='answerQuestion(this)'> ${ comment[1] != '' ? comment[1] : 'Reply' }</h5>
                     </div>
+                  </div>
                 </div>
             `
             i++
     }
 }
 
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- CALLS
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 hideUntilLoaded()
 animalDetails()

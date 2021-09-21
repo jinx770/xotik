@@ -126,8 +126,6 @@ $('#user').click(function() {
 
   }
 
-
-
 });
 
 
@@ -284,12 +282,9 @@ $('#questionExitBtn').click(function() {
 
 
 
-
-
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 // Logic check for the current session, gotta define it initially
@@ -357,7 +352,6 @@ let refreshElements = () => {
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- ANIMAL CARDS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 // Function for handling the animal cards on the front page.
@@ -577,7 +571,6 @@ let hideCardsThatArent = (arg) => {
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 
-
 // Function for checking to see if the inputted data is the same in the database
 let checkLoginValidity = async (...query) => {
 
@@ -753,8 +746,6 @@ let logOutStyle = () => {
 // CART LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
-
 // Updates when user loads any page
 let updateCart = () => {
 
@@ -872,8 +863,6 @@ let removeFromPage = (obj) => {
 // RANDOM STUFF
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
-
 // Loops every .1 second running the following
 setInterval(function() {
 
@@ -990,9 +979,10 @@ let createAlert = (msg) => {
 // STARTUP TASKS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-window.location.href == 'http://localhost:3000/index.html' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000' ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
+window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
 refreshElements();
 setupEventListeners();
 setupFilters();

@@ -1,3 +1,15 @@
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- DECLARATIONS
+// ------------------------------------------------------------------------------------------------------------------------------------
+
+// Predefining variables
+window.url;
+window.cache = ['']
+window.currentSession = localStorage.getItem('currentSession')
+
 let getElements = () => {
 
     window.addImageListingButton = document.querySelector('.add-img-btn') || '';
@@ -19,23 +31,16 @@ let getElements = () => {
 
 }
 
+// Refreshing elements
 getElements();
 
-
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-
-window.url;
-window.cache = ['']
-window.currentSession = localStorage.getItem('currentSession')
+// Uhhhh
 uploadImage.style.visibility = 'hidden'
 
 
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- FILE HANDLER
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 // Function that gets called when you click on the + icon
 let handleFileSelect = (e) => {
@@ -80,12 +85,6 @@ let handleFileSelect = (e) => {
 
 }
 
-
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-
-
 // Little slight of hand function, since I didn't want to replace Toby's button
 // I hid an invisible input behind his button, buttons don't have a type attribute but inputs do,
 // When you click his button I force click the input which opens up the files :D
@@ -101,8 +100,9 @@ addImageListingButton.addEventListener('click', () => {
 
 
 
-// ----------------------------------------------------------------------------------------------------------------------------------
-
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- VALIDATE UPLOAD
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 // Function for returning true/false if user is currently logged in when they press the button
 let verifyLogin = () => {
@@ -127,11 +127,6 @@ let verifyLogin = () => {
     }
 
 }
-
-
-
-// ----------------------------------------------------------------------------------------------------------------------------------
-
 
 // Function to make sure our inputs are validated
 let validateInputs = () => {
@@ -170,17 +165,20 @@ let validateInputs = () => {
 }
 
 
+// ------------------------------------------------------------------------------------------------------------------------------------
+// -- POST METHOD
+// ------------------------------------------------------------------------------------------------------------------------------------
 
-// ----------------------------------------------------------------------------------------------------------------------------------
-
-
-
+// If listing button is pressed
 listingButton.addEventListener('click', async () => {
 
+    // Verify that the user is logged in and all fields are filled out
     if (verifyLogin() && validateInputs()) {
 
+        // Refresh fields
         getElements();
 
+        // Create response for animal
         let response = await fetch('/createAnimal', {
             method: 'post',
             headers: {
@@ -198,14 +196,17 @@ listingButton.addEventListener('click', async () => {
                 owner: currentSession,
                 license: licenseInput,
                 delivery: deliveryInput,
-                comments: []
+                comments: [],
+                location: locationInput
 
             })
 
         });
 
+        // Alert successful
         createAlert('Success!')
 
+        // Reload page after 2 seconds
         setTimeout(() => {
             location.reload()
         }, 2000)
