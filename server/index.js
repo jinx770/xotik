@@ -108,6 +108,7 @@
 
         // Creating variables for every argument passed in the function
         let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = args
+        console.log(id, name, ' - index.js');
 
         // Finds the first result for the search query, using its name sets the new fields to the inputted arguments
         // -- Can't comment in any of this as it's also suppose to be on one line, i.e findOneAndUpdate({field: field1}, {$set: {field: field1, field: field1}, {new: true}})

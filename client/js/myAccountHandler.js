@@ -96,7 +96,7 @@
               </div>
             </div>
         `
-        let update = setInterval(async () => {
+        setInterval(async () => {
 
           let nameInput = document.querySelector('#nameInput').textContent
           let priceInput = document.querySelector('#priceInput').textContent
@@ -106,6 +106,8 @@
           let deliveryInput = JSON.stringify(deliveryCheck.checked)
           let licenseCheck = document.querySelector('#license');
           let licenseInput = JSON.stringify(license.checked)
+
+          console.log(userListings._id, nameInput);
 
           let response = await fetch('/updateAnimal', {
               method: 'post',
@@ -131,7 +133,6 @@
               })
 
           });
-          response ? clearInterval(update) : null
         },1000)
 
     }
