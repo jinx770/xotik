@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 let getPageElements = () => {
 
     window.usernameInput = document.querySelector('#usernameInput') || '';
@@ -10,15 +5,11 @@ let getPageElements = () => {
     window.emailInput = document.querySelector('#emailInput') || '';
     window.userDescription = document.querySelector('#userDescription') || '';
     window.phoneInput = document.querySelector('#phoneInput') || '';
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     window.animalName = document.querySelector('#animalName') || '';
     window.animalPrice = document.querySelector('#animalPrice') || '';
     window.animalLocation = document.querySelector('#animalLocation') || '';
     window.animalDescription = document.querySelector('#animalDescription') || '';
-<<<<<<< Updated upstream
 
     window.deliveryCheck = document.querySelector('#delivery') || '';
     window.licenseCheck = document.querySelector('#license') || '';
@@ -48,23 +39,22 @@ let userDetails = async () => {
         <div class='user-details-header'>
           <h5 id='usernameInput'>${userDetails[0].username}</h5>
         </div>
-
         <div class='user-detals-content'>
           <div class='user-details-top'>
             <h5 contenteditable='true' id='fullName'>${userDetails[0].fullName}</h5>
             <h5 contenteditable='true' id='emailInput'>${userDetails[0].email}</h5>
             <h5 contenteditable='true' id='phoneInput'>${userDetails[0].phoneNo}</h5>
           </div>
-
           <div class='user-details-bottom'>
             <h6>About</h6>
             <p contenteditable='true' id='userDescription'>${userDetails[0].description}</p>
           </div>
         </div>
     `
-    updateAcc();
-}
 
+    updateAcc();
+
+}
 
 let updateAcc = () => {
     setInterval(async () => {
@@ -87,7 +77,6 @@ let updateAcc = () => {
     }, 1000)
 }
 
-
 let removeListing = async (e) => {
     objectId = e.getAttribute('data-id')
     let response = await fetch('/removeAnimal', {
@@ -106,24 +95,6 @@ let removeListing = async (e) => {
     })
 }
 
-
-
-=======
-    window.deliveryCheck = document.querySelector('#delivery') || '';
-    window.licenseCheck = document.querySelector('#license') || '';
-    window.deliveryInput = JSON.stringify(deliveryCheck.checked) || '';
-    window.licenseInput = JSON.stringify(licenseCheck.checked) || '';
-    window.userDetailParent = document.querySelector('.user-details') || '';
-    window.listingDescription = document.querySelector('.user-listing-description') || '';
-    window.editableDetails = document.querySelectorAll('.editable') || '';
-    window.allListings = document.querySelectorAll('.user-listing') || '';
-
-}
->>>>>>> Stashed changes
-
-getPageElements()
-
-<<<<<<< Updated upstream
 let updateListingCard = async () => {
 
     getPageElements()
@@ -140,7 +111,9 @@ let updateListingCard = async () => {
 
         let response = await fetch('/updateAnimal', {
             method: 'post',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 id: currentItem._id,
                 name: individualName.textContent,
@@ -161,110 +134,6 @@ let updateListingCard = async () => {
     }
 }
 
-
-=======
-
-
-// Finding user details
-let userDetails = async () => {
-
-    username = localStorage.getItem('currentSession')
-    let userResponse = await fetch(`/findUserDetails?u=${username}`)
-    let userDetails = await userResponse.json();
-
-    userDetailParent.innerHTML = '';
-    userDetailParent.innerHTML += `
-        <div class='user-details-header'>
-          <h5 id='usernameInput'>${userDetails[0].username}</h5>
-        </div>
-
-        <div class='user-detals-content'>
-          <div class='user-details-top'>
-            <h5 contenteditable='true' id='fullName'>${userDetails[0].fullName}</h5>
-            <h5 contenteditable='true' id='emailInput'>${userDetails[0].email}</h5>
-            <h5 contenteditable='true' id='phoneInput'>${userDetails[0].phoneNo}</h5>
-          </div>
-
-          <div class='user-details-bottom'>
-            <h6>About</h6>
-            <p contenteditable='true' id='userDescription'>${userDetails[0].description}</p>
-          </div>
-        </div>
-    `
-    updateAcc();
-}
-
-
-
-
-let updateAcc = () => {
-    setInterval(async () => {
-        getPageElements();
-        let response = await fetch('/updateUser', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-
-                fullName: fullNameInput.textContent,
-                username: usernameInput.textContent,
-                phoneNo: phoneInput.textContent,
-                email: emailInput.textContent,
-                description: userDescription.textContent
-
-            })
-        });
-    }, 1000)
-}
-
-let removeListing = async (e) => {
-    objectId = e.getAttribute('data-id')
-    let response = await fetch('/removeAnimal', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            id: objectId,
-        })
-    });
-    createAlert('Post Deleted');
-    let refresh = document.querySelector('.modalDone')
-    refresh.addEventListener('click', () => {
-        location.reload();
-    })
-}
-
-let updateListingCard = async () => {
-    getPageElements()
-    for (item of allListings) {
-
-        let int = item.getAttribute("data-id")
-        let currentItem = allMyAnimals[int]
-        let individualName = document.querySelector(`#animalName${int}`)
-        let individualPrice = document.querySelector(`#animalPrice${int}`)
-        let individualLocation = document.querySelector(`#animalLocation${int}`)
-        let individualDescription = document.querySelector(`#animalDescription${int}`)
-
-        let response = await fetch('/updateAnimal', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: individualName.textContent,
-                price: individualPrice.textContent,
-                description: individualDescription.textContent,
-                license: licenseInput,
-                delivery: deliveryInput,
-                location: individualLocation.textContent
-            })
-        })
-    }
-}
-
->>>>>>> Stashed changes
 let myAnimals = async () => {
 
     window.username = localStorage.getItem('currentSession')
@@ -279,10 +148,7 @@ let myAnimals = async () => {
             <div style="width:100%; text-align:center; margin-top:60px; ">
                 <h5> No listings to display, perhaps upload some? </h5>
             </div>
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
         `
     } else {
 
@@ -296,10 +162,6 @@ let myAnimals = async () => {
             userListings.delivery == 'true' ?
                 delivery = 'checked' :
                 delivery = ''
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
             userListingParent.innerHTML += `
                     <div class='user-listing' data-id='${i}'>
@@ -340,19 +202,7 @@ let myAnimals = async () => {
     }
 }
 
-<<<<<<< Updated upstream
 
-
-let updateLoop = setInterval(function() {
-    localStorage.currentSession === "null"
-        ? window.location.href = "/index.html"
-        : null
-    updateListingCard();
-}, 700);
-
-
-
-=======
 let updateLoop = setInterval(function() {
     localStorage.currentSession === "null" ?
         window.location.href = "/index.html" :
@@ -360,6 +210,6 @@ let updateLoop = setInterval(function() {
     updateListingCard();
 }, 700);
 
->>>>>>> Stashed changes
+
 userDetails();
 myAnimals();
