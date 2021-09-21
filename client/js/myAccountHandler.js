@@ -2,6 +2,12 @@
 
 let getPageElements = () => {
 
+    window.usernameInput = document.querySelector('#usernameInput') || '';
+    window.fullNameInput = document.querySelector('#fullName') || '';
+    window.emailInput = document.querySelector('#emailInput') || '';
+    window.userDescription = document.querySelector('#userDescription') || '';
+    window.phoneInput = document.querySelector('#phoneInput') || '';
+
     window.animalName = document.querySelector('#animalName') || '';
     window.animalPrice = document.querySelector('#animalPrice') || '';
     window.animalLocation = document.querySelector('#animalLocation') || '';
@@ -23,57 +29,56 @@ let getPageElements = () => {
 
 getPageElements()
 
-// // Finding user details
-// let userDetails = async () => {
-//
-//     username = localStorage.getItem('currentSession')
-//     let userResponse = await fetch(`/findUserDetails?u=${username}`)
-//     let userDetails = await userResponse.json();
-//     userDetailParent.innerHTML = '';
-//     userDetailParent.innerHTML = `
-//     <div class='user-details-header'>
-//       <h5 id='usernameInput'>${userDetails[0].username}</h5>
-//     </div>
-//
-//     <div class='user-detals-content'>
-//       <div class='user-details-top'>
-//         <h5 contenteditable='true' id='fullName'>${userDetails[0].fullName}</h5>
-//         <h5 contenteditable='true' id='emailInput'>${userDetails[0].email}</h5>
-//         <h5 contenteditable='true' id='phoneInput'>${userDetails[0].phoneNo}</h5>
-//       </div>
-//
-//       <div class='user-details-bottom'>
-//         <h6>About</h6>
-//         <p contenteditable='true' id='userDescription'>${userDetails[0].description}</p>
-//       </div>
-//     </div>
-// `
-//
-//     setInterval(async () => {
-//         let usernameInput = document.querySelector('#usernameInput').textContent
-//         let fullNameInput = document.querySelector('#fullName').textContent
-//         let emailInput = document.querySelector('#emailInput').textContent
-//         let userDescription = document.querySelector('#userDescription').textContent
-//         let phoneInput = document.querySelector('#phoneInput').textContent
-//
-//         let response = await fetch('/updateUser', {
-//             method: 'post',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({
-//
-//                 fullName: fullNameInput,
-//                 username: usernameInput,
-//                 phoneNo: phoneInput,
-//                 email: emailInput,
-//                 description: userDescription
-//
-//             })
-//         });
-//
-//     }, 1000)
-// }
+// Finding user details
+let userDetails = async () => {
+
+    username = localStorage.getItem('currentSession')
+    let userResponse = await fetch(`/findUserDetails?u=${username}`)
+    let userDetails = await userResponse.json();
+
+    userDetailParent.innerHTML = '';
+    userDetailParent.innerHTML += `
+        <div class='user-details-header'>
+          <h5 id='usernameInput'>${userDetails[0].username}</h5>
+        </div>
+
+        <div class='user-detals-content'>
+          <div class='user-details-top'>
+            <h5 contenteditable='true' id='fullName'>${userDetails[0].fullName}</h5>
+            <h5 contenteditable='true' id='emailInput'>${userDetails[0].email}</h5>
+            <h5 contenteditable='true' id='phoneInput'>${userDetails[0].phoneNo}</h5>
+          </div>
+
+          <div class='user-details-bottom'>
+            <h6>About</h6>
+            <p contenteditable='true' id='userDescription'>${userDetails[0].description}</p>
+          </div>
+        </div>
+    `
+    updateAcc();
+}
+
+
+let updateAcc = () => {
+    setInterval(async () => {
+        getPageElements();
+        let response = await fetch('/updateUser', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+
+                fullName: fullNameInput.textContent,
+                username: usernameInput.textContent,
+                phoneNo: phoneInput.textContent,
+                email: emailInput.textContent,
+                description: userDescription.textContent
+
+            })
+        });
+    }, 1000)
+}
 
 
 let removeListing = async (e) => {
@@ -146,66 +151,75 @@ let myAnimals = async () => {
     let i = 0;
 
     if (allMyAnimals == false) {
-        console.log('You have not posted an animal.');
-    }
-
-    userListingParent.innerHTML = '';
-
-    for (userListings of allMyAnimals) {
-        userListings.license == 'true' ?
-            license = 'checked' :
-            license = ''
-
-        userListings.delivery == 'true' ?
-            delivery = 'checked' :
-            delivery = ''
-
-
         userListingParent.innerHTML += `
-                <div class='user-listing' data-id='${i}'>
-                  <div class='user-listing-top'>
-                    <div class='user-listing-details'>
-                      <div class='row'>
-                        <h4 class='editable userDetailsName' data-id='${i}' contenteditable id='animalName${i}'>${userListings.name}</h4>
-                        <h4> $ <span contenteditable class='editable' data-id='${i}' id='animalPrice${i}'>${userListings.price}</span></h4>
+            <div style="width:100%; text-align:center; margin-top:60px; ">
+                <h5> No listings to display, perhaps upload some? </h5>
+            </div>
+
+        `
+    } else {
+
+        userListingParent.innerHTML = '';
+
+        for (userListings of allMyAnimals) {
+            userListings.license == 'true' ?
+                license = 'checked' :
+                license = ''
+
+            userListings.delivery == 'true' ?
+                delivery = 'checked' :
+                delivery = ''
+
+
+            userListingParent.innerHTML += `
+                    <div class='user-listing' data-id='${i}'>
+                      <div class='user-listing-top'>
+                        <div class='user-listing-details'>
+                          <div class='row'>
+                            <h4 class='editable userDetailsName' data-id='${i}' contenteditable id='animalName${i}'>${userListings.name}</h4>
+                            <h4> $ <span contenteditable class='editable' data-id='${i}' id='animalPrice${i}'>${userListings.price}</span></h4>
+                          </div>
+                          <h5 contenteditable class='editable' data-id='${i}' id='animalLocation${i}'>${userListings.location}</h5>
+                          <div class='listing-checkbox user-checkbox'>
+                            <div class='checkbox-row'>
+                              <input autocomplete='off' id='licence' class='checkbox editable' type='checkbox' name='licence' ${license} required>
+                              <label for='licence'>
+                              <h6>License Required</h6>
+                              </label>
+                            </div>
+                            <div class='checkbox-row'>
+                              <input id='delivery' class='checkbox editable' type='checkbox' name='delivery' ${delivery} required >
+                              <label for='delivery'>
+                              <h6>Delivery Available</h6>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class='user-listing-images'>
+                          <img src='${userListings.url}' alt=''>
+                        </div>
                       </div>
-                      <h5 contenteditable class='editable' data-id='${i}' id='animalLocation${i}'>${userListings.location}</h5>
-                      <div class='listing-checkbox user-checkbox'>
-                        <div class='checkbox-row'>
-                          <input autocomplete='off' id='licence' class='checkbox editable' type='checkbox' name='licence' ${license} required>
-                          <label for='licence'>
-                          <h6>License Required</h6>
-                          </label>
-                        </div>
-                        <div class='checkbox-row'>
-                          <input id='delivery' class='checkbox editable' type='checkbox' name='delivery' ${delivery} required >
-                          <label for='delivery'>
-                          <h6>Delivery Available</h6>
-                          </label>
-                        </div>
+                      <div class="user-listing-description">
+                        <p id='animalDescription${i}' data-id='${i}' contenteditable> ${userListings.description} </p>
+                        <span id="listingHandler"><h6 id="deleteListingBtn" data-id="${userListings._id}" onclick="removeListing(this)">Delete Listing</h6></span>
                       </div>
                     </div>
-                    <div class='user-listing-images'>
-                      <img src='${userListings.url}' alt=''>
-                    </div>
-                  </div>
-                  <div class="user-listing-description">
-                    <p id='animalDescription${i}' data-id='${i}' contenteditable> ${userListings.description} </p>
-                    <span id="listingHandler"><h6 id="deleteListingBtn" data-id="${userListings._id}" onclick="removeListing(this)">Delete Listing</h6></span>
-                  </div>
-                </div>
-            `
-        i++;
+                `
+            i++;
+        }
     }
 }
 
 
 
-setInterval(function() {
-    updateListingCard()
+let updateLoop = setInterval(function() {
+    localStorage.currentSession === "null"
+        ? window.location.href = "/index.html"
+        : null
+    updateListingCard();
 }, 700);
 
 
 
-// userDetails()
-myAnimals()
+userDetails();
+myAnimals();

@@ -153,13 +153,19 @@ let updateCommentRequest = async () => {
 }
 
 let removeComment = ( e ) => {
-    let thingy = document.querySelectorAll('.question-block')
-    let currentElement = thingy[e.getAttribute('data-i')]
-    let elementInArray = comments[e.getAttribute('data-i')]
 
-    removeFromArray(comments, elementInArray)
-    updateCommentRequest();
-    loadComments();
+    if (localStorage.getItem('currentSession') == localStorage.getItem('ownerOfAnimal')) {
+
+        let thingy = document.querySelectorAll('.question-block')
+        let currentElement = thingy[e.getAttribute('data-i')]
+        let elementInArray = comments[e.getAttribute('data-i')]
+
+        removeFromArray(comments, elementInArray)
+        updateCommentRequest();
+        loadComments();
+
+    }
+
 }
 
 
@@ -213,7 +219,12 @@ let loadComments = () => {
                   </div>
                 </div>
             `
-            i++
+        i++
+
+        let block = document.querySelector(".question-block")
+        localStorage.getItem("currentSession") === localStorage.getItem("ownerOfAnimal")
+            ? block.className = "question-block question-hover"
+            : block.className = "question-block"
     }
 }
 
