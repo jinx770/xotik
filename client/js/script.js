@@ -620,6 +620,10 @@ let loginHandler = async () => {
   // Refresh all dom elements to get new values in-case they change
   refreshElements();
 
+  if (document.querySelector('.responsive-nav')) {
+      console.log('found')
+  }
+
   // If not logged then continue
   if (!loggedIn) {
 
@@ -998,69 +1002,74 @@ let createAlert = (msg) => {
 // MOBILE NAV
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-(async () => {
-    let touchstartY = 0
-    let touchendY = 0
+let startSwipeListeners = () => {
 
-    let navSlider = document.querySelector('.header')
+    (async () => {
+        let touchstartY = 0
+        let touchendY = 0
 
-    function swipeDown() {
-        if (touchstartY > touchendY) {
-            $('.responsive-nav').velocity({
-                top: '0',
-            }, {
-                duration: 1000,
-                easing: 'easeInOutQuint',
-                delay: 0,
-            });
-        }
-    };
+        let responsiveNav = document.querySelector('.responsive-nav')
+        let navSlider = document.querySelector('.header')
 
-    navSlider.addEventListener('touchstart', e => {
-        disableScroll();
-        touchstartY = e.changedTouches[0].screenY
-    });
+        function swipeDown() {
+            if (touchstartY > touchendY) {
+                $('.responsive-nav').velocity({
+                    top: '0',
+                }, {
+                    duration: 1000,
+                    easing: 'easeInOutQuint',
+                    delay: 0,
+                });
+            }
+        };
 
-    navSlider.addEventListener('touchend', e => {
-        touchstartY = e.changedTouches[0].screenY
-        swipeDown();
-    });
-})();
+        navSlider.addEventListener('touchstart', e => {
+            disableScroll();
+            touchstartY = e.changedTouches[0].screenY
+        });
 
+        navSlider.addEventListener('touchend', e => {
+            touchstartY = e.changedTouches[0].screenY
+            if (e.target.id== "user" || e.target.id == "cart") {
+                return
+            } else {
+                swipeDown();
+            }
+        });
+    })();
 
+    (async () => {
+        let touchstartY = 0
+        let touchendY = 0
 
+        let responsiveNav = document.querySelector('.responsive-nav')
+        let navSlider = document.querySelector('.header')
 
-(async () => {
-    let touchstartY = 0
-    let touchendY = 0
+        function swipeUp() {
+            if (touchstartY > touchendY) {
+                $('.responsive-nav').velocity({
+                    top: '-100%',
+                }, {
+                    duration: 1000,
+                    easing: 'easeInOutQuint',
+                    delay: 0,
+                });
+            }
+        };
 
-    let responsiveNav = document.querySelector('.responsive-nav')
+        responsiveNav.addEventListener('touchstart', e => {
+            touchstartY = e.changedTouches[0].screenY
+        });
 
-    function swipeUp() {
-        if (touchstartY > touchendY) {
-            $('.responsive-nav').velocity({
-                top: '-100%',
-            }, {
-                duration: 1000,
-                easing: 'easeInOutQuint',
-                delay: 0,
-            });
-        }
-    };
-
-    responsiveNav.addEventListener('touchstart', e => {
-        touchstartY = e.changedTouches[0].screenY
-    });
-
-    responsiveNav.addEventListener('touchend', e => {
-        touchstartY = e.changedTouches[0].screenY
-        swipeUp()
-        setTimeout(() => {
-            enableScroll()
-        }, 1000);
-    });
-})();
-
+        responsiveNav.addEventListener('touchend', e => {
+            touchstartY = e.changedTouches[0].screenY
+            swipeUp()
+            setTimeout(() => {
+                enableScroll()
+            }, 1000);
+        });
+    })();
+}
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
@@ -1071,6 +1080,11 @@ window.location.href == 'http://localhost:3000' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
+
+window.location.href == 'http://localhost:3000' ? startSwipeListeners() : null
+window.location.href == 'http://localhost:3000/' ? startSwipeListeners() : null
+window.location.href == 'http://localhost:3000/index.html' ? startSwipeListeners() : null
+window.location.href == 'http://localhost:3000/index.html#listingSection' ? startSwipeListeners() : null
 refreshElements();
 setupEventListeners();
 setupFilters();
