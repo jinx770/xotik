@@ -176,6 +176,7 @@
             let delivery = ''
             let licenseCheck = document.querySelector(`[post-id=license${CSS.escape(editing)}]`);
             let licenseInput = licenseCheck.checked
+            console.log(licenseInput);
             let license = ''
 
             if (deliveryInput) {
@@ -199,16 +200,16 @@
 
                 id: localStorage.getItem('editing'),
                 animalName: nameInput,
-                type: perAnimal.type,
-                url: perAnimal.url,
+                // type: perAnimal.type,
+                // url: perAnimal.url,
                 price: priceInput,
-                rating: perAnimal.rating,
+                // rating: perAnimal.rating,
                 description: descriptionInput,
-                quantity: perAnimal.quantity,
-                owner: perAnimal.owner,
-                license: licenseInput,
-                delivery: deliveryInput,
-                comments: perAnimal.comments,
+                // quantity: perAnimal.quantity,
+                // owner: perAnimal.owner,
+                license: license,
+                delivery: delivery,
+                // comments: perAnimal.comments,
                 location: locationInput
 
               })
