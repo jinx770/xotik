@@ -1863,7 +1863,6 @@ input:-webkit-autofill:hover {
     height: 100vh;
     width: 100%;
     top: -100%;
-    background: #272727;
     backdrop-filter: blur(10px);
     z-index: 999999999999;
   }

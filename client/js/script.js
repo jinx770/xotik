@@ -1015,13 +1015,13 @@ let createAlert = (msg) => {
     };
 
     navSlider.addEventListener('touchstart', e => {
+        disableScroll();
         touchstartY = e.changedTouches[0].screenY
     });
 
     navSlider.addEventListener('touchend', e => {
         touchstartY = e.changedTouches[0].screenY
         swipeDown();
-        disableScroll();
     });
 })();
 
