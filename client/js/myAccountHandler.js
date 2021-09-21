@@ -77,9 +77,7 @@ getPageElements()
 
 
 let removeListing = async (e) => {
-
     objectId = e.getAttribute('data-id')
-
     let response = await fetch('/removeAnimal', {
         method: 'DELETE',
         headers: {
@@ -97,6 +95,9 @@ let removeListing = async (e) => {
 }
 
 
+
+
+
 let updateListingCard = async () => {
 
     getPageElements()
@@ -106,26 +107,24 @@ let updateListingCard = async () => {
         let int = item.getAttribute("data-id")
         let currentItem = allMyAnimals[int]
 
-        console.log(item)
-
         getPageElements();
 
         let response = await fetch('/updateAnimal', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                id: item[int]._id,
+                id: currentItem._id,
                 name: "test",
-                type: item[int].type,
-                url: item[int].url,
+                type: currentItem.type,
+                url: currentItem.url,
                 price: animalPrice.textContent,
-                rating: item[int].rating,
+                rating: currentItem.rating,
                 description: animalDescription.textContent,
-                quantity: item[int].quantity,
-                owner: item[int].owner,
+                quantity: currentItem.quantity,
+                owner: currentItem.owner,
                 license: licenseInput,
                 delivery: deliveryInput,
-                comments: item[int].comments,
+                comments: currentItem.comments,
                 location: animalLocation.textContent
             })
         })
