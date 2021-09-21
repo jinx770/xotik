@@ -175,6 +175,8 @@ listingButton.addEventListener('click', async () => {
     // Verify that the user is logged in and all fields are filled out
     if (verifyLogin() && validateInputs()) {
 
+        console.log(verifyLogin, validateInputs)
+
         // Refresh fields
         getElements();
 
