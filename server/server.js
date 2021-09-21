@@ -66,10 +66,8 @@ app.post('/updateAnimal', async ( req, res ) => {
     // Shorthand variable creation
     let { id, animalName, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = req.body
 
-    // console.log(`\n TASK //
-    //         updating animal information \n`)
-
-    console.log(req.body)
+    console.log(`\n TASK //
+            updating animal information \n`)
 
     // Calling function in backEnd/index.js with relevant arguments being passed
     return res.send(await functions.UpdateAnimal({ id, animalName, type, url, price, rating, description, quantity, owner, license, delivery, comments, location }))

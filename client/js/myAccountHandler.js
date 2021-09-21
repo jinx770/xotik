@@ -117,6 +117,7 @@
                 <div class="user-details-bottom">
                   <h6>About</h6>
                   <p contenteditable="true" class="editable" id="descriptionInput" post-id="description${perAnimal._id}">${perAnimal.description}</p>
+                  <br>
                   <h6 id="deleteListingBtn">Delete Listing</h6>
                 </div>
               </div>
