@@ -132,6 +132,12 @@ let removeListing = async (e) => {
 }
 
 
+let seeMyPost = async (e) => {
+    let cardId = e.getAttribute('data-id')
+    localStorage.setItem('cardId', cardId)
+    window.location.href = '/animalTemplate.html'
+}
+
 
 
 
@@ -265,7 +271,10 @@ let myAnimals = async () => {
                       </div>
                       <div class="user-listing-description">
                         <p id='animalDescription${i}' data-id='${i}' contenteditable> ${userListings.description} </p>
-                        <span id="listingHandler"><h6 id="deleteListingBtn" data-id="${userListings._id}" onclick="removeListing(this)">Delete Listing</h6></span>
+                        <span id="listingHandler">
+                          <h6 id="deleteListingBtn" data-id="${userListings._id}" onclick="removeListing(this)">Delete Listing</h6>
+                          <h6 style="float:right" id="seeMyPostBtn" data-id="${userListings._id}" onclick="seeMyPost(this)">See My Post</h6>
+                        </span>
                       </div>
                     </div>
                 `
