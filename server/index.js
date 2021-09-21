@@ -108,7 +108,6 @@
 
         // Creating variables for every argument passed in the function
         let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = args
-        console.log(id, name, ' - index.js');
 
         // Finds the first result for the search query, using its name sets the new fields to the inputted arguments
         // -- Can't comment in any of this as it's also suppose to be on one line, i.e findOneAndUpdate({field: field1}, {$set: {field: field1, field: field1}, {new: true}})
@@ -142,7 +141,24 @@
         );
     }
 
-
+    // let update = async () => {
+    //   let id = '61490a563021796c6a6b986a'
+    //   let name = 'cheesesnake'
+    //   let type = 'reptile'
+    //   let url = ''
+    //   let price = 120
+    //   let rating = '5/10'
+    //   let description = 'a cool snake'
+    //   let quantity = 5
+    //   let owner = 'rraneighh'
+    //   let license = 'false'
+    //   let delivery = 'false'
+    //   let comments = ''
+    //   let location = 'auckland'
+    //   console.log(id);
+    //   UpdateAnimal({ id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location })
+    // }
+    // update()
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -152,21 +168,17 @@
     let RemoveAnimal = async ( arg ) => {
 
         // Attempting to get an animal document result from the database using the name as a query
-        let foundAnimal = await Animal.find({ name: arg });
+        let foundAnimal = await Animal.find({ _id: arg });
 
-        // Checking to see if the returned data is indeed data or an empty array (explained already above)
-        let checkAnimal = foundAnimal.length === 0 ? '' : foundAnimal
+        // Checking to see if returned value is empty - error prevention
+        let checkAnimal = foundAnimal.length === 0;
 
-        // Ternary op for setting a variable as the username of the result or nothing if it doesn't exist, error prevention !
-        let animalExists = checkAnimal[0] && checkAnimal[0].name || ''
-
-        // Another ternary operator for comparing the animal returned's username with the inputted argument
         // The condition would result in true, meaning it will move onto the deleteOne function and delete the returned animal from the database
-        animalExists === arg
+        !checkAnimal
             ? (
                 Animal.deleteOne(
                     {
-                        name: arg
+                        _id: arg
                     },
                         (err, success) => {
                             console.log(` RESULT //
@@ -176,6 +188,8 @@
                 )
             : console.log(` RESULT //
             unable to find animal to delete \n`)
+            console.log(arg);
+
 
     }
 
@@ -189,7 +203,7 @@
     let CreateUser = async ( ... args ) => {
 
         // Shorthand for creating variables, already explained :)
-        let [ fullName, username, phoneNo, email, description, password ] = args
+        let { fullName, username, phoneNo, email, description, password } = args
 
         // Requesting info from the database, using the username as a query
         let checkUser = await FindUser(username);
@@ -317,7 +331,6 @@
 
 
 // -------------------------------------------------------------------------------------------------------------------------------
-
 
 
     // Acknowledges that the code is running without any ghost errors

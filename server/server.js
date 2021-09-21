@@ -69,10 +69,10 @@ app.post('/updateAnimal', async ( req, res ) => {
 
     // Shorthand variable creation
     let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = req.body
-
-    console.log(`\n TASK //
-            updating animal information \n`)
-    console.log(id, name, ' - server.js');
+    //
+    // console.log(`\n TASK //
+    //         updating animal information \n`)
+    // console.log(id, name, ' - server.js');
     // Calling function in backEnd/index.js with relevant arguments being passed
     return res.send(await functions.UpdateAnimal({ id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location }))
 
@@ -89,8 +89,8 @@ app.delete('/removeAnimal', async ( req, res ) => {
 
     // Use case would probably be when we click on an animal card and press remove or take away
     // It'll get the name of what we click on an pass it in this method to remove it from the database
-    let animal = req.body.name
-
+    let animal = req.body.id
+    console.log(animal);
     console.log(`\n TASK //
             removing animal \n`)
 

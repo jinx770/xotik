@@ -107,8 +107,6 @@
           let licenseCheck = document.querySelector('#license');
           let licenseInput = JSON.stringify(license.checked)
 
-          console.log(userListings._id, nameInput);
-
           let response = await fetch('/updateAnimal', {
               method: 'post',
               headers: {
@@ -135,6 +133,24 @@
           });
         },1000)
 
+        let deleteListingBtn = document.querySelector("#deleteListingBtn")
+        deleteListingBtn.addEventListener('click', async () => {
+          // console.log(userListings._id);
+          let response = await fetch('/removeAnimal', {
+              method: 'DELETE',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+
+                  id: userListings._id,
+
+              })
+
+            });
+          location.reload();
+        })
+        //event listener end
     }
     // end of loop
 
