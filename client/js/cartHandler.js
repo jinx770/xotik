@@ -10,7 +10,6 @@ window.checkOutButton = document.querySelector('#checkoutButton') || '';
 window.totalCartPage = document.querySelector('.checkout-btn').childNodes[1] || '';
 window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 window.cartCost = localStorage.getItem('cartCost') ? JSON.parse(localStorage.getItem('cartCost')) : []
-window.sum = cartCost.reduce((partial_sum, a) => partial_sum + a,0);
 
 
 
@@ -50,5 +49,6 @@ checkOutButton.addEventListener('click', () => {
 updateCartPage()
 
 setInterval(() => {
+    sum = cartCost.reduce((partial_sum, a) => partial_sum + a,0);
     totalCartPage.textContent = `Total: $${sum.toLocaleString()}`
 }, 500)

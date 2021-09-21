@@ -138,21 +138,17 @@
     let RemoveAnimal = async ( arg ) => {
 
         // Attempting to get an animal document result from the database using the name as a query
-        let foundAnimal = await Animal.find({ name: arg });
+        let foundAnimal = await Animal.find({ _id: arg });
 
-        // Checking to see if the returned data is indeed data or an empty array (explained already above)
-        let checkAnimal = foundAnimal.length === 0 ? '' : foundAnimal
+        // Checking to see if returned value is empty - error prevention
+        let checkAnimal = foundAnimal.length === 0;
 
-        // Ternary op for setting a variable as the username of the result or nothing if it doesn't exist, error prevention !
-        let animalExists = checkAnimal[0] && checkAnimal[0].name || ''
-
-        // Another ternary operator for comparing the animal returned's username with the inputted argument
         // The condition would result in true, meaning it will move onto the deleteOne function and delete the returned animal from the database
-        animalExists === arg
+        !checkAnimal
             ? (
                 Animal.deleteOne(
                     {
-                        name: arg
+                        _id: arg
                     },
                         (err, success) => {
                             console.log(` RESULT //
@@ -175,7 +171,7 @@
     let CreateUser = async ( ... args ) => {
 
         // Shorthand for creating variables, already explained :)
-        let [ fullName, username, phoneNo, email, description, password ] = args
+        let { fullName, username, phoneNo, email, description, password } = args
 
         // Requesting info from the database, using the username as a query
         let checkUser = await FindUser(username);
@@ -239,7 +235,7 @@
     // Returning userdetails
     let FindUserDetails = async ( username ) => {
         let foundUser = await User.find({ username: username });
-        console.log(foundUser);
+        // console.log(foundUser);
         return foundUser;
     }
 
@@ -252,6 +248,35 @@
         // Returns array of every user
         return foundUser;
 
+    }
+
+    // Function for updating the animals in database
+    let UpdateUser = async ( args ) => {
+
+        // Creating variables for every argument passed in the function
+        let { fullName, username, phoneNo, email, description, password } = args
+        // console.log(args);
+
+        User.findOneAndUpdate({
+            username: username
+         }, {
+             $set: {
+                 fullName: fullName,
+                 phoneNo: phoneNo,
+                 email: email,
+                 description: description,
+             }
+         }, {
+             new: true
+         },
+            (err, doc) => {
+
+                // If something happens such as mongodb is down, it wont error but it'll console log something went wrong
+                if (err) {
+                    // console.log(doc);
+                }
+            }
+        );
     }
 
     // Remove user from database function
@@ -278,6 +303,7 @@
 
 
 
+
     // ------------------------------------------------------------------------------------------------------------------------------------
     // -- EXPORTS
     // ------------------------------------------------------------------------------------------------------------------------------------
@@ -286,7 +312,7 @@
     console.log('Running...\n')
 
     // Export our functions to the server.js so they still get ran after we require them
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails}
+    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails, UpdateUser}
 
 
 })();
