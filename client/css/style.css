@@ -1369,6 +1369,7 @@ input:-webkit-autofill:hover {
 
 .delete-question {
   display: none;
+  cursor: pointer;
   color: #FF4242;
 }
 

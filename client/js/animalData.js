@@ -11,7 +11,7 @@ window.displayOwner = document.querySelector('.username') || '';
 window.displayLicence = document.querySelector('.licence') || '';
 window.displayImage = document.querySelector('.animal-img') || '';
 window.displayName = document.querySelector('.animal-name') || '';
-window.questionsParent = document.querySelector('.questions') || '';
+window.questionsParent = document.querySelector('.questions-two') || '';
 window.displayPrice = document.querySelector('.price-value') || '';
 window.displayDelivery = document.querySelector('.delivery') || '';
 window.addToCartButton = document.querySelector('#addToCart') || '';
@@ -151,6 +151,17 @@ let updateCommentRequest = async () => {
 
 }
 
+let removeComment = ( e ) => {
+    let thingy = document.querySelectorAll('.question-block')
+    let currentElement = thingy[e.getAttribute('data-i')]
+    let elementInArray = comments[e.getAttribute('data-i')]
+
+    removeFromArray(comments, elementInArray)
+    updateCommentRequest();
+    loadComments();
+}
+
+
 let checkLogin = () => {
     return localStorage.getItem('currentSession') === animalData[0].owner ? true : false
 }
@@ -185,15 +196,20 @@ let loadComments = () => {
     let i = 0
     for (comment of animalData[0].comments) {
         questionsParent.innerHTML += `
-                <div class='question-block'>
-                    <div class='question'>
+                <div class="question-block">
+                  <div onclick="removeComment(this)" data-i='${i}' class="delete-question">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </div>
+                  <div class="qa-section">
+                    <div class="question">
                         <h5 style='opacity: 1;' class='q'>Q:</h5>
                         <h5 class='question-text'>${comment[0]}</h5>
                     </div>
-                    <div class='answer'>
-                        <h5 class='q'> A:</h5>
-                        <h5 contenteditable style='opacity: .5' data-i='${i}' class='answer-text' onclick='answerQuestion(this)'> ${ comment[1] != '' ? comment[1] : 'Click me!' }</h5>
+                    <div class="answer">
+                    <h5 class='q'> A:</h5>
+                    <h5 contenteditable style='opacity: .5' data-i='${i}' class='answer-text' onclick='answerQuestion(this)'> ${ comment[1] != '' ? comment[1] : 'Reply' }</h5>
                     </div>
+                  </div>
                 </div>
             `
             i++
