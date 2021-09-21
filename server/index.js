@@ -134,31 +134,6 @@
         );
     }
 
-
-    // let update = async () => {
-    //   let id = '61490a563021796c6a6b986a'
-    //   let name = 'cheesesnake'
-    //   let type = 'reptile'
-    //   let url = ''
-    //   let price = 120
-    //   let rating = '5/10'
-    //   let description = 'a cool snake'
-    //   let quantity = 5
-    //   let owner = 'rraneighh'
-    //   let license = 'false'
-    //   let delivery = 'false'
-    //   let comments = ''
-    //   let location = 'auckland'
-    //   console.log(id);
-    //   UpdateAnimal({ id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location })
-    // }
-    // update()
-
-// ------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
     // Function for removing an animal from the database
     let RemoveAnimal = async ( arg ) => {
 
