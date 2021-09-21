@@ -1,231 +1,293 @@
-(function() {
+let getPageElements = () => {
 
-    localStorage.setItem('editing', '')
+
+
+    window.usernameInput = document.querySelector('#usernameInput') || '';
+    window.fullNameInput = document.querySelector('#fullName') || '';
+    window.emailInput = document.querySelector('#emailInput') || '';
+    window.userDescription = document.querySelector('#userDescription') || '';
+    window.phoneInput = document.querySelector('#phoneInput') || '';
+
+
+
+    window.animalName = document.querySelector('#animalName') || '';
+    window.animalPrice = document.querySelector('#animalPrice') || '';
+    window.animalLocation = document.querySelector('#animalLocation') || '';
+    window.animalDescription = document.querySelector('#animalDescription') || '';
+
+
+
+    window.deliveryCheck = document.querySelector('#delivery') || '';
+    window.licenseCheck = document.querySelector('#license') || '';
+
+
+
+    window.deliveryInput = JSON.stringify(deliveryCheck.checked) || '';
+    window.licenseInput = JSON.stringify(licenseCheck.checked) || '';
+
+
+
     window.userDetailParent = document.querySelector('.user-details') || '';
     window.listingDescription = document.querySelector('.user-listing-description') || '';
+    window.editableDetails = document.querySelectorAll('.editable') || '';
 
-  // Finding user details
-  let userDetails = async () => {
+
+
+    window.allListings = document.querySelectorAll('.user-listing') || '';
+
+
+
+}
+
+
+
+getPageElements()
+
+
+
+// Finding user details
+let userDetails = async () => {
+
+
+
     username = localStorage.getItem('currentSession')
     let userResponse = await fetch(`/findUserDetails?u=${username}`)
     let userDetails = await userResponse.json();
+
+
+
     userDetailParent.innerHTML = '';
-    userDetailParent.innerHTML = `
-    <div class="user-details-header">
-      <h5 id="usernameInput">${userDetails[0].username}</h5>
-    </div>
-    <div class="user-detals-content">
-      <div class="user-details-top">
-        <h5 contenteditable="true" id="fullName">${userDetails[0].fullName}</h5>
-        <h5 contenteditable="true" id="emailInput">${userDetails[0].email}</h5>
-        <h5 contenteditable="true" id="phoneInput">${userDetails[0].phoneNo}</h5>
-      </div>
-      <div class="user-details-bottom">
-        <h6>About</h6>
-        <p contenteditable="true" id="userDescriptionInput">${userDetails[0].description}</p>
-      </div>
-    </div>
+    userDetailParent.innerHTML += `
+        <div class='user-details-header'>
+          <h5 id='usernameInput'>${userDetails[0].username}</h5>
+        </div>
+
+
+
+        <div class='user-detals-content'>
+          <div class='user-details-top'>
+            <h5 contenteditable='true' id='fullName'>${userDetails[0].fullName}</h5>
+            <h5 contenteditable='true' id='emailInput'>${userDetails[0].email}</h5>
+            <h5 contenteditable='true' id='phoneInput'>${userDetails[0].phoneNo}</h5>
+          </div>
+
+
+
+          <div class='user-details-bottom'>
+            <h6>About</h6>
+            <p contenteditable='true' id='userDescription'>${userDetails[0].description}</p>
+          </div>
+        </div>
     `
+    updateAcc();
+}
 
+
+
+
+let updateAcc = () => {
     setInterval(async () => {
-      let usernameInput = document.querySelector('#usernameInput').textContent
-      let fullNameInput = document.querySelector('#fullName').textContent
-      let emailInput = document.querySelector('#emailInput').textContent
-      let userDescriptionInput = document.querySelector('#userDescriptionInput').textContent
-      let phoneInput = document.querySelector('#phoneInput').textContent
+        getPageElements();
+        let response = await fetch('/updateUser', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
 
-      let response = await fetch('/updateUser', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
 
-            fullName: fullNameInput,
-            username: usernameInput,
-            phoneNo: phoneInput,
-            email: emailInput,
-            userDescription: userDescriptionInput
 
-          })
-      });
+                fullName: fullNameInput.textContent,
+                username: usernameInput.textContent,
+                phoneNo: phoneInput.textContent,
+                email: emailInput.textContent,
+                description: userDescription.textContent
 
+
+
+            })
+        });
     }, 1000)
-  }
-
-
-  let myAnimals = async () => {
-
-      // Finding the users animals
-      let animalResponse = await fetch(`/findAnimal?owner=${username}`)
-      let allMyAnimals = await animalResponse.json()
-      console.log(allMyAnimals, ' - allMyAnimals');
-      if (allMyAnimals == false) {
-          userListingParent.innerHTML += `
-              <div style="width:100%; text-align:center; margin-top:60px; ">
-                  <h5> No listings to display, perhaps upload some? </h5>
-              </div>
+}
 
 
 
-          `
-      } else {
 
-          function checkId( postId ){
-              let posts = document.querySelectorAll('.user-listing')
-              for (post of posts){
-                    let postId = post.classList;
-                    post.addEventListener('click', async () => {
-                    localStorage.setItem('editing', postId[1])
-                })
-              }
-          }
+let removeListing = async (e) => {
+    objectId = e.getAttribute('data-id')
+    let response = await fetch('/removeAnimal', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: objectId,
+        })
+    });
+    createAlert('Post Deleted');
+    let refresh = document.querySelector('.modalDone')
+    refresh.addEventListener('click', () => {
+        location.reload();
+    })
+}
 
-          userListingParent.innerHTML = '';
 
-          for (perAnimal of allMyAnimals) {
-              perAnimal.license == 'true'
-              ? license = `<input post-id="license${perAnimal._id}" autocomplete="off" id="license" class="checkbox editable" type="checkbox" name="licence" checked required>`
-              : license = `<input post-id="license${perAnimal._id}" autocomplete="off" id="license" class="checkbox editable" type="checkbox" name="licence" required>`
 
-              perAnimal.delivery == 'true'
-              ? delivery = `<input post-id="delivery${perAnimal._id}" id="delivery" class="checkbox editable" type="checkbox" name="delivery" checked required >`
-              : delivery = `<input post-id="delivery${perAnimal._id}" id="delivery" class="checkbox editable" type="checkbox" name="delivery"  required >`
+
+
+
+
+let updateListingCard = async () => {
+
+
+
+    getPageElements()
+
+
+
+    for (item of allListings) {
+
+
+
+        let int = item.getAttribute("data-id")
+        let currentItem = allMyAnimals[int]
+
+
+
+        let individualName = document.querySelector(`#animalName${int}`)
+        let individualPrice = document.querySelector(`#animalPrice${int}`)
+        let individualLocation = document.querySelector(`#animalLocation${int}`)
+        let individualDescription = document.querySelector(`#animalDescription${int}`)
+
+
+
+        let response = await fetch('/updateAnimal', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                id: currentItem._id,
+                name: individualName.textContent,
+                type: currentItem.type,
+                url: currentItem.url,
+                price: individualPrice.textContent,
+                rating: currentItem.rating,
+                description: individualDescription.textContent,
+                quantity: currentItem.quantity,
+                owner: currentItem.owner,
+                license: licenseInput,
+                delivery: deliveryInput,
+                comments: currentItem.comments,
+                location: individualLocation.textContent
+
+
+
+            })
+        })
+    }
+}
+
+
+
+
+let myAnimals = async () => {
+
+
+
+    window.username = localStorage.getItem('currentSession')
+    // Finding the users animals
+    let animalResponse = await fetch(`/findAnimal?owner=${username}`)
+    window.allMyAnimals = await animalResponse.json()
+
+
+
+    let i = 0;
+
+
+
+    if (allMyAnimals == false) {
+        userListingParent.innerHTML += `
+            <div style="width:100%; text-align:center; margin-top:60px; ">
+                <h5> No listings to display, perhaps upload some? </h5>
+            </div>
+
+
+
+        `
+    } else {
+
+
+
+        userListingParent.innerHTML = '';
+
+
+
+        for (userListings of allMyAnimals) {
+            userListings.license == 'true' ?
+                license = 'checked' :
+                license = ''
+
+
+
+            userListings.delivery == 'true' ?
+                delivery = 'checked' :
+                delivery = ''
+
+
+
 
             userListingParent.innerHTML += `
-                  <div class="user-listing ${perAnimal._id}">
-                    <div class="user-listing-top">
-                      <div class="user-listing-details">
-                        <div class="row">
-                          <h4 contenteditable="true" class="editable userDetailsName" id="nameInput" post-id="name${perAnimal._id}">${perAnimal.name}</h4>
-                          <h4> $ <span contenteditable="true" class="editable" id="priceInput" post-id="price${perAnimal._id}">${perAnimal.price}</span></h4>
+                    <div class='user-listing' data-id='${i}'>
+                      <div class='user-listing-top'>
+                        <div class='user-listing-details'>
+                          <div class='row'>
+                            <h4 class='editable userDetailsName' data-id='${i}' contenteditable id='animalName${i}'>${userListings.name}</h4>
+                            <h4> $ <span contenteditable class='editable' data-id='${i}' id='animalPrice${i}'>${userListings.price}</span></h4>
+                          </div>
+                          <h5 contenteditable class='editable' data-id='${i}' id='animalLocation${i}'>${userListings.location}</h5>
+                          <div class='listing-checkbox user-checkbox'>
+                            <div class='checkbox-row'>
+                              <input autocomplete='off' id='licence' class='checkbox editable' type='checkbox' name='licence' ${license} required>
+                              <label for='licence'>
+                              <h6>License Required</h6>
+                              </label>
+                            </div>
+                            <div class='checkbox-row'>
+                              <input id='delivery' class='checkbox editable' type='checkbox' name='delivery' ${delivery} required >
+                              <label for='delivery'>
+                              <h6>Delivery Available</h6>
+                              </label>
+                            </div>
+                          </div>
                         </div>
-                        <h5 contenteditable="true" class="editable" id="locationInput" post-id="location${perAnimal._id}">${perAnimal.location}</h5>
-                        <div class="listing-checkbox user-checkbox">
-                          <div class="checkbox-row">
-                            ${license}
-                            <label for="license">
-                            <h6>License Required</h6>
-                            </label>
-                          </div>
-                          <div class="checkbox-row">
-                            ${delivery}
-                            <label for="delivery">
-                            <h6>Delivery Available</h6>
-                            </label>
-                          </div>
+                        <div class='user-listing-images'>
+                          <img src='${userListings.url}' alt=''>
                         </div>
                       </div>
-                      <div class="user-listing-images">
-                        <img src="${perAnimal.url}" alt="">
+                      <div class="user-listing-description">
+                        <p id='animalDescription${i}' data-id='${i}' contenteditable> ${userListings.description} </p>
+                        <span id="listingHandler"><h6 id="deleteListingBtn" data-id="${userListings._id}" onclick="removeListing(this)">Delete Listing</h6></span>
                       </div>
                     </div>
-                    <div class="user-details-bottom">
-                      <h6>About</h6>
-                      <p contenteditable="true" class="editable" id="descriptionInput" post-id="description${perAnimal._id}">${perAnimal.description}</p>
-                      <h6 id="deleteListingBtn">Delete Listing</h6>
-                    </div>
-                  </div>
-                  <div class="user-listing-images">
-                    <img src="${perAnimal.url}" alt="">
-                  </div>
-                </div>
-                <div class="user-details-bottom">
-                  <h6>About</h6>
-                  <p contenteditable="true" class="editable" id="descriptionInput" post-id="description${perAnimal._id}">${perAnimal.description}</p>
-                  <br>
-                  <h6 id="deleteListingBtn">Delete Listing</h6>
-                </div>
-              </div>
-          `
-
-          let deleteListingBtns = document.querySelectorAll("#deleteListingBtn")
-
-          for (deleteBtn of deleteListingBtns){
-            deleteBtn.addEventListener('click', async () => {
-              // console.log(perAnimal._id);
-              let response = await fetch('/removeAnimal', {
-                method: 'DELETE',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
+                `
+            i++;
+        }
+    }
+}
 
 
-          // so that it doesn't spam errors when you delete a post and selectors can no longer find queries
 
 
-          setInterval(function(){
 
-          localStorage.currentSession === "null"
-                ? window.location.href = "/index.html"
-                : null
+let updateLoop = setInterval(function() {
+    localStorage.currentSession === "null"
+        ? window.location.href = "/index.html"
+        : null
+    updateListingCard();
+}, 700);
 
-            if (!localStorage.getItem('editing')){
-                console.log('Click on a post to edit');
-            } else {
-              setInterval(async () => {
-                let editing = localStorage.getItem('editing')
-                let nameInput = document.querySelector(`[post-id=name${CSS.escape(editing)}]`).textContent
-                let priceInput = document.querySelector(`[post-id=price${CSS.escape(editing)}]`).textContent
-                let descriptionInput = document.querySelector(`[post-id=description${CSS.escape(editing)}]`).textContent
-                let locationInput = document.querySelector(`[post-id=location${CSS.escape(editing)}]`).textContent
-                let deliveryCheck = document.querySelector(`[post-id=delivery${CSS.escape(editing)}]`);
-                let deliveryInput = deliveryCheck.checked
-                let delivery = ''
-                let licenseCheck = document.querySelector(`[post-id=license${CSS.escape(editing)}]`);
-                let licenseInput = licenseCheck.checked
-                console.log(licenseInput);
-                let license = ''
 
-                if (deliveryInput) {
-                  delivery = 'true'
-                } else {
-                  delivery = 'false'
-                }
 
-                if (licenseInput) {
-                  license = 'true'
-                } else {
-                  license = 'false'
-                }
 
-                let response = await fetch('/updateAnimal', {
-                  method: 'post',
-                  headers: {
-                    'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({
 
-                    id: localStorage.getItem('editing'),
-                    animalName: nameInput,
-                    // type: perAnimal.type,
-                    // url: perAnimal.url,
-                    price: priceInput,
-                    // rating: perAnimal.rating,
-                    description: descriptionInput,
-                    // quantity: perAnimal.quantity,
-                    // owner: perAnimal.owner,
-                    license: license,
-                    delivery: delivery,
-                    // comments: perAnimal.comments,
-                    location: locationInput
-
-                  })
-
-                });
-
-              }, 1000)
-              // setInterval to update content
-            }
-          }, 1000)
-          // setInterval for checking if there is a post currently being edited
-          checkId();
-      }
-  }
-  // end of myAnimals
-
-  userDetails()
-  myAnimals()
-
-}());
+userDetails();
+myAnimals();
