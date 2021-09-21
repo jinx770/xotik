@@ -1860,11 +1860,60 @@ input:-webkit-autofill:hover {
   .responsive-nav {
     position: fixed;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
     height: 100vh;
     width: 100%;
     top: -100%;
     backdrop-filter: blur(10px);
     z-index: 999999999999;
+  }
+
+  .r-nav-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    margin-top: 100px;
+  }
+
+  .responsive-nav-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 80%;
+    margin: auto;
+  }
+
+  .responsive-nav-optoins {
+    width: 100%;
+  }
+  .responsive-nav-optoins .r-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin: auto;
+    padding-bottom: 20px;
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  .responsive-nav-optoins .r-nav-item a {
+    text-decoration: none;
+  }
+
+  .responsive-nav-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    height: 10%;
   }
 
   .button-primary {
