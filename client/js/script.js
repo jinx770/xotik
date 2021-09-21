@@ -982,6 +982,7 @@ window.location.href == 'http://localhost:3000' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
+
 refreshElements();
 setupEventListeners();
 setupFilters();
