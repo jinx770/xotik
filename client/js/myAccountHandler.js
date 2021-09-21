@@ -133,24 +133,31 @@
           });
         },1000)
 
-        let deleteListingBtn = document.querySelector("#deleteListingBtn")
-        deleteListingBtn.addEventListener('click', async () => {
-          // console.log(userListings._id);
-          let response = await fetch('/removeAnimal', {
+        let deleteListingBtns = document.querySelectorAll("#deleteListingBtn")
+
+        for (deleteBtn of deleteListingBtns){
+          deleteBtn.addEventListener('click', async () => {
+            // console.log(userListings._id);
+            let response = await fetch('/removeAnimal', {
               method: 'DELETE',
               headers: {
-                  'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
               },
               body: JSON.stringify({
 
-                  id: userListings._id,
+                id: userListings._id,
 
               })
 
             });
-          location.reload();
-        })
-        //event listener end
+            createAlert('Post Deleted');
+            let refresh = document.querySelector('.modalDone')
+            refresh.addEventListener('click', () => {
+              location.reload()
+            })
+          })
+          //event listener end
+        }
     }
     // end of loop
 
