@@ -42,7 +42,7 @@ window.onload = (event) => {
 
     }
 
-  },100)
+  }, 100)
 
 };
 
@@ -302,6 +302,8 @@ $('#questionExitBtn').click(function() {
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 // Logic check for the current session, gotta define it initially
 window.loggedIn = false
@@ -1015,13 +1017,13 @@ let createAlert = (msg) => {
     };
 
     navSlider.addEventListener('touchstart', e => {
+        disableScroll();
         touchstartY = e.changedTouches[0].screenY
     });
 
     navSlider.addEventListener('touchend', e => {
         touchstartY = e.changedTouches[0].screenY
         swipeDown();
-        disableScroll();
     });
 })();
 
@@ -1052,9 +1054,10 @@ let createAlert = (msg) => {
 
     responsiveNav.addEventListener('touchend', e => {
         touchstartY = e.changedTouches[0].screenY
-        console.log(touchstartY, touchendY)
         swipeUp()
-        enableScroll();
+        setTimeout(() => {
+            enableScroll()
+        }, 1000);
     });
 })();
 
