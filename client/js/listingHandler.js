@@ -199,7 +199,7 @@ listingButton.addEventListener('click', async () => {
                 license: licenseInput,
                 delivery: deliveryInput,
                 comments: [],
-                location: location 
+                location: locationInput
 
             })
 

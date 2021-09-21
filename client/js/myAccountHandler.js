@@ -3,17 +3,14 @@
 
 
   window.userDetailParent = document.querySelector('.user-details') || '';
-  // window.saveUpdatesBtn = document.querySelector('#saveUpdatesBtn') || '';
+  window.listingDescription = document.querySelector('.user-listing-description') || '';
+  window.editableDetails = document.querySelectorAll('.editable') || '';
 
 
 
   let myAccount = async () => {
 
-
-
     username = localStorage.getItem('currentSession')
-
-
 
     // Finding user details
     let userResponse = await fetch(`/findUserDetails?u=${username}`)
@@ -54,40 +51,35 @@
 
     userListingParent.innerHTML = '';
     // Displaying users animals
-    for (userListing of allMyAnimals) {
 
-
-      console.log(allMyAnimals);
-      userListing.license == 'true'
+    for (userListings of allMyAnimals) {
+      console.log(userListings);
+      userListings.license == 'true'
         ? license = 'checked'
         : license = ''
 
-
-
-        userListing.delivery == 'true'
+        userListings.delivery == 'true'
         ? delivery = 'checked'
         : delivery = ''
-
-
 
       userListingParent.innerHTML += `
             <div class="user-listing">
               <div class="user-listing-top">
                 <div class="user-listing-details">
                   <div class="row">
-                    <h4 contenteditable="true" class="editable userDetailsName">${userListing.name}</h4>
-                    <h4> $ <span contenteditable="true" class="editable">${userListing.price}</span></h4>
+                    <h4 contenteditable="true" class="editable userDetailsName" id="nameInput">${userListings.name}</h4>
+                    <h4> $ <span contenteditable="true" class="editable" id="priceInput">${userListings.price}</span></h4>
                   </div>
-                  <h5 contenteditable="true" class="editable">${userListing.location}</h5>
+                  <h5 contenteditable="true" class="editable" id="locationInput">${userListings.location}</h5>
                   <div class="listing-checkbox user-checkbox">
                     <div class="checkbox-row">
-                      <input autocomplete="off" id="licence" class="checkbox editable" type="checkbox" id="licenseCheck" name="licence" ${license} required>
+                      <input autocomplete="off" id="licence" class="checkbox editable" type="checkbox" name="licence" ${license} required>
                       <label for="licence">
                       <h6>License Required</h6>
                       </label>
                     </div>
                     <div class="checkbox-row">
-                      <input id="delivery" class="checkbox editable" type="checkbox" id="deliveryCheck" name="delivery" ${delivery} required >
+                      <input id="delivery" class="checkbox editable" type="checkbox" name="delivery" ${delivery} required >
                       <label for="delivery">
                       <h6>Delivery Available</h6>
                       </label>
@@ -95,109 +87,59 @@
                   </div>
                 </div>
                 <div class="user-listing-images">
-                  <img src="${userListing.url}" alt="">
+                  <img src="${userListings.url}" alt="">
                 </div>
               </div>
               <div class="user-listing-description">
-                <p contenteditable="true" class="editable">${userListing.description}</p>
+                <p contenteditable="true" class="editable" id="descriptionInput">${userListings.description}</p>
                 <span id="listingHandler"><h6 id="deleteListingBtn">Delete Listing</h6></span>
               </div>
             </div>
         `
+        let update = setInterval(async () => {
 
+          let nameInput = document.querySelector('#nameInput').textContent
+          let priceInput = document.querySelector('#priceInput').textContent
+          let descriptionInput = document.querySelector('#descriptionInput').textContent
+          let locationInput = document.querySelector('#locationInput').textContent
+          let deliveryCheck = document.querySelector('#delivery');
+          let deliveryInput = JSON.stringify(deliveryCheck.checked)
+          let licenseCheck = document.querySelector('#license');
+          let licenseInput = JSON.stringify(license.checked)
 
-          detail.addEventListener('input', async () => {
-            listingHandler.innerHTML = `
-              <h6 id="saveUpdatesBtn">Save Updates</h6>
-            `
-            saveUpdatesBtn.addEventListener('click', async () => {
-              listingHandler.innerHTML = `
-                  <h6 id="deleteListingBtn">Delete Listing</h6>
-              `
-              updateListingDetails()
-            })
-          })
+          let response = await fetch('/updateAnimal', {
+              method: 'post',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+
+                  id: userListings._id,
+                  name: nameInput,
+                  type: userListings.type,
+                  url: userListings.url,
+                  price: priceInput,
+                  rating: userListings.rating,
+                  description: descriptionInput,
+                  quantity: userListings.quantity,
+                  owner: userListings.owner,
+                  license: licenseInput,
+                  delivery: deliveryInput,
+                  comments: userListings.comments,
+                  location: locationInput
+
+              })
+
+          });
+          response ? clearInterval(update) : null
+        },1000)
 
     }
     // end of loop
 
-
-
-    listingDescription = document.querySelector('.user-listing-description')
-    listingHandler = document.querySelector('#listingHandler')
-    savedUpdatesBtn = document.querySelector('#saveUpdatesBtn') || '';
-    window.editableDetails = document.querySelectorAll('.editable') || '';
-
-
-
-    console.log(editableDetails[0].textContent);
-
-
-
-    // for (detail of editableDetails){
-    //   detail.addEventListener('input', async () => {
-    //     listingHandler.innerHTML = `
-    //       <h6 id="saveUpdatesBtn">Save Updates</h6>
-    //     `
-    //     saveUpdatesBtn.addEventListener('click', async () => {
-    //       listingHandler.innerHTML = `
-    //           <h6 id="deleteListingBtn">Delete Listing</h6>
-    //       `
-    //       updateListingDetails()
-    //     })
-    //   })
-    // }
-    //
-    // updateListingDetails = async () => {
-    //   let name = editableDetails[0].textContent;
-    //   let price = editableDetails[1].textContent; //needs to be changed to number parseInt, parseFloat, number
-    //   let location = editableDetails[2].textContent;
-    //   let description = editableDetails[3].textContent;
-    //
-    //   licenseCheck = document.querySelector('#licenseCheck');
-    //
-    //   license == 'checked'
-    //   ? licenseDB = 'true'
-    //   : licenseDB = 'false'
-    //
-    //   delivery == 'checked'
-    //   ? deliveryDB = 'true'
-    //   : deliveryDB = 'false'
-    //
-    //   console.log(name, price, location, description, licenseDB, deliveryDB);
-    //   console.log('saved!');
-    //
-    //   // let response = await fetch('/updateAnimal', {
-    //   //     method: 'POST',
-    //   //     headers: {
-    //   //         'Content-Type': 'application/json'
-    //   //     },
-    //   //     body: JSON.stringify({
-    //   //
-    //   //         name: name,
-    //   //         type: typeInput,
-    //   //         // url: url,
-    //   //         price: parseInt(price),
-    //   //         rating: `${Math.floor(Math.random() * 11)}/10`,
-    //   //         description: description,
-    //   //         quantity: 10,
-    //   //         // owner: currentSession,
-    //   //         license: licenseInput,
-    //   //         delivery: deliveryInput
-    //   //         // comments: []
-    //   //
-    //   //     })
-    //   // });
-    //
-    //
-    //
-    // }
-    // end of update listing
-
-
     console.log('end of func');
   }
-    //myAccount function Ends
+  //myAccount function Ends
 
     myAccount()
 
