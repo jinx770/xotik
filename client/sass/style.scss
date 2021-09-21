@@ -11,8 +11,6 @@ Body {
   margin: auto;
   background: $black;
 }
-
-
 // header set ::::::::::::::::::::::::::::::::::::::
 
 h1 {
@@ -93,6 +91,7 @@ p {
 // buttons begin :::::::::::::::::::::::::::::::::
 
 .button-primary {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,17 +102,60 @@ p {
   background: #2A432F;
   color: #F8F1DE;
   border: 1px solid #2A432F;
-  width: 200px;
+  padding: 0 60px;
+  padding: 0 3rem;
   height: 60px;
   border-radius: 50px;
-  transition: 0.4s;
+  transition: 0.4s ease;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+
+  &::after {
+    font-family: FontAwesome;
+    content: "\f078";
+    font-weight: 400;
+    position: absolute;
+    font-size: 14px;
+    bottom: 40%;
+    left: 70%;
+    border-radius: 80px;
+    opacity: 0;
+    transition: 0.4s easeInOutQuint;
+  }
 
   &:hover {
     border: 1px solid #F8F1DE;
     background: none;
+     padding: 0 4.5rem 0 3rem;
+
+    &::after {
+      opacity: 1;
+      -webkit-animation: slide-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
   }
 }
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(15px);
+            transform: translateX(15px);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(15px);
+            transform: translateX(15px);
+  }
+}
+
 
 .button-secondary {
   display: flex;
@@ -153,6 +195,7 @@ p {
   transition: 0.4s;
 }
 //modal
+
 .modal {
   border: 1px solid $offwhite;
   width: 30%;
@@ -281,29 +324,6 @@ input:-webkit-autofill:hover {
   margin: auto;
 }
 
-.hvr-float {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-
-.hvr-float:active,
-.hvr-float:focus,
-.hvr-float:hover {
-  -webkit-transform: translateY(-8px);
-  transform: translateY(-8px);
-  cursor: pointer;
-  // box-shadow: rgba(0, 0, 0, 0.45) 0px 50px 20px -20px;
-}
-
 .card {
   display: flex;
   flex-direction: column;
@@ -312,8 +332,6 @@ input:-webkit-autofill:hover {
   margin: auto auto 60px;
   height: 325px;
   cursor: pointer;
-
-  &:hover {}
 }
 
 .hvr-float {
@@ -321,7 +339,7 @@ input:-webkit-autofill:hover {
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  // box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: transform;
@@ -336,7 +354,7 @@ input:-webkit-autofill:hover {
   -webkit-transform: translateY(-8px);
   transform: translateY(-8px);
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.45) 0 25px 20px -20px;
+  // box-shadow: rgba(0, 0, 0, 0.45) 0 25px 20px -20px;
 }
 
 .favourite a {
@@ -555,7 +573,7 @@ input:-webkit-autofill:hover {
 // login popover begins ::::::::::::::::::::::::::
 
 .header-popover {
-  padding: 50px 0 30px 0;
+  padding: 50px 0 30px;
   position: fixed;
   right: 2%;
   top: 100px;
@@ -569,7 +587,6 @@ input:-webkit-autofill:hover {
   border-radius: 15px 0 15px 15px;
   backdrop-filter: blur(10px);
 }
-
 
 .header-arrow {
   position: absolute;
@@ -773,6 +790,7 @@ input:-webkit-autofill:hover {
     left: 0;
   }
 }
+
 .checkout-popover-bottom {
   display: flex;
   height: 50px;
@@ -818,7 +836,7 @@ input:-webkit-autofill:hover {
 
 .background-image {
   background-image: url("../img/gecko.jpg");
-  -webkit-mask-image:-webkit-gradient(linear, left 70%, left bottom, from(#262626), to(rgba(#262626, 0)));
+  -webkit-mask-image: -webkit-gradient(linear, left 70%, left bottom, from(#262626), to(rgba(#262626, 0)));
   mask-image: linear-gradient(to bottom, #262626 90%, rgba(0,0,0,0));
   height: 100vh;
   width: 100%;
@@ -1042,9 +1060,7 @@ input:-webkit-autofill:hover {
 
 .contact-faq {
   display: flex;
-  margin: auto;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin: 60px auto;
   flex-direction: row;
   justify-content: space-around;
 }
@@ -1098,7 +1114,7 @@ input:-webkit-autofill:hover {
 
 .contents {
   padding: 2% 18px 0;
-  margin-bottom: 2%;
+  margin-bottom: 20px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
@@ -1313,6 +1329,7 @@ input:-webkit-autofill:hover {
 
 .animal-images {
   margin-top: 30px;
+  margin-bottom: 60px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1419,6 +1436,41 @@ input:-webkit-autofill:hover {
   margin-bottom: 10px;
 }
 
+.question-section {
+  margin-top: 60px;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.questions-two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.delete-question {
+  display: none;
+  cursor: pointer;
+  color: $red;
+}
+
+.qa-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .question-block {
   border: 1px solid $offwhite;
   width: 100%;
@@ -1428,7 +1480,16 @@ input:-webkit-autofill:hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  transition: 0.4s ease;
+
+  &:hover {
+    padding-left: 30px;
+
+    .delete-question {
+      display: block;
+    }
+  }
 }
 
 .question {
@@ -1521,7 +1582,6 @@ input:-webkit-autofill:hover {
 .cart-page-content::-webkit-scrollbar {
   display: none;
 }
-
 
 .cart-page-header {
   margin-top: 100px;
@@ -1816,6 +1876,7 @@ input:-webkit-autofill:hover {
   outline: 0 solid transparent;
 }
 // footer begins ::::::::::::::::::::::::::::::::::
+
 .footer {
   display: flex;
   justify-content: center;
