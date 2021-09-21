@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://localhost:3000/index.html -->
+<html lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index_files/font-awesome.css">
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./index_files/css2" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./index_files/css2(1)" rel="stylesheet">
+  <link rel="stylesheet" href="./index_files/font-awesome.css">
+  <link rel="stylesheet" href="./index_files/style.css">
+  <title></title>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1029.0" data-gr-ext-installed="">
+
+  <!-- resposnive nav -->
+  <div class="responsive-nav">
+    <div class="responsive-nav-top"></div>
+    <div class="responsive-nav-menu"></div>
+    <div class="responsive-nav-top"></div>
+
+  </div>
+   <!-- responsive nav ends -->
+
+  <!-- header begins -->
+
+  <div class="header-background"></div>
+  <div class="header-background-blur"></div>
+
+  <div class="header" id="header">
+    <div class="header-content">
+
+      <img class="header-logo" id="logoBtn" src="./index_files/logo.svg" alt="">
+      <div class="header-nav">
+        <div class="nav-item" id="animalsBtn">
+          <a href="http://localhost:3000/index.html#listingSection">
+            <h5>Animals</h5>
+          </a>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h5>Who We Are</h5>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h5>Create Listing</h5>
+        </div>
+      </div>
+
+      <div class="header-icons">
+        <i class="fa fa-user" aria-hidden="true" id="user"></i>
+        <i class="fa fa-shopping-cart" aria-hidden="true" id="cart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- header popover begins -->
+
+  <div class="header-popover" id="headerPopover">
+    <!-- <div class="header-arrow" id="#headerArrow"></div> -->
+    <div class="popover-exit-btn" id="popoverExit"><i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+
+    <div class="login-popover-content" id="loginContent">
+      <div class="popover-header-top">
+        <h4 id="sessionHeader">User: alder</h4>
+        <br>
+        <h6 class="create-account" id="myAccountBtn">My Account</h6>
+      </div>
+      <input autocomplete="off" id="username" class="input" placeholder="Username" type="text" style="display: none;">
+      <input autocomplete="off" id="password" class="input" placeholder="Password" type="password" style="display: none;">
+      <button id="submitLogin" class="button-secondary">Log Out</button>
+      <h6 class="create-account" id="createAccountBtn" style="display: none;">Create Account</h6>
+    </div>
+
+    <div class="create-account-popover-content" id="createAccountContent">
+      <h4>Create Account</h4>
+      <input class="input" placeholder="Username" type="text" id="usernameCreate">
+      <input class="input" placeholder="Password" type="password" id="passwordCreate">
+      <button class="button-secondary" id="signUpBtn">Sign Up</button>
+    </div>
+
+    <!-- if cart is empty -->
+    <div class="empty-cart-content" id="emptyCartContent">
+      <h4>Cart</h4>
+      <h6>Cart is empty</h6>
+    </div>
+
+    <!-- if cart has items -->
+    <div class="full-cart-content" id="fullCartContent">
+      <h4 class="cart-header">Cart</h4>
+      <div class="cart-item-content">
+
+      </div>
+      <div class="checkout-popover-bottom">
+        <h5>Total:</h5>
+        <h6 class="check-out-btn" onclick="redirect(&#39;/cart.html&#39;)" id="checkOutBtn">Check Out</h6>
+      </div>
+    </div>
+
+  </div>
+  <!-- header popover end -->
+
+  <!-- header ENDS -->
+
+
+  <div class="background-image">
+    <img src="./index_files/gecko.jpg" alt="">
+  </div>
+
+  <div class="hero velocity-animating" id="hero" style="top: calc(4.97381px + 59.6994%); opacity: 0.99499;">
+    <h2 class="xotik">XOTIK</h2>
+    <p class="xotik-about">NZ and AU’s finest, legal, <br>
+      exotic pets. </p>
+    <div class="explore">
+      <button class="button-primary" type="button" id="exploreBtn" name="button">EXPLORE</button>
+    </div>
+  </div>
+
+
+
+  <!-- All Listings -->
+  <h1 class="listings-head" id="listingSection">All Listings</h1>
+
+  <div class="filter-section">
+
+    <div class="search">
+      <input id="searchInput" class="input" type="text" name="" value="" placeholder="Search">
+    </div>
+
+    <div class="inputs">
+      <select id="typeInput" class="select" value="">
+        <option value="" class="disabled-option" disabled="" selected="" hidden="">Pet Type</option>
+        <option value="all">All Listings</option>
+        <option value="aquatic">Aquatic</option>
+        <option value="feline">Feline</option>
+        <option value="feathered">Feathered</option>
+        <option value="reptile">Reptile</option>
+      </select>
+      <select id="filterInput" class="select" value="">
+        <option value="" class="disabled-option" disabled="" selected="" hidden="">Filter</option>
+        <option value="none">None</option>
+        <option value="viewed">Most Viewed</option>
+        <option value="lowest">Lowest to Highest</option>
+        <option value="highest">Highest to Lowest</option>
+      </select>
+    </div>
+
+
+  </div>
+
+
+
+  <!-- Search Container Ends -->
+
+
+  <div class="all-listings">
+
+    <div class="results">
+      <!-- <div class="spinner-box">
+        <div class="pulse-container">
+          <div class="pulse-bubble pulse-bubble-1"></div>
+          <div class="pulse-bubble pulse-bubble-2"></div>
+          <div class="pulse-bubble pulse-bubble-3"></div>
+        </div>
+      </div> -->
+
+      <img class="data-page" src="./index_files/loading.gif">
+    </div>
+    <!-- Card Div Ends -->
+  </div>
+
+
+  <!-- footer begins -->
+
+  <div class="footer">
+
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>XOTIK</h3>
+        <h6>Copyright © 2021, XOTIK</h6>
+      </div>
+      <div class="footer-nav">
+        <div class="nav-item" id="animalsBtn">
+          <h6>Animals</h6>
+        </div>
+        <div class="nav-item" id="whoBtn">
+          <h6>Who We Are</h6>
+        </div>
+        <div class="nav-item" id="trustBtn">
+          <h6>Trust &amp; Safety</h6>
+        </div>
+        <div class="nav-item" id="listingBtn">
+          <h6>Create Listing</h6>
+        </div>
+        <div class="nav-item" id="contactBtn">
+          <h6>Enquire Online</h6>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <div class="newsletter-header">
+          <h5>Sign up to our newsletter.</h5>
+        </div>
+        <div class="newsletter-form">
+          <div class="newsletter-form-input">
+            <input class="input" placeholder="Email" type="text" value="">
+          </div>
+          <button class="button-newsletter">Sign Up</button>
+        </div>
+      </div>
+    </div>
+    <!-- footer-content ends -->
+  </div>
+  <!-- footer ends -->
+
+
+  <div class="modal-here"></div>
+  <script src="./index_files/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="./index_files/velocity.js"></script>
+  <script src="./index_files/script.js"></script>
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

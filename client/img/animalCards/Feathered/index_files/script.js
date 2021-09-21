@@ -992,15 +992,13 @@ let createAlert = (msg) => {
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
-// MOBILE NAV
-// ------------------------------------------------------------------------------------------------------------------------------------
 
 (async () => {
     let touchstartY = 0
     let touchendY = 0
 
     let navSlider = document.querySelector('.header')
+    let responsiveNav = document.querySelector('.responsive-nav')
 
     function swipeDown() {
         if (touchstartY > touchendY) {
@@ -1032,10 +1030,13 @@ let createAlert = (msg) => {
     let touchstartY = 0
     let touchendY = 0
 
+    let navSlider = document.querySelector('.header')
     let responsiveNav = document.querySelector('.responsive-nav')
 
+    console.log(responsiveNav)
+
     function swipeUp() {
-        if (touchstartY > touchendY) {
+        if (touchstartY < touchendY) {
             $('.responsive-nav').velocity({
                 top: '-100%',
             }, {
@@ -1052,11 +1053,13 @@ let createAlert = (msg) => {
 
     responsiveNav.addEventListener('touchend', e => {
         touchstartY = e.changedTouches[0].screenY
-        console.log(touchstartY, touchendY)
         swipeUp()
-        enableScroll();
     });
 })();
+
+
+
+
 
 
 
