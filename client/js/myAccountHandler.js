@@ -126,7 +126,6 @@
                       <h6 id="deleteListingBtn">Delete Listing</h6>
                     </div>
                   </div>
-<<<<<<< HEAD
                   <div class="user-listing-images">
                     <img src="${perAnimal.url}" alt="">
                   </div>
@@ -151,37 +150,6 @@
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-=======
-              `
-
-              let deleteListingBtns = document.querySelectorAll("#deleteListingBtn")
-
-              for (deleteBtn of deleteListingBtns){
-                deleteBtn.addEventListener('click', async () => {
-                  // console.log(perAnimal._id);
-                  let response = await fetch('/removeAnimal', {
-                    method: 'DELETE',
-                    headers: {
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-
-                      id: perAnimal._id,
-
-                    })
-
-                  });
-                  createAlert('Post Deleted');
-                  let refresh = document.querySelector('.modalDone')
-                  refresh.addEventListener('click', () => {
-                    location.reload();
-                    localStorage.setItem('editing', '')
-                  })
-                })
-                //event listener end
-              }
-          }
->>>>>>> 64f9554f77ce123ec33d40b74a731d1ce3fce7a1
 
 
           // so that it doesn't spam errors when you delete a post and selectors can no longer find queries
