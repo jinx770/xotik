@@ -430,7 +430,6 @@ input:-webkit-autofill:hover {
   position: fixed;
   width: 100%;
   height: 100px;
-  overflow: hidden;
   z-index: 99999;
   opacity: 1;
 }
@@ -1816,6 +1815,109 @@ input:-webkit-autofill:hover {
 }
 .newsletter-form .newsletter-form-input input {
   margin-right: 30.5px;
+}
+
+@media only screen and (max-device-width: 768px) {
+  .header-content {
+    width: 80%;
+  }
+  .header-content img {
+    height: 40px;
+  }
+
+  .header-nav {
+    height: 100%;
+    width: 90%;
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .header-logo {
+    height: 45%;
+    margin-right: 90px;
+  }
+
+  .header-icons {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: #F4EDDA;
+  }
+  .header-icons i {
+    margin-left: 30px;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  .header-icons i:hover {
+    opacity: 0.5;
+  }
+
+  .responsive-nav {
+    position: fixed;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    top: -100%;
+    background: #272727;
+    backdrop-filter: blur(10px);
+    z-index: 999999999999;
+  }
+
+  .button-primary {
+    font-size: 14px;
+    padding: 1rem 2rem;
+    height: 50px;
+    border-radius: 50px;
+    transition: 0.4s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+  }
+  .button-primary::after {
+    font-family: FontAwesome;
+    content: "";
+    font-weight: 400;
+    position: absolute;
+    font-size: 14px;
+    bottom: 40%;
+    left: 70%;
+    border-radius: 80px;
+    transition: 0.4s easeInOutQuint;
+  }
+  .button-primary:hover {
+    padding: 1rem 2rem;
+    background: #2A432F;
+    color: #F8F1DE;
+    border: 1px solid #2A432F;
+  }
+  .button-primary:active {
+    border: 1px solid #F8F1DE;
+    background: none;
+  }
+
+  .hero {
+    top: 80%;
+    margin: auto;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+    opacity: 0;
+  }
+
+  .xotik {
+    font-size: 44px;
+  }
+
+  .xotik-about {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .background-image img {
+    object-position: 95% 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
