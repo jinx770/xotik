@@ -11,26 +11,22 @@
     let userDetails = await userResponse.json();
     userDetailParent.innerHTML = '';
     userDetailParent.innerHTML = `
-    <div class="user-details-header">
-      <h5 id="usernameInput">${userDetails[0].username}</h5>
-    </div>
+        <div class="user-details-header">
+          <h5 id="usernameInput">${userDetails[0].username}</h5>
+        </div>
 
+        <div class="user-detals-content">
+          <div class="user-details-top">
+            <h5 contenteditable="true" id="fullName">${userDetails[0].fullName}</h5>
+            <h5 contenteditable="true" id="emailInput">${userDetails[0].email}</h5>
+            <h5 contenteditable="true" id="phoneInput">${userDetails[0].phoneNo}</h5>
+          </div>
 
-
-    <div class="user-detals-content">
-      <div class="user-details-top">
-        <h5 contenteditable="true" id="fullName">${userDetails[0].fullName}</h5>
-        <h5 contenteditable="true" id="emailInput">${userDetails[0].email}</h5>
-        <h5 contenteditable="true" id="phoneInput">${userDetails[0].phoneNo}</h5>
-      </div>
-
-
-
-      <div class="user-details-bottom">
-        <h6>About</h6>
-        <p contenteditable="true" id="descriptionInput">${userDetails[0].description}</p>
-      </div>
-    </div>
+          <div class="user-details-bottom">
+            <h6>About</h6>
+            <p contenteditable="true" id="descriptionInput">${userDetails[0].description}</p>
+          </div>
+        </div>
     `
 
     setInterval(async () => {
