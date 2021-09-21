@@ -210,9 +210,9 @@ listingButton.addEventListener('click', async () => {
 
         //Refreshes for new listing
         let refresh = document.querySelector('.modalDone')
-        // refresh.addEventListener('click', () => {
-        //   window.location.href = "listing.html";
-        // })
+        refresh.addEventListener('click', () => {
+          window.location.href = "listing.html";
+        })
 
     }
 
