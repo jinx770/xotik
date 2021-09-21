@@ -87,7 +87,7 @@
               <div class="user-listing-top">
                 <div class="user-listing-details">
                   <div class="row">
-                    <h4 class="editable userDetailsName" id="nameInput">${userListings.name}</h4>
+                    <h4 class="editable userDetailsName" contenteditable id="nameInput">${userListings.name}</h4>
                     <h4> $ <span contenteditable="true" class="editable" id="priceInput">${userListings.price}</span></h4>
                   </div>
                   <h5 contenteditable="true" class="editable" id="locationInput">${userListings.location}</h5>
@@ -112,7 +112,7 @@
               </div>
               <div class="user-details-bottom">
                 <h6>About</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra eros eget dolor accumsan, nec efficitur mi maximus. Praesent dictum nec diam ut bibendum. Donec pretium dui a dolor vehicula maximus. Curabitur rutrum ex id mattis sollicitudin. Curabitur consectetur volutpat turpis ac scelerisque. Sed ut dui lorem. Aliquam convallis sem in ipsum fringilla bibendum. Duis eget elit in urna convallis fringilla. Fusce eget nisi laoreet, pellentesque libero at, tincidunt felis. Nam malesuada rhoncus ligula non vehicula.</p>
+                <p contentEditable>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra eros eget dolor accumsan, nec efficitur mi maximus. Praesent dictum nec diam ut bibendum. Donec pretium dui a dolor vehicula maximus. Curabitur rutrum ex id mattis sollicitudin. Curabitur consectetur volutpat turpis ac scelerisque. Sed ut dui lorem. Aliquam convallis sem in ipsum fringilla bibendum. Duis eget elit in urna convallis fringilla. Fusce eget nisi laoreet, pellentesque libero at, tincidunt felis. Nam malesuada rhoncus ligula non vehicula.</p>
               </div>
             </div>
         `
