@@ -100,7 +100,7 @@
     let UpdateAnimal = async ( args ) => {
 
         // Creating variables for every argument passed in the function
-        let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = args
+        let { id, animalName, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = args
 
         // Finds the first result for the search query, using its name sets the new fields to the inputted arguments
         // -- Can't comment in any of this as it's also suppose to be on one line, i.e findOneAndUpdate({field: field1}, {$set: {field: field1, field: field1}, {new: true}})
@@ -108,7 +108,7 @@
             _id: id
          }, {
              $set: {
-                 animal: name,
+                 name: animalName,
                  type: type,
                  url: url,
                  price: price,
@@ -254,7 +254,7 @@
     let UpdateUser = async ( args ) => {
 
         // Creating variables for every argument passed in the function
-        let { fullName, username, phoneNo, email, description, password } = args
+        let { fullName, username, phoneNo, email, userDescription, password } = args
         // console.log(args);
 
         User.findOneAndUpdate({
@@ -264,7 +264,7 @@
                  fullName: fullName,
                  phoneNo: phoneNo,
                  email: email,
-                 description: description,
+                 description: userDescription,
              }
          }, {
              new: true
