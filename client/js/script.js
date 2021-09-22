@@ -18,7 +18,6 @@ for (i = 0; i < coll.length; i++) {
 
 window.onload = (event) => {
 
-  setInterval(() => {
 
     if (screen.width < 764) {
 
@@ -29,6 +28,22 @@ window.onload = (event) => {
         duration: 2000,
         easing: 'spring',
         delay: 500,
+      });
+
+      $('#swipeMessage').velocity({
+        opacity: '1',
+      }, {
+        duration: 2000,
+        easing: 'easeInOutQuint',
+        delay: 2000,
+      });
+
+      $('#swipeMessage').velocity({
+        opacity: '0',
+      }, {
+        duration: 2000,
+        easing: 'easeInOutQuint',
+        delay: 2000,
       });
 
     } else {
@@ -44,7 +59,7 @@ window.onload = (event) => {
 
     }
 
-  }, 100)
+
 
 };
 
