@@ -53,23 +53,6 @@ $('#logoBtn').click(function() {
   window.location.href = 'index.html';
 });
 
-$('#animalsBtn').click(function() {
-
-  if (window.location.href = 'index.html') {
-
-    // $([document.documentElement, document.body]).animate({
-    //   scrollTop: $('#listingSection').offset().top
-    // }, 1500);
-    console.log('On inddex.html');
-
-  } else {
-    // window.location.href = 'index.html';
-    console.log('NOT on inddex.html');
-  }
-
-});
-
-//
 $('#whoBtn').click(function() {
   window.location.href = 'about.html';
 })
@@ -77,6 +60,22 @@ $('#whoBtn').click(function() {
 $('#listingBtn').click(function() {
   window.location.href = 'listing.html';
 });
+
+
+
+
+$('#mobileWhoBtn').click(function() {
+  window.location.href = 'about.html';
+})
+
+$('#mobileEnquireBtn').click(function() {
+  window.location.href = 'about.html';
+})
+
+$('#mobileListingBtn').click(function() {
+  window.location.href = 'listing.html';
+});
+
 // header popover begins
 
 
