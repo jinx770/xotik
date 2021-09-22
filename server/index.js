@@ -171,7 +171,9 @@
     let CreateUser = async ( ... args ) => {
 
         // Shorthand for creating variables, already explained :)
-        let { fullName, username, phoneNo, email, description, password } = args
+        let [ fullName, username, phoneNo, email, description, password ] = args
+
+        console.log(args);
 
         // Requesting info from the database, using the username as a query
         let checkUser = await FindUser(username);
