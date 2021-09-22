@@ -1,6 +1,10 @@
+
+
+
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DECLARATIONS
 // ------------------------------------------------------------------------------------------------------------------------------------
+
 window.cartParent = document.querySelector('.cart-page-content') || '';
 window.checkOutButton = document.querySelector('#checkoutButton') || '';
 window.totalCartPage = document.querySelector('.checkout-btn').childNodes[1] || '';

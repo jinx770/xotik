@@ -1,26 +1,32 @@
+
+
+
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DECLARATIONS
 // ------------------------------------------------------------------------------------------------------------------------------------
+
 window.animalData = ''
 window.items = localStorage.getItem('cartItems')
 window.div = document.createElement('div') || '';
+
+window.questionsParent = document.querySelector('.questions-two') || '';
 window.sendComment = document.querySelector('#sendBtn') || '';
+
 window.displayOwner = document.querySelector('.username') || '';
 window.displayLicence = document.querySelector('.licence') || '';
 window.displayImage = document.querySelector('.animal-img') || '';
 window.displayName = document.querySelector('.animal-name') || '';
-window.questionsParent = document.querySelector('.questions-two') || '';
+
 window.displayPrice = document.querySelector('.price-value') || '';
 window.displayDelivery = document.querySelector('.delivery') || '';
 window.addToCartButton = document.querySelector('#addToCart') || '';
 window.questionInput = document.querySelector('#questionInput') || '';
 window.displayLocation = document.querySelector('.sellers-location') || '';
 window.displayDescription = document.querySelector('.animal-description') || '';
+window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 
 localStorage.getItem('loggedIn') === 'true' ? logInStyle() : null
 localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
-
-window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 
 
 
@@ -28,6 +34,7 @@ window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.ge
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// Func that gets ran onload
 let animalDetails = async () => {
 
     // Grabbing individual animal in db through it's id
@@ -77,19 +84,33 @@ let animalDetails = async () => {
 // -- RANDOM STUFF
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// Loop for making an animation as data is loading
 setInterval(async () => {
+
+    // Prevent errors
     try {
+
+        // If animal data
         if (animalData[0].length != 0) {
+
+            // Remove div we created as the data was loading
             div.style.display = 'none'
+
+            // Enable scrolling since there is now data to display
             enableScroll();
         }
+
     } catch {
+
+        // Break thread
         return
     }
 
 }, 100)
 
 
+// Div we create for showing a loading animation while we wait for the database
+// To send us data from our search, time depends on how big the image saved is
 let hideUntilLoaded = () => {
     div.style.width = '100%';
     div.style.height = '100%';
@@ -100,11 +121,17 @@ let hideUntilLoaded = () => {
     div.style.justifyContent = 'center'
     div.style.flexDirection = 'column'
     div.style.alignItems = 'center'
+
+    // Loading gif
     div.innerHTML += `
             <img class='data-page' src='img/loading.gif'>
 
         `
+
+    // Disabling scrolling so the user can go past it
     disableScroll();
+
+    // Adding the div we just created to the body
     document.querySelector('body').appendChild(div);
 }
 
@@ -114,15 +141,27 @@ let hideUntilLoaded = () => {
 // -- COMMENT LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// When send button on the comment section is pressed
 sendComment.addEventListener('click', () => {
+
+    // Adding the input into a comment array
     comments.push([questionInput.value, ''])
+
+    // Sending a comment request which uploads the comment array to our database
     updateCommentRequest(comments)
+
+    // Refreshing comments
     loadComments()
+
+    // Setting input back to nothing
     questionInput.value = ''
 })
 
+// Request to add a comment
 let updateCommentRequest = async () => {
 
+    // Update animal, searches ID and replaces all the content with object below,
+    // Same data gets updated except the new comment array which has all of our comments
     let response = await fetch('/updateAnimal', {
         method: 'post',
         headers: {
@@ -150,56 +189,101 @@ let updateCommentRequest = async () => {
 
 }
 
+// Function for removing a comment when you click on the X icon
 let removeComment = (e) => {
 
+    // Makes sure that the person removing it is the owner of the listing
     if (localStorage.getItem('currentSession') == localStorage.getItem('ownerOfAnimal')) {
 
-        let thingy = document.querySelectorAll('.question-block')
-        let currentElement = thingy[e.getAttribute('data-i')]
+        // Gets current item in array using the int we store on each comment
         let elementInArray = comments[e.getAttribute('data-i')]
 
+        // Removes the comment from the comment array
         removeFromArray(comments, elementInArray)
+
+        // Updates the database with updated comment array
         updateCommentRequest();
+
+        // Refreshes the comments to ensure its updated
         loadComments();
 
     }
 
 }
 
-
+// Checking owner
 let checkLogin = () => {
+
+    // Returns true or false depending on if youre the owner of the item
     return localStorage.getItem('currentSession') === animalData[0].owner ? true : false
 }
 
+// Function that lets you reply to a question
 let answerQuestion = (input) => {
 
+    // If function above returns false
     if (!checkLogin()) {
+
+        // Modal saying you aren't the owner
         createAlert('You are not the owner of this listing!')
+
+        // Ending thread so the user can't continue to type
         return
+
     } else {
 
+        // Getting all question elements
         let thingy = document.querySelectorAll('.question-block')
+
+        // Getting current element using int we stored
         let currentElement = thingy[input.getAttribute('data-i')]
+
+        // Getting the index of the comment in the comments array
         let elementInArray = comments[input.getAttribute('data-i')]
+
+        // Changing the input to nothing
         input.textContent = ''
 
+        // Extra check incase they login after we ran the intial
         let loop = setInterval(() => {
+
+            // If not owner of listing
             if (!checkLogin()) {
+
+                // Say no
                 createAlert('You are not the owner of this listing!')
+
+                // Cease loop
                 clearInterval(loop)
+
+                // End thread
                 return
+
             } else {
+
+                // Loop update comment answer as the text content
                 elementInArray[1] = input.textContent
+
+                // Loop send request
                 updateCommentRequest();
             }
         }, 1000)
     }
 }
 
+// Function for displaying all comments
 let loadComments = () => {
+
+    // Removing previous comments
     questionsParent.innerHTML = ''
+
+    // For storing a data attribute to allow us to get individual comments later
     let i = 0
+
+    // Loop through all comments, seperating them into individuals called comment
     for (comment of animalData[0].comments) {
+
+        // Creating div for each comment
         questionsParent.innerHTML += `
                 <div class="question-block">
                   <div onclick="removeComment(this)" data-i='${i}' class="delete-question">
@@ -217,15 +301,17 @@ let loadComments = () => {
                   </div>
                 </div>
             `
+
+        // Adding 1 each time we loop through
         i++
 
+        // Adding class if youre the owner, used for showing the hover X effect on a comment
         let block = document.querySelector(".question-block")
         localStorage.getItem("currentSession") === localStorage.getItem("ownerOfAnimal") ?
             block.className = "question-block question-hover" :
             block.className = "question-block"
     }
 }
-
 
 
 

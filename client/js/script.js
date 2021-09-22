@@ -256,7 +256,6 @@ $('#cart').click(function() {
 $('#popoverExit').click(function() {
 
     $('#headerPopover').addClass('checked');
-
     $('#headerPopover').velocity({
         height: '0px',
     }, {
@@ -281,36 +280,25 @@ $('#popoverExit').click(function() {
 
 });
 
-
-
-
 $('#popoverExit').click(function() {
     $('#headerPopover').fadeOut('slow');
     $('#loginContent').css('display', 'none');
     $('#cartContent').css('display', 'none');
 });
 
-
-
 // eplore button
-
 $('#exploreBtn').click(function() {
     $([document.documentElement, document.body]).animate({
         scrollTop: $('#listingSection').offset().top
     }, 1500);
 })
 
-
-
-
 // asking questions
-
 $('#askQuestionBtn').click(function() {
     $('#askQuestionForm').css('display', 'flex');
     $('#askQuestionForm').hide();
     $('#askQuestionForm').show('slow');
 })
-
 
 $('#sendBtn').click(function() {
 
@@ -322,12 +310,11 @@ $('#questionExitBtn').click(function() {
 })
 
 
+// JQUERY IS NOW ILLEGAL FROM THIS LINE ONWARDS !!!
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Logic check for the current session, gotta define it initially
 window.loggedIn = false
@@ -1041,17 +1028,27 @@ let createAlert = ( msg ) => {
 // MOBILE NAV
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// Function for mobile app
 let startSwipeListeners = () => {
 
+    // Iife to prevent globals overriding
     (async () => {
+
+        // Start positions for when the user clicks
         let touchstartY = 0
         let touchendY = 0
 
+        // Vars declarations
         let responsiveNav = document.querySelector('.responsive-nav')
         let navSlider = document.querySelector('.header')
 
+        // Function that checks the distance between point A and B
         function swipeDown() {
+
+            // If key down is lower than key up
             if (touchstartY > touchendY) {
+
+                // Shows mobile nav
                 $('.responsive-nav').velocity({
                     top: '0',
                 }, {
@@ -1059,14 +1056,18 @@ let startSwipeListeners = () => {
                     easing: 'easeInOutQuint',
                     delay: 0,
                 });
+
             }
+
         };
 
+        // Listens and disables scroll if they close the nav for a second
         navSlider.addEventListener('touchstart', e => {
             disableScroll();
             touchstartY = e.changedTouches[0].screenY
         });
 
+        // Checks the direction
         navSlider.addEventListener('touchend', e => {
             touchstartY = e.changedTouches[0].screenY
             if (e.target.id == "user" || e.target.id == "cart") {
@@ -1077,6 +1078,8 @@ let startSwipeListeners = () => {
         });
     })();
 
+    // Copy and pasted the above code, except its ran on the div that gets created above
+    // Except its been reverted for swiping up
     (async () => {
         let touchstartY = 0
         let touchendY = 0
