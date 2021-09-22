@@ -729,11 +729,11 @@ let createAccHandler = async () => {
         },
         body: JSON.stringify({
 
-          fullName: '.',
+          fullName: 'Click me to add your name!',
           username: username,
-          phoneNo: '.',
-          email: '.',
-          description: '.',
+          phoneNo: 'Click me to add a phone number!',
+          email: 'Click me to add an email!',
+          description: 'Click me to add a description!',
           password: password
 
         })
