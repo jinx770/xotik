@@ -100,6 +100,7 @@ let removeListing = async (e) => {
     })
 }
 
+
 let updateListingCard = async () => {
 
     getPageElements()

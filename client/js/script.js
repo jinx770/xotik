@@ -713,6 +713,9 @@ let createAccHandler = async () => {
     let username = usernameCreate.value;
     let password = passwordCreate.value;
 
+    console.log(username);
+    console.log(password);
+
     if (username == '' || password == '') {
       createAlert('Please make sure all fields are filled out!')
       return
