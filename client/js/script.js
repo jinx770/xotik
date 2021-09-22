@@ -18,14 +18,33 @@ for (i = 0; i < coll.length; i++) {
 
 window.onload = (event) => {
 
-  $('#hero').velocity({
-    top: '25%',
-    opacity: '1',
-  }, {
-    duration: 2000,
-    easing: 'spring',
-    delay: 500,
-  });
+  setInterval(() => {
+
+    if (screen.width < 764) {
+
+      $('#hero').velocity({
+        top: '60%',
+        opacity: '1',
+      }, {
+        duration: 2000,
+        easing: 'spring',
+        delay: 500,
+      });
+
+    } else {
+
+      $('#hero').velocity({
+        top: '25%',
+        opacity: '1',
+      }, {
+        duration: 2000,
+        easing: 'spring',
+        delay: 500,
+      });
+
+    }
+
+  }, 100)
 
 };
 
@@ -285,6 +304,7 @@ $('#questionExitBtn').click(function() {
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 // Logic check for the current session, gotta define it initially
@@ -972,6 +992,85 @@ let createAlert = (msg) => {
   disableScroll();
 
 }
+
+
+
+(async () => {
+  let touchstartY = 0
+  let touchendY = 0
+
+  let navSlider = document.querySelector('.header')
+
+  function swipeDown() {
+    if (touchstartY > touchendY) {
+      $('.responsive-nav').velocity({
+        top: '0',
+      }, {
+        duration: 1000,
+        easing: 'easeInOutQuint',
+        delay: 0,
+      });
+
+
+
+    }
+  };
+
+  navSlider.addEventListener('touchstart', e => {
+    disableScroll();
+    touchstartY = e.changedTouches[0].screenY
+  });
+
+
+
+  navSlider.addEventListener('touchend', e => {
+    touchstartY = e.changedTouches[0].screenY
+    swipeDown();
+  });
+})();
+
+
+
+
+
+
+(async () => {
+  let touchstartY = 0
+  let touchendY = 0
+
+
+
+  let responsiveNav = document.querySelector('.responsive-nav')
+
+
+
+  function swipeUp() {
+    if (touchstartY > touchendY) {
+      $('.responsive-nav').velocity({
+        top: '-100%',
+      }, {
+        duration: 1000,
+        easing: 'easeInOutQuint',
+        delay: 0,
+      });
+    }
+  };
+
+
+
+  responsiveNav.addEventListener('touchstart', e => {
+    touchstartY = e.changedTouches[0].screenY
+  });
+
+
+  responsiveNav.addEventListener('touchend', e => {
+    touchstartY = e.changedTouches[0].screenY
+    console.log(touchstartY, touchendY)
+    swipeUp()
+    enableScroll();
+  });
+})();
+
 
 
 
