@@ -1,8 +1,6 @@
-
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DECLARATIONS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
 window.animalData = ''
 window.items = localStorage.getItem('cartItems')
 window.div = document.createElement('div') || '';
@@ -152,7 +150,7 @@ let updateCommentRequest = async () => {
 
 }
 
-let removeComment = ( e ) => {
+let removeComment = (e) => {
 
     if (localStorage.getItem('currentSession') == localStorage.getItem('ownerOfAnimal')) {
 
@@ -173,7 +171,7 @@ let checkLogin = () => {
     return localStorage.getItem('currentSession') === animalData[0].owner ? true : false
 }
 
-let answerQuestion = ( input ) => {
+let answerQuestion = (input) => {
 
     if (!checkLogin()) {
         createAlert('You are not the owner of this listing!')
@@ -183,7 +181,7 @@ let answerQuestion = ( input ) => {
         let thingy = document.querySelectorAll('.question-block')
         let currentElement = thingy[input.getAttribute('data-i')]
         let elementInArray = comments[input.getAttribute('data-i')]
-        input.textContent=''
+        input.textContent = ''
 
         let loop = setInterval(() => {
             if (!checkLogin()) {
@@ -222,9 +220,9 @@ let loadComments = () => {
         i++
 
         let block = document.querySelector(".question-block")
-        localStorage.getItem("currentSession") === localStorage.getItem("ownerOfAnimal")
-            ? block.className = "question-block question-hover"
-            : block.className = "question-block"
+        localStorage.getItem("currentSession") === localStorage.getItem("ownerOfAnimal") ?
+            block.className = "question-block question-hover" :
+            block.className = "question-block"
     }
 }
 

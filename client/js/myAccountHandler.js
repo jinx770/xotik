@@ -1,5 +1,3 @@
-
-
 let getPageElements = () => {
 
     window.usernameInput = document.querySelector('#usernameInput') || '';
@@ -117,7 +115,9 @@ let updateListingCard = async () => {
 
         let response = await fetch('/updateAnimal', {
             method: 'post',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
 
                 id: currentItem._id,
@@ -212,9 +212,9 @@ let myAnimals = async () => {
 }
 
 let updateLoop = setInterval(function() {
-    localStorage.currentSession === "null"
-        ? window.location.href = "/index.html"
-        : null
+    localStorage.currentSession === "null" ?
+        window.location.href = "/index.html" :
+        null
     updateListingCard();
 }, 700);
 

@@ -1,4 +1,4 @@
-( async () => {
+(async () => {
 
 
 
@@ -7,7 +7,7 @@
     // ------------------------------------------------------------------------------------------------------------------------------------
 
     let bodyParser = require('body-parser');
-    let mongoose = require('mongoose');  // connecting and talking to mongodb
+    let mongoose = require('mongoose'); // connecting and talking to mongodb
     let cors = require('cors'); // cross origin restriction policy -- cross origin resource sharing
     let bcrypt = require('bcryptjs'); // encryption and decryption of data
     let config = require('./config.json')
@@ -25,11 +25,11 @@
     // ------------------------------------------------------------------------------------------------------------------------------------
 
     // Function for creating an animal using our createAnimal method in server.js
-    let CreateAnimal = async ( ... args ) => {
+    let CreateAnimal = async (...args) => {
 
         // Creating variables for every argument passed in the function
         // This purely avoids having to do spam variables and we can do it all at once!
-        let [ name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location ] = args
+        let [name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location] = args
 
         // Checks to see if the animal being created already exists
         // Returning the animal if true and returning false if it cant be found
@@ -42,22 +42,37 @@
         // Ternary operator, now that we've got the animal, we can check to see if the name already exists in the database
         // Can't comment on each line here since it's technically one line, i.e (condition) ? success : fail, I've just seperated it so its easier to read,
         // If the name already exists it'll return a statement saying it exists, if it doesnt then it creates a new animal using our schema in backEnd/models/animal.js
-        newAnimal === name
-            ? console.log(` RESULT //
-            cannot find animal \n`)
-            : (
-                new Animal({ name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location }).save()
-                && console.log(` RESULT //
+        newAnimal === name ?
+            console.log(` RESULT //
+            cannot find animal \n`) :
+            (
+                new Animal({
+                    name,
+                    type,
+                    url,
+                    price,
+                    rating,
+                    description,
+                    quantity,
+                    owner,
+                    license,
+                    delivery,
+                    comments,
+                    location
+                }).save() &&
+                console.log(` RESULT //
             animal successfully added \n`)
             )
 
     }
 
     // Basic function for finding an animal with a query
-    let FindAnimal = async ( args ) => {
+    let FindAnimal = async (args) => {
 
         // Uses the find method which returns all data with the relevant field, returns what it finds
-        let foundAnimal = await Animal.find({ name: args });
+        let foundAnimal = await Animal.find({
+            name: args
+        });
 
         // If the returned result character count is 0 then it returns false
         // -- The find method won't error or display undefined, just an empty array, which is why we check its length
@@ -69,17 +84,21 @@
     }
 
     // The same as above but passing through animal id
-    let FindAnimalById = async ( args ) => {
+    let FindAnimalById = async (args) => {
 
-        let foundAnimal = await Animal.find({ _id: args })
+        let foundAnimal = await Animal.find({
+            _id: args
+        })
         let animalExists = foundAnimal.length === 0 ? false : foundAnimal
         return animalExists
     }
 
     // The same as above but passing through owner
-    let FindAnimalByOwner = async ( args ) => {
+    let FindAnimalByOwner = async (args) => {
 
-        let foundAnimal = await Animal.find({ owner: args })
+        let foundAnimal = await Animal.find({
+            owner: args
+        })
         let animalExists = foundAnimal.length === 0 ? false : foundAnimal
         return animalExists
 
@@ -97,33 +116,47 @@
     }
 
     // Function for updating the animals in database
-    let UpdateAnimal = async ( args ) => {
+    let UpdateAnimal = async (args) => {
 
         // Creating variables for every argument passed in the function
-        let { id, animalName, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = args
+        let {
+            id,
+            animalName,
+            type,
+            url,
+            price,
+            rating,
+            description,
+            quantity,
+            owner,
+            license,
+            delivery,
+            comments,
+            location
+        } = args
 
         // Finds the first result for the search query, using its name sets the new fields to the inputted arguments
         // -- Can't comment in any of this as it's also suppose to be on one line, i.e findOneAndUpdate({field: field1}, {$set: {field: field1, field: field1}, {new: true}})
         Animal.findOneAndUpdate({
-            _id: id
-         }, {
-             $set: {
-                 name: animalName,
-                 type: type,
-                 url: url,
-                 price: price,
-                 rating: rating,
-                 description: description,
-                 quantity: quantity,
-                 owner: owner,
-                 license: license,
-                 delivery: delivery,
-                 comments: comments,
-                 location: location
-             }
-         }, {
-             new: true
-         },
+                _id: id
+            }, {
+                $set: {
+                    name: animalName,
+                    type: type,
+                    url: url,
+                    price: price,
+                    rating: rating,
+                    description: description,
+                    quantity: quantity,
+                    owner: owner,
+                    license: license,
+                    delivery: delivery,
+                    comments: comments,
+                    location: location
+                }
+            }, {
+                new: true
+            },
             (err, doc) => {
 
                 // If something happens such as mongodb is down, it wont error but it'll console log something went wrong
@@ -135,28 +168,30 @@
     }
 
     // Function for removing an animal from the database
-    let RemoveAnimal = async ( arg ) => {
+    let RemoveAnimal = async (arg) => {
 
         // Attempting to get an animal document result from the database using the name as a query
-        let foundAnimal = await Animal.find({ _id: arg });
+        let foundAnimal = await Animal.find({
+            _id: arg
+        });
 
         // Checking to see if returned value is empty - error prevention
         let checkAnimal = foundAnimal.length === 0;
 
         // The condition would result in true, meaning it will move onto the deleteOne function and delete the returned animal from the database
         !checkAnimal
-            ? (
-                Animal.deleteOne(
-                    {
+            ?
+            (
+                Animal.deleteOne({
                         _id: arg
                     },
-                        (err, success) => {
-                            console.log(` RESULT //
+                    (err, success) => {
+                        console.log(` RESULT //
             successfully deleted animal \n`)
-                        }
-                    )
+                    }
                 )
-            : console.log(` RESULT //
+            ) :
+            console.log(` RESULT //
             unable to find animal to delete \n`)
 
     }
@@ -168,10 +203,10 @@
     // ------------------------------------------------------------------------------------------------------------------------------------
 
     // Function for creating a new login
-    let CreateUser = async ( ... args ) => {
+    let CreateUser = async (...args) => {
 
         // Shorthand for creating variables, already explained :)
-        let [ fullName, username, phoneNo, email, description, password ] = args
+        let [fullName, username, phoneNo, email, description, password] = args
 
         console.log(args);
 
@@ -182,47 +217,56 @@
         let newUser = checkUser[0] && checkUser[0].username || ''
 
         // If user exists then return user already exists, if it doesn't then creating and save the new user
-        newUser === username
-            ? console.log(` RESULT //
-            user already exists \n`)
-            : ( new User({ fullName, username, phoneNo, email, description, password }).save() && console.log(` RESULT //
+        newUser === username ?
+            console.log(` RESULT //
+            user already exists \n`) :
+            (new User({
+                fullName,
+                username,
+                phoneNo,
+                email,
+                description,
+                password
+            }).save() && console.log(` RESULT //
             created user \n`))
     }
 
-    let HashPassword = async ( password ) => {
+    let HashPassword = async (password) => {
 
-      // Bcrypt - how many hashing rounds are done, more rounds = more encrypted
-      const saltRounds = 5;
+        // Bcrypt - how many hashing rounds are done, more rounds = more encrypted
+        const saltRounds = 5;
 
-      // Hashing/Encrypting password
-      const hashedPassword = bcrypt.hashSync(password, saltRounds);
+        // Hashing/Encrypting password
+        const hashedPassword = bcrypt.hashSync(password, saltRounds);
 
-      return hashedPassword;
+        return hashedPassword;
 
     }
 
     // Basic find user function
-    let FindUser = async ( username, password ) => {
+    let FindUser = async (username, password) => {
 
         // Makes a request from the database
         // Looking for anything with its username field set to whatever argument gets passed
-        let foundUser = await User.find({ username: username });
+        let foundUser = await User.find({
+            username: username
+        });
 
         // If user does not exist return false
-        if (typeof foundUser[0] === 'undefined'){
-          return false;
+        if (typeof foundUser[0] === 'undefined') {
+            return false;
         }
 
-        if (username && password){
+        if (username && password) {
 
-          let passwordDB = foundUser[0].password
+            let passwordDB = foundUser[0].password
 
-          //bcrypt function that compares input password to the hashed password
-          let match = await bcrypt.compare(password, passwordDB);
+            //bcrypt function that compares input password to the hashed password
+            let match = await bcrypt.compare(password, passwordDB);
 
-          let result = match ? true : false
+            let result = match ? true : false
 
-          return result
+            return result
         }
 
         // Makes sure it exists, and isn't just an empty array, if it is then return false
@@ -235,8 +279,10 @@
     }
 
     // Returning userdetails
-    let FindUserDetails = async ( username ) => {
-        let foundUser = await User.find({ username: username });
+    let FindUserDetails = async (username) => {
+        let foundUser = await User.find({
+            username: username
+        });
         // console.log(foundUser);
         return foundUser;
     }
@@ -253,24 +299,31 @@
     }
 
     // Function for updating the animals in database
-    let UpdateUser = async ( args ) => {
+    let UpdateUser = async (args) => {
 
         // Creating variables for every argument passed in the function
-        let { fullName, username, phoneNo, email, userDescription, password } = args
+        let {
+            fullName,
+            username,
+            phoneNo,
+            email,
+            userDescription,
+            password
+        } = args
         // console.log(args);
 
         User.findOneAndUpdate({
-            username: username
-         }, {
-             $set: {
-                 fullName: fullName,
-                 phoneNo: phoneNo,
-                 email: email,
-                 description: userDescription,
-             }
-         }, {
-             new: true
-         },
+                username: username
+            }, {
+                $set: {
+                    fullName: fullName,
+                    phoneNo: phoneNo,
+                    email: email,
+                    description: userDescription,
+                }
+            }, {
+                new: true
+            },
             (err, doc) => {
 
                 // If something happens such as mongodb is down, it wont error but it'll console log something went wrong
@@ -282,10 +335,12 @@
     }
 
     // Remove user from database function
-    let RemoveUser = async ( arg ) => {
+    let RemoveUser = async (arg) => {
 
         // Makes a request to the database with username as its search query
-        let foundUser = await User.find({ username: arg })
+        let foundUser = await User.find({
+            username: arg
+        })
 
         // Checks to see if its not an empty array, returns the actual user if its not
         let checkUser = foundUser.length === 0 ? '' : foundUser
@@ -295,10 +350,14 @@
 
         // Deletes the entire document if the username matches
         // Logs results with a right arrow function
-        userExists === arg
-            ? ( User.deleteOne({username: arg}, () => {console.log(` RESULT //
-            successfully deleted user \n`)}) )
-            :         console.log(` RESULT //
+        userExists === arg ?
+            (User.deleteOne({
+                username: arg
+            }, () => {
+                console.log(` RESULT //
+            successfully deleted user \n`)
+            })) :
+            console.log(` RESULT //
             unable to find user \n`)
 
     }
@@ -314,7 +373,22 @@
     console.log('Running...\n')
 
     // Export our functions to the server.js so they still get ran after we require them
-    module.exports = {  CreateAnimal, FindAnimal, FindEveryAnimal, UpdateAnimal, RemoveAnimal, CreateUser, FindUser, FindEveryUser, RemoveUser, HashPassword, FindAnimalById, FindAnimalByOwner, FindUserDetails, UpdateUser}
+    module.exports = {
+        CreateAnimal,
+        FindAnimal,
+        FindEveryAnimal,
+        UpdateAnimal,
+        RemoveAnimal,
+        CreateUser,
+        FindUser,
+        FindEveryUser,
+        RemoveUser,
+        HashPassword,
+        FindAnimalById,
+        FindAnimalByOwner,
+        FindUserDetails,
+        UpdateUser
+    }
 
 
 })();
