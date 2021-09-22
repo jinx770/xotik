@@ -1078,16 +1078,16 @@ let createAlert = (msg) => {
 // STARTUP TASKS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-<<<<<<< HEAD
+
 
 
 window.location.href == 'http://localhost:3000/index.html#listingSection' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
-=======
+
 window.location.href == 'http://localhost:3000' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
->>>>>>> 5a0ec6d64a8c97bddf99feb6336942c91d0fb484
+
 refreshElements();
 setupEventListeners();
 setupFilters();

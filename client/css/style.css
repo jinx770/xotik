@@ -1,4 +1,3 @@
-@charset "UTF-8";
 Body {
   width: 100%;
   height: 100%;
@@ -7,7 +6,7 @@ Body {
 }
 
 h1 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 70px;
   font-weight: 600;
   color: #F8F1DE;
@@ -15,7 +14,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: 40px;
   font-weight: 400;
   color: #F8F1DE;
@@ -23,7 +22,7 @@ h2 {
 }
 
 h3 {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: 30px;
   font-weight: 400;
   color: #F8F1DE;
@@ -31,7 +30,7 @@ h3 {
 }
 
 h4 {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: 24px;
   font-weight: 200;
   color: #F8F1DE;
@@ -39,7 +38,7 @@ h4 {
 }
 
 h5 {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: 16px;
   font-weight: 200;
   color: #F8F1DE;
@@ -47,7 +46,7 @@ h5 {
 }
 
 h6 {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: 12px;
   font-weight: 400;
   color: #F8F1DE;
@@ -55,7 +54,7 @@ h6 {
 }
 
 p {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: 16px;
   font-weight: 200;
   color: #F8F1DE;
@@ -86,7 +85,7 @@ p {
   align-items: center;
   font-size: 20px;
   font-weight: 400;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   cursor: pointer;
   background: #2A432F;
   color: #F8F1DE;
@@ -146,7 +145,7 @@ p {
   align-items: center;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   cursor: pointer;
   background: none;
   color: #F8F1DE;
@@ -166,7 +165,7 @@ p {
   align-items: center;
   font-size: 12px;
   font-weight: 400;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   cursor: pointer;
   background: none;
   color: #F8F1DE;
@@ -227,7 +226,7 @@ p {
   border-bottom: 1px solid #F8F1DE;
   font-size: 16px;
   color: #F8F1DE;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   margin-bottom: 30px;
   padding: 5px 30px;
 }
@@ -253,7 +252,7 @@ input:-webkit-autofill:hover {
   border-bottom: 1px solid #F8F1DE;
   font-size: 16px;
   color: #F8F1DE;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   margin-bottom: 30px;
   padding: 5px 30px;
 }
@@ -262,7 +261,7 @@ input:-webkit-autofill:hover {
   width: 90%;
   border: 1px solid #F8F1DE;
   background: none;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: 16px;
   border-radius: 15px;
   padding: 20px 30px;
@@ -274,7 +273,7 @@ input:-webkit-autofill:hover {
   color: #F8F1DE;
   opacity: 0.3;
   font-size: 16px;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
 }
 
 .all-listings {
@@ -295,6 +294,7 @@ input:-webkit-autofill:hover {
   height: 325px;
   cursor: pointer;
 }
+
 .hvr-float {
   display: inline-block;
   vertical-align: middle;
@@ -540,7 +540,7 @@ input:-webkit-autofill:hover {
   background: #F8F1DE;
   top: 0;
   right: 0;
-  content: "";
+  content: '';
   transform: rotate(45deg);
   margin-top: -6px;
 }
@@ -788,7 +788,7 @@ input:-webkit-autofill:hover {
 }
 
 .xotik {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10vw;
   font-weight: 700;
   color: #f4edda;
@@ -1028,7 +1028,7 @@ input:-webkit-autofill:hover {
 }
 
 .collapsible:after {
-  content: "+";
+  content: '\002B';
   color: #F8F1DE;
   font-weight: bold;
   float: right;
@@ -1036,7 +1036,7 @@ input:-webkit-autofill:hover {
 }
 
 .active:after {
-  content: "−";
+  content: "\2212";
 }
 
 .contents {
@@ -1543,7 +1543,7 @@ input:-webkit-autofill:hover {
   width: 40%;
 }
 .cart-page-item-details h2 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 24px;
   margin-top: 5px;
@@ -1624,7 +1624,7 @@ input:-webkit-autofill:hover {
   padding-bottom: 10px;
 }
 .user-listing-header h4 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
 }
 .user-listing-header h6 {
@@ -1795,7 +1795,7 @@ input:-webkit-autofill:hover {
   width: 30%;
 }
 .footer-logo h3 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
@@ -1828,7 +1828,6 @@ input:-webkit-autofill:hover {
 .newsletter-form .newsletter-form-input input {
   margin-right: 30.5px;
 }
-
 
 @media only screen and (max-device-width: 425px) {
   .footer {
@@ -1880,7 +1879,7 @@ input:-webkit-autofill:hover {
   }
 
   .partner1,
-.partner2 {
+  .partner2 {
     width: 45%;
   }
 
@@ -1900,7 +1899,7 @@ input:-webkit-autofill:hover {
   }
 
   .safety-text,
-.safety-text-content {
+  .safety-text-content {
     width: 100%;
   }
 
@@ -1917,7 +1916,7 @@ input:-webkit-autofill:hover {
   }
 
   .cert,
-.enclosure {
+  .enclosure {
     width: 15%;
     padding-right: 5%;
   }
@@ -1927,12 +1926,12 @@ input:-webkit-autofill:hover {
   }
 
   .faq,
-.contact {
+  .contact {
     width: 90%;
   }
 
   .left-col,
-.right-col {
+  .right-col {
     min-width: 80%;
     margin: auto;
   }
@@ -1955,8 +1954,8 @@ input:-webkit-autofill:hover {
   }
 
   .add-img-btn,
-.ignore-me,
-.listing-image {
+  .ignore-me,
+  .listing-image {
     width: 80%;
   }
 
@@ -1983,7 +1982,6 @@ input:-webkit-autofill:hover {
   }
 }
 @media only screen and (max-device-width: 768px) {
-
   .header-content {
     width: 80%;
   }
@@ -2132,8 +2130,8 @@ input:-webkit-autofill:hover {
 
   .background-image img {
     object-position: 95% 100%;
+  }
 
-   
   .footer {
     height: 150px;
   }
@@ -2175,7 +2173,7 @@ input:-webkit-autofill:hover {
   }
 
   .partner1,
-.partner2 {
+  .partner2 {
     width: 40%;
   }
 
@@ -2195,7 +2193,7 @@ input:-webkit-autofill:hover {
   }
 
   .safety-text,
-.safety-text-content {
+  .safety-text-content {
     width: 100%;
   }
 
@@ -2212,7 +2210,7 @@ input:-webkit-autofill:hover {
   }
 
   .cert,
-.enclosure {
+  .enclosure {
     width: 15%;
     padding-right: 5%;
   }
@@ -2222,12 +2220,12 @@ input:-webkit-autofill:hover {
   }
 
   .faq,
-.contact {
+  .contact {
     width: 90%;
   }
 
   .left-col,
-.right-col {
+  .right-col {
     min-width: 80%;
     margin: auto;
   }
@@ -2254,8 +2252,8 @@ input:-webkit-autofill:hover {
   }
 
   .add-img-btn,
-.ignore-me,
-.listing-image {
+  .ignore-me,
+  .listing-image {
     width: 80%;
   }
 
@@ -2285,7 +2283,6 @@ input:-webkit-autofill:hover {
   .cart-page-item {
     margin-bottom: 60px;
   }
-    
 }
 
 /*# sourceMappingURL=style.css.map */
