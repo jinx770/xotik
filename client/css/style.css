@@ -1,8 +1,10 @@
 Body {
+  position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   margin: auto;
   background: #272727;
+  padding-bottom: 200px;
 }
 
 h1 {
@@ -514,7 +516,7 @@ input:-webkit-autofill:hover {
 }
 
 .swipe-message {
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 105px;
   text-align: center;
@@ -864,7 +866,7 @@ input:-webkit-autofill:hover {
   flex-direction: column;
   position: absolute;
   margin: auto;
-  top: 40%;
+  top: 300px;
   left: 8%;
   opacity: 0;
 }
@@ -1485,7 +1487,6 @@ input:-webkit-autofill:hover {
 }
 
 .question {
-  width: 85%;
   border-bottom: 1px solid #F8F1DE;
   margin: 20px 50px 10px;
   padding-bottom: 10px;
@@ -1495,7 +1496,6 @@ input:-webkit-autofill:hover {
 }
 
 .answer {
-  width: 85%;
   margin: 0 50px 20px;
   display: flex;
   flex-direction: row;
@@ -1854,6 +1854,8 @@ input:-webkit-autofill:hover {
 }
 
 .footer {
+  position: absolute;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2062,8 +2064,21 @@ input:-webkit-autofill:hover {
   .add-images-section h5 {
     text-align: center;
   }
+
+  .animal-images {
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .animal-images .main-image {
+    width: 100%;
+    height: 30vh;
+  }
 }
-@media only screen and (max-device-width: 768px) {
+@media only screen and (max-device-width: 770px) {
+  .inputs {
+    width: 100%;
+  }
+
   .header-content {
     width: 80%;
   }
@@ -2192,7 +2207,7 @@ input:-webkit-autofill:hover {
   }
 
   .hero {
-    top: 80%;
+    top: 550px;
     margin: auto;
     width: 80%;
     margin: auto;
@@ -2211,6 +2226,23 @@ input:-webkit-autofill:hover {
 
   .background-image img {
     object-position: 95% 100%;
+  }
+
+  .filter-section {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .inputs {
+    width: 100%;
+    flex-direction: column;
+  }
+  .inputs .select {
+    width: 100%;
   }
 
   .footer {
@@ -2317,11 +2349,16 @@ input:-webkit-autofill:hover {
   }
 
   #location {
-    width: 90%;
+    width: 80%;
   }
 
   #description {
-    width: 90%;
+    width: 80%;
+  }
+
+  .input-sml,
+  .select {
+    width: 100%;
   }
 
   .listing-checkbox {
@@ -2356,13 +2393,108 @@ input:-webkit-autofill:hover {
     text-align: center;
   }
 
+  .listing-right {
+    margin-bottom: -60px;
+  }
+
   .cart-page-content {
-    width: 90%;
-    min-height: auto;
+    min-height: 500px;
+    padding-top: 150px;
+    width: 80%;
   }
 
   .cart-page-item {
-    margin-bottom: 60px;
+    margin-bottom: 0;
+    height: 150px;
+  }
+
+  .cart-page-img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .cart-page-item-text {
+    justify-content: space-between;
+  }
+
+  .cart-page-item-details {
+    margin-left: 30px;
+    justify-content: space-between;
+    height: 100%;
+    width: 40%;
+  }
+  .cart-page-item-details h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  .cart-page-item-details h6 {
+    font-size: 10px;
+  }
+  .cart-page-item-details .cart-remove-btn {
+    width: 48px;
+  }
+
+  .cart-page-item-price {
+    width: 40%;
+    align-items: flex-start;
+  }
+  .cart-page-item-price h2 {
+    font-size: 16px;
+  }
+
+  .checkout-btn {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .checkout-btn h4 {
+    margin-bottom: 30px;
+  }
+
+  .user-content {
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+  }
+
+  .user-details {
+    width: 75%;
+  }
+
+  .user-listing-section {
+    width: 100%;
+  }
+
+  .animal-images {
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .animal-images .main-image {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .listing-price {
+    flex-direction: column;
+  }
+
+  .question-section {
+    width: 80%;
+    margin-top: 40px;
+  }
+
+  .question-block {
+    border-radius: 50px;
+  }
+
+  .ask-question input {
+    width: 60%;
   }
 }
 

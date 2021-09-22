@@ -17,10 +17,10 @@ for (i = 0; i < coll.length; i++) {
 window.onload = (event) => {
 
 
-    if (screen.width < 764) {
+    if (screen.width < 778) {
 
       $('#hero').velocity({
-        top: '60%',
+        top: '500px',
         opacity: '1',
       }, {
         duration: 2000,
@@ -47,7 +47,7 @@ window.onload = (event) => {
     } else {
 
       $('#hero').velocity({
-        top: '25%',
+        top: '200px',
         opacity: '1',
       }, {
         duration: 2000,
