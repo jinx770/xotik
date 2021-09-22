@@ -133,8 +133,6 @@ p {
     }
   }
 }
-
-
 @-webkit-keyframes slide-right {
   0% {
     -webkit-transform: translateX(0);
@@ -196,7 +194,6 @@ p {
   transition: 0.4s;
 }
 //modal
-
 
 .modalDone {
   margin: auto;
@@ -459,7 +456,7 @@ input:-webkit-autofill:hover {
   height: 100px;
   z-index: 9999;
   backdrop-filter: blur(10px);
-  // background-image: linear-gradient(to top, rgba(#ffffff, 0), $black);
+  // : linear-gradient(to top, rgba(#ffffff, 0), $black);
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
@@ -475,7 +472,6 @@ input:-webkit-autofill:hover {
   position: fixed;
   width: 100%;
   height: 100px;
-  overflow: hidden;
   z-index: 99999;
   opacity: 1;
 }
@@ -556,6 +552,101 @@ input:-webkit-autofill:hover {
     &:hover {
       opacity: 0.5;
     }
+  }
+}
+
+.responsive-nav {
+  display: none;
+}
+
+.swipe-message {
+  position: absolute;
+  width: 100%;
+  top: 105px;
+  text-align: center;
+  opacity: 0;
+
+  i {
+    color: $offwhite;
+    font-size: 30px;
+    -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+    animation: heartbeat 1.5s ease-in-out infinite both;
+  }
+}
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
 }
 // header ends ::::::::::::::::::::::::::::::::::::
@@ -817,7 +908,6 @@ input:-webkit-autofill:hover {
 // home page begins ::::::::::::::::::::::::
 // hero section ::::::::::::::::::::::::
 // background image
-
 // .background-image img {
 //   width: 100%;
 //   height: auto;
@@ -840,7 +930,7 @@ input:-webkit-autofill:hover {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    object-position: 100% 0%;
+    object-position: 100% 0;
     position: relative;
     top: 0;
     right: 0;
@@ -950,6 +1040,10 @@ input:-webkit-autofill:hover {
   margin: auto;
 }
 
+.mobile-frog {
+  display: none;
+}
+
 .who-text {
   width: 40%;
   height: 100%;
@@ -1012,6 +1106,10 @@ input:-webkit-autofill:hover {
 .safety-img {
   width: 100%;
   height: auto;
+}
+
+.mob-bengal {
+  display: none;
 }
 
 .safety-text {
@@ -1946,3 +2044,476 @@ input:-webkit-autofill:hover {
   }
 }
 //  footer ends :::::::::::::::::::::::::::::::::::
+// Media Queries
+// Mobile Media Query
+@media only screen and (max-device-width: 425px) {
+  // Footer
+  .footer {
+    height: 150px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-logo {
+    display: none;
+  }
+
+  .footer-nav {
+    display: none;
+  }
+
+  .footer-newsletter {
+    width: 80%;
+    margin: auto;
+  }
+
+  .newsletter-header {
+    padding-bottom: 20px;
+  }
+  //*******Who We Are Page*******
+  // About Section
+  .about-content {
+    flex-direction: column;
+  }
+
+  .who-text {
+    width: 100%;
+  }
+
+  .who-head {
+    text-align: center;
+  }
+
+  .mobile-frog {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+
+  .who-img {
+    display: none;
+  }
+
+  .partner1,
+  .partner2 {
+    width: 45%;
+  }
+
+  .partners-head {
+    padding-top: 40px;
+  }
+  // Safety Section
+  .safety-img {
+    display: none;
+  }
+
+  .mob-bengal {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+
+  .safety-text,
+  .safety-text-content {
+    width: 100%;
+  }
+
+  .safety-head {
+    text-align: center;
+  }
+
+  .safety-icons {
+    padding-top: 40px;
+  }
+
+  .safety-icons h3 {
+    font-size: 25px;
+  }
+
+  .cert,
+  .enclosure {
+    width: 15%;
+    padding-right: 5%;
+  }
+  // Contact Section
+  .contact-faq {
+    flex-direction: column;
+  }
+
+  .contact,
+  .faq {
+    width: 90%;
+  }
+  //*******Create Listing Page*******
+  .left-col,
+  .right-col {
+    min-width: 80%;
+    margin: auto;
+  }
+
+  .new-listing-form h1 {
+    font-size: 35px;
+    text-align: center;
+  }
+
+  #location {
+    width: 78%;
+  }
+
+  #description {
+    width: 79%;
+  }
+
+  .listing-checkbox {
+    width: 100%;
+  }
+
+  .add-img-btn,
+  .ignore-me,
+  .listing-image {
+    width: 80%;
+  }
+
+  .add-img-btn {
+    height: 300px;
+  }
+
+  .listing-btn {
+    margin-top: -100px;
+    margin-bottom: 0;
+  }
+
+  .listing-content {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .listing-images-section {
+    margin-top: 50px;
+  }
+
+  .add-images-section h5 {
+    text-align: center;
+  }
+}
+// ^ Mobile Media Query Ends
+// Tablet Media Query
+@media only screen and (max-device-width: 768px) {
+  // header
+  // header :::::::::::::::::::::::::::::::
+  .header-content {
+    width: 80%;
+
+    img {
+      height: 40px;
+    }
+  }
+
+  .header-nav {
+    height: 100%;
+    width: 90%;
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .header-logo {
+    height: 45%;
+    margin-right: 90px;
+  }
+
+  .header-icons {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: #F4EDDA;
+
+    i {
+      margin-left: 30px;
+      cursor: pointer;
+      transition: 0.2s ease;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+  // responsive nav
+  .responsive-nav {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    top: -100%;
+    backdrop-filter: blur(10px);
+    z-index: 999999999999;
+  }
+
+  .r-nav-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    margin: 100px auto auto;
+  }
+
+  .responsive-nav-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 80%;
+    margin: auto;
+  }
+
+  .responsive-nav-optoins {
+    width: 100%;
+
+    .r-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60%;
+      margin: auto;
+      padding-bottom: 20px;
+      height: 30px;
+      margin-bottom: 20px;
+      // opacity: 0;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .responsive-nav-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    height: 10%;
+    margin-bottom: 30px;
+  }
+  // hero section
+  .button-primary {
+    font-size: 14px;
+    padding: 1rem 2rem;
+    height: 50px;
+    border-radius: 50px;
+    transition: 0.4s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
+
+    &::after {
+      font-family: FontAwesome;
+      content: "";
+      font-weight: 400;
+      position: absolute;
+      font-size: 14px;
+      bottom: 40%;
+      left: 70%;
+      border-radius: 80px;
+      transition: 0.4s easeInOutQuint;
+    }
+
+    &:hover {
+      padding: 1rem 2rem;
+      background: #2A432F;
+      color: #F8F1DE;
+      border: 1px solid #2A432F;
+    }
+
+    &:active {
+      border: 1px solid #F8F1DE;
+      background: none;
+    }
+  }
+
+  .hero {
+    top: 80%;
+    margin: auto;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+    opacity: 0;
+  }
+
+  .xotik {
+    font-size: 44px;
+  }
+
+  .xotik-about {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .background-image img {
+    object-position: 95% 100%;
+  }
+  // hero section ends
+  // footer
+  // Footer
+  .footer {
+    height: 150px;
+  }
+
+  .footer-nav {
+    display: none;
+  }
+
+  .footer-newsletter {
+    width: 70%;
+    margin: auto;
+  }
+
+  .newsletter-header {
+    padding-bottom: 20px;
+  }
+  //*******Who We Are Page*******
+  .about-content {
+    flex-direction: column;
+  }
+
+  .who-text {
+    width: 100%;
+  }
+
+  .who-head {
+    text-align: center;
+  }
+
+  .mobile-frog {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+
+  .who-img {
+    display: none;
+  }
+
+  .partner1,
+  .partner2 {
+    width: 40%;
+  }
+
+  .partners-head {
+    padding-top: 40px;
+  }
+  // Safety Section
+  .safety-img {
+    display: none;
+  }
+
+  .mob-bengal {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+
+  .safety-text,
+  .safety-text-content {
+    width: 100%;
+  }
+
+  .safety-head {
+    text-align: center;
+  }
+
+  .safety-icons {
+    padding-top: 40px;
+  }
+
+  .safety-icons h3 {
+    font-size: 25px;
+  }
+
+  .cert,
+  .enclosure {
+    width: 15%;
+    padding-right: 5%;
+  }
+  // Contact Section
+  .contact-faq {
+    flex-direction: column;
+  }
+
+  .contact,
+  .faq {
+    width: 90%;
+  }
+  //*******Create Listing Page*******
+  .left-col,
+  .right-col {
+    min-width: 80%;
+    margin: auto;
+  }
+
+  .new-listing-form h1 {
+    font-size: 35px;
+    text-align: center;
+  }
+
+  #location {
+    width: 90%;
+  }
+
+  #description {
+    width: 90%;
+  }
+
+  .listing-checkbox {
+    width: 100%;
+  }
+
+  .checkbox-row {
+    justify-content: center;
+  }
+
+  .add-img-btn,
+  .ignore-me,
+  .listing-image {
+    width: 80%;
+  }
+
+  .listing-btn {
+    margin-top: 3px;
+    margin-bottom: 0;
+  }
+
+  .listing-content {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .listing-images-section {
+    margin-top: 50px;
+  }
+
+  .add-images-section h5 {
+    text-align: center;
+  }
+  //*******Cart Listing Page*******
+  .cart-page-content {
+    width: 90%;
+    min-height: auto;
+  }
+
+  .cart-page-item {
+    margin-bottom: 60px;
+  }
+}
+// ^ Tablet Media Query Ends

@@ -64,14 +64,13 @@ app.get('/findAnimal', async ( req, res ) => {
 app.post('/updateAnimal', async ( req, res ) => {
 
     // Shorthand variable creation
-    let { id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = req.body
+    let { id, animalName, type, url, price, rating, description, quantity, owner, license, delivery, comments, location } = req.body
+
     console.log(`\n TASK //
             updating animal information \n`)
 
-    console.log(req.body)
-
     // Calling function in backEnd/index.js with relevant arguments being passed
-    return res.send(await functions.UpdateAnimal({ id, name, type, url, price, rating, description, quantity, owner, license, delivery, comments, location }))
+    return res.send(await functions.UpdateAnimal({ id, animalName, type, url, price, rating, description, quantity, owner, license, delivery, comments, location }))
 
 })
 
@@ -116,10 +115,10 @@ app.post('/createUser', async ( req, res ) => {
 app.post('/updateUser', async ( req, res ) => {
 
     // Shorthand variable creation
-    let { fullName, username, phoneNo, email, description } = req.body
+    let { fullName, username, phoneNo, email, userDescription } = req.body
 
     // Calling function in backEnd/index.js with relevant arguments being passed
-    return res.send(await functions.UpdateUser({ fullName, username, phoneNo, email, description }))
+    return res.send(await functions.UpdateUser({ fullName, username, phoneNo, email, userDescription }))
 
 })
 
