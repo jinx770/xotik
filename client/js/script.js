@@ -14,13 +14,12 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
-window.onload = (event) => {
+window.onload = ( event ) => {
 
-
-    if (screen.width < 764) {
+    if (screen.width < 778) {
 
       $('#hero').velocity({
-        top: '60%',
+        top: '500px',
         opacity: '1',
       }, {
         duration: 2000,
@@ -36,24 +35,35 @@ window.onload = (event) => {
         delay: 2000,
       });
 
-      $('#swipeMessage').velocity({
-        opacity: '0',
-      }, {
-        duration: 2000,
-        easing: 'easeInOutQuint',
-        delay: 2000,
-      });
+
+        $('#swipeMessage').velocity({
+            opacity: '1',
+        }, {
+            duration: 2000,
+            easing: 'easeInOutQuint',
+            delay: 2000,
+        });
+
+        $('#swipeMessage').velocity({
+            opacity: '0',
+        }, {
+            duration: 2000,
+            easing: 'easeInOutQuint',
+            delay: 2000,
+        });
 
     } else {
 
+
       $('#hero').velocity({
-        top: '25%',
+        top: '200px',
         opacity: '1',
       }, {
         duration: 2000,
         easing: 'spring',
         delay: 500,
       });
+
 
     }
 
@@ -65,30 +75,30 @@ window.onload = (event) => {
 
 // nav clicks
 $('#logoBtn').click(function() {
-  window.location.href = 'index.html';
+    window.location.href = 'index.html';
 });
 
 $('#whoBtn').click(function() {
-  window.location.href = 'about.html';
+    window.location.href = 'about.html';
 })
 
 $('#listingBtn').click(function() {
-  window.location.href = 'listing.html';
+    window.location.href = 'listing.html';
 });
 
 
 
 
 $('#mobileWhoBtn').click(function() {
-  window.location.href = 'about.html';
+    window.location.href = 'about.html';
 })
 
 $('#mobileEnquireBtn').click(function() {
-  window.location.href = 'about.html';
+    window.location.href = 'about.html';
 })
 
 $('#mobileListingBtn').click(function() {
-  window.location.href = 'listing.html';
+    window.location.href = 'listing.html';
 });
 
 // header popover begins
@@ -100,62 +110,62 @@ $('#mobileListingBtn').click(function() {
 // click on user icon
 $('#user').click(function() {
 
-  if ($('#user').hasClass('checked')) {
+    if ($('#user').hasClass('checked')) {
 
-    // $('#user').removeClass('checked');
-
-  } else {
-
-    $('#user').removeClass('checked');
-
-    if (localStorage.getItem('loggedIn') === 'true') {
-
-      $('#headerPopover').velocity({
-        width: '350px',
-      }, {
-        duration: 500,
-        easing: 'easeInOutQuint',
-        delay: 0,
-      });
-
-      $('#headerPopover').velocity({
-        height: '200px',
-      }, {
-        duration: 500,
-        easing: 'easeInOutQuint',
-        delay: 0,
-      });
+        // $('#user').removeClass('checked');
 
     } else {
-      $('#headerPopover').velocity({
-        width: '350px',
-      }, {
-        duration: 500,
-        easing: 'easeInOutQuint',
-        delay: 0,
-      });
 
-      $('#headerPopover').velocity({
-        height: '400px',
-      }, {
-        duration: 500,
-        easing: 'easeInOutQuint',
-        delay: 0,
-      });
+        $('#user').removeClass('checked');
+
+        if (localStorage.getItem('loggedIn') === 'true') {
+
+            $('#headerPopover').velocity({
+                width: '350px',
+            }, {
+                duration: 500,
+                easing: 'easeInOutQuint',
+                delay: 0,
+            });
+
+            $('#headerPopover').velocity({
+                height: '200px',
+            }, {
+                duration: 500,
+                easing: 'easeInOutQuint',
+                delay: 0,
+            });
+
+        } else {
+            $('#headerPopover').velocity({
+                width: '350px',
+            }, {
+                duration: 500,
+                easing: 'easeInOutQuint',
+                delay: 0,
+            });
+
+            $('#headerPopover').velocity({
+                height: '400px',
+            }, {
+                duration: 500,
+                easing: 'easeInOutQuint',
+                delay: 0,
+            });
+        }
+
+        //fade in popover
+        $('#headerPopover').fadeIn('slow');
+        // fade in login content
+        $('#loginContent').css('display', 'flex');
+        $('#loginContent').hide();
+        $('#loginContent').fadeIn('slow');
+        // remove other content
+        $('#emptyCartContent').css('display', 'none');
+        $('#fullCartContent').css('display', 'none');
+        $('#createAccountContent').css('display', 'none');
+
     }
-
-    //fade in popover
-    $('#headerPopover').fadeIn('slow');
-    // fade in login content
-    $('#loginContent').css('display', 'flex');
-    $('#loginContent').hide();
-    $('#loginContent').fadeIn('slow');
-    // remove other content
-    $('#emptyCartContent').css('display', 'none');
-    $('#fullCartContent').css('display', 'none');
-    $('#createAccountContent').css('display', 'none');
-
-  }
 
 });
 
@@ -164,160 +174,147 @@ $('#user').click(function() {
 
 // show create account content on click
 $('#createAccountBtn').click(function() {
-  // fade in create account content
-  $('#createAccountContent').css('display', 'flex');
-  $('#createAccountContent').hide();
-  $('#createAccountContent').fadeIn('slow');
-  // remove other content
-  $('#loginContent').css('display', 'none');
+    // fade in create account content
+    $('#createAccountContent').css('display', 'flex');
+    $('#createAccountContent').hide();
+    $('#createAccountContent').fadeIn('slow');
+    // remove other content
+    $('#loginContent').css('display', 'none');
 });
 
 // clicked sign up
 $('#signUpBtn').click(function() {
-  // fade in login content
-  // will need check to see if sign up is checked out
-  $('#loginContent').css('display', 'flex');
-  $('#loginContent').hide();
-  $('#loginContent').fadeIn('slow');
-  // remove other content
-  $('#createAccountContent').css('display', 'none');
+    // fade in login content
+    // will need check to see if sign up is checked out
+    $('#loginContent').css('display', 'flex');
+    $('#loginContent').hide();
+    $('#loginContent').fadeIn('slow');
+    // remove other content
+    $('#createAccountContent').css('display', 'none');
 });
 
 // click on cart icon
 $('#cart').click(function() {
-  // fade in popover
-  $('#headerPopover').fadeIn('slow');
-  // fade in cart content
-  // will need if statement to check if items in cart or not
-  // fade in for empty cart
+    // fade in popover
+    $('#headerPopover').fadeIn('slow');
+    // fade in cart content
+    // will need if statement to check if items in cart or not
+    // fade in for empty cart
 
-  if (localStorage.getItem('somethingInBasket') == 'true') {
-    $('#fullCartContent').css('display', 'flex');
-    $('#fullCartContent').hide();
-    $('#fullCartContent').fadeIn('slow');
-    updateCart();
+    if (localStorage.getItem('somethingInBasket') == 'true') {
+        $('#fullCartContent').css('display', 'flex');
+        $('#fullCartContent').hide();
+        $('#fullCartContent').fadeIn('slow');
+        updateCart();
 
-    $('#headerPopover').velocity({
-      width: '350px',
-    }, {
-      duration: 500,
-      easing: 'easeInOutQuint',
-      delay: 0,
-    });
+        $('#headerPopover').velocity({
+            width: '350px',
+        }, {
+            duration: 500,
+            easing: 'easeInOutQuint',
+            delay: 0,
+        });
 
-    $('#headerPopover').velocity({
-      height: '400px',
-    }, {
-      duration: 500,
-      easing: 'easeInOutQuint',
-      delay: 0,
-    });
-  } else {
-    $('#emptyCartContent').css('display', 'flex');
-    $('#emptyCartContent').hide();
-    $('#emptyCartContent').fadeIn('slow');
+        $('#headerPopover').velocity({
+            height: '400px',
+        }, {
+            duration: 500,
+            easing: 'easeInOutQuint',
+            delay: 0,
+        });
+    } else {
+        $('#emptyCartContent').css('display', 'flex');
+        $('#emptyCartContent').hide();
+        $('#emptyCartContent').fadeIn('slow');
 
-    $('#headerPopover').velocity({
-      width: '350px',
-    }, {
-      duration: 500,
-      easing: 'easeInOutQuint',
-      delay: 0,
-    });
+        $('#headerPopover').velocity({
+            width: '350px',
+        }, {
+            duration: 500,
+            easing: 'easeInOutQuint',
+            delay: 0,
+        });
 
-    $('#headerPopover').velocity({
-      height: '200px',
-    }, {
-      duration: 500,
-      easing: 'easeInOutQuint',
-      delay: 0,
-    });
-  }
+        $('#headerPopover').velocity({
+            height: '200px',
+        }, {
+            duration: 500,
+            easing: 'easeInOutQuint',
+            delay: 0,
+        });
+    }
 
-  // fade in if items in cart
+    // fade in if items in cart
 
-  // remove other content
-  $('#loginContent').css('display', 'none');
-  $('#createAccountContent').css('display', 'none');
+    // remove other content
+    $('#loginContent').css('display', 'none');
+    $('#createAccountContent').css('display', 'none');
 });
 
 
 
 $('#popoverExit').click(function() {
 
-  $('#headerPopover').addClass('checked');
+    $('#headerPopover').addClass('checked');
+    $('#headerPopover').velocity({
+        height: '0px',
+    }, {
+        duration: 500,
+        easing: 'easeInOutQuint',
+        delay: 0,
+    });
 
-  $('#headerPopover').velocity({
-    height: '0px',
-  }, {
-    duration: 500,
-    easing: 'easeInOutQuint',
-    delay: 0,
-  });
+    $('#headerPopover').velocity({
+        width: '0px',
+    }, {
+        duration: 500,
+        easing: 'easeInOutQuint',
+        delay: 0,
+    });
 
-  $('#headerPopover').velocity({
-    width: '0px',
-  }, {
-    duration: 500,
-    easing: 'easeInOutQuint',
-    delay: 0,
-  });
-
-  $('#headerPopover').fadeOut('slow');
-  // $('#loginContent').fadeOut('slow');
-  // $('#emptyCartContent').fadeOut('slow');
-  // $('#fullCartContent').css('display', 'none');
-  // $('#createAccountContent').fadeOut('slow');
+    $('#headerPopover').fadeOut('slow');
+    // $('#loginContent').fadeOut('slow');
+    // $('#emptyCartContent').fadeOut('slow');
+    // $('#fullCartContent').css('display', 'none');
+    // $('#createAccountContent').fadeOut('slow');
 
 });
-
-
-
 
 $('#popoverExit').click(function() {
-  $('#headerPopover').fadeOut('slow');
-  $('#loginContent').css('display', 'none');
-  $('#cartContent').css('display', 'none');
+    $('#headerPopover').fadeOut('slow');
+    $('#loginContent').css('display', 'none');
+    $('#cartContent').css('display', 'none');
 });
-
-
 
 // eplore button
-
 $('#exploreBtn').click(function() {
-  $([document.documentElement, document.body]).animate({
-    scrollTop: $('#listingSection').offset().top
-  }, 1500);
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $('#listingSection').offset().top
+    }, 1500);
 })
-
-
-
 
 // asking questions
-
 $('#askQuestionBtn').click(function() {
-  $('#askQuestionForm').css('display', 'flex');
-  $('#askQuestionForm').hide();
-  $('#askQuestionForm').show('slow');
+    $('#askQuestionForm').css('display', 'flex');
+    $('#askQuestionForm').hide();
+    $('#askQuestionForm').show('slow');
 })
-
 
 $('#sendBtn').click(function() {
 
-  $('#askQuestionForm').hide('slow');
+    $('#askQuestionForm').hide('slow');
 })
 
 $('#questionExitBtn').click(function() {
-  $('#askQuestionForm').hide('slow');
+    $('#askQuestionForm').hide('slow');
 })
 
 
+// JQUERY IS NOW ILLEGAL FROM THIS LINE ONWARDS !!!
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 // Logic check for the current session, gotta define it initially
 window.loggedIn = false
@@ -332,51 +329,51 @@ window.currentSession = '';
 
 // Basic check to prevent errors
 localStorage.getItem('loggedIn') ?
-  '' :
-  localStorage.setItem('loggedIn', false)
+    '' :
+    localStorage.setItem('loggedIn', false)
 
 localStorage.getItem('cartCost') ?
-  '' :
-  localStorage.setItem('cartCost', [])
+    '' :
+    localStorage.setItem('cartCost', [])
 
 // Refresh all html vars
 let refreshElements = () => {
 
-  // Declare all values and buttons here, any sort of variable
-  window.titles = document.querySelectorAll('.title') || '';
-  window.modalParent = document.querySelector('.modal') || '';
-  window.allPrices = document.querySelectorAll('.price') || '';
-  window.doneButton = document.querySelector('.modalDone') || '';
-  window.sessionHeader = document.querySelector('#sessionHeader') || '';
-  window.loginPopOver = document.querySelector('.header-popover') || '';
+    // Declare all values and buttons here, any sort of variable
+    window.titles = document.querySelectorAll('.title') || '';
+    window.modalParent = document.querySelector('.modal') || '';
+    window.allPrices = document.querySelectorAll('.price') || '';
+    window.doneButton = document.querySelector('.modalDone') || '';
+    window.sessionHeader = document.querySelector('#sessionHeader') || '';
+    window.loginPopOver = document.querySelector('.header-popover') || '';
 
-  window.typeInput = document.querySelector('#typeInput') || '';
-  window.fileInput = document.querySelector('.ignore-me') || '';
-  window.usernameInput = document.querySelector('#username') || '';
-  window.passwordInput = document.querySelector('#password') || '';
-  window.searchInput = document.querySelector('#searchInput') || '';
-  window.filterInput = document.querySelector('#filterInput') || '';
-  window.allFilterInputs = document.querySelectorAll('.select') || '';
-  window.usernameCreate = document.querySelector('#usernameCreate') || '';
-  window.passwordCreate = document.querySelector('#passwordCreate') || '';
+    window.typeInput = document.querySelector('#typeInput') || '';
+    window.fileInput = document.querySelector('.ignore-me') || '';
+    window.usernameInput = document.querySelector('#username') || '';
+    window.passwordInput = document.querySelector('#password') || '';
+    window.searchInput = document.querySelector('#searchInput') || '';
+    window.filterInput = document.querySelector('#filterInput') || '';
+    window.allFilterInputs = document.querySelectorAll('.select') || '';
+    window.usernameCreate = document.querySelector('#usernameCreate') || '';
+    window.passwordCreate = document.querySelector('#passwordCreate') || '';
 
-  window.signUpButton = document.querySelector('#signUpBtn') || '';
-  window.loginButton = document.querySelector('#submitLogin') || '';
-  window.searchButton = document.querySelector('#searchButton') || '';
-  window.listingButton = document.querySelector('.listing-btn') || '';
-  window.mobileNavLogout = document.querySelector("#submitLogout") || '';
-  window.closeLoginButton = document.querySelector('.popover-exit-btn') || '';
-  window.createAccountButton = document.querySelector('#createAccountBtn') || '';
+    window.signUpButton = document.querySelector('#signUpBtn') || '';
+    window.loginButton = document.querySelector('#submitLogin') || '';
+    window.searchButton = document.querySelector('#searchButton') || '';
+    window.listingButton = document.querySelector('.listing-btn') || '';
+    window.mobileNavLogout = document.querySelector("#submitLogout") || '';
+    window.closeLoginButton = document.querySelector('.popover-exit-btn') || '';
+    window.createAccountButton = document.querySelector('#createAccountBtn') || '';
 
-  window.userListing = document.querySelectorAll('.user-listing') || '';
-  window.userListingParent = document.querySelector('.user-all-listings') || '';
+    window.userListing = document.querySelectorAll('.user-listing') || '';
+    window.userListingParent = document.querySelector('.user-all-listings') || '';
 
-  window.cards = document.querySelectorAll('.card') || '';
-  window.cardParent = document.querySelector('.all-listings') || '';
+    window.cards = document.querySelectorAll('.card') || '';
+    window.cardParent = document.querySelector('.all-listings') || '';
 
-  window.cartParent = document.querySelector('.cart-item-content') || '';
-  window.total = document.querySelector('.checkout-popover-bottom').childNodes[1] || '';
-  window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
+    window.cartParent = document.querySelector('.cart-item-content') || '';
+    window.total = document.querySelector('.checkout-popover-bottom').childNodes[1] || '';
+    window.cartList = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
 
 }
 
@@ -390,20 +387,20 @@ let refreshElements = () => {
 // Function for handling the animal cards on the front page.
 let handleHomeAnimals = async () => {
 
-  // Calls our api on the server without a query, if there is no query then return all animals
-  let response = await fetch('/findAnimal')
+    // Calls our api on the server without a query, if there is no query then return all animals
+    let response = await fetch('/findAnimal')
 
-  // Saving data of the response (every animal in database shouldve been returned)
-  let data = await response.json()
+    // Saving data of the response (every animal in database shouldve been returned)
+    let data = await response.json()
 
-  // Removing all cards from the page
-  cardParent.innerHTML = ''
+    // Removing all cards from the page
+    cardParent.innerHTML = ''
 
-  // Creating our own cards for the number of data arrays returned
-  for (card of data) {
+    // Creating our own cards for the number of data arrays returned
+    for (card of data) {
 
-    // Setting each card up with relevant fields filled out using backticks
-    cardParent.innerHTML += `
+        // Setting each card up with relevant fields filled out using backticks
+        cardParent.innerHTML += `
                 <div class='card hvr-float' onclick='getId(this)' data-ownerOfAnimal='${card.owner}' data-objectId='${card._id}' data-price='${card.price}' data-animalName='${card.name}' data-rating='${card.rating.charAt(0)}' data-animalType='${card.type}'>
                     <div class='top-info'>
                         <div class='username'>
@@ -427,173 +424,171 @@ let handleHomeAnimals = async () => {
                         </div>
                 </div>
             `
-  }
+    }
 }
 
 // Runs when page gets loaded
 let setupFilters = () => {
 
-  // Gets every input
-  for (input of allFilterInputs) {
+    // Gets every input
+    for (input of allFilterInputs) {
 
-    // Adds a changed event on each input, fires when something gets changed
-    input.addEventListener('change', () => {
+        // Adds a changed event on each input, fires when something gets changed
+        input.addEventListener('change', () => {
 
-      refreshElements();
+            refreshElements();
 
-      // Returning true or false if the value isn't empty for each input
-      let typeEmpty = typeInput.value !== '' ? false : true;
-      let filterEmpty = filterInput.value !== '' ? false : true;
-      let searchEmpty = searchInput.value !== '' ? false : true;
+            // Returning true or false if the value isn't empty for each input
+            let typeEmpty = typeInput.value !== '' ? false : true;
+            let filterEmpty = filterInput.value !== '' ? false : true;
+            let searchEmpty = searchInput.value !== '' ? false : true;
 
-      // Calls functions if its not empty with the input
-      !typeEmpty ? filterCards('byType', typeInput.value) : '';
-      !filterEmpty ? filterCards('byFilter', filterInput.value) : '';
 
-      // Calls search function when user is typing
-      !searchEmpty ? searchQuery(searchInput.value) : '';
+            // Calls functions if its not empty with the input
+            !typeEmpty ? filterCards('byType', typeInput.value) : '';
+            !filterEmpty ? filterCards('byFilter', filterInput.value) : '';
 
-    })
+            // Calls search function when user is typing
+            !searchEmpty ? searchQuery(searchInput.value) : '';
 
-  }
+        })
 
-  // Firing the search query function when you lift a key up while typing
-  searchInput ? searchInput.addEventListener('keyup', () => {
-    searchQuery(searchInput.value)
-  }) : '';
+    }
+
+    // Firing the search query function when you lift a key up while typing
+    searchInput ? searchInput.addEventListener('keyup', () => {
+        searchQuery(searchInput.value)
+    }) : '';
 
 }
 
 // Fires when you click an input
-let filterCards = (...args) => {
+let filterCards = ( queryType, parameter ) => {
 
-  // Seperates the type of filter the user has clicked and what they click on
-  let [queryType, parameter] = args
+    refreshElements();
 
-  refreshElements();
+    // If the passed querytype call a function
+    if (queryType == 'byType') {
+        hideCardsThatArent(parameter)
+    }
 
-  // If the passed querytype call a function
-  if (queryType == 'byType') {
-    hideCardsThatArent(parameter)
-  }
-
-  // Calls sort function if argument is byfilter
-  if (queryType == 'byFilter') {
-    sortBy(parameter)
-  }
+    // Calls sort function if argument is byfilter
+    if (queryType == 'byFilter') {
+        sortBy(parameter)
+    }
 
 }
 
 // Gets called every time you let go of a key when youre typing in an input
 let searchQuery = async (arg) => {
 
-  // Getting every title of each animal on the page
-  for (title of titles) {
+    // Getting every title of each animal on the page
+    for (title of titles) {
 
-    // Converting the title into lowercase and checking to see if it has the argument in it
-    if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
+        // Converting the title into lowercase and checking to see if it has the argument in it
+        if (title.textContent.toLowerCase().includes(arg.toLowerCase())) {
 
-      // Showing relevative cards
-      title.parentNode.parentNode.style.display = 'block'
+            // Showing relevative cards
+            title.parentNode.parentNode.style.display = 'block'
 
-    } else {
+        } else {
 
-      // Hiding irrelevant results
-      title.parentNode.parentNode.style.display = 'none'
+            // Hiding irrelevant results
+            title.parentNode.parentNode.style.display = 'none'
+
+        }
 
     }
-
-  }
 
 }
 
 // I seriously can't be bothered commenting for this, the logic is an actual eyesore
-let sortBy = (arg) => {
+let sortBy = ( arg ) => {
 
-  if (alreadyStored == false) {
-    for (var i = 0; i < cards.length; i++) {
-      defaultSorted.push({
-        'element': cards[i]
-      })
+    if (alreadyStored == false) {
+        for (var i = 0; i < cards.length; i++) {
+            defaultSorted.push({
+                'element': cards[i]
+            })
+        }
+        alreadyStored = true
     }
-    alreadyStored = true
-  }
 
-  switch (arg) {
-    case 'lowest':
-      for (card of cards) {
-        pricesSorted.push({
-          'price': card.getAttribute('data-price'),
-          'element': card
-        });
-        pricesSorted.sort((a, b) => (a.price - b.price));
-      }
-      for (let i = 0; i < pricesSorted.length; i++) {
-        cardParent.appendChild(pricesSorted[i].element)
-      }
-      break;
+    switch (arg) {
+        case 'lowest':
+            for (card of cards) {
+                pricesSorted.push({
+                    'price': card.getAttribute('data-price'),
+                    'element': card
+                });
+                pricesSorted.sort((a, b) => (a.price - b.price));
+            }
+            for (let i = 0; i < pricesSorted.length; i++) {
+                cardParent.appendChild(pricesSorted[i].element)
+            }
+            break;
 
-    case 'highest':
-      for (card of cards) {
-        pricesSorted.push({
-          'price': card.getAttribute('data-price'),
-          'element': card
-        });
-        pricesSorted.sort((a, b) => (b.price - a.price));
-      }
-      for (let i = 0; i < pricesSorted.length; i++) {
-        cardParent.appendChild(pricesSorted[i].element)
-      }
-      break;
+        case 'highest':
+            for (card of cards) {
+                pricesSorted.push({
+                    'price': card.getAttribute('data-price'),
+                    'element': card
+                });
+                pricesSorted.sort((a, b) => (b.price - a.price));
+            }
+            for (let i = 0; i < pricesSorted.length; i++) {
+                cardParent.appendChild(pricesSorted[i].element)
+            }
+            break;
 
-    case 'viewed':
-      for (card of cards) {
-        ratingsSorted.push({
-          'rating': card.getAttribute('data-rating'),
-          'element': card
-        });
-        ratingsSorted.sort((a, b) => (b.rating - a.rating));
-      }
-      for (let i = 0; i < ratingsSorted.length; i++) {
-        cardParent.appendChild(ratingsSorted[i].element)
-      }
-      break;
+        case 'viewed':
+            for (card of cards) {
+                ratingsSorted.push({
+                    'rating': card.getAttribute('data-rating'),
+                    'element': card
+                });
+                ratingsSorted.sort((a, b) => (b.rating - a.rating));
+            }
+            for (let i = 0; i < ratingsSorted.length; i++) {
+                cardParent.appendChild(ratingsSorted[i].element)
+            }
+            break;
 
-    case 'none':
-      for (let i = 0; i < defaultSorted.length; i++) {
-        cardParent.appendChild(defaultSorted[i].element)
-      }
-      break;
+        case 'none':
+            for (let i = 0; i < defaultSorted.length; i++) {
+                cardParent.appendChild(defaultSorted[i].element)
+            }
+            break;
 
-  }
+    }
 
 }
 
 // Function for filtering
 let hideCardsThatArent = (arg) => {
 
-  // Loop getting every element called cards
-  for (card of cards) {
+    // Loop getting every element called cards
+    for (card of cards) {
 
-    // Ternary for checking the cards data against the argument passed
-    let relevantCard = arg === card.getAttribute('data-animalType') ? true : false
+        // Ternary for checking the cards data against the argument passed
+        let relevantCard = arg === card.getAttribute('data-animalType') ? true : false
 
-    // If not relevant then hide it
-    if (!relevantCard) {
-      card.style.display = 'none'
+        // If not relevant then hide it
+        if (!relevantCard) {
+            card.style.display = 'none'
+        }
+
+        // If relevant show
+        if (relevantCard) {
+            card.style.display = 'block'
+        }
+
+        // If filter reset show all
+        if (arg === 'all') {
+            card.style.display = 'block'
+        }
+
     }
-
-    // If relevant show
-    if (relevantCard) {
-      card.style.display = 'block'
-    }
-
-    // If filter reset show all
-    if (arg === 'all') {
-      card.style.display = 'block'
-    }
-
-  }
 
 }
 
@@ -607,173 +602,176 @@ let hideCardsThatArent = (arg) => {
 // Function for checking to see if the inputted data is the same in the database
 let checkLoginValidity = async (...query) => {
 
-  // Splitting arguments into variables called u and p for username, password
-  let [u, p] = query
+    // Splitting arguments into variables called u and p for username, password
+    let [u, p] = query
 
-  // Sending through query variables to validate, returns true or false if login details are valid
-  let data = await fetch(`/findUser?u=${u}&p=${p}`)
-  let result = await data.json()
+    // Sending through query variables to validate, returns true or false if login details are valid
+    let data = await fetch(`/findUser?u=${u}&p=${p}`)
+    let result = await data.json()
 
-  // Check to see if inputs are empty
-  u == '' || p == '' ? data = false : data = true
+    // Check to see if inputs are empty
+    u == '' || p == '' ? data = false : data = true
 
-  // If logged in already, calls the function for signing out before it returns the result
-  // If not, then ignore and continue
-  loggedIn ? loginHandler() : null;
+    // If logged in already, calls the function for signing out before it returns the result
+    // If not, then ignore and continue
+    loggedIn ? loginHandler() : null;
 
-  // Saving the name of the user who's logged in for later
-  window.attemptedLogin = u;
+    // Saving the name of the user who's logged in for later
+    window.attemptedLogin = u;
 
-  // Returns the true/false if they've entered the right username and password
-  return result
+    // Returns the true/false if they've entered the right username and password
+    return result
 
 }
 
 // Login handler function, basically for checking to see if the user is logging in or signing out!
 let loginHandler = async () => {
 
-  // Refresh all dom elements to get new values in-case they change
-  refreshElements();
+    // Refresh all dom elements to get new values in-case they change
+    refreshElements();
 
-  if (document.querySelector('.responsive-nav')) {
-      console.log('found')
-  }
+    if (document.querySelector('.responsive-nav')) {
+        console.log('found')
+    }
 
-  // If not logged then continue
-  if (!loggedIn) {
+    // If not logged then continue
+    if (!loggedIn) {
 
-    // Function call for validation of users inputs, returns true or false
-    let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
+        // Function call for validation of users inputs, returns true or false
+        let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
 
-    // If true
-    if (loginCheck) {
+        // If true
+        if (loginCheck) {
 
-      // Change the style of the login bar and the text
-      logInStyle();
+            // Change the style of the login bar and the text
+            logInStyle();
 
-      // Changing the current session to the username of whoever logged in
-      currentSession = attemptedLogin;
+            // Changing the current session to the username of whoever logged in
+            currentSession = attemptedLogin;
 
-      // Closing the login field
-      closeLoginButton.click();
+            // Closing the login field
+            closeLoginButton.click();
 
-      // Something to say you've logged in for debugging purposes
-      console.log('Signing in')
+            // Something to say you've logged in for debugging purposes
+            console.log('Signing in')
 
-      // Changing value to true, for next time you login
-      loggedIn = true
+            // Changing value to true, for next time you login
+            loggedIn = true
 
-      // Saving to localstorage so we can use it in other pages
-      localStorage.setItem('currentSession', currentSession)
-      localStorage.setItem('loggedIn', loggedIn)
+            // Saving to localstorage so we can use it in other pages
+            localStorage.setItem('currentSession', currentSession)
+            localStorage.setItem('loggedIn', loggedIn)
 
-      // Ending the thread so it doesnt alert
-      return
+            // Ending the thread so it doesnt alert
+            return
+
+        }
+
+        // Alerts incorrect if the user doesn't login properly
+        createAlert('Incorrect login!')
+        closeLoginButton.click();
 
     }
 
-    // Alerts incorrect if the user doesn't login properly
-    createAlert('Incorrect login!')
-    closeLoginButton.click();
+    // If logged in, and pressing the button
+    if (loggedIn) {
 
-  }
+        // Change the log out back to its original layout
+        logOutStyle()
 
-  // If logged in, and pressing the button
-  if (loggedIn) {
+        // Closes the login field
+        closeLoginButton.click();
 
-    // Change the log out back to its original layout
-    logOutStyle()
+        // Debugging purposes
+        console.log('Signing out')
 
-    // Closes the login field
-    closeLoginButton.click();
+        // Changing logged in to false so it can validate once
+        loggedIn = false
 
-    // Debugging purposes
-    console.log('Signing out')
+        // Saving to localstorage so we can use it in other pages
+        localStorage.setItem('currentSession', currentSession)
+        localStorage.setItem('loggedIn', loggedIn)
 
-    // Changing logged in to false so it can validate once
-    loggedIn = false
+        // Best practice return
+        return
 
-    // Saving to localstorage so we can use it in other pages
-    localStorage.setItem('currentSession', currentSession)
-    localStorage.setItem('loggedIn', loggedIn)
-
-    // Best practice return
-    return
-
-  }
+    }
 
 }
 
 // Function for creating an account :yay:
 let createAccHandler = async () => {
 
-  // If not logged in continue
-  if (!loggedIn) {
+    // If not logged in continue
+    if (!loggedIn) {
 
-    let username = usernameCreate.value;
-    let password = passwordCreate.value;
+        let username = usernameCreate.value;
+        let password = passwordCreate.value;
 
-    if (username == '' || password == '') {
-      createAlert('Please make sure all fields are filled out!')
-      return
-    } else {
+        console.log(username);
+        console.log(password);
 
-      // Posts/sends data to the route found in server
-      let response = await fetch('/createUser', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+        if (username == '' || password == '') {
+            createAlert('Please make sure all fields are filled out!')
+            return
+        } else {
 
-          fullName: '.',
-          username: username,
-          phoneNo: '.',
-          email: '.',
-          description: '.',
-          password: password
+            // Posts/sends data to the route found in server
+            let response = await fetch('/createUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
 
-        })
+                    fullName: 'Click me to add your name!',
+                    username: username,
+                    phoneNo: 'Click me to add a phone number!',
+                    email: 'Click me to add an email!',
+                    description: 'Click me to add a description!',
+                    password: password
 
-      })
+                })
+
+            })
+
+        }
 
     }
-
-  }
 
 }
 
 // Basic style function for changing styles with js
 let logInStyle = () => {
 
-  // Styling
-  loginButton.textContent = 'Log Out';
-  sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
-  usernameInput.style.display = 'none'
-  passwordInput.style.display = 'none'
-  createAccountButton.style.display = 'none'
-  // loginPopOver.style.height = '14%'
-  // loginPopOver.style.paddingBottom = '30px'
+    // Styling
+    loginButton.textContent = 'Log Out';
+    sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
+    usernameInput.style.display = 'none'
+    passwordInput.style.display = 'none'
+    createAccountButton.style.display = 'none'
+    // loginPopOver.style.height = '14%'
+    // loginPopOver.style.paddingBottom = '30px'
 
 }
 
 // Basic style function for undoing previously done styling via js
 let logOutStyle = () => {
 
-  // Clears the current session username when they sign out
-  currentSession = null;
+    // Clears the current session username when they sign out
+    currentSession = null;
 
-  // State check
-  loggedIn = true
+    // State check
+    loggedIn = true
 
-  // Styling
-  loginButton.textContent = 'Log In';
-  sessionHeader.textContent = `Log In`
-  usernameInput.style.display = 'block'
-  passwordInput.style.display = 'block'
-  createAccountButton.style.display = 'block'
-  loginPopOver.style.height = '50vh'
-  loginPopOver.style.paddingBottom = '0'
+    // Styling
+    loginButton.textContent = 'Log In';
+    sessionHeader.textContent = `Log In`
+    usernameInput.style.display = 'block'
+    passwordInput.style.display = 'block'
+    createAccountButton.style.display = 'block'
+    loginPopOver.style.height = '50vh'
+    loginPopOver.style.paddingBottom = '0'
 
 }
 
@@ -786,20 +784,20 @@ let logOutStyle = () => {
 // Updates when user loads any page
 let updateCart = () => {
 
-  // Clearing the div
-  cartParent.innerHTML = '';
+    // Clearing the div
+    cartParent.innerHTML = '';
 
-  window.cartCost = []
-  localStorage.setItem('cartCost', JSON.stringify([]))
+    window.cartCost = []
+    localStorage.setItem('cartCost', JSON.stringify([]))
 
 
-  // Looping through all items locally stored
-  for (item of cartList) {
+    // Looping through all items locally stored
+    for (item of cartList) {
 
-    cartCost.push(item.price)
+        cartCost.push(item.price)
 
-    // Creating new divs for the cart purchases
-    cartParent.innerHTML += `
+        // Creating new divs for the cart purchases
+        cartParent.innerHTML += `
                 <div class='cart-item' id='${item._id}' data-id='${item._id}'>
                     <div class='cart-item-img'>
                         <img class='cart-image' src='${item.url}' alt=''>
@@ -813,84 +811,84 @@ let updateCart = () => {
                 </div>
             </div>
         `
-  }
+    }
 
-  localStorage.setItem('cartCost', JSON.stringify(cartCost))
-  total.textContent = `Total: $${cartCost.reduce((partial_sum, a) => partial_sum + a,0).toLocaleString()}`
+    localStorage.setItem('cartCost', JSON.stringify(cartCost))
+    total.textContent = `Total: $${cartCost.reduce((partial_sum, a) => partial_sum + a,0).toLocaleString()}`
 
 }
 
 // Function for removing an item in the array
-let removeFromArray = (arr, value) => {
+let removeFromArray = ( arr, value ) => {
 
-  // Checking the index of the item in the array passed
-  let index = arr.indexOf(value);
+    // Checking the index of the item in the array passed
+    let index = arr.indexOf(value);
 
-  // Cutting it from the array
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
+    // Cutting it from the array
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
 
-  // Returning the new array
-  return arr;
+    // Returning the new array
+    return arr;
 }
 
 // Function invoked when user clicks remove button in the cart
-let remove = (obj) => {
+let remove = ( obj ) => {
 
-  // Getting id of the item they click
-  let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
+    // Getting id of the item they click
+    let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
 
-  // Running loop to check the item they click against what we've saved in the array
-  for (item of cartList) {
+    // Running loop to check the item they click against what we've saved in the array
+    for (item of cartList) {
 
-    // Locating the item they click with an item in the array
-    if (item._id == id) {
+        // Locating the item they click with an item in the array
+        if (item._id == id) {
 
-      // Removing it from the cart div
-      obj.parentNode.parentNode.parentNode.remove()
+            // Removing it from the cart div
+            obj.parentNode.parentNode.parentNode.remove()
 
-      // Removing it from the array
-      removeFromArray(cartList, item)
+            // Removing it from the array
+            removeFromArray(cartList, item)
 
-      // Updating localstorage with the new array
-      localStorage.setItem('cartItems', JSON.stringify(cartList))
+            // Updating localstorage with the new array
+            localStorage.setItem('cartItems', JSON.stringify(cartList))
+
+        }
 
     }
 
-  }
-
-  updateCart();
+    updateCart();
 
 }
 
 // This is a clone of the one above, except it removes one parent above the previous
-let removeFromPage = (obj) => {
+let removeFromPage = ( obj ) => {
 
-  // Getting id of the item they click
-  let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
+    // Getting id of the item they click
+    let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
 
-  // Running loop to check the item they click against what we've saved in the array
-  for (item of cartList) {
+    // Running loop to check the item they click against what we've saved in the array
+    for (item of cartList) {
 
-    // console.log(item._id, id)
-    // Locating the item they click with an item in the array
-    if (item._id == id) {
+        // console.log(item._id, id)
+        // Locating the item they click with an item in the array
+        if (item._id == id) {
 
-      // Removing it from the cart div
-      obj.parentNode.parentNode.parentNode.parentNode.remove()
+            // Removing it from the cart div
+            obj.parentNode.parentNode.parentNode.parentNode.remove()
 
-      // Removing it from the array
-      removeFromArray(cartList, item)
+            // Removing it from the array
+            removeFromArray(cartList, item)
 
-      // Updating localstorage with the new array
-      localStorage.setItem('cartItems', JSON.stringify(cartList))
+            // Updating localstorage with the new array
+            localStorage.setItem('cartItems', JSON.stringify(cartList))
+
+        }
 
     }
 
-  }
-
-  updateCart();
+    updateCart();
 
 }
 
@@ -903,115 +901,124 @@ let removeFromPage = (obj) => {
 // Loops every .1 second running the following
 setInterval(function() {
 
-  refreshElements()
+    refreshElements()
 
-  // Loop checks to see if its logged in for when we switch links
-  localStorage.getItem('loggedIn') === 'true' ? logInStyle() : null
-  localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
+    // Loop checks to see if its logged in for when we switch links
+    localStorage.getItem('loggedIn') === 'true' ? logInStyle() : null
+    localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
 
-  // Modal listener
-  doneButton ? doneButton.addEventListener('click', async () => {
+    // Modal listener
+    doneButton ? doneButton.addEventListener('click', async () => {
 
-    // Removes the popup modal
-    modalParent.remove();
+        // Removes the popup modal
+        modalParent.remove();
 
-    // Enables scroll once again
-    enableScroll();
+        // Enables scroll once again
+        enableScroll();
 
-  }) : null;
+    }) : null;
 
 }, 500);
 
-let getId = (e) => {
-  localStorage.setItem('cardId', e.getAttribute('data-objectid'))
-  localStorage.setItem('ownerOfAnimal', e.getAttribute('data-ownerOfAnimal'))
-  window.location.href = '/animalTemplate.html';
+let getId = ( e ) => {
+    localStorage.setItem('cardId', e.getAttribute('data-objectid'))
+    localStorage.setItem('ownerOfAnimal', e.getAttribute('data-ownerOfAnimal'))
+    window.location.href = '/animalTemplate.html';
 }
 
-let redirect = (a) => {
-  cartList.length == 0 ? createAlert('Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)') : window.location.href = a
+let redirect = ( a ) => {
+    cartList.length == 0 ? createAlert('Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)') : window.location.href = a
 }
 
 // Function for running every event listener on the page
 let setupEventListeners = () => {
 
-  // Runs the login handler when you click on the login button
-  loginButton.addEventListener('click', async () => {
-    loginHandler();
-  });
+    // Runs the login handler when you click on the login button
+    loginButton.addEventListener('click', async () => {
+        loginHandler();
+    });
 
-  mobileNavLogout.addEventListener('click', async () => {
-    loginHandler();
-  });
+    mobileNavLogout.addEventListener('click', async () => {
+        loginHandler();
+    });
 
-  myAccountBtn.addEventListener('click', () => {
-    loggedIn != true ? createAlert('Log in to view your account!') : window.location.href = '/user.html'
-  })
+    myAccountBtn.addEventListener('click', () => {
+        loggedIn != true ? createAlert('Log in to view your account!') : window.location.href = '/user.html'
+    })
 
-  // Runs every time you type in the password input field
-  passwordCreate ? passwordCreate.addEventListener('keydown', (event) => {
+    // Runs every time you type in the password input field
+    passwordCreate ? passwordCreate.addEventListener('keydown', (event) => {
 
-    // Checks to see if the key you pressed was the enter key
-    if (event.keyCode === 13) {
+        // Checks to see if the key you pressed was the enter key
+        if (event.keyCode === 13) {
 
-      // Stops you from new lining.
-      event.preventDefault();
+            // Stops you from new lining.
+            event.preventDefault();
 
-      // Clicks the login (basically pressing enter after you type your password will submit the login)
-      loginButton.click()
+            // Clicks the login (basically pressing enter after you type your password will submit the login)
+            loginButton.click()
 
-    }
+        }
 
-  }) : null
+    }) : null
 
-  // Runs every time you type in the password input field
-  passwordInput.addEventListener('keydown', (event) => {
+    // Runs every time you type in the password input field
+    passwordInput.addEventListener('keydown', (event) => {
 
-    // Checks to see if the key you pressed was the enter key
-    if (event.keyCode === 13) {
+        // Checks to see if the key you pressed was the enter key
+        if (event.keyCode === 13) {
 
-      // Stops you from new lining.
-      event.preventDefault();
+            // Stops you from new lining.
+            event.preventDefault();
 
-      // Clicks the login (basically pressing enter after you type your password will submit the login)
-      loginButton.click()
+            // Clicks the login (basically pressing enter after you type your password will submit the login)
+            loginButton.click()
 
-    }
+        }
 
-  });
+    });
 
-  // Runs createAccHandler when you click sign up btn
-  signUpButton ? signUpButton.addEventListener('click', async () => {
-    createAccHandler();
-  }) : null;
+    // Runs createAccHandler when you click sign up btn
+    signUpButton ? signUpButton.addEventListener('click', async () => {
+        createAccHandler();
+    }) : null;
 
 }
 
 let disableScroll = () => {
-  // Get the current page scroll position
-  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    // Get the current page scroll position
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
 
-    // if any scroll is attempted, set this to the previous value
-    window.onscroll = function() {
-      window.scrollTo(scrollLeft, scrollTop);
-    };
+        // If any scroll is attempted, set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
 }
 
 // Enabling scrolling
 let enableScroll = () => {
-  window.onscroll = function() {};
+
+    // Enables onscroll
+    window.onscroll = function() {};
 }
 
-let createAlert = (msg) => {
+// Alert modal creator
+let createAlert = ( msg ) => {
 
-  document.querySelector('.modal-here').innerHTML += `
+    // Making a modal with the passed argument
+    document.querySelector('.modal-here').innerHTML += `
         <div class='modal'>
           <h3>${msg}</h3>
           <button type='button' class='button-secondary modalDone' name='button'>Done</button>
-        </div>`
-  headerPopover.style.dispaly == 'block' ? loginButton.click() : null
-  disableScroll();
+        </div>
+    `
+
+    // Making sure that if their is a menu open like cart or login, that it closes
+    headerPopover.style.display == 'block' ? loginButton.click() : null
+
+    // Disabling scroll until they click the modal
+    disableScroll();
 
 }
 
@@ -1021,17 +1028,27 @@ let createAlert = (msg) => {
 // MOBILE NAV
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// Function for mobile app
 let startSwipeListeners = () => {
 
+    // Iife to prevent globals overriding
     (async () => {
+
+        // Start positions for when the user clicks
         let touchstartY = 0
         let touchendY = 0
 
+        // Vars declarations
         let responsiveNav = document.querySelector('.responsive-nav')
         let navSlider = document.querySelector('.header')
 
+        // Function that checks the distance between point A and B
         function swipeDown() {
+
+            // If key down is lower than key up
             if (touchstartY > touchendY) {
+
+                // Shows mobile nav
                 $('.responsive-nav').velocity({
                     top: '0',
                 }, {
@@ -1039,17 +1056,21 @@ let startSwipeListeners = () => {
                     easing: 'easeInOutQuint',
                     delay: 0,
                 });
+
             }
+
         };
 
+        // Listens and disables scroll if they close the nav for a second
         navSlider.addEventListener('touchstart', e => {
             disableScroll();
             touchstartY = e.changedTouches[0].screenY
         });
 
+        // Checks the direction
         navSlider.addEventListener('touchend', e => {
             touchstartY = e.changedTouches[0].screenY
-            if (e.target.id== "user" || e.target.id == "cart") {
+            if (e.target.id == "user" || e.target.id == "cart") {
                 return
             } else {
                 swipeDown();
@@ -1057,6 +1078,8 @@ let startSwipeListeners = () => {
         });
     })();
 
+    // Copy and pasted the above code, except its ran on the div that gets created above
+    // Except its been reverted for swiping up
     (async () => {
         let touchstartY = 0
         let touchendY = 0
@@ -1095,21 +1118,12 @@ let startSwipeListeners = () => {
 // STARTUP TASKS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-window.location.href == 'http://localhost:3000/index.html#listingSection' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
-
 window.location.href == 'http://localhost:3000' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
 
-window.location.href == 'http://localhost:3000' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/index.html' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/index.html#listingSection' ? startSwipeListeners() : null
-
+startSwipeListeners();
 refreshElements();
 setupEventListeners();
 setupFilters();
