@@ -1477,11 +1477,10 @@ input:-webkit-autofill:hover {
   flex-direction: row;
   transition: 0.4s ease;
 }
-
-.question-hover:hover {
+.question-block:hover {
   padding-left: 30px;
 }
-.question-hover:hover .delete-question {
+.question-block:hover .delete-question {
   display: block;
 }
 
