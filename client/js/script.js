@@ -1105,11 +1105,12 @@ window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
 
-window.location.href == 'http://localhost:3000' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/index.html' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/index.html#listingSection' ? startSwipeListeners() : null
+// window.location.href == 'http://localhost:3000' ? startSwipeListeners() : null
+// window.location.href == 'http://localhost:3000/' ? startSwipeListeners() : null
+// window.location.href == 'http://localhost:3000/index.html' ? startSwipeListeners() : null
+// window.location.href == 'http://localhost:3000/index.html#listingSection' ? startSwipeListeners() : null
 
+startSwipeListeners();
 refreshElements();
 setupEventListeners();
 setupFilters();
