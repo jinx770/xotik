@@ -456,6 +456,7 @@ let setupFilters = () => {
             let filterEmpty = filterInput.value !== '' ? false : true;
             let searchEmpty = searchInput.value !== '' ? false : true;
 
+
             // Calls functions if its not empty with the input
             !typeEmpty ? filterCards('byType', typeInput.value) : '';
             !filterEmpty ? filterCards('byFilter', filterInput.value) : '';
@@ -475,10 +476,7 @@ let setupFilters = () => {
 }
 
 // Fires when you click an input
-let filterCards = ( args ) => {
-
-    // Seperates the type of filter the user has clicked and what they click on
-    let [queryType, parameter] = args
+let filterCards = ( queryType, parameter ) => {
 
     refreshElements();
 
