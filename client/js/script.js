@@ -350,6 +350,7 @@ let refreshElements = () => {
   window.loginButton = document.querySelector('#submitLogin') || '';
   window.searchButton = document.querySelector('#searchButton') || '';
   window.listingButton = document.querySelector('.listing-btn') || '';
+  window.mobileNavLogout = document.querySelector("#submitLogout") || '';
   window.closeLoginButton = document.querySelector('.popover-exit-btn') || '';
   window.createAccountButton = document.querySelector('#createAccountBtn') || '';
 
@@ -922,6 +923,10 @@ let setupEventListeners = () => {
 
   // Runs the login handler when you click on the login button
   loginButton.addEventListener('click', async () => {
+    loginHandler();
+  });
+
+  mobileNavLogout.addEventListener('click', async () => {
     loginHandler();
   });
 
