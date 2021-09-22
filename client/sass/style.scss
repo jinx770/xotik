@@ -475,7 +475,7 @@ input:-webkit-autofill:hover {
   width: 100%;
   height: 100px;
   z-index: 99999;
-  opacity: 1;
+  opacity: 0;
 }
 
 .header-content {
@@ -567,6 +567,7 @@ input:-webkit-autofill:hover {
   top: 105px;
   text-align: center;
   opacity: 0;
+  z-index: 999999999999999999999;
 
   i {
     color: $offwhite;
@@ -655,12 +656,13 @@ input:-webkit-autofill:hover {
 // login popover begins ::::::::::::::::::::::::::
 
 .header-popover {
-  padding: 50px 0 30px;
+  padding-bottom:10px;
+  padding-top:10px;
   position: fixed;
   right: 2%;
   top: 100px;
   display: none;
-  height: 0;
+  height: 25px;
   overflow: hidden;
   width: 0;
   border: 1px solid $offwhite;
@@ -770,6 +772,10 @@ input:-webkit-autofill:hover {
   margin: auto;
   width: 70%;
   height: 90%;
+}
+
+.cart-header {
+  margin-bottom: 10px;
 }
 
 .empty-cart-content {

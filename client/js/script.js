@@ -14,7 +14,17 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
+
+//  on load hoer section animations
 window.onload = ( event ) => {
+
+  $('#header').velocity({
+    opacity: '1',
+  }, {
+    duration: 700,
+    easing: 'ease-in',
+    delay: 0,
+  });
 
     if (screen.width < 778) {
 
@@ -67,13 +77,12 @@ window.onload = ( event ) => {
 
     }
 
-
-
 };
 
 
 
 // nav clicks
+// big screens
 $('#logoBtn').click(function() {
     window.location.href = 'index.html';
 });
@@ -88,7 +97,7 @@ $('#listingBtn').click(function() {
 
 
 
-
+// small screens
 $('#mobileWhoBtn').click(function() {
     window.location.href = 'about.html';
 })
@@ -101,22 +110,12 @@ $('#mobileListingBtn').click(function() {
     window.location.href = 'listing.html';
 });
 
+
+
 // header popover begins
-
-
-// if (localStorage.getItem('loggedIn') === 'true') { do stuff }
-
-// ?ICONS :::::::::::::::::::::;
+// ICONS
 // click on user icon
 $('#user').click(function() {
-
-    if ($('#user').hasClass('checked')) {
-
-        // $('#user').removeClass('checked');
-
-    } else {
-
-        $('#user').removeClass('checked');
 
         if (localStorage.getItem('loggedIn') === 'true') {
 
@@ -129,7 +128,8 @@ $('#user').click(function() {
             });
 
             $('#headerPopover').velocity({
-                height: '200px',
+                height: '300px',
+                paddingTop: '40px'
             }, {
                 duration: 500,
                 easing: 'easeInOutQuint',
@@ -147,6 +147,7 @@ $('#user').click(function() {
 
             $('#headerPopover').velocity({
                 height: '400px',
+                paddingTop: '40px'
             }, {
                 duration: 500,
                 easing: 'easeInOutQuint',
@@ -164,8 +165,6 @@ $('#user').click(function() {
         $('#emptyCartContent').css('display', 'none');
         $('#fullCartContent').css('display', 'none');
         $('#createAccountContent').css('display', 'none');
-
-    }
 
 });
 
@@ -202,6 +201,8 @@ $('#cart').click(function() {
     // fade in for empty cart
 
     if (localStorage.getItem('somethingInBasket') == 'true') {
+
+      // if cart has item in it
         $('#fullCartContent').css('display', 'flex');
         $('#fullCartContent').hide();
         $('#fullCartContent').fadeIn('slow');
@@ -217,12 +218,16 @@ $('#cart').click(function() {
 
         $('#headerPopover').velocity({
             height: '400px',
+            paddingTop: '40px'
         }, {
             duration: 500,
             easing: 'easeInOutQuint',
             delay: 0,
         });
+
     } else {
+
+// if cart is empty
         $('#emptyCartContent').css('display', 'flex');
         $('#emptyCartContent').hide();
         $('#emptyCartContent').fadeIn('slow');
@@ -237,14 +242,14 @@ $('#cart').click(function() {
 
         $('#headerPopover').velocity({
             height: '200px',
+            paddingTop: '40px'
         }, {
             duration: 500,
             easing: 'easeInOutQuint',
             delay: 0,
         });
-    }
 
-    // fade in if items in cart
+    }
 
     // remove other content
     $('#loginContent').css('display', 'none');
@@ -252,12 +257,13 @@ $('#cart').click(function() {
 });
 
 
-
+// popover exit button
 $('#popoverExit').click(function() {
 
     $('#headerPopover').addClass('checked');
     $('#headerPopover').velocity({
-        height: '0px',
+        height: '25px',
+        paddingTop: '10px'
     }, {
         duration: 500,
         easing: 'easeInOutQuint',
@@ -272,20 +278,12 @@ $('#popoverExit').click(function() {
         delay: 0,
     });
 
-    $('#headerPopover').fadeOut('slow');
-    // $('#loginContent').fadeOut('slow');
-    // $('#emptyCartContent').fadeOut('slow');
-    // $('#fullCartContent').css('display', 'none');
-    // $('#createAccountContent').fadeOut('slow');
+    $('#headerPopover').delay(500).fadeOut(500);
 
 });
 
-$('#popoverExit').click(function() {
-    $('#headerPopover').fadeOut('slow');
-    $('#loginContent').css('display', 'none');
-    $('#cartContent').css('display', 'none');
-});
 
+// hero section
 // eplore button
 $('#exploreBtn').click(function() {
     $([document.documentElement, document.body]).animate({
@@ -293,6 +291,8 @@ $('#exploreBtn').click(function() {
     }, 1500);
 })
 
+
+// animal page, asking a question
 // asking questions
 $('#askQuestionBtn').click(function() {
     $('#askQuestionForm').css('display', 'flex');
@@ -301,7 +301,6 @@ $('#askQuestionBtn').click(function() {
 })
 
 $('#sendBtn').click(function() {
-
     $('#askQuestionForm').hide('slow');
 })
 
