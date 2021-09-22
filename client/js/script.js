@@ -14,8 +14,7 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
-window.onload = (event) => {
-
+window.onload = ( event ) => {
 
     if (screen.width < 778) {
 
@@ -476,7 +475,7 @@ let setupFilters = () => {
 }
 
 // Fires when you click an input
-let filterCards = (...args) => {
+let filterCards = ( args ) => {
 
     // Seperates the type of filter the user has clicked and what they click on
     let [queryType, parameter] = args
@@ -519,7 +518,7 @@ let searchQuery = async (arg) => {
 }
 
 // I seriously can't be bothered commenting for this, the logic is an actual eyesore
-let sortBy = (arg) => {
+let sortBy = ( arg ) => {
 
     if (alreadyStored == false) {
         for (var i = 0; i < cards.length; i++) {
@@ -835,7 +834,7 @@ let updateCart = () => {
 }
 
 // Function for removing an item in the array
-let removeFromArray = (arr, value) => {
+let removeFromArray = ( arr, value ) => {
 
     // Checking the index of the item in the array passed
     let index = arr.indexOf(value);
@@ -850,7 +849,7 @@ let removeFromArray = (arr, value) => {
 }
 
 // Function invoked when user clicks remove button in the cart
-let remove = (obj) => {
+let remove = ( obj ) => {
 
     // Getting id of the item they click
     let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
@@ -879,7 +878,7 @@ let remove = (obj) => {
 }
 
 // This is a clone of the one above, except it removes one parent above the previous
-let removeFromPage = (obj) => {
+let removeFromPage = ( obj ) => {
 
     // Getting id of the item they click
     let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
@@ -936,13 +935,13 @@ setInterval(function() {
 
 }, 500);
 
-let getId = (e) => {
+let getId = ( e ) => {
     localStorage.setItem('cardId', e.getAttribute('data-objectid'))
     localStorage.setItem('ownerOfAnimal', e.getAttribute('data-ownerOfAnimal'))
     window.location.href = '/animalTemplate.html';
 }
 
-let redirect = (a) => {
+let redirect = ( a ) => {
     cartList.length == 0 ? createAlert('Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)') : window.location.href = a
 }
 
@@ -1006,7 +1005,7 @@ let disableScroll = () => {
     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
 
-        // if any scroll is attempted, set this to the previous value
+        // If any scroll is attempted, set this to the previous value
         window.onscroll = function() {
             window.scrollTo(scrollLeft, scrollTop);
         };
@@ -1014,17 +1013,26 @@ let disableScroll = () => {
 
 // Enabling scrolling
 let enableScroll = () => {
+
+    // Enables onscroll
     window.onscroll = function() {};
 }
 
-let createAlert = (msg) => {
+// Alert modal creator
+let createAlert = ( msg ) => {
 
+    // Making a modal with the passed argument
     document.querySelector('.modal-here').innerHTML += `
         <div class='modal'>
           <h3>${msg}</h3>
           <button type='button' class='button-secondary modalDone' name='button'>Done</button>
-        </div>`
-    headerPopover.style.dispaly == 'block' ? loginButton.click() : null
+        </div>
+    `
+
+    // Making sure that if their is a menu open like cart or login, that it closes
+    headerPopover.style.display == 'block' ? loginButton.click() : null
+
+    // Disabling scroll until they click the modal
     disableScroll();
 
 }
