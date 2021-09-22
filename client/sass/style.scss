@@ -957,6 +957,10 @@ input:-webkit-autofill:hover {
   margin: auto;
 }
 
+.mobile-frog {
+  display: none;
+}
+
 .who-text {
   width: 40%;
   height: 100%;
@@ -1019,6 +1023,10 @@ input:-webkit-autofill:hover {
 .safety-img {
   width: 100%;
   height: auto;
+}
+
+.mob-bengal {
+  display: none;
 }
 
 .safety-text {
@@ -1955,9 +1963,174 @@ input:-webkit-autofill:hover {
 //  footer ends :::::::::::::::::::::::::::::::::::
 
 
-//  Small screens
-@media only screen
-  and (max-device-width: 768px) {
+// Media Queries
+// Mobile Media Query
+@media only screen and (max-device-width: 425px) {
+    // Footer
+    .footer {
+      height: 150px;
+    }
+
+    .footer-content {
+      flex-direction: column;
+    }
+
+    .footer-logo {
+      display: none;
+    }
+
+    .footer-nav {
+      display: none;
+    }
+
+    .footer-newsletter {
+      width: 80%;
+      margin: auto;
+    }
+
+    .newsletter-header {
+      padding-bottom: 20px;
+    }
+
+
+    //*******Who We Are Page*******
+    // About Section
+    .about-content {
+      flex-direction: column;
+    }
+
+    .who-text {
+      width: 100%;
+    }
+
+    .who-head {
+      text-align: center;
+    }
+
+    .mobile-frog {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: auto;
+    }
+
+    .who-img {
+      display: none;
+    }
+
+    .partner1,
+    .partner2 {
+      width: 45%;
+    }
+
+    .partners-head {
+      padding-top: 40px;
+    }
+
+    // Safety Section
+
+    .safety-img {
+      display: none;
+    }
+
+    .mob-bengal {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: auto;
+    }
+
+    .safety-text,
+    .safety-text-content {
+      width: 100%;
+    }
+
+    .safety-head {
+      text-align: center;
+    }
+
+    .safety-icons {
+      padding-top: 40px;
+    }
+
+    .safety-icons h3 {
+      font-size: 25px;
+    }
+
+    .cert,
+    .enclosure {
+      width: 15%;
+      padding-right: 5%;
+    }
+
+    // Contact Section
+    .contact-faq {
+      flex-direction: column;
+    }
+
+    .faq,
+    .contact {
+      width: 90%;
+    }
+
+//*******Create Listing Page*******
+    .left-col,
+    .right-col {
+      min-width: 80%;
+      margin: auto;
+    }
+
+    .new-listing-form h1 {
+      font-size: 35px;
+      text-align: center;
+    }
+
+    #location {
+      width: 78%;
+    }
+
+    #description {
+      width: 79%;
+    }
+
+    .listing-checkbox {
+      width: 100%;
+    }
+
+    .add-img-btn,
+    .ignore-me,
+    .listing-image {
+      width: 80%;
+    }
+
+    .add-img-btn {
+      height: 300px;
+    }
+
+    .listing-btn {
+      margin-top: -100px;
+      margin-bottom: 0;
+    }
+
+    .listing-content {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .listing-images-section {
+      margin-top: 50px;
+    }
+
+    .add-images-section h5 {
+      text-align: center;
+    }
+
+}
+// ^ Mobile Media Query Ends
+
+// Tablet Media Query
+@media only screen and (max-device-width: 768px) {
+  
 
 
   // header
@@ -2135,6 +2308,165 @@ input:-webkit-autofill:hover {
 
 // hero section ends
 
-
-// small screens end
+// footer
+// Footer
+.footer {
+  height: 150px;
 }
+
+.footer-nav {
+  display: none;
+}
+
+.footer-newsletter {
+  width: 70%;
+  margin: auto;
+}
+
+.newsletter-header {
+  padding-bottom: 20px;
+}
+
+//*******Who We Are Page*******
+.about-content {
+  flex-direction: column;
+}
+
+.who-text {
+  width: 100%;
+}
+
+.who-head {
+  text-align: center;
+}
+
+.mobile-frog {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.who-img {
+  display: none;
+}
+
+.partner1,
+.partner2 {
+  width: 40%;
+}
+
+.partners-head {
+  padding-top: 40px;
+}
+
+// Safety Section
+
+.safety-img {
+  display: none;
+}
+
+.mob-bengal {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.safety-text,
+.safety-text-content {
+  width: 100%;
+}
+
+.safety-head {
+  text-align: center;
+}
+
+.safety-icons {
+  padding-top: 40px;
+}
+
+.safety-icons h3 {
+  font-size: 25px;
+}
+
+.cert,
+.enclosure {
+  width: 15%;
+  padding-right: 5%;
+}
+
+// Contact Section
+.contact-faq {
+  flex-direction: column;
+}
+
+.faq,
+.contact {
+  width: 90%;
+}
+
+//*******Create Listing Page*******
+    .left-col,
+    .right-col {
+      min-width: 80%;
+      margin: auto;
+    }
+
+    .new-listing-form h1 {
+      font-size: 35px;
+      text-align: center;
+    }
+
+    #location {
+      width: 90%;
+    }
+
+    #description {
+      width: 90%;
+    }
+
+    .listing-checkbox {
+      width: 100%;
+    }
+
+    .checkbox-row {
+      justify-content: center;
+    }
+
+    .add-img-btn,
+    .ignore-me,
+    .listing-image {
+      width: 80%;
+    }
+
+    .listing-btn {
+      margin-top: 3px;
+      margin-bottom: 0;
+    }
+
+    .listing-content {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .listing-images-section {
+      margin-top: 50px;
+    }
+
+    .add-images-section h5 {
+      text-align: center;
+    }
+
+//*******Cart Listing Page*******
+    .cart-page-content {
+      width: 90%;
+      min-height: auto;
+    }
+
+    .cart-page-item {
+      margin-bottom: 60px;
+    }
+}
+// ^ Tablet Media Query Ends
+
