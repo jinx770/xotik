@@ -42,7 +42,7 @@ window.onload = (event) => {
 
     }
 
-  }, 100)
+  },100)
 
 };
 
@@ -53,6 +53,23 @@ $('#logoBtn').click(function() {
   window.location.href = 'index.html';
 });
 
+$('#animalsBtn').click(function() {
+
+  if (window.location.href = 'index.html') {
+
+    // $([document.documentElement, document.body]).animate({
+    //   scrollTop: $('#listingSection').offset().top
+    // }, 1500);
+    console.log('On inddex.html');
+
+  } else {
+    // window.location.href = 'index.html';
+    console.log('NOT on inddex.html');
+  }
+
+});
+
+//
 $('#whoBtn').click(function() {
   window.location.href = 'about.html';
 })
@@ -60,22 +77,6 @@ $('#whoBtn').click(function() {
 $('#listingBtn').click(function() {
   window.location.href = 'listing.html';
 });
-
-
-
-
-$('#mobileWhoBtn').click(function() {
-  window.location.href = 'about.html';
-})
-
-$('#mobileEnquireBtn').click(function() {
-  window.location.href = 'about.html';
-})
-
-$('#mobileListingBtn').click(function() {
-  window.location.href = 'listing.html';
-});
-
 // header popover begins
 
 
@@ -302,8 +303,6 @@ $('#questionExitBtn').click(function() {
 // -- DISPLAY DETAILS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
-
 // Logic check for the current session, gotta define it initially
 window.loggedIn = false
 window.alreadyStored = false;
@@ -349,7 +348,6 @@ let refreshElements = () => {
   window.loginButton = document.querySelector('#submitLogin') || '';
   window.searchButton = document.querySelector('#searchButton') || '';
   window.listingButton = document.querySelector('.listing-btn') || '';
-  window.mobileNavLogout = document.querySelector("#submitLogout") || '';
   window.closeLoginButton = document.querySelector('.popover-exit-btn') || '';
   window.createAccountButton = document.querySelector('#createAccountBtn') || '';
 
@@ -619,10 +617,6 @@ let loginHandler = async () => {
 
   // Refresh all dom elements to get new values in-case they change
   refreshElements();
-
-  if (document.querySelector('.responsive-nav')) {
-      console.log('found')
-  }
 
   // If not logged then continue
   if (!loggedIn) {
@@ -925,10 +919,6 @@ let setupEventListeners = () => {
     loginHandler();
   });
 
-  mobileNavLogout.addEventListener('click', async () => {
-    loginHandler();
-  });
-
   myAccountBtn.addEventListener('click', () => {
     loggedIn != true ? createAlert('Log in to view your account!') : window.location.href = '/user.html'
   })
@@ -1002,99 +992,85 @@ let createAlert = (msg) => {
 
 
 
-// ------------------------------------------------------------------------------------------------------------------------------------
-// MOBILE NAV
-// ------------------------------------------------------------------------------------------------------------------------------------
 
-let startSwipeListeners = () => {
+(async () => {
+    let touchstartY = 0
+    let touchendY = 0
 
-    (async () => {
-        let touchstartY = 0
-        let touchendY = 0
+    let navSlider = document.querySelector('.header')
+    let responsiveNav = document.querySelector('.responsive-nav')
 
-        let responsiveNav = document.querySelector('.responsive-nav')
-        let navSlider = document.querySelector('.header')
+    function swipeDown() {
+        if (touchstartY > touchendY) {
+            $('.responsive-nav').velocity({
+                top: '0',
+            }, {
+                duration: 1000,
+                easing: 'easeInOutQuint',
+                delay: 0,
+            });
+        }
+    };
 
-        function swipeDown() {
-            if (touchstartY > touchendY) {
-                $('.responsive-nav').velocity({
-                    top: '0',
-                }, {
-                    duration: 1000,
-                    easing: 'easeInOutQuint',
-                    delay: 0,
-                });
-            }
-        };
+    navSlider.addEventListener('touchstart', e => {
+        touchstartY = e.changedTouches[0].screenY
+    });
 
-        navSlider.addEventListener('touchstart', e => {
-            disableScroll();
-            touchstartY = e.changedTouches[0].screenY
-        });
+    navSlider.addEventListener('touchend', e => {
+        touchstartY = e.changedTouches[0].screenY
+        swipeDown();
+        disableScroll();
+    });
+})();
 
-        navSlider.addEventListener('touchend', e => {
-            touchstartY = e.changedTouches[0].screenY
-            if (e.target.id== "user" || e.target.id == "cart") {
-                return
-            } else {
-                swipeDown();
-            }
-        });
-    })();
 
-    (async () => {
-        let touchstartY = 0
-        let touchendY = 0
 
-        let responsiveNav = document.querySelector('.responsive-nav')
-        let navSlider = document.querySelector('.header')
 
-        function swipeUp() {
-            if (touchstartY > touchendY) {
-                $('.responsive-nav').velocity({
-                    top: '-100%',
-                }, {
-                    duration: 1000,
-                    easing: 'easeInOutQuint',
-                    delay: 0,
-                });
-            }
-        };
+(async () => {
+    let touchstartY = 0
+    let touchendY = 0
 
-        responsiveNav.addEventListener('touchstart', e => {
-            touchstartY = e.changedTouches[0].screenY
-        });
+    let navSlider = document.querySelector('.header')
+    let responsiveNav = document.querySelector('.responsive-nav')
 
-        responsiveNav.addEventListener('touchend', e => {
-            touchstartY = e.changedTouches[0].screenY
-            swipeUp()
-            setTimeout(() => {
-                enableScroll()
-            }, 1000);
-        });
-    })();
-}
+    console.log(responsiveNav)
+
+    function swipeUp() {
+        if (touchstartY < touchendY) {
+            $('.responsive-nav').velocity({
+                top: '-100%',
+            }, {
+                duration: 1000,
+                easing: 'easeInOutQuint',
+                delay: 0,
+            });
+        }
+    };
+
+    responsiveNav.addEventListener('touchstart', e => {
+        touchstartY = e.changedTouches[0].screenY
+    });
+
+    responsiveNav.addEventListener('touchend', e => {
+        touchstartY = e.changedTouches[0].screenY
+        swipeUp()
+    });
+})();
+
+
+
+
+
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------
 // STARTUP TASKS
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-window.location.href == 'http://localhost:3000/index.html#listingSection' || window.location.href == `http://localhost:3000` ? handleHomeAnimals() : null
-
 window.location.href == 'http://localhost:3000' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html' ? handleHomeAnimals() : null
 window.location.href == 'http://localhost:3000/index.html#listingSection' ? handleHomeAnimals() : null
-
-window.location.href == 'http://localhost:3000' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/index.html' ? startSwipeListeners() : null
-window.location.href == 'http://localhost:3000/index.html#listingSection' ? startSwipeListeners() : null
-
 refreshElements();
 setupEventListeners();
 setupFilters();
