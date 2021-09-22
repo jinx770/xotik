@@ -1,10 +1,6 @@
-
-
-
 // ------------------------------------------------------------------------------------------------------------------------------------
 // -- DECLARATIONS
 // ------------------------------------------------------------------------------------------------------------------------------------
-
 window.cartParent = document.querySelector('.cart-page-content') || '';
 window.checkOutButton = document.querySelector('#checkoutButton') || '';
 window.totalCartPage = document.querySelector('.checkout-btn').childNodes[1] || '';
@@ -49,6 +45,6 @@ checkOutButton.addEventListener('click', () => {
 updateCartPage()
 
 setInterval(() => {
-    sum = cartCost.reduce((partial_sum, a) => partial_sum + a,0);
+    sum = cartCost.reduce((partial_sum, a) => partial_sum + a, 0);
     totalCartPage.textContent = `Total: $${sum.toLocaleString()}`
 }, 500)
