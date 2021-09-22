@@ -559,6 +559,12 @@ input:-webkit-autofill:hover {
     }
   }
 }
+
+
+.responsive-nav,
+ {
+  display: none;
+}
 // header ends ::::::::::::::::::::::::::::::::::::
 // login popover begins ::::::::::::::::::::::::::
 
@@ -2049,10 +2055,12 @@ input:-webkit-autofill:hover {
       padding-bottom: 20px;
       height: 30px;
       margin-bottom: 20px;
+      // opacity: 0;
 
-      a{
-          text-decoration: none;
+      a {
+        text-decoration: none;
       }
+
     }
   }
 
@@ -2062,6 +2070,7 @@ input:-webkit-autofill:hover {
     justify-content: center;
     align-items: baseline;
     height: 10%;
+    margin-bottom: 30px;
   }
 
 

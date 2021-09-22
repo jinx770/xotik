@@ -1010,6 +1010,9 @@ let createAlert = (msg) => {
         easing: 'easeInOutQuint',
         delay: 0,
       });
+
+
+
     }
   };
 
