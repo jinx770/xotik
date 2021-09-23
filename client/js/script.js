@@ -628,7 +628,7 @@ let loginHandler = async () => {
 
   // Refresh all dom elements to get new values in-case they change
   refreshElements();
-  
+
   // If not logged then continue
   if (!loggedIn) {
 
