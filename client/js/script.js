@@ -597,12 +597,8 @@ let hideCardsThatArent = (arg) => {
 // -- LOGIN LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
-
 // Function for checking to see if the inputted data is the same in the database
-let checkLoginValidity = async (...query) => {
-
-    // Splitting arguments into variables called u and p for username, password
-    let [u, p] = query
+let checkLoginValidity = async (u, p) => { 
 
     // Sending through query variables to validate, returns true or false if login details are valid
     let data = await fetch(`/findUser?u=${u}&p=${p}`)
@@ -628,10 +624,6 @@ let loginHandler = async () => {
 
     // Refresh all dom elements to get new values in-case they change
     refreshElements();
-
-    if (document.querySelector('.responsive-nav')) {
-        console.log('found')
-    }
 
     // If not logged then continue
     if (!loggedIn) {
@@ -663,7 +655,6 @@ let loginHandler = async () => {
 
             // Ending the thread so it doesnt alert
             return
-
         }
 
         // Alerts incorrect if the user doesn't login properly
@@ -693,10 +684,9 @@ let loginHandler = async () => {
 
         // Best practice return
         return
-
     }
-
 }
+
 
 // Function for creating an account :yay:
 let createAccHandler = async () => {
