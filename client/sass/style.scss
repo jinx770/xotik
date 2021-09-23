@@ -1592,6 +1592,9 @@ input:-webkit-autofill:hover {
   flex-direction: row;
   transition: 0.4s ease;
 
+}
+
+.question-hover {
   &:hover {
     padding-left: 30px;
 
@@ -1600,6 +1603,7 @@ input:-webkit-autofill:hover {
     }
   }
 }
+
 
 .question {
   border-bottom: 1px solid $offwhite;
