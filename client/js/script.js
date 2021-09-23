@@ -558,7 +558,6 @@ let sortBy = ( arg ) => {
                 cardParent.appendChild(defaultSorted[i].element)
             }
             break;
-
     }
 
 }
