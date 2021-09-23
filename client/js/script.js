@@ -632,66 +632,77 @@ let loginHandler = async () => {
   if (!loggedIn) {
 
     // Function call for validation of users inputs, returns true or false
-    let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
+    if (usernameInput.value == '') {
+        closeLoginButton.click()
+        createAlert('Please make sure all fields aren\'t empty')
+        return
 
-    // If true
-    if (loginCheck) {
+    } else {
 
-      // Change the style of the login bar and the text
-      logInStyle();
+        let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
 
-      // Changing the current session to the username of whoever logged in
-      currentSession = attemptedLogin;
+        // If true
+        if (loginCheck) {
 
-      // Closing the login field
-      closeLoginButton.click();
+        // Change the style of the login bar and the text
+        logInStyle();
 
-      // Something to say you've logged in for debugging purposes
-      console.log('Signing in')
+        // Changing the current session to the username of whoever logged in
+        currentSession = attemptedLogin;
 
-      // Changing value to true, for next time you login
-      loggedIn = true
+        // Closing the login field
+        closeLoginButton.click();
 
-      // Saving to localstorage so we can use it in other pages
-      localStorage.setItem('currentSession', currentSession)
-      localStorage.setItem('loggedIn', loggedIn)
+        // Something to say you've logged in for debugging purposes
+        console.log('Signing in')
 
-      // Ending the thread so it doesnt alert
-      return
+        // Changing value to true, for next time you login
+        loggedIn = true
+
+        // Saving to localstorage so we can use it in other pages
+        localStorage.setItem('currentSession', currentSession)
+        localStorage.setItem('loggedIn', loggedIn)
+
+        // Ending the thread so it doesnt alert
+        return
+
+        }
+
+        // Alerts incorrect if the user doesn't login properly
+        createAlert('Incorrect login!')
+        closeLoginButton.click();
+
+        }
 
     }
 
-    // Alerts incorrect if the user doesn't login properly
-    createAlert('Incorrect login!')
-    closeLoginButton.click();
+    // If logged in, and pressing the button
+    if (loggedIn) {
 
-  }
+        // Change the log out back to its original layout
+        logOutStyle()
 
-  // If logged in, and pressing the button
-  if (loggedIn) {
+        // Closes the login field
+        closeLoginButton.click();
 
-    // Change the log out back to its original layout
-    logOutStyle()
+        // Debugging purposes
+        console.log('Signing out')
 
-    // Closes the login field
-    closeLoginButton.click();
+        // Changing logged in to false so it can validate once
+        loggedIn = false
 
-    // Debugging purposes
-    console.log('Signing out')
+        // Saving to localstorage so we can use it in other pages
+        localStorage.setItem('currentSession', currentSession)
+        localStorage.setItem('loggedIn', loggedIn)
 
-    // Changing logged in to false so it can validate once
-    loggedIn = false
+        // Best practice return
+        return
 
-    // Saving to localstorage so we can use it in other pages
-    localStorage.setItem('currentSession', currentSession)
-    localStorage.setItem('loggedIn', loggedIn)
+    }
 
-    // Best practice return
-    return
-
-  }
 
 }
+
 
 // Function for creating an account :yay:
 let createAccHandler = async () => {
