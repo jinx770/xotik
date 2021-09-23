@@ -84,6 +84,22 @@ let animalDetails = async () => {
 // -- RANDOM STUFF
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+// Runs every time you type in the comment field
+questionInput ? questionInput.addEventListener('keydown', (event) => {
+
+  // Checks to see if the key you pressed was the enter key
+  if (event.keyCode === 13) {
+
+    // Stops you from new lining.
+    event.preventDefault();
+
+    // Clicks the send comment button (basically pressing enter after you type your comment will submit it)
+    sendComment.click()
+
+  }
+
+}) : null
+
 // Loop for making an animation as data is loading
 setInterval(async () => {
 
