@@ -632,7 +632,7 @@ let loginHandler = async () => {
   if (!loggedIn) {
 
     // Function call for validation of users inputs, returns true or false
-    if (usernameInput.value == '') {
+    if (usernameInput.value == '' || usernameInput.value == '') {
         closeLoginButton.click()
         createAlert('Please make sure all fields aren\'t empty')
         return
@@ -699,7 +699,6 @@ let loginHandler = async () => {
         return
 
     }
-
 
 }
 
