@@ -628,11 +628,7 @@ let loginHandler = async () => {
 
   // Refresh all dom elements to get new values in-case they change
   refreshElements();
-
-  if (document.querySelector('.responsive-nav')) {
-      console.log('found')
-  }
-
+  
   // If not logged then continue
   if (!loggedIn) {
 
