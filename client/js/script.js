@@ -597,8 +597,9 @@ let hideCardsThatArent = (arg) => {
 // -- LOGIN LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
 
+
 // Function for checking to see if the inputted data is the same in the database
-let checkLoginValidity = async (query) => {
+let checkLoginValidity = async (...query) => {
 
   // Splitting arguments into variables called u and p for username, password
   let [u, p] = query
@@ -722,11 +723,11 @@ let createAccHandler = async () => {
         },
         body: JSON.stringify({
 
-          fullName: '.',
+          fullName: 'Click me to add your name!',
           username: username,
-          phoneNo: '.',
-          email: '.',
-          description: '.',
+          phoneNo: 'Click me to add a phone number!',
+          email: 'Click me to add a email!',
+          description: 'Click me to add a description!',
           password: password
 
         })
@@ -775,9 +776,6 @@ let logOutStyle = () => {
 
 
 
-
-
-
 // ------------------------------------------------------------------------------------------------------------------------------------
 // CART LOGIC
 // ------------------------------------------------------------------------------------------------------------------------------------
@@ -785,20 +783,20 @@ let logOutStyle = () => {
 // Updates when user loads any page
 let updateCart = () => {
 
-    // Clearing the div
-    cartParent.innerHTML = '';
+  // Clearing the div
+  cartParent.innerHTML = '';
 
-    window.cartCost = []
-    localStorage.setItem('cartCost', JSON.stringify([]))
+  window.cartCost = []
+  localStorage.setItem('cartCost', JSON.stringify([]))
 
 
-    // Looping through all items locally stored
-    for (item of cartList) {
+  // Looping through all items locally stored
+  for (item of cartList) {
 
-        cartCost.push(item.price)
+    cartCost.push(item.price)
 
-        // Creating new divs for the cart purchases
-        cartParent.innerHTML += `
+    // Creating new divs for the cart purchases
+    cartParent.innerHTML += `
                 <div class='cart-item' id='${item._id}' data-id='${item._id}'>
                     <div class='cart-item-img'>
                         <img class='cart-image' src='${item.url}' alt=''>
@@ -812,84 +810,84 @@ let updateCart = () => {
                 </div>
             </div>
         `
-    }
+  }
 
-    localStorage.setItem('cartCost', JSON.stringify(cartCost))
-    total.textContent = `Total: $${cartCost.reduce((partial_sum, a) => partial_sum + a,0).toLocaleString()}`
+  localStorage.setItem('cartCost', JSON.stringify(cartCost))
+  total.textContent = `Total: $${cartCost.reduce((partial_sum, a) => partial_sum + a,0).toLocaleString()}`
 
 }
 
 // Function for removing an item in the array
-let removeFromArray = ( arr, value ) => {
+let removeFromArray = (arr, value) => {
 
-    // Checking the index of the item in the array passed
-    let index = arr.indexOf(value);
+  // Checking the index of the item in the array passed
+  let index = arr.indexOf(value);
 
-    // Cutting it from the array
-    if (index > -1) {
-        arr.splice(index, 1);
-    }
+  // Cutting it from the array
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
 
-    // Returning the new array
-    return arr;
+  // Returning the new array
+  return arr;
 }
 
 // Function invoked when user clicks remove button in the cart
-let remove = ( obj ) => {
+let remove = (obj) => {
 
-    // Getting id of the item they click
-    let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
+  // Getting id of the item they click
+  let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
 
-    // Running loop to check the item they click against what we've saved in the array
-    for (item of cartList) {
+  // Running loop to check the item they click against what we've saved in the array
+  for (item of cartList) {
 
-        // Locating the item they click with an item in the array
-        if (item._id == id) {
+    // Locating the item they click with an item in the array
+    if (item._id == id) {
 
-            // Removing it from the cart div
-            obj.parentNode.parentNode.parentNode.remove()
+      // Removing it from the cart div
+      obj.parentNode.parentNode.parentNode.remove()
 
-            // Removing it from the array
-            removeFromArray(cartList, item)
+      // Removing it from the array
+      removeFromArray(cartList, item)
 
-            // Updating localstorage with the new array
-            localStorage.setItem('cartItems', JSON.stringify(cartList))
-
-        }
+      // Updating localstorage with the new array
+      localStorage.setItem('cartItems', JSON.stringify(cartList))
 
     }
 
-    updateCart();
+  }
+
+  updateCart();
 
 }
 
 // This is a clone of the one above, except it removes one parent above the previous
-let removeFromPage = ( obj ) => {
+let removeFromPage = (obj) => {
 
-    // Getting id of the item they click
-    let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
+  // Getting id of the item they click
+  let id = obj.parentNode.parentNode.parentNode.getAttribute('data-id')
 
-    // Running loop to check the item they click against what we've saved in the array
-    for (item of cartList) {
+  // Running loop to check the item they click against what we've saved in the array
+  for (item of cartList) {
 
-        // console.log(item._id, id)
-        // Locating the item they click with an item in the array
-        if (item._id == id) {
+    // console.log(item._id, id)
+    // Locating the item they click with an item in the array
+    if (item._id == id) {
 
-            // Removing it from the cart div
-            obj.parentNode.parentNode.parentNode.parentNode.remove()
+      // Removing it from the cart div
+      obj.parentNode.parentNode.parentNode.parentNode.remove()
 
-            // Removing it from the array
-            removeFromArray(cartList, item)
+      // Removing it from the array
+      removeFromArray(cartList, item)
 
-            // Updating localstorage with the new array
-            localStorage.setItem('cartItems', JSON.stringify(cartList))
-
-        }
+      // Updating localstorage with the new array
+      localStorage.setItem('cartItems', JSON.stringify(cartList))
 
     }
 
-    updateCart();
+  }
+
+  updateCart();
 
 }
 
@@ -902,126 +900,120 @@ let removeFromPage = ( obj ) => {
 // Loops every .1 second running the following
 setInterval(function() {
 
-    refreshElements()
+  refreshElements()
 
-    // Loop checks to see if its logged in for when we switch links
-    localStorage.getItem('loggedIn') === 'true' ? logInStyle() : null
-    localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
+  // Loop checks to see if its logged in for when we switch links
+  localStorage.getItem('loggedIn') === 'true' ? logInStyle() : null
+  localStorage.getItem('loggedIn') === 'true' ? loggedIn = true : null
 
-    // Modal listener
-    doneButton ? doneButton.addEventListener('click', async () => {
+  // Modal listener
+  doneButton ? doneButton.addEventListener('click', async () => {
 
-        // Removes the popup modal
-        modalParent.remove();
+    // Removes the popup modal
+    modalParent.remove();
 
-        // Enables scroll once again
-        enableScroll();
+    // Enables scroll once again
+    enableScroll();
 
-    }) : null;
+  }) : null;
 
 }, 500);
 
-let getId = ( e ) => {
-    localStorage.setItem('cardId', e.getAttribute('data-objectid'))
-    localStorage.setItem('ownerOfAnimal', e.getAttribute('data-ownerOfAnimal'))
-    window.location.href = '/animalTemplate.html';
+let getId = (e) => {
+  localStorage.setItem('cardId', e.getAttribute('data-objectid'))
+  localStorage.setItem('ownerOfAnimal', e.getAttribute('data-ownerOfAnimal'))
+  window.location.href = '/animalTemplate.html';
 }
 
-let redirect = ( a ) => {
-    cartList.length == 0 ? createAlert('Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)') : window.location.href = a
+let redirect = (a) => {
+  cartList.length == 0 ? createAlert('Uh oh! Looks like your cart is empty! \n Looks like you need to go shopping :)') : window.location.href = a
 }
 
 // Function for running every event listener on the page
 let setupEventListeners = () => {
 
-    // Runs the login handler when you click on the login button
-    loginButton.addEventListener('click', async () => {
-        loginHandler();
-    });
+  // Runs the login handler when you click on the login button
+  loginButton.addEventListener('click', async () => {
+    loginHandler();
+  });
 
-    mobileNavLogout.addEventListener('click', async () => {
-        loginHandler();
-    });
+  mobileNavLogout.addEventListener('click', async () => {
+    loginHandler();
+  });
 
-    myAccountBtn.addEventListener('click', () => {
-        loggedIn != true ? createAlert('Log in to view your account!') : window.location.href = '/user.html'
-    })
+  myAccountBtn.addEventListener('click', () => {
+    loggedIn != true ? createAlert('Log in to view your account!') : window.location.href = '/user.html'
+  })
 
-    // Runs every time you type in the password input field
-    passwordCreate ? passwordCreate.addEventListener('keydown', (event) => {
+  // Runs every time you type in the password input field
+  passwordCreate ? passwordCreate.addEventListener('keydown', (event) => {
 
-        // Checks to see if the key you pressed was the enter key
-        if (event.keyCode === 13) {
+    // Checks to see if the key you pressed was the enter key
+    if (event.keyCode === 13) {
 
-            // Stops you from new lining.
-            event.preventDefault();
+      // Stops you from new lining.
+      event.preventDefault();
 
-            // Clicks the login (basically pressing enter after you type your password will submit the login)
-            loginButton.click()
+      // Clicks the login (basically pressing enter after you type your password will submit the login)
+      loginButton.click()
 
-        }
+    }
 
-    }) : null
+  }) : null
 
-    // Runs every time you type in the password input field
-    passwordInput.addEventListener('keydown', (event) => {
+  // Runs every time you type in the password input field
+  passwordInput.addEventListener('keydown', (event) => {
 
-        // Checks to see if the key you pressed was the enter key
-        if (event.keyCode === 13) {
+    // Checks to see if the key you pressed was the enter key
+    if (event.keyCode === 13) {
 
-            // Stops you from new lining.
-            event.preventDefault();
+      // Stops you from new lining.
+      event.preventDefault();
 
-            // Clicks the login (basically pressing enter after you type your password will submit the login)
-            loginButton.click()
+      // Clicks the login (basically pressing enter after you type your password will submit the login)
+      loginButton.click()
 
-        }
+    }
 
-    });
+  });
 
-    // Runs createAccHandler when you click sign up btn
-    signUpButton ? signUpButton.addEventListener('click', async () => {
-        createAccHandler();
-    }) : null;
+  // Runs createAccHandler when you click sign up btn
+  signUpButton ? signUpButton.addEventListener('click', async () => {
+    createAccHandler();
+  }) : null;
 
 }
 
 let disableScroll = () => {
-    // Get the current page scroll position
-    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+  // Get the current page scroll position
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
 
-        // If any scroll is attempted, set this to the previous value
-        window.onscroll = function() {
-            window.scrollTo(scrollLeft, scrollTop);
-        };
+    // if any scroll is attempted, set this to the previous value
+    window.onscroll = function() {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
 }
 
 // Enabling scrolling
 let enableScroll = () => {
-
-    // Enables onscroll
-    window.onscroll = function() {};
+  window.onscroll = function() {};
 }
 
-// Alert modal creator
-let createAlert = ( msg ) => {
+let createAlert = (msg) => {
 
-    // Making a modal with the passed argument
-    document.querySelector('.modal-here').innerHTML += `
+  document.querySelector('.modal-here').innerHTML += `
         <div class='modal'>
           <h3>${msg}</h3>
           <button type='button' class='button-secondary modalDone' name='button'>Done</button>
-        </div>
-    `
-
-    // Making sure that if their is a menu open like cart or login, that it closes
-    headerPopover.style.display == 'block' ? loginButton.click() : null
-
-    // Disabling scroll until they click the modal
-    disableScroll();
+        </div>`
+  headerPopover.style.dispaly == 'block' ? loginButton.click() : null
+  disableScroll();
 
 }
+
+
+
 
 
 
