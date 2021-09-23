@@ -598,171 +598,183 @@ let hideCardsThatArent = (arg) => {
 // ------------------------------------------------------------------------------------------------------------------------------------
 
 // Function for checking to see if the inputted data is the same in the database
-let checkLoginValidity = async (u, p) => { 
+let checkLoginValidity = async (query) => {
 
-    // Sending through query variables to validate, returns true or false if login details are valid
-    let data = await fetch(`/findUser?u=${u}&p=${p}`)
-    let result = await data.json()
+  // Splitting arguments into variables called u and p for username, password
+  let [u, p] = query
 
-    // Check to see if inputs are empty
-    u == '' || p == '' ? data = false : data = true
+  // Sending through query variables to validate, returns true or false if login details are valid
+  let data = await fetch(`/findUser?u=${u}&p=${p}`)
+  let result = await data.json()
 
-    // If logged in already, calls the function for signing out before it returns the result
-    // If not, then ignore and continue
-    loggedIn ? loginHandler() : null;
+  // Check to see if inputs are empty
+  u == '' || p == '' ? data = false : data = true
 
-    // Saving the name of the user who's logged in for later
-    window.attemptedLogin = u;
+  // If logged in already, calls the function for signing out before it returns the result
+  // If not, then ignore and continue
+  loggedIn ? loginHandler() : null;
 
-    // Returns the true/false if they've entered the right username and password
-    return result
+  // Saving the name of the user who's logged in for later
+  window.attemptedLogin = u;
+
+  // Returns the true/false if they've entered the right username and password
+  return result
 
 }
 
 // Login handler function, basically for checking to see if the user is logging in or signing out!
 let loginHandler = async () => {
 
-    // Refresh all dom elements to get new values in-case they change
-    refreshElements();
+  // Refresh all dom elements to get new values in-case they change
+  refreshElements();
 
-    // If not logged then continue
-    if (!loggedIn) {
+  if (document.querySelector('.responsive-nav')) {
+      console.log('found')
+  }
 
-        // Function call for validation of users inputs, returns true or false
-        let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
+  // If not logged then continue
+  if (!loggedIn) {
 
-        // If true
-        if (loginCheck) {
+    // Function call for validation of users inputs, returns true or false
+    let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
 
-            // Change the style of the login bar and the text
-            logInStyle();
+    // If true
+    if (loginCheck) {
 
-            // Changing the current session to the username of whoever logged in
-            currentSession = attemptedLogin;
+      // Change the style of the login bar and the text
+      logInStyle();
 
-            // Closing the login field
-            closeLoginButton.click();
+      // Changing the current session to the username of whoever logged in
+      currentSession = attemptedLogin;
 
-            // Something to say you've logged in for debugging purposes
-            console.log('Signing in')
+      // Closing the login field
+      closeLoginButton.click();
 
-            // Changing value to true, for next time you login
-            loggedIn = true
+      // Something to say you've logged in for debugging purposes
+      console.log('Signing in')
 
-            // Saving to localstorage so we can use it in other pages
-            localStorage.setItem('currentSession', currentSession)
-            localStorage.setItem('loggedIn', loggedIn)
+      // Changing value to true, for next time you login
+      loggedIn = true
 
-            // Ending the thread so it doesnt alert
-            return
-        }
+      // Saving to localstorage so we can use it in other pages
+      localStorage.setItem('currentSession', currentSession)
+      localStorage.setItem('loggedIn', loggedIn)
 
-        // Alerts incorrect if the user doesn't login properly
-        createAlert('Incorrect login!')
-        closeLoginButton.click();
+      // Ending the thread so it doesnt alert
+      return
 
     }
 
-    // If logged in, and pressing the button
-    if (loggedIn) {
+    // Alerts incorrect if the user doesn't login properly
+    createAlert('Incorrect login!')
+    closeLoginButton.click();
 
-        // Change the log out back to its original layout
-        logOutStyle()
+  }
 
-        // Closes the login field
-        closeLoginButton.click();
+  // If logged in, and pressing the button
+  if (loggedIn) {
 
-        // Debugging purposes
-        console.log('Signing out')
+    // Change the log out back to its original layout
+    logOutStyle()
 
-        // Changing logged in to false so it can validate once
-        loggedIn = false
+    // Closes the login field
+    closeLoginButton.click();
 
-        // Saving to localstorage so we can use it in other pages
-        localStorage.setItem('currentSession', currentSession)
-        localStorage.setItem('loggedIn', loggedIn)
+    // Debugging purposes
+    console.log('Signing out')
 
-        // Best practice return
-        return
-    }
+    // Changing logged in to false so it can validate once
+    loggedIn = false
+
+    // Saving to localstorage so we can use it in other pages
+    localStorage.setItem('currentSession', currentSession)
+    localStorage.setItem('loggedIn', loggedIn)
+
+    // Best practice return
+    return
+
+  }
+
 }
-
 
 // Function for creating an account :yay:
 let createAccHandler = async () => {
 
-    // If not logged in continue
-    if (!loggedIn) {
+  // If not logged in continue
+  if (!loggedIn) {
 
-        let username = usernameCreate.value;
-        let password = passwordCreate.value;
+    let username = usernameCreate.value;
+    let password = passwordCreate.value;
 
-        console.log(username);
-        console.log(password);
+    console.log(username);
+    console.log(password);
 
-        if (username == '' || password == '') {
-            createAlert('Please make sure all fields are filled out!')
-            return
-        } else {
+    if (username == '' || password == '') {
+      createAlert('Please make sure all fields are filled out!')
+      return
+    } else {
 
-            // Posts/sends data to the route found in server
-            let response = await fetch('/createUser', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
+      // Posts/sends data to the route found in server
+      let response = await fetch('/createUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
 
-                    fullName: 'Click me to add your name!',
-                    username: username,
-                    phoneNo: 'Click me to add a phone number!',
-                    email: 'Click me to add an email!',
-                    description: 'Click me to add a description!',
-                    password: password
+          fullName: '.',
+          username: username,
+          phoneNo: '.',
+          email: '.',
+          description: '.',
+          password: password
 
-                })
+        })
 
-            })
-
-        }
+      })
 
     }
+
+  }
 
 }
 
 // Basic style function for changing styles with js
 let logInStyle = () => {
 
-    // Styling
-    loginButton.textContent = 'Log Out';
-    sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
-    usernameInput.style.display = 'none'
-    passwordInput.style.display = 'none'
-    createAccountButton.style.display = 'none'
-    // loginPopOver.style.height = '14%'
-    // loginPopOver.style.paddingBottom = '30px'
+  // Styling
+  loginButton.textContent = 'Log Out';
+  sessionHeader.textContent = `User: ${localStorage.getItem('currentSession')}`
+  usernameInput.style.display = 'none'
+  passwordInput.style.display = 'none'
+  createAccountButton.style.display = 'none'
+  // loginPopOver.style.height = '14%'
+  // loginPopOver.style.paddingBottom = '30px'
 
 }
 
 // Basic style function for undoing previously done styling via js
 let logOutStyle = () => {
 
-    // Clears the current session username when they sign out
-    currentSession = null;
+  // Clears the current session username when they sign out
+  currentSession = null;
 
-    // State check
-    loggedIn = true
+  // State check
+  loggedIn = true
 
-    // Styling
-    loginButton.textContent = 'Log In';
-    sessionHeader.textContent = `Log In`
-    usernameInput.style.display = 'block'
-    passwordInput.style.display = 'block'
-    createAccountButton.style.display = 'block'
-    loginPopOver.style.height = '50vh'
-    loginPopOver.style.paddingBottom = '0'
+  // Styling
+  loginButton.textContent = 'Log In';
+  sessionHeader.textContent = `Log In`
+  usernameInput.style.display = 'block'
+  passwordInput.style.display = 'block'
+  createAccountButton.style.display = 'block'
+  loginPopOver.style.height = '50vh'
+  loginPopOver.style.paddingBottom = '0'
 
 }
+
+
+
 
 
 
