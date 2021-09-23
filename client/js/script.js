@@ -631,7 +631,7 @@ let loginHandler = async () => {
   // If not logged then continue
   if (!loggedIn) {
 
-    // Function call for validation of users inputs, returns true or false
+    // Quick check to make sure fields arent empty
     if (usernameInput.value == '' || usernameInput.value == '') {
         closeLoginButton.click()
         createAlert('Please make sure all fields aren\'t empty')
@@ -639,6 +639,7 @@ let loginHandler = async () => {
 
     } else {
 
+        // Function call for validation of users inputs, returns true or false
         let loginCheck = await checkLoginValidity(usernameInput.value, passwordInput.value)
 
         // If true
